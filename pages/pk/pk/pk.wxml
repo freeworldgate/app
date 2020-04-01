@@ -47,49 +47,53 @@
         </view>
         <view class="h-30"></view>
     </view>
-    <view class="css mr-2vw ml-2vw">
-        <scroll-view class="rss" hidden="{{pkStatu!=1}}" scrollX="true" style="white-space:nowrap;width:96vw">
-            <view class="css pt-20 pb-20 pl-10 pr-10" style="display:inline-block" wx:for="{{infos}}" wx:for-index="bindex" wx:for-item="info" wx:key="postkey">
-                <view class="rss box5 b-white p-20">
-                    <view class="rcc">
-                        <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{info.user.imgUrl}}"></image>
-                    </view>
-                    <view class="w-10"></view>
-                    <view class="cas">
-                        <view class="rcs">
-                            <view class="rcc fs-20 fw-400 c-5">{{info.operType.name}}</view>
+    <!-- 动态信息 -->
+    <!-- <view class="css b-48">
+        <view class="css mr-2vw ml-2vw">
+            <scroll-view class="rss" hidden="{{pkStatu!=1}}" scrollX="true" style="white-space:nowrap;width:96vw">
+                <view class="css pt-20 pb-20 pl-10 pr-10" style="display:inline-block" wx:for="{{infos}}" wx:for-index="bindex" wx:for-item="info" wx:key="postkey">
+                    <view class="rss box5 b-white p-20">
+                        <view class="rcc">
+                            <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{info.user.imgUrl}}"></image>
                         </view>
-                        <view class="rbc">
-                            <view></view>
-                            <view class="rcc fs-18 fw-400 c-3-1">{{info.time}}</view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </scroll-view>
-        <scroll-view class="rss" hidden="{{pkStatu!=2}}" scrollX="true" style="white-space:nowrap;width:96vw">
-            <view bindtap="selectTask" class="css pt-20 pb-20 pl-10 pr-10" data-task="{{task}}" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
-                <view class="absolute rcc fs-18 line-h18 fw-400 c-white h-30 br-10 pl-10 pr-10 b-5-1 ">{{task.statu.name}}</view>
-                <view class="rss box5 b-white p-20">
-                    <view class="rcc">
-                        <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{task.cashier.imgUrl}}"></image>
-                    </view>
-                    <view class="w-10"></view>
-                    <view class="cas">
-                        <view class="rbc">
-                            <view class="rcc fs-20 fw-400 c-3-1">积分:</view>
-                            <view class="w-20"></view>
-                            <view class="rcc fs-20 fw-400 c-5">{{task.integral}}</view>
-                        </view>
-                        <view class="rbc">
-                            <view class="rcc fs-18 fw-400 c-3-1">排名:</view>
-                            <view class="rcc fs-18 fw-400 c-5">{{task.index}}</view>
+                        <view class="w-10"></view>
+                        <view class="cas">
+                            <view class="rcs">
+                                <view class="rcc fs-20 fw-400 c-5">{{info.operType.name}}</view>
+                            </view>
+                            <view class="rbc">
+                                <view></view>
+                                <view class="rcc fs-18 fw-400 c-3-1">{{info.time}}</view>
+                            </view>
                         </view>
                     </view>
                 </view>
-            </view>
-        </scroll-view>
-    </view>
+            </scroll-view>
+            <scroll-view class="rss" hidden="{{pkStatu!=2}}" scrollX="true" style="white-space:nowrap;width:96vw">
+                <view bindtap="selectTask" class="css pt-20 pb-20 pl-10 pr-10" data-task="{{task}}" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
+                    <view class="absolute rcc fs-18 line-h18 fw-400 c-white h-30 br-10 pl-10 pr-10 b-5-1 ">{{task.statu.name}}</view>
+                    <view class="rss box5 b-white p-20">
+                        <view class="rcc">
+                            <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{task.cashier.imgUrl}}"></image>
+                        </view>
+                        <view class="w-10"></view>
+                        <view class="cas">
+                            <view class="rbc">
+                                <view class="rcc fs-20 fw-400 c-3-1">积分:</view>
+                                <view class="w-20"></view>
+                                <view class="rcc fs-20 fw-400 c-5">{{task.integral}}</view>
+                            </view>
+                            <view class="rbc">
+                                <view class="rcc fs-18 fw-400 c-3-1">排名:</view>
+                                <view class="rcc fs-18 fw-400 c-5">{{task.index}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view> -->
+
     <view class="h-30"></view>
     <view class="rbs z2 b-44">
         <view class="w-1vw"></view>
@@ -203,17 +207,63 @@
     </view>
 </view>
 
-<view class="rbc bottomBar p-30 b-white z30">
+<view class="css bottomBar z20 t-line">
+        <view class="css mr-2vw ml-2vw">
+            <scroll-view class="rss" hidden="{{pkStatu!=1}}" scrollX="true" style="white-space:nowrap;width:96vw">
+                <view class="css  pl-10 pr-10" style="display:inline-block" wx:for="{{infos}}" wx:for-index="bindex" wx:for-item="info" wx:key="postkey">
+                    <view class="rss p-20">
+                        <view class="rcc">
+                            <image class="w-70 h-70 br-10" mode="aspectFill" src="{{info.user.imgUrl}}"></image>
+                        </view>
+                        <view class="w-10"></view>
+                        <view class="cas">
+                            <view class="rcs">
+                                <view class="rcc fs-20 fw-400 c-white">{{info.operType.name}}</view>
+                            </view>
+                            <view class="rbc">
+                                <view></view>
+                                <view class="rcc fs-18 fw-400 c-white">{{info.time}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+            <scroll-view class="rss" hidden="{{pkStatu!=2}}" scrollX="true" style="white-space:nowrap;width:96vw">
+                <view bindtap="selectTask" class="css  pl-10 pr-10" data-task="{{task}}" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
+                    
+                    <view class="rss p-20">
+                        <view class="ccs">
+                            <image class="w-70 h-70 br-10" mode="aspectFill" src="{{task.cashier.imgUrl}}"></image>
+                            <view class="absolute rcc fs-15 fw-400 c-white  br-5 pl-5 pr-5 b-5-1 ">{{task.statu.name}}</view>
+                        </view>
+                        <view class="w-10"></view>
+                        <view class="cas">
+                            <view class="rbc">
+                                <view class="rcc fs-20 fw-400 c-white">积分:</view>
+                                <view class="w-20"></view>
+                                <view class="rcc fs-20 fw-400 c-white">{{task.integral}}</view>
+                            </view>
+                            <view class="rbc">
+                                <view class="rcc fs-18 fw-400 c-white">排名:</view>
+                                <view class="rcc fs-18 fw-400 c-white">{{task.index}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+</view>
+
+
+<!-- <view class="rbc bottomBar p-30 z20">
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeCode">上传收款码</view>
-    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="applyOrder">applyOrder</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeOrder">收款</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userPayOrder">付款</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createFeeDialog">订单</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createApproveDialog">审批收款码</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createPostApproveDialog">审批POST</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createIntegralDialog">积分</view>
-    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createTaskDialog">任务</view>
-</view>
+</view> -->
 
 
 
