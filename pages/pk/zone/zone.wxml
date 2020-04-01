@@ -1,0 +1,312 @@
+<!--pages/pk/singlePk/singlePk.wxml-->
+<view class="css b-37">
+    <view class="blueBack1 z1"></view>
+    <view class="css z3">
+
+        <view class="rbc-nowrap absolute w-86vw mr-7vw ml-7vw ">
+            <view class="rcs  pl-20 pb-30 " style="flex:1">
+              <view class="rcs">
+                  <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/level2.png" class="w-100 h-100 z3" mode="aspectFit"/>
+                  <view class="fs-25 fw-400 c-10 pb-5 z3">紫钻榜</view>
+              </view>
+            </view>
+
+            <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/2020.png" class="w-200 h-200 z3" mode="widthFix"/>
+
+            <view class="rbc" style="flex:1">
+                <view></view>
+                <view class="rcc">
+                   <image src="/images/pay1.png" class="w-100 h-100 z3" mode="aspectFit"/>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="h-100"></view>
+        <view class="css mr-4vw ml-4vw br-20 b-white z2">
+            
+            <view class="rbs   pl-3vw pr-3vw" >
+                <view class="ccs pt-25" >
+                    <view class="rcc ">
+                      <image src="{{img8}}" class="w-120 h-120 br-120 border2 bwhite " mode="aspectFill"/>
+                      <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-150 h-150 absolute z6" mode="aspectFit"/>     
+                    </view>
+                    <view class="h-10"></view>
+                    <view class="rcc fs-25 fw-700 c-3 z7">榜主</view>  
+                </view>
+                <view class="rcc">
+                    <!-- <view class="ccs h-120 backImg10 pl-20 pr-20 pt-10 z20">
+                        <view class="rcc">
+                          <view class="fs-30 fw-700 c-white">5</view>
+                          <view class="fs-20 fw-400 c-white">元</view>
+                        </view>
+                        <view class="rcc fs-20 fw-400 c-white">付费榜</view>
+
+                    </view> -->
+
+                    <view class="ccc  backImg4"  bindtap="addPost">
+                      <view class="rcc fs-30 fw-700 c-white pt-25 pb-25 pl-60 pr-60">我要参战</view>
+                    </view>
+                    
+
+                </view>
+            </view>
+
+            
+            <view class="css">
+    
+                  <view class="rcc fs-45 fw-700 line-2 pl-30 pr-30 line-2">美食大放送</view>
+                  <view class="rcc fs-30 fw-700 line-2 pl-30 pr-30 pb-30 line-2 c-4">天下情侣千千万，我的对象最好看，不服，来战!!!</view> 
+            </view>
+            <view class="rac-nowrap pb-30 pl-30 pr-30">
+                <view class="ccc " style="flex:1" bindtap="click" data-tab="7" data-id="ID000000000000000000000000001">
+                    <view class="rcc backImg7 w-250 h-250"></view>
+                    <view class="rcc fs-30 fw-700 c-4 ">奖品详情</view>
+                </view>
+                <view></view>
+                <view class="ccc " style="flex:1">
+                    <view class="rcc backImg6 w-250 h-250">
+                        <view class="fs-30 fw-700 c-5">23天</view>
+            
+                    </view>
+                    <view class="rcc fs-30 fw-700 c-4 ">剩余时间</view>
+                </view>
+            
+            </view>
+            <view class="rbc p-30">
+                <view class="ccc">
+                    <view class="fs-40 fw-700 c-4">88</view>
+                    <view class="fs-25 fw-400 c-3">打榜人数</view>
+                </view>
+                <view class="ccc">
+                    <view class="fs-40 fw-700 c-4">88</view>
+                    <view class="fs-25 fw-400 c-3">人气总值</view>
+                </view>  
+                <view class="ccc">
+                    <view class="fs-40 fw-700 c-4">88</view>
+                    <view class="fs-25 fw-400 c-3">浏览总量</view>
+                </view>
+
+            </view>
+
+
+        </view>
+        <view class="h-20"></view>
+        <view class="css mr-4vw ml-4vw br-20 b-white z2" bindtap="click" data-tab="8" data-id="ID000000000000000000000000001">
+            
+            <view class="rbc pt-30 pb-30"  style="padding-right:3vw;padding-left:3vw">
+                <view class="rcc fs-30 fw-700 c-4 textShadow">贡献榜</view>
+                <view class="rcs">
+                    <view class="rcc pl-5 pr-5">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%286%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                        <view class="rcc absolute pt-30 pl-30">
+                            <view class="rcc w-30 h-30 br-30 b-5 fs-20 fw-700 c-white">1</view>
+                        </view> 
+                    </view>
+                    <view class="rcc pl-5 pr-5">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%287%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                        <view class="rcc absolute pt-30 pl-30">
+                            <view class="rcc w-30 h-30 br-30 b-6 fs-20 fw-700 c-white">1</view>
+                        </view>
+                    </view>
+                    <view class="rcc pl-5 pr-5">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%288%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                        <view class="rcc absolute pt-30 pl-30">
+                            <view class="rcc w-30 h-30 br-30 b-7 fs-20 fw-700 c-white">1</view>
+                        </view>
+                    </view>
+                    <view class="rcc pl-5 pr-5">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                        <view class="rcc absolute pt-30 pl-30">
+                            <view class="rcc w-30 h-30 br-30 b-23 fs-20 fw-700 c-white">1</view>
+                        </view>
+                    </view>
+                    <view class="rcc pl-5 pr-5">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2811%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                        <view class="rcc absolute pt-30 pl-30">
+                            <view class="rcc w-30 h-30 br-30 b-24 fs-20 fw-700 c-white">1</view>
+                        </view>
+                    </view>
+                    <view class="rcc"><image class="w-40 h-40" src="/images/more.png"  mode="aspectFit"></image></view>
+                </view>
+                
+            </view>
+        </view>
+        <!-- <view class="h-20"></view>
+        <view class="css mr-4vw ml-4vw z2" bindtap="click" data-tab="10">
+            
+            <view class="rbc pt-30"  style="padding-right:3vw;padding-left:3vw">
+                <view class="rcc fs-30 fw-700 c-4 textShadow"></view>
+                <view class="rcs">
+          
+                    <view class="rcc pl-25 pr-25 pt-10 pb-10 br-5 b-36">
+                      <view class="rcc fs-25 fw-400 c-4 ">南京</view>
+                      <view class="rcc"><image class="w-30 h-30" src="/images/pk.png"  mode="aspectFit"></image></view>
+                      <view class="rcc fs-25 fw-400 c-1 ">榜区</view>
+                      <view class="rcc"><image class="w-40 h-40" src="/images/down2.png"  mode="aspectFit"></image></view>
+                    </view>
+                    
+                </view>
+                
+            </view>
+        </view> -->
+    </view>
+    
+    <block  wx:for="{{pks}}" wx:for-item="pk" wx:key="*idx1" >
+
+        <view class="css mr-4vw ml-4vw z3 mt-35 b-white br-10 box2">
+            
+
+
+            <view class="css  ">
+                <view class="rcs " >
+                    
+                    <view class="rcc pt-30 pb-30 pl-3vw ">
+                            <image src="{{img8}}" class="w-80 h-80 br-80 border2 bwhite z18" mode="aspectFill"/>
+                            <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-80 h-80 absolute z19" mode="aspectFit"/>     
+                            <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/no1.png" class=" h-50 absolute z20 pb-80" mode="aspectFit"/>     
+                    </view>
+                    <view class="fs-30 fw-400  c-4 line-1-start pl-10" style="flex:1">诡秘之主</view> 
+                    <view  class="rcc pt-20 pb-20 pl-3vw pr-3vw z4"  bindtap="click" data-tab="6" data-id="ID000000000000000000000000001"><image class="w-40 h-40" src="/images/more.png"  mode="aspectFit"></image></view>
+                </view>
+
+
+
+
+
+
+
+
+                <view class="css"  style="padding-right:3vw;padding-left:3vw">
+                
+                      <view class="rus pb-20 line-2-start fs-35 fw-700 c-4  " style="flex:1">我也来参战!</view>
+               
+                      <view class="rss" >
+                          
+                          <view class="css " style="flex:1">
+                            <view class="" style="flex:1">
+                               <image class="br-10" src="{{img2}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbs" style="height:28vw">
+                                <view class="" style="flex:1">
+                                    <image class="br-10" src="{{img3}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                </view>
+                                <view style="width:1vw"></view>
+                                <view class="" style="flex:1">
+                                    <image class="br-10" src="{{img4}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                </view>
+                            </view>
+                          </view>
+
+                          <view style="width:1vw"></view>
+                          <view class="css" style="width:28vw">
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img5}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img6}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img7}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                          </view>
+                      </view>
+         
+                      <view class="rbc" >
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/view.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>
+                         
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/share.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>    
+                                       
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/comment.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>              
+                     
+          
+
+                      </view>
+                </view>
+            </view>
+        
+        
+        
+        
+        </view>
+
+    </block>
+    
+
+
+
+</view>
+<view class="rcc fs-20 fw-400 c-white pl-20 pr-20 z20 pkType">下拉刷新</view>
+<!-- <view class="rcc flyBack z2 backImg2"></view> -->
+
+<view class="ccc z20 floatButton1">
+  <view class="rcc w-120 h-120 br-120 b-32 fs-30 fw-700 c-white"  bindtap="click" data-tab="1">
+      <view class="rcc">
+          <image src="{{img8}}" class="w-100 h-100 br-100" mode="aspectFill"/>
+          <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-150 h-150 absolute" mode="aspectFit"/>        
+      </view>
+  </view>
+  <view class="h-50"></view>
+  <view class="rcc w-120 h-120 br-120 b-30"  bindtap="click" data-tab="2">
+      <image src="/images/collect.png" class="w-60 h-60" mode="aspectFit"/> 
+  </view>
+  <view class="h-50"></view>
+  <view class="rcc w-120 h-120 br-120 b-31"  bindtap="click" data-tab="3">
+      <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/button7.png" class="w-60 h-60" mode="aspectFit"/> 
+  </view>
+  <view class="h-50"></view>
+  <view class="rcc w-120 h-120 br-120 b-33" bindtap="click" data-tab="5" data-id="">
+      <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/button9.png" class="w-60 h-60" mode="aspectFit"/> 
+  </view>
+  <view class="h-50"></view>
+</view>
+
+<view class="ccc z20 floatButton2">
+  <view class="rcc w-120 h-120 br-120 b-34" bindtap="click" data-tab="4" data-id="">
+      <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/button10.png" class="w-60 h-60" mode="aspectFit"/> 
+  </view>
+  <view class="h-50"></view>
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

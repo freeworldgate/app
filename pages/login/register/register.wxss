@@ -1,0 +1,41 @@
+/* pages/register/register.wxss */
+
+
+.login_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+
+.login_user_image{
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 10rpx;
+
+}
+
+.login_info_input{
+   height: 60rpx;
+   border-bottom:   1px solid rgb(0, 2, 139);  
+}
+
+.avatar_head{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.userinfo-avatar{
+  overflow:hidden;  
+  width: 160rpx;  
+  height: 160rpx;  
+  margin: 20rpx;  
+  margin-bottom: 50rpx;
+  border-radius: 50%;  
+  border: 2px solid #fff;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}

@@ -1,0 +1,229 @@
+<!--pages/pk/userSinglePk/userSinglePk.wxml-->
+<!--pages/invite/createLocation/createLocation.wxml-->
+<view class="css">
+    
+    <view class="blueBack1 z1"></view>
+    <view class="h-80"></view>
+    <view class="rac locationHead  b-1 ">
+
+        <view class="ccc z5">
+            <view class="rcc">
+                <view class="rcc fs-60 fw-700 c-white">67</view>
+                <view class="w-5"></view>
+                <view class="rcc fs-30 fw-700 c-white pt-15">次</view>
+            </view>
+            <view class="rcc fs-25 fw-400 c-white">人气值</view>
+        </view>
+
+
+
+        <view class="ccc z5">
+            <view class="rcc">
+                <view class="rcc fs-60 fw-700 c-white">88</view>
+                <view class="w-5"></view>
+                <view class="rcc fs-30 fw-700 c-white pt-15">元</view>
+            </view>
+            <view class="rcc fs-25 fw-400 c-white">打赏金额</view>
+        </view>
+
+    </view>
+
+
+    <view class="css">
+
+            <view class="h-80"></view>
+            <view class="rcc locationUser z5">
+                <view class="rcc">
+                    <image src="{{img8}}" class="w-120 h-120 br-120 border2 bwhite z18" mode="aspectFill"/>
+                    <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-150 h-150 absolute z19" mode="aspectFit"/>     
+                    <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/no1.png" class=" h-80 absolute z20 pb-150" mode="aspectFit"/>     
+                </view>
+
+            </view>
+
+            <view class="css br-20 z4 b-white mr-4vw ml-4vw backImg1">
+                  <view class="rbc pl-20 pr-20 pt-20">
+                      <view class="ccc w-120 h-120 br-120 b-13">
+                          
+                          <image src="/images/rokit.png" class="w-40 h-40" mode="aspectFit"/>
+                          <view class="h-5"></view>
+                          <view class="fs-25 fw-700 c-5">助力</view>
+                      </view>
+                      <view class="ccc w-120 h-120 br-120 b-13 ">
+                          
+                          <image src="/images/clickShare.png" class="w-40 h-40" mode="aspectFit"/>
+                          <view class="h-5"></view>
+                          <view class="fs-25 fw-700 c-1">找人气</view>
+                      </view>
+                  </view>
+                  <view class="css">
+                      <view class="css">
+                          <view class="css ">
+                              <view class="rcc fs-45 fw-700 line-2 pl-30 pr-30 ">洛丽塔之战</view>
+                              <view class="rcc fs-30 fw-400 line-2 pl-30 pr-30 pb-30 ">快来战斗吧</view> 
+                          </view>
+
+                      </view>
+
+                      <view class="rss pt-10" style="padding-right:3vw;padding-left:3vw">
+                          
+                          <view class="css " style="flex:1">
+                            <view class="" style="flex:1">
+                               <image class="br-10" src="{{img2}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbs" style="height:28vw">
+                                <view class="" style="flex:1">
+                                    <image class="br-10" src="{{img3}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                </view>
+                                <view style="width:1vw"></view>
+                                <view class="" style="flex:1">
+                                    <image class="br-10" src="{{img4}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                </view>
+                            </view>
+                          </view>
+
+                          <view style="width:1vw"></view>
+                          <view class="css" style="width:28vw">
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img5}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img6}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="" style="height:28vw">
+                                <image class="br-10" src="{{img7}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                            </view>
+                          </view>
+                      
+                      
+                      </view>
+                      <view class="rbc pt-10" style="padding-right:3vw;padding-left:3vw">
+                          <view class="fs-20 fw-400 c-3">39张</view>
+                          <view class="fs-20 fw-400 c-3">刚刚</view>
+                      </view>
+                      <view class="rbc" style="padding-right:3vw;padding-left:3vw">
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/view.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>
+                         
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/share.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>    
+                                       
+                              <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                  <view class="rcc">
+                                     <image src="/images/comment.png" class="w-50 h-50" mode="aspectFit"/>
+                                  </view>
+                                  <view class="w-10"></view>
+                                  <view class="rcc fs-40 fw-700 c-3">88</view>
+                              </view>              
+                     
+          
+
+                      </view>
+                  </view>
+            </view>
+            
+
+
+    
+    </view>
+
+    <view class="rbc pt-10  mr-4vw ml-4vw z4" bindtap="click" data-tab="9" data-id="ID000000000000000000000000001">
+    
+        <view class="rcs h-80 br-80 b-21 pt-10 pb-10 pl-20 pr-20">
+            <view class="rcc h-60 br-60 pl-20 pr-20 fs-25 fw-400 c-white b-22">贡献榜</view>
+            <view class="w-10"></view>
+            <view class="rcc pl-5 pr-5">
+                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%286%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                <view class="rcc absolute pt-30 pl-30">
+                    <view class="rcc w-30 h-30 br-30 b-5 fs-20 fw-700 c-white">1</view>
+                </view> 
+            </view>
+            <view class="rcc pl-5 pr-5">
+                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%287%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                <view class="rcc absolute pt-30 pl-30">
+                    <view class="rcc w-30 h-30 br-30 b-6 fs-20 fw-700 c-white">1</view>
+                </view>
+            </view>
+            <view class="rcc pl-5 pr-5">
+                 <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%288%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                 <view class="rcc absolute pt-30 pl-30">
+                    <view class="rcc w-30 h-30 br-30 b-7 fs-20 fw-700 c-white">1</view>
+                </view>
+            </view>
+            <view class="rcc pl-5 pr-5">
+                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                 <view class="rcc absolute pt-30 pl-30">
+                    <view class="rcc w-30 h-30 br-30 b-23 fs-20 fw-700 c-white">1</view>
+                </view>
+            </view>
+            <view class="rcc pl-5 pr-5">
+                 <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2811%29.jpeg" class="w-60 h-60 br-60" mode="aspectFill"/>
+                 <view class="rcc absolute pt-30 pl-30">
+                    <view class="rcc w-30 h-30 br-30 b-24 fs-20 fw-700 c-white">1</view>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="rcc">
+            <view class="rcc"><image src="/images/followed.png" class="w-50 h-50" mode="aspectFit"/></view>
+            <view class="w-10"></view>
+            <view class="rcc fs-25 fw-700 c-12">已收藏</view>
+        </view>
+    
+    </view>
+
+
+</view>
+<view class="rbs locationEnd z5 " style="margin-bottom:10rpx">
+
+        <navigator url="/pages/pk/singlePk/singlePk" class="rcc ">
+            <view class="rcc sortAll">
+                <view class="w-20"></view>
+                <view class="rcc fs-20 fw-400 c-white">查看榜单</view>
+                <view class="w-20"></view>
+                <view class="rcc"><image src="/images/sortAll.png" class="w-30 h-30" mode="aspectFit"/></view>
+                <view class="w-20"></view>
+            </view>
+        </navigator>
+
+        <view class="ccc">
+
+            <view class="ccc w-250 h-100 backImg4 pb-10">
+              <view class="rcc fs-40 fw-700 c-white">1</view>
+              <view class="fs-20 fw-700 c-white">排位</view>
+            </view>
+            
+        </view>
+        
+        <view class="rcc" bindtap="relaunch">
+            <view class="rcc homePage">
+                <view class="w-20"></view>
+                <view class="rcc"><image src="/images/home.png" class="w-30 h-30" mode="aspectFit"/></view>
+                <view class="w-20"></view>
+                <view class="rcc fs-20 fw-400 c-white">打开主页</view>
+                <view class="w-20"></view>
+            </view>
+        </view>
+
+</view>
+
+<view class="rcc flyBack z2 backImg2"></view>
+
+
+
+
+

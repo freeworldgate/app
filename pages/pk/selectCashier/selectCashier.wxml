@@ -1,0 +1,121 @@
+<!--pages/pk/selectCashier/selectCashier.wxml-->
+
+<view class="cbs b-white h-100vh">
+  
+  <view class="css  pt-30 mr-4vw ml-4vw">
+
+      <view class="css br-10 b-white backImg36 box2 pl-4vw pr-4vw">
+            <view class="css ">
+                <view class="rbc b-line pt-20 pb-20">
+                    <view class="rcc">
+                        <view class="rcc"> <image src="/images/pay2.png" class="rcc  h-40 w-40 " mode="aspectFit"/></view>
+                        <view class="rcc fs-30 fw-400 c-5 pl-20">分享打赏/打榜付款</view>
+                        <!-- <view class="rcc fs-30 fw-400 ">(23)</view>          -->
+                    </view>
+                    <view class="rcc">
+                        <view class="rcc fs-25 fw-700 c-1">审核中</view>
+                    </view>
+                </view>
+            
+            </view>
+            <view class="h-30"></view>
+            <view class="rbc ">
+                <view class="rcs w-9vw">
+                    <view class="fs-20 fw-400 c-3">打赏目标</view>
+                </view>
+                <view class="rcc w-22vw">
+                    <view class="rcc fs-25 fw-400 pb-15 pt-15 w-20vw c-white b-5-1">分享用户</view>
+                </view>
+                <view class="rcc w-22vw">
+                    <view class="rcc fs-25 fw-400 pb-15 pt-15 w-20vw c-4 b-41">榜主</view>
+                </view>
+                <view class="rcc w-22vw">
+                    <view class="rcc fs-25 fw-400 pb-15 pt-15 w-20vw c-4 b-41">打榜用户</view>
+                </view>
+                <view class="w-9vw"></view>
+            </view>
+            <!-- 剩余时间 -->
+            <view wx:if="{{!confirm}}" class="rcc pt-50 pb-50 ">
+                <view class="rcc">
+                    <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/ercode.png" class="rcc  h-50vw w-50vw " mode="aspectFit"/>
+                    <view class="cbs absolute h-50vw w-50vw b-43">
+                        <view class="h-80"></view>
+                        <view class="ccc">
+                            <view class="rcc "><image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/mmexport1583418043053.jpg" class="w-100 h-100 br-20 border8 " mode="aspectFill"/></view>
+                            <view class="h-10"></view>
+                            <view class="rcc fs-30 fw-700 w-30vw c-1 line-1">Sober</view>
+                        </view>
+                        <view class="rbc h-80">
+                            <view></view>
+                            <view class="rcc ">
+                                <image src="/images/lock.png" class="rcc h-50 w-50 " mode="aspectFit"/>
+                            </view>
+                        </view>
+
+                    </view>
+                </view>
+            </view>
+
+            <view wx:else class="css">
+                <view class="rbc pt-50 pb-20">
+                    <view class="rcs"><view class="fs-25 fw-400 c-3 pr-10">收款方:</view><image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/mmexport1583418043053.jpg" class="w-30 h-30 br-10 " mode="aspectFill"/></view>
+                    <view class="rcs fs-25 fw-400 c-10">剩余时间:10分钟</view>
+                
+                
+                </view>
+                <view class="rbc">
+                    <view class="ccc">
+                       <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/ercode.png" class="w-40vw h-40vw" mode="aspectFill"/>
+                       <view class="rcc fs-25 fw-700 c-5 pt-30 pb-50">保存收款码</view>
+                    </view>
+                    <view class="ccc">
+                        <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/ercode.png" class="w-40vw h-40vw" mode="aspectFill"/>
+                        <view class="rcc fs-25 fw-700 c-5 pt-30 pb-50">上传订单截图</view>
+                    </view>
+                </view>
+
+                <view class="rcc fs-25 fw-400 c-4 pt-">请在10分钟以内完成付款订单</view>
+
+            </view>
+
+
+            <view class="rbc p-50">
+            
+              <view class="rcc fs-25 fw-400 c-3">投诉</view>
+              <view class="rcc fs-25 fw-400 c-5">换一个</view>
+              <view class="rcc fs-25 fw-400 c-5" bindtap="confirm">确定</view>
+             
+            </view>
+            <navigator class="css" url="/pages/pk/cashList/cashList" hover-class="c-noColor">
+                <view class="rbc t-line pt-30 pb-30">
+                    <view class="rcc">
+                        <view class="rcc"> <image src="/images/pay2.png" class="rcc  h-30 w-30 " mode="aspectFit"/></view>
+                        <view class="rcc fs-25 fw-400 c-4 pl-20">记录</view>
+                    </view>
+                    <view class="rcc">
+                        <image src="/images/more.png" class="rcc  h-50 w-50 " mode="aspectFit"/>
+                    </view>
+                </view>
+            
+            </navigator>
+      </view>
+      <view class="h-50"></view>
+      <view class="css br-10 b-white box2 pl-4vw pr-4vw">
+                <view class="rbc-nowrap pt-30 pb-30">
+                    <view class="rcc-nowrap">
+                        <view class="rcc"> <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/mmexport1583418043053.jpg" class="rcc  h-60 w-60 br-10 " mode="aspectFill"/></view>
+                        <view class="rcc fs-30 fw-400 pl-20 line-1-start">美臀榜</view>
+                    </view>
+                    <view class="rcc">
+                        <image src="/images/more.png" class="rcc  h-50 w-50 " mode="aspectFit"/>
+                    </view>
+                </view>
+            
+      </view>
+
+      
+  </view>
+  <view class="rcc fs-30 fw-400 c-5">帮助</view>
+</view>
+
+

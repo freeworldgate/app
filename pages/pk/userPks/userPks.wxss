@@ -1,0 +1,11 @@
+/* pages/pk/userPks/userPks.wxss */
+.container{
+    width: 92vw; 
+    height: 1000rpx;
+    /*最重要的部分如下：*/
+    /* background-image: radial-gradient(circle at 0rpx 100rpx ,transparent 0%, transparent 100rpx,#fff 100rpx); */
+    background:radial-gradient(circle at 0rpx 0rpx,transparent 100rpx, white 0) ;
+    background-position: 100rpx 0rpx;
+    margin: 4vw;
+
+}

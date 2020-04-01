@@ -1,0 +1,66 @@
+{
+  "pages": [
+
+
+
+    "pages/pk/pk/pk",
+    "pages/pk/uploadErCode/uploadErCode",
+    "pages/pk/cashList/cashList",
+    "pages/pk/selectCashier/selectCashier",
+    "pages/pk/payList/payList",
+
+
+
+
+
+
+    "pages/pk/singlePost/singlePost",
+    "pages/pk/userSinglePost/userSinglePost",
+    "pages/pk/cashiers/cashiers",
+
+
+    "pages/pk/userCreatePks/userCreatePks",
+    "pages/pk/userPkOrder/userPkOrder",
+    "pages/pk/singlePk/singlePk",
+    "pages/pk/userPks/userPks",
+    "pages/pk/postRankList/postRankList",
+    "pages/pk/publishPost/publishPost",
+    "pages/pk/userSinglePk/userSinglePk",
+    "pages/pk/zone/zone",
+    "pages/pk/userHome/userHome",
+    "pages/pk/createPk/createPk",
+    "pages/pk/pkPrizes/pkPrizes",
+    "pages/pk/home/home",
+    "pages/pk/pkRankList/pkRankList",
+
+
+
+    "pages/test/page/page",
+    "pages/test/template/template",
+    "pages/user/login/login",
+    "pages/user/register/register",
+    "pages/user/userPage/userPage",
+    "pages/user/identificate/identificate",
+
+    "pages/login/login/login",
+    "pages/login/register/register"
+
+  ],
+  "window": {
+    "navigationStyle": "default",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff"
+    
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "downloadFile": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 120000
+  },
+
+  "sitemapLocation": "sitemap.json"
+}

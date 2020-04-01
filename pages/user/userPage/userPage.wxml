@@ -1,0 +1,348 @@
+<!--pages/user/userPage/userPage.wxml-->
+
+<view class="css ">
+  
+  <view class="css p-25 bwhite">
+      <view class="rss">
+        <view class="rcc pr-25"><image src="{{user.imgUrl}}" class="h-150 w-150 br-10" mode="aspectFill"/></view>
+        <view class="cbs" style="flex:1">
+            <view class="rbc pr-25 pl-25">
+              <view class="ccc"  bindtap="followInvites">
+                   <view class="fs-30 fw-700">1</view>
+                  <view class="fs-20 fw-400 c-2">关注</view>
+              </view>
+              <view class="ccc" bindtap="userOrders">
+                   <view class="fs-30 fw-700">1</view>
+                  <view class="fs-20 fw-400 c-2">订单</view>
+              </view>
+              <view class="ccc" bindtap="feeInviteHistory">
+                   <view class="fs-30 fw-700">1</view>
+                  <view class="fs-20 fw-400 c-2">打赏</view>
+              </view>
+              <view class="ccc">
+                   <view class="fs-30 fw-700">1</view>
+                  <view class="fs-20 fw-400 c-2">余额</view>
+              </view>
+            </view> 
+            <view class="rbc">
+              <view class="css pr-10" style="flex:1" > 
+                 <view class="rcc fs-25 fw-400 c-white b-1 pt-10 pb-10 br-10">修改资料</view>
+              </view>
+              <view class="css pl-10" style="flex:1"> 
+                 <view class="rcc fs-25 fw-400 c-white b-1 pt-10 pb-10 br-10">认证</view>
+              </view>
+            </view>
+
+
+        
+        </view>
+      </view>
+      <view class="rbc pb-25 pt-50">
+           <navigator class="ccc" url="/pages/invite/createPersonal/createPersonal">
+              <image src="/images/addr3.png" class="w-40 h-40" mode="aspectFit"/>
+              <view class="h-20"></view>
+              <view class="fs-25 fw-700">个人联谊</view>
+          </navigator>
+          <navigator class="ccc" url="/pages/invite/createCompany/createCompany">
+              <image src="/images/addr3.png" class="w-40 h-40" mode="aspectFit"/>
+              <view class="h-20"></view>
+              <view class="fs-25 fw-700">企业联谊</view>
+          </navigator>
+          <navigator class="ccc" url="/pages/invite/createSchool/createSchool">
+              <image src="/images/addr3.png" class="w-40 h-40" mode="aspectFit"/>
+              <view class="h-20"></view>
+              <view class="fs-25 fw-700">校园联谊</view>
+          </navigator>
+          <navigator class="ccc" url="/pages/invite/createLocation/createLocation">
+              <image src="/images/addr3.png" class="w-40 h-40" mode="aspectFit"/>
+              <view class="h-20"></view>
+              <view class="fs-25 fw-700">我的场地</view>
+          </navigator>
+      </view>
+  </view>
+  <view class="h-20"></view>
+
+  <view class="css pl-25 pr-25 bwhite"> 
+    
+    <view class="rbc pt-25 pb-25 b-line">
+        <view class="rcc pr-50 fs-30 fw-700">相册</view>
+        <view class="rcc pr-50 fs-30 fw-700">活动</view>
+        <view class="rcc pr-50 fs-30 fw-700">报名</view>
+        <view class="rcc pr-50 fs-30 fw-700">邀请</view>
+        <view class="rcc pr-50 fs-30 fw-700">消息</view>
+    </view>
+    <view class="p-25" style="flex:1"></view>
+
+  </view>
+
+
+
+</view>
+
+
+
+
+<!-- 模板 -->
+<view >
+      <!-- 反馈窗口 -->
+      <view hidden='{{dialog.visible != true}}' class="coverAll"></view>
+      <view hidden='{{dialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                  <view class="rcs t21-8-1 ">{{dialog.title}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rbc ">
+                      <view></view>
+                      <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass'  bindtap='dialog_confirm'>确定</view>
+                  </view>
+            </view>
+
+      </view>
+      <!-- 信息级别提示窗口 -->
+      <!-- <view hidden='{{tipDialog.visible != true}}' class="coverLoading" ></view> -->
+      <view hidden='{{tipDialog.visible != true}}'  class="rcc tipDialog ">
+              <view class="ccc levelDialog_view">
+                  <view class="rcc">
+                        <image wx:if="{{tipDialog.level==='warn'}}" src="/images/warn.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:elif="{{tipDialog.level==='error'}}" src="/images/error.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:else src="/images/info.png" class="tipDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view style="height:30rpx"></view>
+                  <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+            </view>
+
+      </view>
+      <!-- 操作窗口 -->
+      <view hidden='{{operateDialog.visible != true}}' class="coverAll" ></view>
+      <view hidden='{{operateDialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rbc">
+                        <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='operateDialog_cancel'>取消</view>
+                        <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass' bindtap='operateDialog_confirm'>确定</view>
+                </view>
+            </view>
+
+      </view>
+      <!-- 页面加载中窗口 -->
+      <view hidden='{{pageLoadingDialog.visible != true}}'  class="cac pageLoadingDialog ">
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+            <view></view>
+      </view>
+      <!-- 页面加载失败窗口 -->
+      <view hidden='{{pageLoadingDialogError.visible != true}}'  class="cac pageLoadingDialog ">
+            <view></view>
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+
+      </view>
+
+      <!-- 标签加载中 -->
+      <view hidden='{{labelLoadingDialog.visible != true}}' class="coverAll2" ></view>
+      <view hidden='{{labelLoadingDialog.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                    <image src="/images/loading.gif" class="labelLoadingDialog_image" mode="aspectFill"></image> 
+                    <view class="labelLoadingDialog_text">加载中</view>
+              </view>
+      </view>
+      <!-- 标签加载成功 -->
+      <view hidden='{{labelLoadingDialogSuccess.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadsuccess.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载成功</view>
+            </view>
+
+      </view>
+      <!-- 标签加载失败 -->
+      <view hidden='{{labelLoadingDialogError.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadfail.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载失败</view>
+              </view>
+
+      </view>
+
+
+       <!-- 列表选择窗口 -->
+      <view hidden='{{chooseDialog.visible != true}}' class="coverAll3" bindtap="_chooseDialog_close" catchtouchmove="catchReturn" ></view>
+      <view hidden='{{chooseDialog.visible != true}}'  class="css createChooseDialog" style="height:{{chooseDialog.height}}%" catchtouchmove="catchReturn" >
+          <view class="css pl-30 pr-30">
+            <view class="rbc b-line pt-30 pb-30 ">
+                <view class="rbc" style="flex:1">
+                    <view wx:if="{{chooseDialog.domain.itemType === 11}}" class="rcc"><image src="/images/uploadImg.png" class="w-50 h-50" mode="aspectFit"></image> </view>
+                    <view wx:else class="fs-25 fw-400 pt-20 pb-20">{{chooseDialog.domain.header.tip}}</view>
+                    <view></view>
+                </view>
+                <view class="rcc fs-35 fw-700">{{chooseDialog.domain.header.title}}</view>
+                <view class="rbc" style="flex:1"><view></view><view class="rcc" bindtap="_chooseDialog_close"><image src="/images/down2.png" class="h-40 w-40 pt-20 pb-20 " mode="aspectFit"></image></view></view>
+            </view>
+          </view>
+
+
+          <scroll-view class="css f1-32" scroll-y="true" bindscrolltolower="nextPage">
+              <block  wx:for="{{chooseDialog.domain.datas}}" wx:for-item="item" wx:key="*idx2" wx:for-index="index">
+                  <view class="css pl-30 pr-30" bindtap="_chooseDialog_select" hover-class="b-3" data-item="{{item}}" >
+                      <view class="css t7-5-2">
+
+
+                          <!-- 订单列表 -->
+                          <view wx:if="{{chooseDialog.domain.itemType === 10}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view class="rbc">
+                                      <view class="rcc">
+                                           <view class="rcc"><image src="/images/time.png" class="w-25 h-25" mode="aspectFit"/></view>
+                                           <view class="w-20"></view>
+                                          <view class="rcc fs-25 fw-400">{{item.createTime}}</view>
+                                      </view>
+                                      <view class="rcc">
+                                          <view class="rcc fs-25 fw-400 c-3">{{item.orderStatu1.valueStr}}</view>
+                                          <view class="w-10"></view>
+                                          <view class="rcc"><image src="/images/more3.png" class="w-25 h-25" mode="aspectFit"/></view>
+                                      </view>
+                                      
+                                  </view>
+                                  <view class="h-20"></view>
+                                  <view class="rbd">
+                                      <view class="css">
+                                          <view class="rcc">
+                                              <view class="rcc fs-25 fw-400 c-8">{{item.payType1.valueStr}} · 收款方 · </view>
+                                              <view class="w-5"></view>
+                                              <view class="rcc"><image src="{{item.cashier.user.imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"/></view>
+                                          </view>
+                                          
+                                          <view class="rcc">
+                                              <view class="rcc fs-25 fw-400 c-8">{{item.orderType1.valueStr}} · 付款方 · </view>
+                                              <view class="w-5"></view>
+                                              <view class="rcc"><image src="{{item.user.imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"/></view>
+                                          </view>
+                                      </view>
+                                      <view class="rcc">
+                                          <view class="rdc">
+                                              <view class="rcc fs-50 line-h50">{{item.payNum}}.00</view>
+                                              <view class="w-10"></view>
+                                              <view class="rcc fs-25  c-8">元</view>
+                                          </view>
+                                      </view>
+                                  
+                                  
+                                  </view>
+                    
+                   
+                              </view>
+                          </view> 
+                           <!-- 联谊列表 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 14}}" class="css">
+                              <view class="css pt-25 pb-25">
+                                  <view class="rbc pb-10">
+                                      <view class="css" style="flex:1">
+                                          <view class="rcs fs-28 fw-700 c-darkgreen">{{item.inviteType1.valueStr}}</view>
+                                          <view class="css">
+                                              <view wx:if="{{item.inviteType1.value === 1}}" class="rus  fs-20 fw-400 c-4">{{item.creatorOrg.school.schoolName}}</view>
+                                              <view wx:elif="{{item.inviteType1.value === 2}}" class="rus  fs-20 fw-400 c-4">{{item.creatorOrg.company.companyName}}</view>
+                                              <view wx:else class="rus"></view>
+                                          </view>
+                                      </view>
+                                      <view class="rcs">
+                                           <view hidden="{{!item.boys[0]}}" class="rcs">
+                                                                <view hidden="{{!item.boys[0]}}" class="fs-20 fs-400 c-8">【男生】• {{item.boyNum }}</view>
+                                                                <view hidden="{{!item.boys[0]}}" class="w-10"></view>
+                                                                <image hidden="{{!item.boys[0]}}" src="{{item.boys[0].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+                                                                <view hidden="{{!item.boys[1]}}" class="w-5"></view>
+                                                                <image hidden="{{!item.boys[1]}}" src="{{item.boys[1].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+                                                                <view hidden="{{!item.boys[2]}}" class="w-5"></view>
+                                                                <image hidden="{{!item.boys[2]}}" src="{{item.boys[2].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+
+                                           </view>
+                                           
+                                           <view hidden="{{!item.grils[0]}}" class="rcs pl-30">
+                                                                <view hidden="{{!item.grils[0]}}" class="fs-20 fs-400 c-8">【女生】• {{item.grilNum}}</view>
+                                                                <view hidden="{{!item.grils[0]}}" class="w-10"></view>
+                                                                <image hidden="{{!item.grils[0]}}" src="{{item.grils[0].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+                                                                <view hidden="{{!item.grils[1]}}" class="w-5"></view>
+                                                                <image hidden="{{!item.grils[1]}}" src="{{item.grils[1].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+                                                                <view hidden="{{!item.grils[2]}}" class="w-5"></view>
+                                                                <image hidden="{{!item.grils[2]}}" src="{{item.grils[2].imgUrl}}" class="w-30 h-30 br-30" mode="aspectFill"></image>
+                                           </view>
+                                      </view> 
+                                  </view>
+                       
+                                  <view class="rss">
+                                      <view class="rcc">
+                                          <image src="{{item.info.inviteLocation.images[0].valueStr}}" class="w-130 h-130 br-10" mode="aspectFill" />
+                                          <view class="rcc locationType1 w-130 h-130 br-10">{{item.info.inviteLocation.locationType.valueStr}}</view>
+                                      </view>
+                                      <view class="w-25"></view>
+                                      <view class="cas" style="flex:1">
+                                          <view class="rus fs-30 fw-700 line-1-start">{{item.info.topic}}</view>
+                                          <view class="rus fs-25 fw-400 line-1-start c-8">{{item.info.inviteTime.timeStr}}</view>
+                                          <view class="rus fs-25 fw-400 line-1-start c-8">{{item.info.inviteLocation.locationName}}</view>
+                                      </view>
+                                      <view class="w-10"></view>
+                                      <view class="cas">
+                                          <view class="rcc w-150 ">
+                                              <view class="rcc rcc fs-25 fw-700 c-1">{{item.statuStr}}</view>
+                                          </view>
+                                          <view class="rcc">
+                                            <image src="{{item.creator.imgUrl}}" class="w-40 h-40 br-40" mode="aspectFill"/>
+                                          </view>
+                                      </view>
+                                  </view>
+
+                              </view>
+                          </view>
+                          <view wx:else></view>
+                      </view>
+
+
+
+                  </view>
+              </block>
+              <view hidden="{{chooseDialog.statu != 1}}" class="rcc p-25">
+                <view class="rcc">
+                    <image src="/images/loading.png" class="h-30 w-30" mode="aspectFit"></image>
+                </view>
+                <view class="w-20"></view>
+                <view class="rcc fs-25 fw-400">加载中</view>
+              </view>
+
+              <view hidden="{{chooseDialog.statu != 2}}" class="rcc p-25">
+                <view class="rcc fs-25 fw-400">没有更多数据</view>
+              </view>
+          </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </view>
+
+
+
+
+
+</view>

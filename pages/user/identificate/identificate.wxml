@@ -1,0 +1,10 @@
+<!--pages/user/identificate/identificate.wxml-->
+<view class="cac allCover">
+
+    <view>认证校园用户</view>
+
+
+
+    <view>认证企业用户</view>
+
+</view>

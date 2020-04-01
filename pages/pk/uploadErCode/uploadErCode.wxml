@@ -1,0 +1,70 @@
+<!--pages/pk/uploadErCode/uploadErCode.wxml-->
+<view class="css b-white">
+  <view class="cas h-100vh mr-4vw ml-4vw">
+
+      <view></view>
+      <view class="rus fs-25 fw-400 ">请上传指定金额的微信收款码 审核通过后可以收款...  ></view>
+
+      <view class="css br-10 b-white box2">
+            <navigator class="css pl-4vw pr-4vw " url="/pages/pk/payList/payList">
+                <view class="rbc b-line pt-20 pb-20">
+                    <view class="rcc">
+                        <view class="rcc"> <image src="/images/pay.png" class="rcc  h-40 w-40 " mode="aspectFit"/></view>
+                        <view class="rcc fs-30 fw-400 c-5 pl-20">收款记录</view>
+                        <!-- <view class="rcc fs-30 fw-400 ">(23)</view>          -->
+                    </view>
+                    <view class="rcc">
+                        <image src="/images/more.png" class="rcc  h-50 w-50 " mode="aspectFit"/>
+                    </view>
+                </view>
+            
+            </navigator>
+            <view class="h-50"></view>
+            <view class="rcc">
+                <view class="rcc fs-25 fw-400 c-10 pt-20">金额</view>
+                <view class="rcc fs-60 fw-700 c-10 pl-10 pr-10">60</view>
+                <view class="rcc fs-25 fw-400 c-10 pt-20">元</view>
+            </view>
+            
+            <view class="rcc pt-30 pb-30 ">
+                <view class="rcc">
+                    <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/ercode.png" class="rcc  h-50vw w-50vw " mode="aspectFit"/>
+                </view>
+            </view>
+
+            <view class="rac">
+              <!-- <view class="rcc fs-25 fw-400 c-white pt-20 pb-20 pr-100 pl-100 b-5-1 br-10">上传</view>
+              <view class="l-line h-30"></view>
+              <view class="rcc fs-25 fw-400 c-white pt-20 pb-20 pr-100 pl-100 b-green br-10">确定</view> -->
+              <view class="w-50"></view>
+              <view class="rcc fs-25 fw-400 c-5">上传</view>
+              <view class="h-30 w-1px b-42"></view>
+              <view class="rcc fs-25 fw-400 c-5">确定</view>
+              <view class="w-50"></view>
+            </view>
+            <view class="h-40"></view>
+            <view class="css pl-4vw pr-4vw ">
+                <view class="rbc t-line pt-30 pb-30">
+                    <view class="rcc">
+                        <view class="rcc"> <image src="/images/money.png" class="rcc  h-30 w-30 " mode="aspectFit"/></view>
+                        <view class="rcc fs-25 fw-400 c-4 pl-20">投诉</view>
+                        <!-- <view class="rcc fs-30 fw-400 ">(23)</view>          -->
+                    </view>
+                    <view class="rcc">
+                        <image src="/images/more.png" class="rcc  h-50 w-50 " mode="aspectFit"/>
+                    </view>
+                </view>
+            
+            </view>
+      </view>
+
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+      <view class="rcc fs-30 fw-400 c-5">帮助</view>
+  </view>
+
+</view>
+

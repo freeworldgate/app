@@ -1,0 +1,1501 @@
+<!--pages/pk/userSinglePost/userSinglePost.wxml-->
+<view class="css ">
+    <view class="css z2  pt-80">
+
+
+            <view class="css ">
+
+
+               
+
+                <view class="css b-white mr-3vw ml-3vw box2 br-10  pl-4vw pr-4vw pt-50 pb-50 ">
+
+                    <view class="rbc-nowrap" >
+                        <view class="rcc"> <image src="{{detail.user.imgUrl}}" class="w-50 h-50 br-50" mode="aspectFit"/> </view>
+                        <view class="w-20"></view>
+                        <view class="css" style="flex:1">
+                          <view class="rus line-1-start fs-30 fw-400 " >{{detail.user.userName}}</view>
+                        </view>
+                        
+            
+                        <view class="ccc pl-20 pr-20">
+                            <view class="ccc"> 
+                              <image src="/images/clickShare.png" class="w-50 h-50 " mode="aspectFit"/> 
+                            </view>
+                        </view>
+                    </view>
+       
+
+                    <view class="css pt-40">
+                        <view class="rus fs-35 fw-400 c-4" >{{detail.title}}</view>
+                    </view>
+
+
+
+                    <view class="rbc pt-30" >
+                                  <view class="rcc  ">
+                                      <view class="rcc">
+                                        <image src="/images/time.png" class="w-40 h-40" mode="aspectFit"/>
+                                      </view>
+                                      <view class="w-10"></view>
+                                      <view class="rcc fs-30 fw-400 c-3">2019年12月29日</view>
+                                  </view>    
+                            
+
+                                          
+                                  <view class="rcc ">
+                                      <view class="rcc fs-30 fw-400 c-3">23:00</view>
+                                      <!-- <view class="rcc">
+                                        <image src="/images/view2.png" class="w-40 h-40" mode="aspectFit"/>
+                                      </view>
+                                      <view class="w-10"></view>
+                                      <view class="rcc fs-30 fw-400 c-3">88</view> -->
+                                  </view>              
+                        
+              
+
+                    </view>
+
+                    <view class="rbc pt-50 ">
+                          <view class="ccc"> 
+                              <image src="/images/rokit2.png" class="w-40 h-40 " mode="aspectFit"/> 
+                              <view class="rcc fs-20 fw-400 c-3">浏览</view>
+                              <view class="rcc fs-25 fw-400 c-3">(500)</view>
+                          </view>
+                          <view class="ccc"> 
+                              <image src="/images/rokit2.png" class="w-40 h-40" mode="aspectFit"/> 
+                              <view class="rcc fs-20 fw-400 c-3">分享</view>
+                              <view class="rcc fs-25 fw-400 c-3">(56)</view>
+                          </view>
+            
+                          <view class="ccc"> 
+                              <image src="/images/rokit2.png" class="w-40 h-40 " mode="aspectFit"/> 
+                              <view class="rcc fs-20 fw-400 c-3">打赏</view>
+                              <view class="rcc fs-25 fw-400 c-3">(324)</view>
+                          </view>
+                          <view class="ccc"> 
+                              <image src="/images/rokit2.png" class="w-40 h-40 " mode="aspectFit"/> 
+                              <view class="rcc fs-20 fw-400 c-3">人气</view>
+                              <view class="rcc fs-25 fw-400 c-3">(2232)</view>
+                          </view>
+                    </view>   
+
+
+
+                </view>
+
+                <view class="h-30"></view>
+
+                <view class="css b-white br-10 box2 mr-3vw ml-3vw  pt-50 pb-50">
+                    <view class="rbc pl-4vw pr-4vw">
+                        <view class="rcc">
+                            <view class="rcc"> <image class="w-80 h-80" src="/images/topic.png" mode="aspectFit"></image></view>
+                            <view class="w-10"></view>
+                            <view class="fs-35 fw-700">相册 ({{frontPages.images.length}})</view>
+                        </view>
+                    
+                        <view wx:if="{{publish==='off'}}" class="rcc" bindtap="uploadFront" > 
+                            <view class="rcc "><image src="/images/upload2.png" class="rcc w-80 h-80 br-80 " mode="aspectFit"/> </view>
+                        </view>
+                        <view wx:else  class="rcc pl-50 pr-30"> <image src="/images/loading.gif" class="w-80 h-80 br-80 " mode="aspectFit"/> </view>
+
+                    
+                    </view>
+                    <view class="h-30"></view>
+                    <!-- 图片 -->
+                    <block  wx:for="{{frontPages.images}}" wx:for-item="image" wx:key="*idx1" wx:for-index="bindex">
+                         <view class="css pb-10" bindtap="showImg" data-imgs="{{frontPages.images}}" data-current="{{image.imgUrl}}">
+                              <image class="" src="{{image.imgUrl}}"  bindtap="_post_show" data-index="{{bindex}}" style="height:auto;width:94vw" mode="widthFix"></image>
+                              <view hidden="{{frontPages.images.length<2}}" class="css absolute" catchtap="return">
+                                  <view class="rbc">
+                                  <view></view>
+                                  <view class="rcc">
+
+                                      <view class="rcc w-120 h-120" bindtap="removeImg" data-index="{{bindex}}">
+                                          <image class="w-80 h-80"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                      </view>
+                                  </view>
+                                  </view>
+                              </view>
+                         </view>
+                    </block>
+                    <!-- <view wx:if="{{frontPages.images.length===1}}" class="css b-39">
+                                            <view class="css" style="height:86vw;width:86vw">
+                                                <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                            </view>
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===2}}" class="css b-39">
+                        <view class="rbc">
+                                            <view class="css" style="height:42.5vw;width:42.5vw">
+                                                <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                <view class="css absolute ">
+                                                    <view class="rbc">
+                                                        <view></view>
+                                                        <view class="rcc">
+
+                                                            <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            <view class="css" style="height:42.5vw;width:42.5vw">
+                                                <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                <view class="css absolute ">
+                                                    <view class="rbc">
+                                                        <view></view>
+                                                        <view class="rcc">
+
+                                                            <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                        </view>
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===3}}" class="css b-39">
+                        <view class="css">
+                            <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0"  style="height:66vw;width:86vw" mode="aspectFill"></image>
+                            <view class="css absolute ">
+                                                    <view class="rbc">
+                                                        <view></view>
+                                                        <view class="rcc">
+
+                                                            <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                            </view>
+                        </view>
+                        <view style="height:1vw"></view>
+                        <view class="rbc">
+                                            <view class="css" style="height:42.5vw;width:42.5vw">
+                                                <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                <view class="css absolute ">
+                                                    <view class="rbc">
+                                                        <view></view>
+                                                        <view class="rcc">
+
+                                                            <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            <view class="css" style="height:42.5vw;width:42.5vw">
+                                                <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                <view class="css absolute ">
+                                                    <view class="rbc">
+                                                        <view></view>
+                                                        <view class="rcc">
+
+                                                            <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                        </view>
+                    
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===4}}" class="css b-39">
+                        <view class="css">
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                        </view>
+                    
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===5}}" class="css b-39">
+                        <view class="css">
+
+
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[4].imgUrl}}"  bindtap="_post_show" data-index="4" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="4">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+                        </view>
+                    
+                    
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===6}}" class="css b-39">
+                        <view class="rss" >
+                                  
+                                  <view class="css " style="flex:1">
+                                    <view class="css" style="flex:1">
+                                      <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                      <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                      </view>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="rbs" style="height:28vw">
+                                        <view class="css" style="flex:1">
+                                            <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                      <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                      </view>
+                                        </view>
+                                        <view style="width:1vw"></view>
+                                        <view class="css" style="flex:1">
+                                            <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                      <view class="css absolute ">
+                                                        <view class="rbc">
+                                                            <view></view>
+                                                            <view class="rcc">
+
+                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                </view>
+                                                            </view>
+                                                        </view>
+                                      </view>
+                                        </view>
+                                    </view>
+                                  </view>
+
+                                  <view style="width:1vw"></view>
+                                  <view class="css" style="width:28vw">
+                                    <view class="css" style="height:28vw">
+                                        <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                        <view class="css absolute ">
+                                                          <view class="rbc">
+                                                              <view></view>
+                                                              <view class="rcc">
+
+                                                                  <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                      <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                  </view>
+                                                              </view>
+                                                          </view>
+                                        </view>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="css" style="height:28vw">
+                                        <image class="br-10" src="{{frontPages.images[4].imgUrl}}"  bindtap="_post_show" data-index="4" style="height:100%;width:100%" mode="aspectFill"></image>
+                                        <view class="css absolute ">
+                                                          <view class="rbc">
+                                                              <view></view>
+                                                              <view class="rcc">
+
+                                                                  <view class="rcc w-120 h-120" bindtap="removeImg" data-index="4">
+                                                                      <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                  </view>
+                                                              </view>
+                                                          </view>
+                                        </view>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="css" style="height:28vw">
+                                        <image class="br-10" src="{{frontPages.images[5].imgUrl}}"  bindtap="_post_show" data-index="5" style="height:100%;width:100%" mode="aspectFill"></image>
+                                        <view class="css absolute ">
+                                                          <view class="rbc">
+                                                              <view></view>
+                                                              <view class="rcc">
+
+                                                                  <view class="rcc w-120 h-120" bindtap="removeImg" data-index="5">
+                                                                      <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                  </view>
+                                                              </view>
+                                                          </view>
+                                        </view>
+                                    </view>
+                                  </view>
+                        </view>
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===7}}" class="css b-39">
+                        <view class="css">
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[4].imgUrl}}"  bindtap="_post_show" data-index="4" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="4">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[5].imgUrl}}"  bindtap="_post_show" data-index="5" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="5">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[6].imgUrl}}"  bindtap="_post_show" data-index="6" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="6">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                        </view>
+                    
+                    
+                    </view>
+                    <view wx:elif="{{frontPages.images.length===8}}" class="css b-39" >
+                        <view class="css">
+                            <view class="rbc">
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:42.5vw;width:42.5vw">
+                                                    <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[4].imgUrl}}"  bindtap="_post_show" data-index="4" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="4">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[5].imgUrl}}"  bindtap="_post_show" data-index="5" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="5">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[6].imgUrl}}"  bindtap="_post_show" data-index="6" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="6">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[7].imgUrl}}"  bindtap="_post_show" data-index="7" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="7">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:else  class="css b-39" >
+                        <view class="css">
+                            
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[6].imgUrl}}"  bindtap="_post_show" data-index="6" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="6">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[7].imgUrl}}"  bindtap="_post_show" data-index="7" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="7">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[8].imgUrl}}"  bindtap="_post_show" data-index="8" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="8">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rss" >
+                                      
+                                      <view class="css " style="flex:1">
+                                        <view class="css" style="flex:1">
+                                          <image class="br-10" src="{{frontPages.images[0].imgUrl}}"  bindtap="_post_show" data-index="0" style="height:100%;width:100%" mode="aspectFill"></image>
+                                          <view class="css absolute ">
+                                                                      <view class="rbc">
+                                                                          <view></view>
+                                                                          <view class="rcc">
+
+                                                                              <view class="rcc w-120 h-120" bindtap="removeImg" data-index="0">
+                                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                              </view>
+                                                                          </view>
+                                                                      </view>
+                                          </view>
+                                        </view>
+                                      </view>
+
+                                      <view style="width:1vw"></view>
+                                      <view class="css" style="width:28vw">
+                                        <view class="css" style="height:28vw">
+                                            <image class="br-10" src="{{frontPages.images[1].imgUrl}}"  bindtap="_post_show" data-index="1" style="height:100%;width:100%" mode="aspectFill"></image>
+                                            <view class="css absolute ">
+                                                                        <view class="rbc">
+                                                                            <view></view>
+                                                                            <view class="rcc">
+
+                                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="1">
+                                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                        </view>
+                                            </view>
+                                        </view>
+                                        <view style="height:1vw"></view>
+                                        <view class="css" style="height:28vw">
+                                            <image class="br-10" src="{{frontPages.images[2].imgUrl}}"  bindtap="_post_show" data-index="2" style="height:100%;width:100%" mode="aspectFill"></image>
+                                            <view class="css absolute ">
+                                                                        <view class="rbc">
+                                                                            <view></view>
+                                                                            <view class="rcc">
+
+                                                                                <view class="rcc w-120 h-120" bindtap="removeImg" data-index="2">
+                                                                                    <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                        </view>
+                                            </view>
+                                        </view>
+                                      </view>
+                            </view>
+                            <view style="height:1vw"></view>
+                            <view class="rbc">
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[3].imgUrl}}"  bindtap="_post_show" data-index="3" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="3">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[4].imgUrl}}"  bindtap="_post_show" data-index="4" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="4">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>
+                                                <view class="css" style="height:28vw;width:28vw">
+                                                    <image class="br-10" src="{{frontPages.images[5].imgUrl}}"  bindtap="_post_show" data-index="5" style="height:100%;width:100%" mode="aspectFill"></image>
+                                                    <view class="css absolute ">
+                                                                                <view class="rbc">
+                                                                                    <view></view>
+                                                                                    <view class="rcc">
+
+                                                                                        <view class="rcc w-120 h-120" bindtap="removeImg" data-index="5">
+                                                                                            <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                                                        </view>
+                                                                                    </view>
+                                                                                </view>
+                                                    </view>
+                                                </view>               
+                            </view>
+
+                        </view>
+                    
+                    </view> -->
+
+
+                </view>
+
+                <view class="h-30"></view>
+            </view>
+
+    </view>
+
+
+
+
+
+</view>
+<view class="z0 pkBack b-white"></view>
+<view class="z1 pkBack backImg26"></view>
+
+
+
+<!-- 模板 -->
+<view >
+      <!-- 反馈窗口 -->
+      <view hidden='{{dialog.visible != true}}' class="coverAll"></view>
+      <view hidden='{{dialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                  <view class="rcs t21-8-1 ">{{dialog.title}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rbc ">
+                      <view></view>
+                      <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass'  bindtap='dialog_confirm'>确定</view>
+                  </view>
+            </view>
+
+      </view>
+      <!-- 信息级别提示窗口 -->
+      <!-- <view hidden='{{tipDialog.visible != true}}' class="coverLoading" ></view> -->
+      <view hidden='{{tipDialog.visible != true}}'  class="rcc tipDialog ">
+              <view class="ccc levelDialog_view">
+                  <view class="rcc">
+                        <image wx:if="{{tipDialog.level==='warn'}}" src="/images/warn.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:elif="{{tipDialog.level==='error'}}" src="/images/error.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:else src="/images/info.png" class="tipDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view style="height:30rpx"></view>
+                  <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+            </view>
+
+      </view>
+      <!-- 操作窗口 -->
+      <view hidden='{{operateDialog.visible != true}}' class="coverAll" ></view>
+      <view hidden='{{operateDialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rbc">
+                        <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='operateDialog_cancel'>取消</view>
+                        <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass' bindtap='operateDialog_confirm'>确定</view>
+                </view>
+            </view>
+
+      </view>
+      <!-- 页面加载中窗口 -->
+      <view hidden='{{pageLoadingDialog.visible != true}}'  class="cac pageLoadingDialog ">
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+            <view></view>
+      </view>
+      <!-- 页面加载失败窗口 -->
+      <view hidden='{{pageLoadingDialogError.visible != true}}'  class="cac pageLoadingDialog ">
+            <view></view>
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+
+      </view>
+
+      <!-- 标签加载中 -->
+      <view hidden='{{labelLoadingDialog.visible != true}}' class="coverAll99" catchtouchmove="return"></view>
+      <view hidden='{{labelLoadingDialog.visible != true}}'  class="rcc labelLoadingDialog " catchtouchmove="return">
+              <view class="rcc labelLoadingDialog_view">
+                    <image src="/images/loading.gif" class="labelLoadingDialog_image" mode="aspectFill"></image> 
+                    <view class="labelLoadingDialog_text">加载中</view>
+              </view>
+      </view>
+      <!-- 标签加载成功 -->
+      <view hidden='{{labelLoadingDialogSuccess.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadsuccess.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载成功</view>
+            </view>
+
+      </view>
+      <!-- 标签加载失败 -->
+      <view hidden='{{labelLoadingDialogError.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadfail.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载失败</view>
+              </view>
+
+      </view>
+
+      <!-- 图片上传+文字编辑 模块 -->
+      <view hidden='{{editImageDialog.visible != true}}' class="coverAll100" bindtap='_editImageDialog_closeEdit'  catchtouchmove="return" ></view>
+      <view hidden='{{editImageDialog.visible != true}}' class="cbs editDialog"  bindtap='_editImageDialog_closeEdit' catchtouchmove="return">
+            <view></view>
+            <view class="css b-white">
+                <view class="css br-10 b-white pl-4vw pr-4vw pt-50 pb-50 mr-3vw ml-3vw z30" catchtap="return">
+                    <view class="rbc-nowrap">
+                        <view class="rcc"> <image src="{{user.imgUrl}}" class="w-50 h-50 br-50" mode="aspectFit"/> </view>
+                        <view class="w-20"></view>
+                        <view class="css" style="flex:1">
+                          <view class="rus line-1-start fs-30 fw-400 " >{{user.userName}}</view>
+                        </view>
+                        
+            
+                        <view class="ccc pl-50 ">
+                            <view class="rcc t19-5" bindtap='_editImageDialog_confirm'>发布</view>
+                        </view>
+                    </view>
+                    <view class="css pt-40 pb-20">
+                        <view class="rcc t19-2">
+                            <textarea class=" t19-1"  adjust-position="true" maxlength="150" value="{{editImageDialog.text}}"  placeholder="{{editImageDialog._default_edit_text}}" bindinput='_editImageDialog_input'  />
+                        </view>
+                        <view class="rbc">
+                            <view></view>
+                            <view class="fs-20 fw-400 c-3">还可输入{{editImageDialog.left}}个字</view>
+                        </view>
+                    </view>
+
+
+
+
+                    <scroll-view class="rss" scroll-x="true"  style="white-space:nowrap">
+                          <block  wx:for="{{editImageDialog.images}}" wx:for-item="image" wx:key="*idx2" wx:for-index="bindex" >
+                                            <view class="rcc" style="display:inline-block">
+                                              <view class="css mr-10" >
+                                                  <image class="br-10" src="{{image}}"  bindtap="_editImageDialog_change" data-index="{{bindex}}"  style="height:40vw;width:40vw" mode="aspectFill"></image>
+                                                  <view hidden="{{editImageDialog.images.length<2}}" class="css absolute ">
+                                                      <view class="rbc">
+                                                          <view></view>
+                                                          <view class="rcc">
+
+                                                              <view class="rcc w-120 h-120" bindtap="_editImageDialog_remove" data-index="{{bindex}}">
+                                                                  <image class="w-60 h-60"  src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"  mode="aspectFit"></image>
+                                                              </view>
+                                                          </view>
+                                                      </view>
+                                                      
+                                                  </view>
+                                              </view>  
+                                            </view>
+
+
+                          </block>
+                    </scroll-view>
+                    
+
+
+                    <view class="rbc">
+                        <view class="fs-30 fw-400 c-3">{{editImageDialog.images.length}} 张</view>
+                        <view class="rcc">
+                            <image hidden="{{editImageDialog.images.length<3}}" src="/images/pull-right.png"  style="height:40rpx;width:40rpx" mode="aspectFill"></image>
+                        </view>
+                    </view>
+                    <view class="cac h-400">
+                        <view></view>
+                        <view class="rcc">
+                            <image class="br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/write-icon.png"   style="height:300rpx;width:300rpx" mode="aspectFill"></image>
+                        </view>
+                    </view>
+
+
+
+
+
+
+
+
+
+
+                
+                </view>
+            </view>
+
+      </view>
+
+
+
+       <!-- 列表选择窗口 -->
+      <view hidden='{{chooseDialog.visible != true}}' class="coverAll3" bindtap="_chooseDialog_close" catchtouchmove="catchReturn" ></view>
+      <view hidden='{{chooseDialog.visible != true}}'  class="css createChooseDialog" style="height:{{chooseDialog.height}}%" catchtouchmove="catchReturn" >
+          <view class="rbc p-30 b-4">
+              <view class="rbc" style="flex:1">
+                  <view wx:if="{{chooseDialog.domain.itemType === 11}}" class="rcc"><image src="/images/uploadImg.png" class="w-50 h-50" mode="aspectFit"></image> </view>
+                  <view wx:else class="fs-25 fw-400 pt-20 pb-20">{{chooseDialog.domain.header.tip}}</view>
+                  <view></view>
+              </view>
+              <view class="rcc fs-35 fw-700">{{chooseDialog.domain.header.title}}</view>
+              <view class="rbc" style="flex:1"><view></view><view class="rcc" bindtap="_chooseDialog_close"><image src="/images/down2.png" class="h-40 w-40 pt-20 pb-20 " mode="aspectFit"></image></view></view>
+          </view>
+
+          <scroll-view class="css f1-32" scroll-y="true" bindscrolltolower="nextPage">
+              <block  wx:for="{{chooseDialog.domain.datas}}" wx:for-item="item" wx:key="*idx2" wx:for-index="index">
+                  <view class="css pl-30 pr-30" bindtap="_chooseDialog_select" hover-class="b-3" data-item="{{item}}" >
+                      <view class="css t7-5-2">
+                          <!-- 选择公司 -->
+                          <view wx:if="{{chooseDialog.domain.itemType === 1}}" class="css">
+                                <view class="rbc pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.companyImg}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.companyName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rus t6-9">{{item.address}}</view>                             
+                                    </view>
+                                </view>
+                          </view>
+                          <!-- 选择学校 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 2}}" class="css" >
+                                <view class="rbc pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.schoolImg}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.schoolName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rus t6-9">{{item.address}}</view>                             
+                                    </view>
+                                </view>
+                          
+                          </view>
+                          <!-- 选择地点 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 3}}" class="css">
+                              <view class="css pt-50 pb-50">
+                                  <view style="height:20rpx"></view>
+                                  <!-- 名称和地址 -->
+                                  <view class="rss ">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="css t22-9" style="flex:1">
+                                          <view class="rus f1-4">{{item.locationName}}</view>
+                                          <view class="h-5"></view>
+                                          <view class="rus t22-8">{{item.locationAddress}}</view>
+                                          <!-- <view class="rbc">
+                                                        <view class="rcs">
+                                                            <view class="rcc b-5 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/type.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">KTV</view>
+                                                                
+                                                            </view>
+                                                            <view style="width:10rpx" />
+                                                            <view class="rcc b-6 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/times.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">235</view>
+                                                            </view>
+                                                            <view style="width:10rpx" />
+                                                            <view class="rcc b-7 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/share7.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">235</view>
+                                                            </view>
+                                                        </view> 
+                                                        <view></view>
+                                          </view> -->
+                                      </view>
+                                      <view wx:if="{{item.phones.length > 0}}" class="rcc"  catchtap="_makePhone" hover-stop-propagation='true'  hover-class="b-3" data-numbers="{{item.phones}}">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6" >
+                                              <image src="/images/phone.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view wx:else class="rcc">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6" >
+                                              <image src="/images/nophone.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+
+
+
+
+                                  </view>
+                                  <view class="h-20"></view>
+                                  <!-- 其他 -->
+                                  <view class="rss">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3-1" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="css t22-9" style="flex:1">
+                                          <view class="rbc">
+                                              <!-- <view hidden="{{item.consumption === 0}}" class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">人均消费</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.consumption}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">元</view>
+                                                      </view>
+                                                  </view>
+                                              </view> -->
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">分享次数</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.shareTimes}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">次</view>
+                                                      </view>
+                                                  </view>
+                                              </view>
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">联谊次数</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.inviteTimes}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">次</view>
+                                                      </view>
+                                                  </view>
+                                              </view>
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">场地类型</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc fs-25 fw-400">{{item.locationType.typeName}}</view>
+                                                  </view>
+                                              </view>
+                                          </view>
+                                      </view>
+                                      <view class="rcc">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6 ">
+                                              <view class="rcc t22-40-1-2">NO. {{item.rank}}</view>
+                                          </view>
+                                      </view>
+                                  </view>
+                                  <view class="h-20"></view>
+                                  <!-- 相册 -->
+                                  <view class="rss ">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3-1" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="rcs t22-9" style="flex:1">
+                                          <view class="rcc"><image src="{{item.images[0]}}" class="f1-16" mode="aspectFill" /></view>
+                                          <view class="rcc"><image src="{{item.images[1]}}" class="f1-16" mode="aspectFill" /></view>
+                                          <view class="rcc"><image src="{{item.images[2]}}" class="f1-16" mode="aspectFill" /></view>
+                                      </view>
+                        
+                                      <view class="rcc"  catchtap="_chooseDialog_location_detail" data-item="{{item}}" hover-stop-propagation='true'  hover-class="b-3" >
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6 ">
+                                              <image src="/images/more4.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                  </view>
+                              </view>
+                          </view> 
+                          <!-- 选择管理员 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 4}}" class="css">
+                              <view class="rbs pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.imgUrl}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.userName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rcs">
+                                              <image wx:if="{{item.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                              <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">年龄:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-6">{{item.age}}</view>
+                                              <view class="t19-7">岁</view>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">职业:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-7">{{item.job.jobName}}</view>
+                                        </view>                            
+                                    </view>
+                                    <view class="rcc"  catchtap="_chooseDialog_user_detail" data-item="{{item}}" hover-stop-propagation='true'  hover-class="b-3"  >
+                                        <view class="fs-25 fw-400 ">用户详情</view>
+                                        <view class="rcc">
+                                            <image src="/images/more3.png" class="h-30 w-30" mode="aspectFit"></image>
+                                        </view>
+                                    </view>
+                              </view>
+                          </view>  
+                          <!-- 选择日期 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 5}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.dateStr}}</view>
+                                      <view class="w-20"></view>
+                                      <view class="fs-35 fw-400">({{item.weekDay}})</view>
+                                      <view class="w-20"></view>
+                                      <view class="fs-25 fw-400 c-1">{{item.festival}}</view>
+                                  </view>
+                                  <view class="fs-25 fw-400">{{item.extStr}}</view>
+                              </view>
+                          </view>  
+                          <!-- 选择地点类型 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 6}}" class="css">
+                              <view class="rbs pt-40 pb-40">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.typeName}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view>
+                          <!-- 选择时间 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 7}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.timeStr}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view> 
+                          <!-- 选择年级 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 8}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.levelName}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view>  
+                          <!-- 报名用户 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 9}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view  class="rbs">
+                                      <view class="rcc">
+                                          <image src="{{item.user.imgUrl}}" class="f1-18" mode="aspectFill"></image> 
+                                      </view>
+                                      <view style="width:25rpx"></view>
+                                      <view class="cbs  pb-10" style="flex:1">
+                                          <view class="rbc ">
+                                                <view class="rcs">
+                                                    <view class="t17-2-2">{{item.user.userName}}</view>
+                                                    <view class="w-15"></view>
+                                                    <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的报名</view>
+
+                                                </view>
+
+
+                                                <view class="rcc t17-3">{{item.time}}</view>
+                                          </view>
+                                          <view class="rbc ">
+                                                <view class="rcc">
+                                                      <view class="t17-3">来源:</view>
+                                                      <view style="width:15rpx"></view>
+                                                      <view wx:if="{{!item.fromUser}}" class="rcc">
+                                                          <view  class="t17-3">主页</view>
+                                                      </view>
+                                                      <view wx:else class="rcc">
+                                                          <image src="{{item.fromUser.imgUrl}}" class="t17" mode="aspectFill"></image> 
+                                                      </view>
+                                                </view>
+                                                <view class="rcc">
+                                                      <!-- 状态显示 -->
+                                                      <view wx:if='{{user.userId === item.creator.userId }}' class="rcc-nowrap">
+                                                          <view hidden='{{item.joinerStatu != 0}}' class="rcc t17-6 t17-6-2" bindtap='oper' data-member="{{item}}" data-index="{{index}}" data-oper="1">同意</view>
+                                                          <view hidden='{{item.joinerStatu != 0}}'  style="width:20rpx"></view>
+                                                          <view hidden='{{item.joinerStatu != 0}}' class="rcc t17-6 t17-6-1" bindtap='oper' data-member="{{item}}" data-index="{{index}}" data-oper="2">拒绝</view>
+                                                          
+                                                          <view hidden='{{item.joinerStatu != 2}}' class="rcc t17-6 t17-6-3">已拒绝</view>
+                                                          <view hidden='{{item.joinerStatu != 1}}' class="rcc t17-6 t17-6-3">已同意</view>
+                                                      </view>
+                                                      <view wx:else class="cac">
+                                                          <view wx:if='{{item.joinerStatu === 2}}' class="rcc t17-6 t17-6-3">已拒绝</view>
+                                                          <view wx:elif='{{item.joinerStatu === 1}}' class="rcc t17-6 t17-6-3">已同意</view>
+                                                          <view wx:else class="rcc t17-6 t17-6-3">审核中</view>
+                                                      </view> 
+                                                </view>
+                                          </view>
+                                          <view class="rbc ">
+                                                <view class="rcs">
+                                                      <image wx:if="{{item.user.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                                      <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                                      <view style="width:15rpx"></view>
+                                                      <view class="t19-7">年龄:</view>
+                                                      <view style="width:10rpx"></view>
+                                                      <view class="t19-6">{{item.user.age}}</view>
+                                                      <view class="t19-7">岁</view>
+                                                      <view style="width:15rpx"></view>
+                                                      <view class="t19-7">职业:</view>
+                                                      <view style="width:10rpx"></view>
+                                                      <view class="t19-7">{{item.user.job.jobName}}</view>
+                                                </view>
+                                                <view></view>
+                                          </view>
+
+                                      </view>
+                                  </view>
+                              </view>
+                          </view>  
+                          <!-- 订单列表 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 10}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view class="rbs" >
+                                      <view class="rcc">
+                                                <image src="{{item.user.imgUrl}}" class="t17-1" mode="aspectFill"></image> 
+                                      </view>
+                                      <view class="cas  t17-2-1" style="flex:1">
+                                          <view class="rcs">
+                                            <view class="t17-2-2">{{item.user.userName}}</view>
+                                            <view class="w-15"></view>
+                                            <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的订单</view>
+                                          </view>
+                                          <view class="rcs">
+                                              <image wx:if="{{item.user.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                              <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">年龄:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-6">{{item.user.age}}</view>
+                                              <view class="t19-7">岁</view>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">职业:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-7">{{item.user.job.jobName}}</view>
+                                          </view>
+                                      </view>
+                                      <view class="cbs">
+                                          <view class="rbc">
+                                              <view></view>
+                                              <view class="rcc t17-3">{{item.createTime}}</view>
+                                          </view>
+                                          <view class="rcc">
+                                                <view wx:if="{{item.orderStatuValue === 1}}" class="t17-6-4-1">{{item.orderStatuStr}}</view>
+                                                <view wx:elif="{{item.orderStatuValue === 2}}" class="t17-6-4-2">{{item.orderStatuStr}}</view>
+                                                <view wx:elif="{{item.orderStatuValue === 3}}" class="t17-6-4-3">{{item.orderStatuStr}}</view>
+                                                <view wx:else class="t17-6-4-4">{{item.orderStatuStr}}</view>
+                                          </view>
+                                        
+                                      </view>
+
+                                  </view>
+                              </view>
+                          </view> 
+                          <!-- 联谊相册列表 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 11}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view class="css">
+                                        <view class="rbc">
+                                            <view class="rcs">
+                                                <view class="rcc">
+                                                    <image src="{{item.user.imgUrl}}" class="t15-3" mode="aspectFill"></image> 
+                                                </view>
+                                                <view class="w-15"></view>
+                                                <view class="rcc t15-4">{{item.user.userName}}</view>
+                                                <view class="w-15"></view>
+                                                <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的相册</view>
+                                            </view>
+                                            <view class="rcc">
+                                                <!-- <view class="rcs t15-7">更多</view> -->
+                                                <image src="/images/more3.png" class="t15-2" mode="aspectFill"></image> 
+                                            </view>
+                                        </view>
+                                        <view style="height:20rpx"></view>
+                                        <view class="rus t19-12">{{item.text}}</view>
+                                        <view style="height:20rpx"></view>
+                                        <view class="css">
+                                              <!-- 图片 -->
+                                              <scroll-view class="rss t8-5" scroll-x="true"  style="white-space:nowrap">
+                                                      <block  wx:for="{{item.album}}" wx:for-item="albumImg" wx:key="*idx2" >
+                                                          <view class="rcc" style="display:inline-block">
+                                                              <image src="{{albumImg.imgUrl}}" class="t19-9" mode="aspectFill" />
+                                                          </view>
+                                                      </block>
+                                              </scroll-view>
+                                        </view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rbc">
+                                            <view class="rcc">
+                                                    <view class="rcc t17-3">{{item.lastTime}}</view>
+                                            </view>
+                                            <view class="rcc">
+                                                    <view class="t19-7">共</view>
+                                                    <view style="width:10rpx"></view>
+                                                    <view class="t19-6">{{item.imgNum}}</view>
+                                                    <view class="t19-7">张</view>
+                                            </view>
+
+                                        </view>
+                                  </view>
+                              </view>
+                          </view> 
+
+
+                          <view wx:else></view>
+                      </view>
+
+
+
+                  </view>
+              </block>
+              <view hidden="{{chooseDialog.statu != 1}}" class="rcc p-25">
+                <view class="rcc">
+                    <image src="/images/loading.png" class="h-30 w-30" mode="aspectFit"></image>
+                </view>
+                <view class="w-20"></view>
+                <view class="rcc fs-25 fw-400">加载中</view>
+              </view>
+
+              <view hidden="{{chooseDialog.statu != 2}}" class="rcc p-25">
+                <view class="rcc fs-25 fw-400">没有更多数据</view>
+              </view>
+          </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </view>
+
+
+
+
+
+
+
+
+</view>

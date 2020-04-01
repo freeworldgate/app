@@ -1,0 +1,948 @@
+
+<!-- 模板 -->
+<view >
+      <!-- 反馈窗口 -->
+      <view hidden='{{dialog.visible != true}}' class="coverAll"></view>
+      <view hidden='{{dialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                  <view class="rcs t21-8-1 ">{{dialog.title}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
+                  <view style="height:80rpx"></view>
+                  <view class="rbc ">
+                      <view></view>
+                      <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass'  bindtap='dialog_confirm'>确定</view>
+                  </view>
+            </view>
+
+      </view>
+      <!-- 信息级别提示窗口 -->
+      <!-- <view hidden='{{tipDialog.visible != true}}' class="coverLoading" ></view> -->
+      <view hidden='{{tipDialog.visible != true}}'  class="rcc tipDialog ">
+              <view class="ccc levelDialog_view">
+                  <view class="rcc">
+                        <image wx:if="{{tipDialog.level==='warn'}}" src="/images/warn.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:elif="{{tipDialog.level==='error'}}" src="/images/error.png" class="tipDialog_image" mode="aspectFit"></image> 
+                        <image wx:else src="/images/info.png" class="tipDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view style="height:30rpx"></view>
+                  <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+            </view>
+
+      </view>
+      <!-- 操作窗口 -->
+      <view hidden='{{operateDialog.visible != true}}' class="coverAll" ></view>
+      <view hidden='{{operateDialog.visible != true}}'  class="css dialog ">
+            <view class="css dialog-padding">
+                <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
+                <view style="height:80rpx"></view>
+                <view class="rbc">
+                        <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='operateDialog_cancel'>取消</view>
+                        <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass' bindtap='operateDialog_confirm'>确定</view>
+                </view>
+            </view>
+
+      </view>
+      <!-- 页面加载中窗口 -->
+      <view hidden='{{pageLoadingDialog.visible != true}}'  class="cac pageLoadingDialog ">
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+            <view></view>
+      </view>
+      <!-- 页面加载失败窗口 -->
+      <view hidden='{{pageLoadingDialogError.visible != true}}'  class="cac pageLoadingDialog ">
+            <view></view>
+            <view class="ccc ">
+                <view class="rcc">
+                      <image src="/images/service.png" class="pageLoadingDialog_image" mode="aspectFit"></image> 
+                </view>
+                <view class="rcc"></view>
+            </view>
+
+      </view>
+
+      <!-- 标签加载中 -->
+      <view hidden='{{labelLoadingDialog.visible != true}}' class="coverAll" ></view>
+      <view hidden='{{labelLoadingDialog.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                    <image src="/images/loading.gif" class="labelLoadingDialog_image" mode="aspectFill"></image> 
+                    <view class="labelLoadingDialog_text">加载中</view>
+              </view>
+      </view>
+      <!-- 标签加载成功 -->
+      <view hidden='{{labelLoadingDialogSuccess.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadsuccess.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载成功</view>
+            </view>
+
+      </view>
+      <!-- 标签加载失败 -->
+      <view hidden='{{labelLoadingDialogError.visible != true}}'  class="rcc labelLoadingDialog ">
+              <view class="rcc labelLoadingDialog_view">
+                  <view class="rcc">
+                        <image src="/images/loadfail.png" class="labelLoadingDialog_image" mode="aspectFit"></image> 
+                  </view>
+                  <view class="labelLoadingDialog_text">加载失败</view>
+              </view>
+
+      </view>
+      <!-- 选项卡 -->
+      <view hidden='{{selectionDialog.visible != true}}' class="coverAll" bindtap='_selectionDialog_hide'></view>
+      <view hidden='{{selectionDialog.visible != true}}'  class="{{selectionDialog._selectionDialog_layout}}">
+            <!-- 横向  Top 和 Bottom -->
+            <view wx:if="{{selectionDialog.style === 1 || selectionDialog.style === 5}}" class="css selectionDialog_BT ">
+                  
+                  <view class="rcc selectionDialog_BT1_title">选项</view>
+                  <view style="height:20rpx"></view>
+                  <view class="rac">
+                      <block  wx:for="{{selectionDialog.items}}" wx:for-item="item" wx:key="*idx1" >
+                            <view class="ccc"  bindtap='_selectDialog_choose' data-name="{{item.name}}">
+                                <image src="{{item.icon}}" class="selectionDialog_item_image" mode="aspectFit" />
+                                <view style="height:20rpx"></view>
+                                <view class="selectionDialog_BT1_title">{{item.name}}</view>
+                            </view>
+                      </block>
+                  </view>
+            </view>
+            <!-- 侧边 -->
+            <view wx:elif="{{selectionDialog.style === 2 || selectionDialog.style === 3}}"  class="css selectionDialog_RL">
+
+                  <view class="rcc selectionDialog_RL_title">选项</view>
+                  <block  wx:for="{{selectionDialog.items}}" wx:for-item="item" wx:key="*idx1" >
+                        <view class="ccc selectionDialog_RL_item"   bindtap='_selectDialog_choose' data-name="{{item.name}}" >
+                            <image  src="{{item.icon}}" class="selectionDialog_item_image" mode="aspectFit" />
+                            <view style="height:10rpx"></view>
+                            <view class="selectionDialog_RL_title">{{item.name}}</view>
+                        </view>
+                  </block>
+
+
+            </view>
+            <!-- 竖向 Top 和 Bottom -->
+            <view wx:else class="css selectionDialog_BT" >
+                  <view class="rcs selectionDialog_BT2_title">选项</view>
+                  <block  wx:for="{{selectionDialog.items}}" wx:for-item="item" wx:key="*idx1" >
+                        <view class="rcs selectionDialog_BT2_item"  bindtap='_selectDialog_choose' data-name="{{item.name}}">
+                            <image src="{{item.icon}}" class="selectionDialog_item_image" mode="aspectFit" />
+                            <view style="width:30rpx"></view>
+                            <view class="selectionDialog_BT1_title">{{item.name}}</view>
+                        </view>
+                  </block>
+            </view>
+      </view>
+      <!-- 图片上传+文字编辑 模块 -->
+      <view hidden='{{editImageDialog.visible != true}}' class="coverAll" bindtap=''  catchtouchmove="return" ></view>
+      <view hidden='{{editImageDialog.visible != true}}' class="css editDialog" style="height:{{editImageDialog.dialogHeight}}%" catchtouchmove="return">
+          <view class="css t19-1-1" >
+              <view class="rbc">
+                
+                <view class="rbc" style="flex:1">
+                    <image src="/images/down2.png" class="t19-11-1" mode="aspectFit" bindtap='_editImageDialog_closeEdit'/>
+                    <view></view>
+                </view>
+                <view class="t19-13">{{editImageDialog._dialog_title}}</view>
+                <view class="rbc"  style="flex:1">
+                    <view></view>
+                    <view class="rcc">
+                        <view wx:if="{{editImageDialog.statu === 0&&editImageDialog.images.length>0}}" class="rcc t19-5" bindtap='_editImageDialog_confirm'>发布</view>
+                        <view wx:elif="{{editImageDialog.statu === 0&&editImageDialog.images.length===0}}" class="rcc t19-5-2" bindtap=''>发布</view>
+                        <view wx:else class="rcc t19-5-1" >发布中...</view>
+                    </view>
+                </view>
+
+
+              </view>
+              <view style="height:20rpx"></view>
+              <!-- 编辑框 -->
+              <view class="rcc t19-2">
+                  <textarea class=" t19-1"  adjust-position="true" disabled='{{editImageDialog.statu != 0}}'   placeholder="{{editImageDialog._default_edit_text}}" bindinput='_editImageDialog_input'  />
+              </view>
+              <view class="rbc">
+                  <view class="t19-7">相册图片</view>
+                  <view class="rcc">
+                      <view class="t19-7">共</view>
+                      <view style="width:10rpx"></view>
+                      <view class="t19-6">{{editImageDialog.images.length}}</view>
+                      <view class="t19-7">张</view>
+                  </view>
+              </view>
+              <!-- 上传图片 -->
+              <scroll-view class="css t8-5-1 t19-2" scroll-y="true"  style="white-space:nowrap">
+                  <view class="rus-wrap" >
+                        <block  wx:for="{{editImageDialog.images}}" wx:for-item="image" wx:key="*idx1"  wx:for-index="index" >
+                                <view class="rcc t19-3-1" style="width:{{editImageDialog.width}}px;height:{{editImageDialog.width}}px">
+                                      <image src="{{image}}" class="t19-3" mode="aspectFill" />
+                                      <view class="css t19-10" style="width:{{editImageDialog.width}}px;height:{{editImageDialog.width}}px" bindtap='preview' data-index="{{index}}">
+                                          <view class="rbc ">
+                                              <view></view>
+                                              <image wx:if="{{editImageDialog.statu!=0 && editImageDialog.uploadIndex >= index}}" src="/images/select.png" class="t19-11" mode="aspectFit" />
+                                              <image wx:else src="/images/add.png" class="t19-11" mode="aspectFit" bindtap='_editImageDialog_remove' data-index="{{index}}"/>
+                                              
+                                          </view>
+                                      </view>
+                                </view>
+                        </block>
+                  </view>
+              </scroll-view>
+              <view style="height:10rpx"></view>
+              <view class="rbc">
+                  <view class="rus t19-7">最多可上传{{editImageDialog._max_images}}张图片</view>
+                  <view hidden='{{statu === 0}}' class="rcc">
+                          <view class="t19-7">上传进度</view>
+                          <view style="width:5rpx"></view>
+                          <view class="t19-6">{{editImageDialog.uploadIndex}}</view>
+                          <view class="t19-6">/{{editImageDialog.images.length}}</view>
+                  </view>
+              </view>
+            
+              <view style="height:20rpx"></view>
+              <view class="rbc">
+                  <view class="rcc">
+                      <image src="/images/uploadImg.png" class="t19-4" mode="aspectFit" bindtap='_editImageDialog_selectImgs'></image> 
+                      <view class="rcc">
+                          <view class="t19-7">还可以上传</view>
+                          <view style="width:5rpx"></view>
+                          <view class="t19-6">{{editImageDialog._max_images-editImageDialog.images.length}}</view>
+                          <view class="t19-7">张图片</view>
+                      </view>
+                  </view>
+                  <view></view>
+
+
+              </view>
+              <view class="t7-5-2" style="height:35rpx"></view>
+
+
+
+          </view>
+      </view>
+      <!-- 文字编辑器 -->
+      <view hidden='{{editTextDialog.visible != true}}' class="coverAll" bindtap=''  catchtouchmove="return" ></view>
+      <view hidden='{{editTextDialog.visible != true}}' class="css editTextDialog"  catchtouchmove="return">
+          <view class="css editTextDialog_view " >
+              <view class="rbc">
+                <view class="t19-13-1" style="padding-left:15rpx">{{editTextDialog.title}}</view>
+                <view class="rcc">
+                </view>
+              </view>
+              <!-- <view style="height:20rpx"></view> -->
+              <!-- 编辑框 -->
+              <view class="rcc t19-2">
+                  <textarea class=" t19-1-2"  adjust-position="true" maxlength='{{editTextDialog.maxLength}}' placeholder="{{editTextDialog.placeholder}}" bindinput='_editTextDialog_input' value="{{editTextDialog.text}}" />
+              </view>
+              <view class="rbc">
+                  <view>
+                      <view hidden='{{editTextDialog.maxLength > editTextDialog.text.length }}' class="t19-7-1">内容已达最大长度!</view>
+                  </view>
+                  <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
+              </view>
+              <view style="height:20rpx"></view>
+              <view class="rac">
+                    <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='_editTextDialog_close'>取消</view>
+                    <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass' bindtap='_editTextDialog_confirm'>确定</view>
+              </view>
+              <!-- <view class="rbc-nowrap">
+                  <view  class="rcc t19-5-3" bindtap='_editTextDialog_close'>取消</view>
+                  <view  class="rcc t19-5-4" bindtap='_editTextDialog_confirm'>发布</view>
+                  <!-- <view wx:elif="{{editImageDialog.statu === 0&&editImageDialog.images.length===0}}" class="rcc t19-5-2" bindtap=''>发布</view> -->
+              <!-- </view> --> 
+              <view class="t7-5-2" style="height:35rpx"></view>
+
+
+
+          </view>
+
+
+
+
+      </view>
+      <!-- 短文本编辑器 -->
+      <view hidden='{{shortTextDialog.visible != true}}' class="coverAll" bindtap=''  catchtouchmove="return" ></view>
+      <view hidden='{{shortTextDialog.visible != true}}' class="rcc shortTextDialog"  >
+              <view class="css shortTextDialog_view">
+                    <view class="rcc shortTextDialog_title">{{shortTextDialog.title}}</view>
+                    <view style="height:60rpx"></view>
+                    <view class="css">
+                        <input class="shortTextDialog_input" bindinput='_shortTextDialog_input' maxlength='{{shortTextDialog.maxLength}}' placeholder="点击输入最多{{shortTextDialog.maxLength}}位数字" value="{{shortTextDialog.text}}" />
+                    </view>
+                    <view style="height:60rpx"></view>
+                    <view class="rac">
+                        <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='_shortTextDialog_close'>取消</view>
+                        <view wx:if="{{shortTextDialog.text.length > 0}}"  class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass'  bindtap='_shortTextDialog_confirm'>确定</view>
+                        <view wx:else class="rcc shortTextDialog_cancel" >确定</view>
+                    </view>
+              </view>
+
+      </view>
+
+      <!-- 数字编辑器 -->
+      <view hidden='{{editNumberDialog.visible != true}}' class="coverAll" bindtap=''  catchtouchmove="return" ></view>
+      <view hidden='{{editNumberDialog.visible != true}}' class="rcc shortTextDialog"  >
+              <view class="css shortTextDialog_view">
+                    <view class="rcc shortTextDialog_title">{{editNumberDialog.title}}</view>
+                    <view style="height:60rpx"></view>
+                    <view class="css">
+                        <input class="createEditNumberDialog_input" bindinput='_editNumberDialog_input' value="{{editNumberDialog.text}}" type='number' maxlength='{{editNumberDialog.maxLength}}' placeholder="点击输入最多{{editNumberDialog.maxLength}}位数字" />
+                    </view>
+                    <view style="height:60rpx"></view>
+                    <view class="rac">
+                        <view class="rcc shortTextDialog_cancel" bindtap='_editNumberDialog_close'>取消</view>
+                        <view wx:if="{{editNumberDialog.text.length > 0}}" class="rcc shortTextDialog_confirm "   hover-class='dialog_confirm_hoverClass' bindtap='_editNumberDialog_confirm'>确定</view>
+                        <view wx:else class="rcc  shortTextDialog_cancel">确定</view> 
+                    </view>
+              </view>
+
+      </view>
+
+      <!-- 可下载图片展示  单张 -->
+      <view hidden='{{downloadImageDialog.visible != true}}' class="coverAll" bindtap='_downloadImageDialog_close'  catchtouchmove="return" ></view>
+      <view hidden='{{downloadImageDialog.visible != true}}' class="css downloadImageDialog"  catchtouchmove="return"  >
+              <view class="css downloadImageDialog_view">
+                    <view class="rcc downloadImageDialog_title">{{downloadImageDialog.title}}</view>
+                    <view style="height:30rpx"></view>
+                    <view class="rcc downloadImageDialog_subtitle">{{downloadImageDialog.subTitle}}</view>
+                    <view style="height:40rpx"></view>
+                    <view class="rcc">
+                        <image src="{{downloadImageDialog._image}}" class="downloadImageDialog_image" bindlongtap='getInfo' mode="widthFix"></image>
+                    </view>
+                    <view style="height:10rpx"></view>
+                    <view class="rcc downloadImageDialog_longtab">长按图片查看详情</view>
+                    <view style="height:90rpx"></view>
+                    <view class="rcc">
+                        <view class="rcc downloadImageDialog_confirm" hover-class='dialog_confirm_hoverClass' bindtap='_downloadImageDialog_save' data-url="{{downloadImageDialog._image}}">保存到本地相册</view>
+                    </view>
+              </view>
+
+      </view>
+
+      <!-- 可上传图片展示  单张 -->
+      <view hidden='{{uploadImageDialog.visible != true}}' class="coverAll" bindtap='_uploadImageDialog_close'  catchtouchmove="return" ></view>
+      <view hidden='{{uploadImageDialog.visible != true}}' class="css downloadImageDialog"  catchtouchmove="return"  >
+              <view class="css downloadImageDialog_view">
+                    <view class="rcc downloadImageDialog_title">{{uploadImageDialog.title}}</view>
+                    <view style="height:30rpx"></view>
+                    <view class="rcc downloadImageDialog_subtitle">{{uploadImageDialog.subTitle}}</view>
+                    <view style="height:40rpx"></view>
+                    <view class="rcc" bindtap='_uploadImageDialog_save'>
+                        <view wx:if="{{!uploadImageDialog._image}}" class="rcc downloadImageDialog_image f1-31">+</view>
+                        <image wx:else src="{{uploadImageDialog._image}}" class="downloadImageDialog_image" bindlongtap='getInfo' mode="aspectFill"></image>
+                    </view>
+                    <view style="height:10rpx"></view>
+                    <view class="rcc downloadImageDialog_longtab">长按图片查看详情</view>
+                    <view style="height:90rpx"></view>
+                    <view class="rbc">
+                        <view class="rcc uploadImageDialog_confirm" hover-class='dialog_confirm_hoverClass' bindtap='_uploadImageDialog_save' >上传图片</view>
+                        <view class="rcc uploadImageDialog_confirm" hover-class='dialog_confirm_hoverClass' bindtap='_uploadImageDialog_confirm' data-url="{{uploadImageDialog._image}}">确定</view>
+                    </view>
+              </view>
+
+      </view>
+
+      <!-- 创建订单窗口 -->
+      <view hidden='{{orderDialog.visible != true}}' class="coverAll" bindtap="_orderDialog_close"></view>
+      <view hidden='{{orderDialog.visible != true}}'  class="css createOrder" style="height:{{orderDialog.height}}">
+            <view class="css ">
+                <view class="css pl-25 pr-25 ">
+                    <view class="rbc pt-40 pb-40 t7-5-2">
+                      <view class="fs-35 fw-700 ">创建订单</view>
+                      <view class="fs-25 fw-400 pr-30 pl-30 pt-10 pb-10 b-green c-white" bindtap="_orderDialog_createOrder" data-orderid="{{orderDialog.orderInfo.orderId}}">确定</view>
+                    </view>
+                </view>
+                <view class="css ">
+                    <view class="css pl-25 pr-25 ">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">订单类型</view>
+                          </view>
+                          <view class="rcc">
+                              <view class="rcc fs-30 fw-400 c-4">{{orderDialog.orderInfo.orderTypeStr}}</view>
+                          </view>
+                      </view>
+                    </view>
+                    <view class="css pl-25 pr-25 ">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">支付方式</view>
+                          </view>
+                          <view class="rcc">
+                              <view class="rcc fs-30 fw-700 c-1">{{orderDialog.orderInfo.payTypeStr}}</view>
+                          </view>
+                      </view>
+                    </view>
+                    <view class="css pl-25 pr-25 ">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">支付金额</view>
+                          </view>
+                          <view class="rcc">
+                                  <view class="fs-30 fw-400 c-4">¥</view>
+                                  <view class="w-10"></view>
+                                  <view class="fs-30 fw-400 c-green"> {{orderDialog.orderInfo.payNum}}.0  </view>
+                                  <view class="w-10"></view>
+                                  <view class="fs-30 fw-400 c-4">RMB</view>
+                          </view>
+                      </view>
+                    </view>
+                    <view class="css pl-25 pr-25 ">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">订单事由</view>
+                          </view>
+                          <view class="rcc">
+                              <view class="rcc fs-30 fw-400 c-4">{{orderDialog.orderInfo.reasonStr}}</view>
+                          </view>
+                      </view>
+                    </view>
+                    <view class="css pl-25 pr-25 ">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">订单ID</view>
+                          </view>
+                          <view class="w-100"></view>
+                          <view class="rcc" style="flex:1">
+                              <view class="rbc">
+                                  <view></view>
+                                  <view class="rus line-1 fs-30 fw-400 c-4">{{orderDialog.orderInfo.orderId}}</view>
+                              </view>
+                          </view>
+                      </view>
+                    </view>
+                    <view wx:if="{{orderDialog.orderInfo.payTypeValue === 1}}" class="css pl-25 pr-25 " hover-class="b-3" bindtap="_orderDialog_changeCashier" data-orderid="{{orderDialog.orderInfo.orderId}}">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">城市合伙人</view>
+                          </view>
+                          <view class="rcc">
+                              <view class="rcc"><image src="{{orderDialog.orderInfo.cashier.user.imgUrl}}" class="w-100 h-100 br-10" mode="aspectFill"></image></view>
+                              <view class="rcc">
+                                  <image src="/images/more.png" class="t5-4" mode="aspectFit"></image>
+                              </view>
+                          </view>
+                      </view>
+                    </view>
+                    <view wx:else  class="css pl-25 pr-25 " hover-class="b-3">
+                      <view class="rbc pt-30 pb-30 t7-5-2">
+                          <view class="rcc">
+                              <view class="rcc"><image src="/images/partner.png" class="w-50 h-50 br-10" mode="aspectFit"></image></view>
+                              <view class="w-10"></view>
+                              <view class="rcc fs-30 c-3 ">发起人</view>
+                          </view>
+                          <view class="rcc">
+                              <view class="rcc"><image src="{{orderDialog.orderInfo.cashier.user.imgUrl}}" class="w-100 h-100 br-10" mode="aspectFill"></image></view>
+                              <view class="rcc">
+                                  <image src="/images/more.png" class="t5-4" mode="aspectFit"></image>
+                              </view>
+                          </view>
+                      </view>
+                    </view>
+
+
+                </view>
+                <view class="css pl-25 pr-25 pt-50 pb-50" hover-class="b-3" bindtap="_orderDialog_close">
+                    <view class="rcc">
+                         <image src="/images/up.png" class="w-40 h-40" mode="aspectFit"></image>
+                    </view>
+                </view>
+            </view>
+      </view>
+
+       <!-- 列表选择窗口 -->
+      <view hidden='{{chooseDialog.visible != true}}' class="coverAll3" bindtap="_chooseDialog_close" catchtouchmove="catchReturn" ></view>
+      <view hidden='{{chooseDialog.visible != true}}'  class="css createChooseDialog" style="height:{{chooseDialog.height}}%" catchtouchmove="catchReturn" >
+          <view class="rbc p-30 b-4">
+              <view class="rbc" style="flex:1">
+                  <view wx:if="{{chooseDialog.domain.itemType === 11}}" class="rcc"><image src="/images/uploadImg.png" class="w-50 h-50" mode="aspectFit"></image> </view>
+                  <view wx:else class="fs-25 fw-400 pt-20 pb-20">{{chooseDialog.domain.header.tip}}</view>
+                  <view></view>
+              </view>
+              <view class="rcc fs-35 fw-700">{{chooseDialog.domain.header.title}}</view>
+              <view class="rbc" style="flex:1"><view></view><view class="rcc" bindtap="_chooseDialog_close"><image src="/images/down2.png" class="h-40 w-40 pt-20 pb-20 " mode="aspectFit"></image></view></view>
+          </view>
+
+          <scroll-view class="css f1-32" scroll-y="true" bindscrolltolower="nextPage">
+              <block  wx:for="{{chooseDialog.domain.datas}}" wx:for-item="item" wx:key="*idx2" wx:for-index="index">
+                  <view class="css pl-30 pr-30" bindtap="_chooseDialog_select" hover-class="b-3" data-item="{{item}}" >
+                      <view class="css t7-5-2">
+                          <!-- 选择公司 -->
+                          <view wx:if="{{chooseDialog.domain.itemType === 1}}" class="css">
+                                <view class="rbc pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.companyImg}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.companyName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rus t6-9">{{item.address}}</view>                             
+                                    </view>
+                                </view>
+                          </view>
+                          <!-- 选择学校 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 2}}" class="css" >
+                                <view class="rbc pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.schoolImg}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.schoolName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rus t6-9">{{item.address}}</view>                             
+                                    </view>
+                                </view>
+                          
+                          </view>
+                          <!-- 选择地点 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 3}}" class="css">
+                              <view class="css pt-50 pb-50">
+                                  <view style="height:20rpx"></view>
+                                  <!-- 名称和地址 -->
+                                  <view class="rss ">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="css t22-9" style="flex:1">
+                                          <view class="rus f1-4">{{item.locationName}}</view>
+                                          <view class="h-5"></view>
+                                          <view class="rus t22-8">{{item.locationAddress}}</view>
+                                          <!-- <view class="rbc">
+                                                        <view class="rcs">
+                                                            <view class="rcc b-5 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/type.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">KTV</view>
+                                                                
+                                                            </view>
+                                                            <view style="width:10rpx" />
+                                                            <view class="rcc b-6 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/times.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">235</view>
+                                                            </view>
+                                                            <view style="width:10rpx" />
+                                                            <view class="rcc b-7 pt-5 pb-5 pl-10 pr-10">
+                                                                <view class="rcc"><image src="/images/share7.png" class="h-25 w-25" mode="aspectFit"></image></view>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-20 c-white">235</view>
+                                                            </view>
+                                                        </view> 
+                                                        <view></view>
+                                          </view> -->
+                                      </view>
+                                      <view wx:if="{{item.phones.length > 0}}" class="rcc"  catchtap="_makePhone" hover-stop-propagation='true'  hover-class="b-3" data-numbers="{{item.phones}}">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6" >
+                                              <image src="/images/phone.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view wx:else class="rcc">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6" >
+                                              <image src="/images/nophone.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+
+
+
+
+                                  </view>
+                                  <view class="h-20"></view>
+                                  <!-- 其他 -->
+                                  <view class="rss">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3-1" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="css t22-9" style="flex:1">
+                                          <view class="rbc">
+                                              <!-- <view hidden="{{item.consumption === 0}}" class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">人均消费</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.consumption}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">元</view>
+                                                      </view>
+                                                  </view>
+                                              </view> -->
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">分享次数</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.shareTimes}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">次</view>
+                                                      </view>
+                                                  </view>
+                                              </view>
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">联谊次数</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc">
+                                                        <view class="fs-25 fw-400">{{item.inviteTimes}}</view>
+                                                        <view class="w-5"></view>
+                                                        <view class="fs-18 fw-400">次</view>
+                                                      </view>
+                                                  </view>
+                                              </view>
+                                              <view class="rcc" >
+                                                  <view class="ccc">
+                                                      <view class="rcc fs-20">场地类型</view>
+                                                      <view class="h-10"></view>
+                                                      <view class="rcc fs-25 fw-400">{{item.locationType.typeName}}</view>
+                                                  </view>
+                                              </view>
+                                          </view>
+                                      </view>
+                                      <view class="rcc">
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6 ">
+                                              <view class="rcc t22-40-1-2">NO. {{item.rank}}</view>
+                                          </view>
+                                      </view>
+                                  </view>
+                                  <view class="h-20"></view>
+                                  <!-- 相册 -->
+                                  <view class="rss ">
+                                      <view class="rus">
+                                          <view class="rcc">
+                                              <image src="/images/addr3.png" class="t22-3-1" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                      <view class="rcs t22-9" style="flex:1">
+                                          <view class="rcc"><image src="{{item.images[0]}}" class="f1-16" mode="aspectFill" /></view>
+                                          <view class="rcc"><image src="{{item.images[1]}}" class="f1-16" mode="aspectFill" /></view>
+                                          <view class="rcc"><image src="{{item.images[2]}}" class="f1-16" mode="aspectFill" /></view>
+                                      </view>
+                        
+                                      <view class="rcc"  catchtap="_chooseDialog_location_detail" data-item="{{item}}" hover-stop-propagation='true'  hover-class="b-3" >
+                                          <view class="rcc w-150 pt-20 pb-20 t22-6 ">
+                                              <image src="/images/more4.png" class="t22-4" mode="aspectFit"></image>
+                                          </view>
+                                      </view>
+                                  </view>
+                              </view>
+                          </view> 
+                          <!-- 选择管理员 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 4}}" class="css">
+                              <view class="rbs pt-20 pb-20">
+                                    <view class="rcc">
+                                          <image  src="{{item.imgUrl}}" class="t6-7" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="width:20rpx"></view>
+                                    <view class="csc" style="flex:1">
+                                        <view class="rus f1-33">{{item.userName}}</view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rcs">
+                                              <image wx:if="{{item.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                              <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">年龄:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-6">{{item.age}}</view>
+                                              <view class="t19-7">岁</view>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">职业:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-7">{{item.job.jobName}}</view>
+                                        </view>                            
+                                    </view>
+                                    <view class="rcc"  catchtap="_chooseDialog_user_detail" data-item="{{item}}" hover-stop-propagation='true'  hover-class="b-3"  >
+                                        <view class="fs-25 fw-400 ">用户详情</view>
+                                        <view class="rcc">
+                                            <image src="/images/more3.png" class="h-30 w-30" mode="aspectFit"></image>
+                                        </view>
+                                    </view>
+                              </view>
+                          </view>  
+                          <!-- 选择日期 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 5}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.dateStr}}</view>
+                                      <view class="w-20"></view>
+                                      <view class="fs-35 fw-400">({{item.weekDay}})</view>
+                                      <view class="w-20"></view>
+                                      <view class="fs-25 fw-400 c-1">{{item.festival}}</view>
+                                  </view>
+                                  <view class="fs-25 fw-400">{{item.extStr}}</view>
+                              </view>
+                          </view>  
+                          <!-- 选择地点类型 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 6}}" class="css">
+                              <view class="rbs pt-40 pb-40">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.typeName}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view>
+                          <!-- 选择时间 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 7}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.timeStr}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view> 
+                          <!-- 选择年级 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 8}}" class="css">
+                              <view class="rbc pt-30 pb-30">
+                                  <view class="rdc">
+                                      <view class="fs-35 fw-400">{{item.levelName}}</view>
+                                  </view>
+                                  <view ></view>
+                              </view>
+                          </view>  
+                          <!-- 报名用户 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 9}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view  class="rbs">
+                                      <view class="rcc">
+                                          <image src="{{item.user.imgUrl}}" class="f1-18" mode="aspectFill"></image> 
+                                      </view>
+                                      <view style="width:25rpx"></view>
+                                      <view class="cbs  pb-10" style="flex:1">
+                                          <view class="rbc ">
+                                                <view class="rcs">
+                                                    <view class="t17-2-2">{{item.user.userName}}</view>
+                                                    <view class="w-15"></view>
+                                                    <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的报名</view>
+
+                                                </view>
+
+
+                                                <view class="rcc t17-3">{{item.time}}</view>
+                                          </view>
+                                          <view class="rbc ">
+                                                <view class="rcc">
+                                                      <view class="t17-3">来源:</view>
+                                                      <view style="width:15rpx"></view>
+                                                      <view wx:if="{{!item.fromUser}}" class="rcc">
+                                                          <view  class="t17-3">主页</view>
+                                                      </view>
+                                                      <view wx:else class="rcc">
+                                                          <image src="{{item.fromUser.imgUrl}}" class="t17" mode="aspectFill"></image> 
+                                                      </view>
+                                                </view>
+                                                <view class="rcc">
+                                                      <!-- 状态显示 -->
+                                                      <view wx:if='{{user.userId === item.creator.userId }}' class="rcc-nowrap">
+                                                          <view hidden='{{item.joinerStatu != 0}}' class="rcc t17-6 t17-6-2" bindtap='oper' data-member="{{item}}" data-index="{{index}}" data-oper="1">同意</view>
+                                                          <view hidden='{{item.joinerStatu != 0}}'  style="width:20rpx"></view>
+                                                          <view hidden='{{item.joinerStatu != 0}}' class="rcc t17-6 t17-6-1" bindtap='oper' data-member="{{item}}" data-index="{{index}}" data-oper="2">拒绝</view>
+                                                          
+                                                          <view hidden='{{item.joinerStatu != 2}}' class="rcc t17-6 t17-6-3">已拒绝</view>
+                                                          <view hidden='{{item.joinerStatu != 1}}' class="rcc t17-6 t17-6-3">已同意</view>
+                                                      </view>
+                                                      <view wx:else class="cac">
+                                                          <view wx:if='{{item.joinerStatu === 2}}' class="rcc t17-6 t17-6-3">已拒绝</view>
+                                                          <view wx:elif='{{item.joinerStatu === 1}}' class="rcc t17-6 t17-6-3">已同意</view>
+                                                          <view wx:else class="rcc t17-6 t17-6-3">审核中</view>
+                                                      </view> 
+                                                </view>
+                                          </view>
+                                          <view class="rbc ">
+                                                <view class="rcs">
+                                                      <image wx:if="{{item.user.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                                      <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                                      <view style="width:15rpx"></view>
+                                                      <view class="t19-7">年龄:</view>
+                                                      <view style="width:10rpx"></view>
+                                                      <view class="t19-6">{{item.user.age}}</view>
+                                                      <view class="t19-7">岁</view>
+                                                      <view style="width:15rpx"></view>
+                                                      <view class="t19-7">职业:</view>
+                                                      <view style="width:10rpx"></view>
+                                                      <view class="t19-7">{{item.user.job.jobName}}</view>
+                                                </view>
+                                                <view></view>
+                                          </view>
+
+                                      </view>
+                                  </view>
+                              </view>
+                          </view>  
+                          <!-- 订单列表 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 10}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view class="rbs" >
+                                      <view class="rcc">
+                                                <image src="{{item.user.imgUrl}}" class="t17-1" mode="aspectFill"></image> 
+                                      </view>
+                                      <view class="cas  t17-2-1" style="flex:1">
+                                          <view class="rcs">
+                                            <view class="t17-2-2">{{item.user.userName}}</view>
+                                            <view class="w-15"></view>
+                                            <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的订单</view>
+                                          </view>
+                                          <view class="rcs">
+                                              <image wx:if="{{item.user.userSex === 0}}" src="/images/man.png" class="t18-5-2" mode="aspectFit"></image> 
+                                              <image wx:else src="/images/gril.png" class="t18-5-2" mode="aspectFit"></image>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">年龄:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-6">{{item.user.age}}</view>
+                                              <view class="t19-7">岁</view>
+                                              <view style="width:15rpx"></view>
+                                              <view class="t19-7">职业:</view>
+                                              <view style="width:10rpx"></view>
+                                              <view class="t19-7">{{item.user.job.jobName}}</view>
+                                          </view>
+                                      </view>
+                                      <view class="cbs">
+                                          <view class="rbc">
+                                              <view></view>
+                                              <view class="rcc t17-3">{{item.createTime}}</view>
+                                          </view>
+                                          <view class="rcc">
+                                                <view wx:if="{{item.orderStatuValue === 1}}" class="t17-6-4-1">{{item.orderStatuStr}}</view>
+                                                <view wx:elif="{{item.orderStatuValue === 2}}" class="t17-6-4-2">{{item.orderStatuStr}}</view>
+                                                <view wx:elif="{{item.orderStatuValue === 3}}" class="t17-6-4-3">{{item.orderStatuStr}}</view>
+                                                <view wx:else class="t17-6-4-4">{{item.orderStatuStr}}</view>
+                                          </view>
+                                        
+                                      </view>
+
+                                  </view>
+                              </view>
+                          </view> 
+                          <!-- 联谊相册列表 -->
+                          <view wx:elif="{{chooseDialog.domain.itemType === 11}}" class="css">
+                              <view class="css pt-30 pb-30">
+                                  <view class="css">
+                                        <view class="rbc">
+                                            <view class="rcs">
+                                                <view class="rcc">
+                                                    <image src="{{item.user.imgUrl}}" class="t15-3" mode="aspectFill"></image> 
+                                                </view>
+                                                <view class="w-15"></view>
+                                                <view class="rcc t15-4">{{item.user.userName}}</view>
+                                                <view class="w-15"></view>
+                                                <view hidden="{{user.userId != item.user.userId}}" class="rcc fs-18 fw-400 br-5 b-9 c-white pt-5 pb-5 pr-10 pl-10 ">我的相册</view>
+                                            </view>
+                                            <view class="rcc">
+                                                <!-- <view class="rcs t15-7">更多</view> -->
+                                                <image src="/images/more3.png" class="t15-2" mode="aspectFill"></image> 
+                                            </view>
+                                        </view>
+                                        <view style="height:20rpx"></view>
+                                        <view class="rus t19-12">{{item.text}}</view>
+                                        <view style="height:20rpx"></view>
+                                        <view class="css">
+                                              <!-- 图片 -->
+                                              <scroll-view class="rss t8-5" scroll-x="true"  style="white-space:nowrap">
+                                                      <block  wx:for="{{item.album}}" wx:for-item="albumImg" wx:key="*idx2" >
+                                                          <view class="rcc" style="display:inline-block">
+                                                              <image src="{{albumImg.imgUrl}}" class="t19-9" mode="aspectFill" />
+                                                          </view>
+                                                      </block>
+                                              </scroll-view>
+                                        </view>
+                                        <view style="height:10rpx"></view>
+                                        <view class="rbc">
+                                            <view class="rcc">
+                                                    <view class="rcc t17-3">{{item.lastTime}}</view>
+                                            </view>
+                                            <view class="rcc">
+                                                    <view class="t19-7">共</view>
+                                                    <view style="width:10rpx"></view>
+                                                    <view class="t19-6">{{item.imgNum}}</view>
+                                                    <view class="t19-7">张</view>
+                                            </view>
+
+                                        </view>
+                                  </view>
+                              </view>
+                          </view> 
+
+
+                          <view wx:else></view>
+                      </view>
+
+
+
+                  </view>
+              </block>
+              <view hidden="{{chooseDialog.statu != 1}}" class="rcc p-25">
+                <view class="rcc">
+                    <image src="/images/loading.png" class="h-30 w-30" mode="aspectFit"></image>
+                </view>
+                <view class="w-20"></view>
+                <view class="rcc fs-25 fw-400">加载中</view>
+              </view>
+
+              <view hidden="{{chooseDialog.statu != 2}}" class="rcc p-25">
+                <view class="rcc fs-25 fw-400">没有更多数据</view>
+              </view>
+          </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </view>
+
+
+      <!-- 打电话 -->
+      <view hidden='{{phoneCallDialog.visible != true}}' class="coverAll4" bindtap="_phoneCallDialog_close"></view>
+      <view hidden='{{phoneCallDialog.visible != true}}'  class="css phoneCallDialog ">
+          <view class="h-30"></view>
+          <block  wx:for="{{phoneCallDialog.phoneNumbers}}" wx:for-item="phone" wx:key="*idx2" wx:for-index="index">
+              <view class="rbc p-30 fs-35 fw-700" bindtap="_makePhoneCall" data-phone="{{phone}}">{{phone}}</view>
+          </block>
+          <view class="h-30"></view>
+      </view>
+
+
+
+
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

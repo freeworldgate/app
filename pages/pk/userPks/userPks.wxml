@@ -1,0 +1,212 @@
+    
+    
+    
+    <view class="css ">
+        <!-- <view class="blueBack1 z1"></view> -->
+
+        <block  wx:for="{{pks}}" wx:for-item="pk" wx:key="*idx1" >
+
+            <view class="css mr-4vw ml-4vw z3 mt-150">
+                
+                <view class="rbs h-100 mr-3vw ml-3vw">
+                        <view></view>
+
+                        <view class="rdc">
+                            <view class="rcc">
+                                <view class="fs-25 fw-700 c-3 z4 textShadow pt-10">NO.</view>
+                                <view class="w-15"></view>
+                                <view class="fs-60 fw-700 c-3 z4 italic textShadow line-h70 ">34</view>
+                            </view>
+                        </view>
+                </view>
+
+                <view class="css absolute w-92vw ">
+                    <view class="rbc h-160 mr-3vw ml-3vw ">
+                        <view class="rcs">
+                            <view class="rcc">
+                                <image src="{{img8}}" class="w-120 h-120 br-120 border2 bwhite z18" mode="aspectFill"/>
+                                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-150 h-150 absolute z19" mode="aspectFit"/>     
+                                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/no1.png" class=" h-80 absolute z20 pb-150" mode="aspectFit"/>     
+                            </view>
+                            <view class="fs-35 fw-700 max-w-200 c-3 line-1-start pl-20">诡秘之主</view>
+                        </view>
+                        <view></view>
+                        
+
+
+
+
+                    </view>
+                </view>
+                <view class="css br-20 b-29">
+                    <view class="css  ">
+                        <view class="rbc h-80" >
+                            <view class="rdc">
+                                <view class="w-170"></view>
+                                <view class="rcc">
+                                      
+                                        <view class="rcc">
+                                            <view class="rcc">
+                                                <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/money.png" class="w-50 h-50" mode="aspectFit"/>
+                                            </view>
+                                            <view class="w-5"></view>
+                                            <view class="rcc fs-30 fw-700 c-3">88</view>
+                                        </view>
+                                        <view class="w-20"></view>
+                                        <view class="rcc">
+                                            <view class="rcc">
+                                                <image src="/images/followed.png" class="w-50 h-50" mode="aspectFit"/>
+                                            </view>
+                                            <view class="w-5"></view>
+                                            <view class="rcc fs-30 fw-700 c-3">88</view>
+                                        </view>
+                                </view>
+                            </view>
+                            <navigator url="/pages/pk/userSinglePk/userSinglePk" class="rcc pt-20 pb-20 pl-3vw pr-3vw z4"><image class="w-40 h-40" src="/images/more.png"  mode="aspectFit"></image></navigator>
+                        </view>
+                        <view class="css">
+                              <view class="rbc-nowrap pt-10 pb-25"  style="padding-right:3vw;padding-left:3vw" >
+                                      <view class="rus line-2-start fs-35 fw-700 c-4 textShadow " style="flex:1">我也来参战!</view>
+                                      <view class="rcs">
+                                          <view class="w-30"></view>
+                                          <view class="w-30 h-30 l-line"></view>
+                                          <view class="ccc ">
+                                                    <view class="fs-25 fw-700 c-3">23万</view>
+                                                    <view class="fs-25 fw-400 c-3">人气值</view>
+                                          </view>
+                                      </view>
+
+                              </view>
+                              
+                              <view class="w-86vw css b-28 pt-30 pb-30 br-10 ml-3vw mr-3vw " >
+                                  <view class="css" style="padding-right:3vw;padding-left:3vw" >
+                                        <view class="rbc ">
+                                                                  <view class="css" style="flex:1">
+                                                                      <view class="rus fs-40 fw-700 line-1-start c-3">洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战洛丽塔之战</view> 
+                                    
+                                                                      
+                                                                  
+                                                                  </view>
+                                                                  <view class="rcc w-150">
+                                                                      <image src="/images/topic.png" class="w-80 h-80" mode="aspectFit"/>
+                                                                  </view>
+                                                              
+                                                              
+                                        </view>
+                                                    
+                                        <view class="rbc">
+                                                                  <view class="rcs">
+                                                                      <view class="rcc">
+                                                                          <view class="rcc">
+                                                                            <image src="/images/members.png" class="w-40 h-40" mode="aspectFit"/>
+                                                                          </view>
+                                                                          <view class="w-10"></view>
+                                                                          <view class="rcc fs-30 fw-400 c-3">88</view>
+                                                                      </view>
+                                                                      <view class="w-20"></view>
+                                                                      <view class="rcc">
+                                                                          <view class="rcc">
+                                                                            <image src="/images/rokit.png" class="w-40 h-40" mode="aspectFit"/>
+                                                                          </view>
+                                                                          <view class="w-10"></view>
+                                                                          <view class="rcc fs-30 fw-400 c-3">34万</view>
+                                                                      </view>
+
+
+                                          
+                                          
+                                            
+                                                                  
+                                                                  </view>
+                                                                  <view class="rcc fs-25 fw-400 c-3">剩余时间:23天</view> 
+                                        </view>
+                                  </view>
+
+                              </view>
+                             
+
+                              <view class="rss pt-25 pb-10"  style="padding-right:3vw;padding-left:3vw">
+                                  
+                                  <view class="css" style="width:28vw">
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img1}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img2}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                  </view>
+                                  <view style="width:1vw"></view>
+                                  <view class="css" style="width:28vw">
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img3}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img4}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                  </view>
+                                  <view style="width:1vw"></view>
+                                  <view class="css" style="width:28vw">
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img5}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="height:1vw"></view>
+                                    <view class="" style="height:28vw">
+                                        <image class="br-10" src="{{img6}}" style="height:100%;width:100%" mode="aspectFill"></image>
+                                    </view>
+                                  </view>
+                              
+                              </view>
+                              <view class="rbc" style="padding-right:3vw;padding-left:3vw">
+                                  <view class="fs-20 fw-400 c-3">39张</view>
+                                  <view class="fs-20 fw-400 c-3">刚刚</view>
+                              </view>
+                              <view class="rbc" style="padding-right:3vw;padding-left:3vw">
+                                      <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                          <view class="rcc">
+                                            <image src="/images/view.png" class="w-50 h-50" mode="aspectFit"/>
+                                          </view>
+                                          <view class="w-10"></view>
+                                          <view class="rcc fs-40 fw-700 c-3">88</view>
+                                      </view>
+                                
+                                      <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                          <view class="rcc">
+                                            <image src="/images/share.png" class="w-50 h-50" mode="aspectFit"/>
+                                          </view>
+                                          <view class="w-10"></view>
+                                          <view class="rcc fs-40 fw-700 c-3">88</view>
+                                      </view>    
+                                              
+                                      <view class="rcc pb-30 pl-30 pr-30 pt-15">
+                                          <view class="rcc">
+                                            <image src="/images/comment.png" class="w-50 h-50" mode="aspectFit"/>
+                                          </view>
+                                          <view class="w-10"></view>
+                                          <view class="rcc fs-40 fw-700 c-3">88</view>
+                                      </view>              
+                            
+                  
+
+                              </view>
+
+                        </view>
+                    </view>
+                
+                </view>
+
+            
+            
+            
+            
+            </view>
+
+
+
+
+        </block>
+
+
+    </view>
+    <!-- <view class="rcc flyBack z2 backImg2"></view> -->
