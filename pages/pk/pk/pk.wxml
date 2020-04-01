@@ -44,9 +44,68 @@
                     </view>
                 </view>
             </view>
+            <view class="h-20"></view>
         </view>
         <view class="h-30"></view>
     </view>
+    <view wx:if="{{user.userId === creator.userId}}" class="rcs mr-4vw ml-4vw">
+        <view class="rbc" style="flex:1">
+            <view class="ccc">
+                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/getMoney.png" mode="aspectFit"></image>
+                <view class="h-10"></view>
+                <view class="fs-25 fw-400 c-3">收款</view>
+            </view>
+            <view class="ccc">
+                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/moneyCode.png" mode="aspectFit"></image>
+                <view class="h-10"></view>
+                <view class="fs-25 fw-400 c-3">我的收款码</view>
+            </view>
+            <view class="ccc">
+                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/giveMoney.png" mode="aspectFit"></image>
+                <view class="h-10"></view>
+                <view class="fs-25 fw-400 c-3">付款</view>
+            </view>
+        </view>
+        <view class="" style="flex:1"></view>
+        
+    </view>
+    <view wx:else class="rcs mr-4vw ml-4vw">
+        <view class="rbc" style="flex:1">
+
+
+            <view class="ccc">
+                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/getMoney.png" mode="aspectFit"></image>
+                <view class="h-10"></view>
+                <view class="fs-25 fw-400 c-3">收款</view>
+            </view>
+            <view class="ccc">
+                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/moneyCode.png" mode="aspectFit"></image>
+                <view class="h-10"></view>
+                <view class="fs-25 fw-400 c-3">我的收款码</view>
+            </view>
+        
+        </view>
+        <view class="" style="flex:1"></view>
+        <view class="rcc w-130 h-130 br-10 box5 b-white" bindtap="userFeeCode">
+            <view wx:if="{{userCode.url}}" class="rcc">
+                <view class="absolute ccs w-130 h-150">
+                    <view class="rcc fs-20 line-h20 fw-400 c-white h-40 br-10 pl-10 pr-10 b-5-1 ">{{userCode.statu.name}}</view>
+                </view>
+                <image class="w-130 h-130 br-10" src="{{userCode.url}}" mode="aspectFill"></image>
+            </view>
+            <view wx:else class="ccc">
+                <view class="rcc">
+                    <image class="w-50 h-50" mode="aspectFit" src="/images/uploadFeeCode.png"></image>
+                </view>
+                <view class="h-10"></view>
+                <view class="h-30 fs-20 fw-400">我的收款码</view>
+
+            </view>
+
+            
+        </view>
+    </view>
+
     <!-- 动态信息 -->
     <!-- <view class="css b-48">
         <view class="css mr-2vw ml-2vw">
@@ -256,13 +315,19 @@
 
 
 <!-- <view class="rbc bottomBar p-30 z20">
+
+
+
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeCode">上传收款码</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeOrder">收款</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userPayOrder">付款</view>
-    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createFeeDialog">订单</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createIntegralDialog">积分</view>
+
+
+
+
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createApproveDialog">审批收款码</view>
     <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createPostApproveDialog">审批POST</view>
-    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createIntegralDialog">积分</view>
 </view> -->
 
 
@@ -727,7 +792,7 @@
                     <view class="css">
                         <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{user.imgUrl}}"></image>
                     </view>
-                    <view class="fs-30 fw-700 pl-5 pr-10">我的收款码</view>
+                    <view class="fs-30 fw-700 pl-5 pr-10">收款码金额</view>
                     <view class="fs-30 fw-700 c-1"> - {{uploadFeeDialog.userCode.feeNum}}元</view>
                 </view>
                 <view bindtap="_uploadFeeDialog_apply" class="rcc pr-20 h-70" wx:if="{{uploadFeeDialog.userCode.url&&uploadFeeDialog.userCode.phone}}">
@@ -776,7 +841,7 @@
                     </view>
                 </view>
                 <view class="ccc w-250">
-                    <view class="rcc fs-25 fw-400 c-3-2">收款验证</view>
+                    <view class="rcc fs-25 fw-400 c-3-2">短信通知</view>
                     <view class="h-30"></view>
                     <view class="rcc w-250 h-200">
                         <view bindtap="_uploadFeeDialog_setPhone" class="css">
@@ -845,7 +910,7 @@
                         </view>
                         <view class="ccc w-200 h-200 br-10 b-white box2 " wx:else>
                             <view class="rcc p-20">
-                                <image class="w-30 h-30" mode="aspectFit" src="/images/upload.png"></image>
+                                <image class="w-50 h-50" mode="aspectFit" src="/images/uploadFeeCode.png"></image>
                             </view>
                             <view class="h-30 fs-20 fw-400">上传订单截图</view>
                         </view>
