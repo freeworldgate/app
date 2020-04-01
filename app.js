@@ -1,17 +1,9 @@
 //app.js
 // require('./vendor/proxy.js')
 App({
+
   onLaunch: function () {
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     this.globalData.statusBarHeight = res.statusBarHeight
-    //     this.globalData.titleBarHeight = wx.getMenuButtonBoundingClientRect().bottom + wx.getMenuButtonBoundingClientRect().top - (res.statusBarHeight * 2)
-    //   },
-    //   failure() {
-    //     this.globalData.statusBarHeight = 0
-    //     this.globalData.titleBarHeight = 0
-    //   }
-    // })
+
 
 
     
