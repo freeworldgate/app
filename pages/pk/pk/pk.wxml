@@ -193,7 +193,7 @@
         <view class="w-1vw"></view>
     </view>
 </view>
-<view class=" rcs z30 customBar" style="top:{{top}}px">
+<view class="rcs z30 customBar" style="top:{{top}}px">
     <view class="rcc h-32px w-32px br-32px bar-back box2">
         <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
     </view>
@@ -202,6 +202,22 @@
         <image class="w-45 h-45" mode="aspectFit" src="/images/share3.png"></image>
     </view>
 </view>
+
+<view class="rbc bottomBar p-30 b-white z30">
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeCode">上传收款码</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="applyOrder">applyOrder</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userFeeOrder">收款</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="userPayOrder">付款</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createFeeDialog">订单</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createApproveDialog">审批收款码</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createPostApproveDialog">审批POST</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createIntegralDialog">积分</view>
+    <view class="fs-20 fw-700 c-5 pt-30 pb-30" bindtap="createTaskDialog">任务</view>
+</view>
+
+
+
+
 <view>
     <view class="coverAll" hidden="{{dialog.visible!=true}}"></view>
     <view class="css dialog " hidden="{{dialog.visible!=true}}">
