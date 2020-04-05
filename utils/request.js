@@ -57,9 +57,9 @@ var url = {
         verifyOrder: `${host}/pk/verifyOrder`,
         orderConfirmOutOfTime: `${host}/pk/orderConfirmOutOfTime`,
         queryTaskOrder: `${host}/pk/queryTaskOrder`,
+        complainOrder: `${host}/pk/complainOrder`,
+        helpInfo: `${host}/pk/helpInfo`,
         
-
-
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/user/login`,

@@ -885,29 +885,30 @@
     </view>
     <view bindtap="_uploadFeeDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{uploadFeeDialog.visible!=true}}"></view>
     <view catchtouchmove="catchReturn" class="css editDialog-2" hidden="{{uploadFeeDialog.visible!=true}}" style="left:{{uploadFeeDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30 pt-30 pb-30 b-white br-20">
-            <view class="rbc">
+        <view class="css pl-4vw pr-4vw z30 b-white br-20">
+            <view class="rbc  pt-30 pb-30 ">
                 <view class="rcs">
                     <view class="css">
-                        <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{user.imgUrl}}"></image>
+                        <image class="w-80 h-80 br-10 box6" mode="aspectFill" src="{{user.imgUrl}}"></image>
                     </view>
-                    <view class="fs-30 fw-700 pl-5 pr-10">收款码金额</view>
-                    <view class="fs-30 fw-700 c-1"> - {{uploadFeeDialog.userCode.feeNum}}元</view>
+                    <view class="{{uploadFeeDialog.userCode.statu.key===0?'fs-30 fw-700 c-3-1 pl-5 pr-10 pl-10 pr-10':'fs-30 fw-700 pl-5 pr-10 pl-10 pr-10'}}">金额:</view>
+                    <view class="{{uploadFeeDialog.userCode.statu.key===0?'fs-30 fw-700 c-3-1':'fs-30 fw-700 c-1'}}">{{uploadFeeDialog.userCode.feeNum}}元</view>
                 </view>
-                <view bindtap="_uploadFeeDialog_apply" class="rcc pr-20 h-70" wx:if="{{uploadFeeDialog.userCode.url&&uploadFeeDialog.userCode.phone}}">
+
+                <view bindtap="_uploadFeeDialog_apply" class="rcc p-20 box5 br-10 b-white" wx:if="{{uploadFeeDialog.userCode.url&&uploadFeeDialog.userCode.phone}}">
                     <view class="rcc fs-25 fw-700 c-1 line-h25">下一步</view>
                     <view class="rcc">
                         <image class="w-25 h-25" mode="aspectFit" src="/images/right-white.png"></image>
                     </view>
                 </view>
-                <view class="rcc pr-20 h-70" wx:else>
+                <view class="rcc p-20 box5 br-10 b-white" wx:else>
                     <view class="rcc fs-25 fw-700 c-3-1 line-h25">下一步</view>
                     <view class="rcc">
                         <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
                     </view>
                 </view>
             </view>
-            <view class="rac pt-30 pb-50 b-line t-line">
+            <view class="rac pt-30 pb-30 b-line t-line">
                 <view class="ccc w-250">
                     <view class="rcc">
                         <view class="rcc fs-25 fw-400 c-3-2">设置收款码</view>
@@ -931,13 +932,13 @@
                             </view>
                         </view>
                     </view>
-                    <view class="h-50"></view>
-                    <view class="rcc" wx:if="{{uploadFeeDialog.userCode.statu.key===0||uploadFeeDialog.userCode.statu.key===1}}">
+                    <!-- <view class="h-50"></view> -->
+                    <!-- <view class="rcc" wx:if="{{uploadFeeDialog.userCode.statu.key===0||uploadFeeDialog.userCode.statu.key===1}}">
                         <view bindtap="_uploadFeeDialog_setFeeCode" class="rcc fs-25 fw-400 c-5" data-url="{{applyOrderDialog.order.feeCodeUrl}}">上传收款码</view>
                     </view>
                     <view class="rcc" wx:else>
                         <view class="rcc fs-25 fw-400 c-3-1">上传图片</view>
-                    </view>
+                    </view> -->
                 </view>
                 <view class="ccc w-250">
                     <view class="rcc fs-25 fw-400 c-3-2">短信通知</view>
@@ -951,13 +952,14 @@
                             <view class="rcc fs-30 fw-400 c-5" wx:else>添加短信通知</view>
                         </view>
                     </view>
-                    <view class="h-50"></view>
-                    <view bindtap="_uploadFeeDialog_setPhone" class="rcc fs-25 fw-400 c-5">手机号码</view>
+                    <!-- <view class="h-50"></view>
+                    <view bindtap="_uploadFeeDialog_setPhone" class="rcc fs-25 fw-400 c-5">手机号码</view> -->
                 </view>
             </view>
-            <view class="rbc pt-30">
+            <view class="rbc  pt-30 pb-30 ">
                 <view class="fs-25 fw-400 c-3">上传指定金额收款码...</view>
-                <view class="fs-25 fw-400 c-5">说明</view>
+                <view wx:if="{{uploadFeeDialog.userCode.statu.key===4}}" class="fs-25 fw-400 c-5">投诉榜主</view>
+                <view wx:else class="fs-25 fw-400 c-5">说明</view>
             </view>
         </view>
     </view>
@@ -1638,6 +1640,8 @@
 
                 </view>
             </view>
+
+
             <view class="rbc pt-30 pb-30">
                 <view class="rcs">
                     <view class="{{approveOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">审核中: </view>
@@ -1664,7 +1668,7 @@
 
     <view bindtap="_postApproveDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{postApproveDialog.visible!=true}}"></view>
     <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{postApproveDialog.visible!=true}}" style="left:{{postApproveDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30 b-white">
+        <view class="css pl-4vw pr-4vw z30 b-white br-20">
             <view class="rbc-nowrap pt-30 pb-30">
                 <view class="rcs">
                     <view class="rcc" wx:if="{{postApproveDialog.order.creator}}">
@@ -1709,31 +1713,37 @@
                 <view class="h-30"></view>
             </view>
             <view class="rbc-nowrap pt-30 pb-30">
-                <view class="rcs ">
-                    <view bindtap="_postApproveDialog_selectType" class="{{postApproveDialog.type===1?'rcc b-43 pl-30 pr-30 pt-15 pb-15':'rcc pl-30 pr-30 pt-15 pb-15'}}" data-type="1">
-                        <view class="{{postApproveDialog.type===1?'rcc fs-20 fw-400 c-5':'rcc fs-20 fw-400 c-3-1'}}">上线:</view>
-                        <view class="rcc fs-18 line-h18 fw-400 c-1  ">+99</view>
+
+                <view class="rcs">
+                    <view class="rcs p-20 box5 br-10 b-white" bindtap="_postApproveDialog_selectType" data-type="1" >
+                        <view class="{{postApproveDialog.type===2?'fs-25 fw-700 c-3-1 line-h25':'fs-25 fw-700 c-1 line-h25'}}">上线:</view>
+
+                        <view class="{{postApproveDialog.type===2?'fs-30 fw-700 c-3-1 line-h30':'fs-30 fw-700 c-1 line-h30'}}">99</view>
                     </view>
-                    <view class="w-10"></view>
-                    <view bindtap="_postApproveDialog_selectType" class="{{postApproveDialog.type===2?'rcc b-43 pl-30 pr-30 pt-15 pb-15':'rcc pl-30 pr-30 pt-15 pb-15'}}" data-type="2">
-                        <view class="{{postApproveDialog.type===2?'rcc fs-20 fw-400 c-5':'rcc fs-20 fw-400 c-3-1'}}">下线:</view>
-                        <view class="rcc fs-18 line-h18 fw-400 c-1  ">+99</view>
+                    <view class="w-30"></view>
+                    <view class="rcs p-20 box5 br-10 b-white" bindtap="_postApproveDialog_selectType" data-type="2">
+                        <view class="{{postApproveDialog.type===1?'fs-25 fw-700 c-3-1 line-h25':'fs-25 fw-700 c-1 line-h25'}}">下线:</view>
+                    
+                        <view class="{{postApproveDialog.type===1?'fs-30 fw-700 c-3-1 line-h30':'fs-30 fw-700 c-1 line-h30'}}">88</view>
                     </view>
+
+
                 </view>
+
+
+
                 <view class="rcc">
-                    <view class="rcc" hidden="{{postApproveDialog.order.statu.key===0}}">
-                        <view class="rcc" wx:if="{{postApproveDialog.order.statu.key===1}}">
-                            <view class="rcc fs-25 fw-700 c-3-1">上线</view>
-                        </view>
-                        <view class="rcc" wx:elif="{{postApproveDialog.order.statu.key===2}}">
-                            <view class="rcc fs-25 fw-700 c-3-1">下线</view>
-                        </view>
-                        <view class="rcc" wx:else>
-                            <view class="rcc fs-25 fw-700 c-3-1"></view>
-                        </view>
-                        <view class="w-20"></view>
-                        <switch bindchange="_postApproveDialog_onOffLine" checked="{{postApproveDialog.order.statu.key===1?true:false}}" data-id="{{postApproveDialog.order.postId}}" type="checkbox"></switch>
+                    <view  wx:if="{{postApproveDialog.order.statu.key===1}}" class="rcc p-20 box5 br-10 b-white" bindtap="_postApproveDialog_onOffLine" data-id="{{postApproveDialog.order.postId}}">
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/mgt.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">下线</view>
                     </view>
+                    <view  wx:else class="rcc p-20 box5 br-10 b-white" bindtap="_postApproveDialog_onOffLine"  data-id="{{postApproveDialog.order.postId}}">
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/mgt.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">上线</view>
+                    </view>
+
                 </view>
             </view>
         </view>
@@ -2033,8 +2043,8 @@
                         <view wx:if="{{singleOrderDialog.order.statu.key===0}}" class="fs-25 fw-400 c-3-1" class="fs-25 fw-400 c-3">保存到相册扫码支付后上传订单截图...</view>
                         <view wx:else class="fs-25 fw-400 c-5" class="fs-25 fw-400 c-3">保存到相册扫码支付后上传订单截图...</view>
 
-                        <view wx:if="{{singleOrderDialog.order.statu.key===3}}" class="fs-25 fw-400 c-5" >投诉收款方</view>
-                        <view wx:else class="fs-25 fw-400 c-3-1" >投诉收款方</view>
+                        <view wx:if="{{singleOrderDialog.order.statu.key===3}}" class="fs-25 fw-400 c-5 pl-30 pt-10 pb-10" bindtap="_singleOrderDialog_complain" data-order="{{singleOrderDialog.order.orderId}}">投诉收款方</view>
+                        <view wx:else class="fs-25 fw-400 c-5 pl-30 pt-10 pb-10" bindtap="_singleOrderDialog_info">说明</view>
 
                     </view>
                     <view wx:elif="{{user.userId===singleOrderDialog.order.cashier.userId}}" class="rbc">

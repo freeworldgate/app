@@ -3279,8 +3279,39 @@ function createSingleOrderDialog(page) {
 
 
 
-  }
+  },
+  // 投诉
+  page._singleOrderDialog_complain = function(res){
+    var orderId = res.currentTarget.dataset.order;
+    createSingleOrderDialog(page).hide();
 
+    createOperateDialog(page).show("投诉收款方", "投诉收款方?", function () {
+
+      var httpClient = createHttpClient(page);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (order) {
+
+      })
+      httpClient.send(request.url.complainOrder, "GET", { orderId:orderId});
+    }, function () { });
+
+  },
+  //说明信息
+  page._singleOrderDialog_info = function(){
+
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", false);
+    httpClient.addHandler("success", function (order) {
+        
+    })
+    httpClient.send(request.url.helpInfo, "GET", {});
+
+
+
+
+
+
+  }
 
 
   page._singleOrderDialog_close = function () {
