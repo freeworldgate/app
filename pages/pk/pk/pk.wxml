@@ -47,62 +47,139 @@
             <view class="h-20"></view>
         </view>
         <view class="h-30"></view>
+        <!-- User -->
+        <view class="rus-wrap mr-4vw ml-4vw">
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="ozm2e4r6IgyVMlA6goFt7AbB3wVw"><view class="{{user.userId==='ozm2e4r6IgyVMlA6goFt7AbB3wVw'?'c-1':'c-3'}}">local</view></view>
+
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U1"><view class="{{user.userId==='U1'?'c-1':'c-3'}}">U1</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U2"><view class="{{user.userId==='U2'?'c-1':'c-3'}}">U2</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U3"><view class="{{user.userId==='U3'?'c-1':'c-3'}}">U3</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U4"><view class="{{user.userId==='U4'?'c-1':'c-3'}}">U4</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U5"><view class="{{user.userId==='U5'?'c-1':'c-3'}}">U5</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U6"><view class="{{user.userId==='U6'?'c-1':'c-3'}}">U6</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U7"><view class="{{user.userId==='U7'?'c-1':'c-3'}}">U7</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U8"><view class="{{user.userId==='U8'?'c-1':'c-3'}}">U8</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U9"><view class="{{user.userId==='U9'?'c-1':'c-3'}}">U9</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U10"><view class="{{user.userId==='U10'?'c-1':'c-3'}}">U10</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U11"><view class="{{user.userId==='U11'?'c-1':'c-3'}}">U11</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U12"><view class="{{user.userId==='U12'?'c-1':'c-3'}}">U12</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U13"><view class="{{user.userId==='U13'?'c-1':'c-3'}}">U13</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U14"><view class="{{user.userId==='U14'?'c-1':'c-3'}}">U14</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U15"><view class="{{user.userId==='U15'?'c-1':'c-3'}}">U15</view></view>
+
+
+
+        </view>
+        <view class="h-30"></view>
+
+
     </view>
-    <view wx:if="{{user.userId === creator.userId}}" class="rcs mr-4vw ml-4vw">
+    <view wx:if="{{user.userId === creator.userId}}" class="css mr-4vw ml-4vw">
         <view class="rbc" style="flex:1">
-            <view class="ccc">
-                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/getMoney.png" mode="aspectFit"></image>
-                <view class="h-10"></view>
-                <view class="fs-25 fw-400 c-3">收款</view>
+            <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="userFeeOrder">
+                <image class="w-40 h-40" mode="aspectFit" src="/images/msg.png"></image>
+                <view class="w-10"></view>
+                <view class="fs-25 line-h25 fw-400 c-3">通知</view>
             </view>
-            <view class="ccc">
-                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/moneyCode.png" mode="aspectFit"></image>
-                <view class="h-10"></view>
-                <view class="fs-25 fw-400 c-3">我的收款码</view>
+            <view class="w-20"></view>
+            <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="userFeeOrder">
+                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                <view class="w-10"></view>
+                <view class="fs-25 line-h25 fw-400 c-3">收款</view>
             </view>
-            <view class="ccc">
-                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/giveMoney.png" mode="aspectFit"></image>
-                <view class="h-10"></view>
-                <view class="fs-25 fw-400 c-3">付款</view>
+            <view class="w-20"></view>
+            <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="createApproveDialog">
+                <image class="w-40 h-40" mode="aspectFit" src="/images/appro.png"></image>
+                <view class="w-10"></view>
+                <view class="fs-25 line-h25 fw-400 c-3">审批</view>
+            </view>
+            <view class="w-20"></view>
+            <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="createPostApproveDialog">
+                <image class="w-40 h-40" mode="aspectFit" src="/images/mgt.png"></image>
+                <view class="w-10"></view>
+                <view class="fs-25 line-h25 fw-400 c-3">管理</view>
+            </view>
+
+
+
+        </view>
+        <view class="h-20"></view>
+        <view class="rus">
+                
+            <view class="rcc h-30"><image class="w-25 h-25" mode="aspectFit" src="/images/msg.png"></image></view>
+            <view class="w-20"></view>
+            <view class="rus h-30" style="flex:1">
+                <view class="rus line-1-start fs-20 fw-400 c-red ">消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容</view>
             </view>
         </view>
-        <view class="" style="flex:1"></view>
+
         
     </view>
-    <view wx:else class="rcs mr-4vw ml-4vw">
-        <view class="rbc" style="flex:1">
+    <view wx:else class="rss mr-4vw ml-4vw">
+        <view class="cbs" style="flex:1">
+            <view class="rbc">
 
 
-            <view class="ccc">
-                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/getMoney.png" mode="aspectFit"></image>
-                <view class="h-10"></view>
-                <view class="fs-25 fw-400 c-3">收款</view>
-            </view>
-            <view class="ccc">
-                <image class="w-70 h-70 br-10" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/moneyCode.png" mode="aspectFit"></image>
-                <view class="h-10"></view>
-                <view class="fs-25 fw-400 c-3">我的收款码</view>
-            </view>
-        
-        </view>
-        <view class="" style="flex:1"></view>
-        <view class="rcc w-130 h-130 br-10 box5 b-white" bindtap="userFeeCode">
-            <view wx:if="{{userCode.url}}" class="rcc">
-                <view class="absolute ccs w-130 h-150">
-                    <view class="rcc fs-20 line-h20 fw-400 c-white h-40 br-10 pl-10 pr-10 b-5-1 ">{{userCode.statu.name}}</view>
+                
+                <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="userFeeOrder">
+                    <image class="w-40 h-40" mode="aspectFit" src="/images/msg.png"></image>
+                    <view class="w-10"></view>
+                    <view class="fs-25 line-h25 fw-400 c-3">通知</view>
                 </view>
-                <image class="w-130 h-130 br-10" src="{{userCode.url}}" mode="aspectFill"></image>
-            </view>
-            <view wx:else class="ccc">
-                <view class="rcc">
-                    <image class="w-50 h-50" mode="aspectFit" src="/images/uploadFeeCode.png"></image>
+                <view class="w-20"></view>
+                <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="createIntegralDialog">
+                    <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                    <view class="w-10"></view>
+                    <view class="fs-25 line-h25 fw-400 c-3">积分</view>
                 </view>
-                <view class="h-10"></view>
-                <view class="h-30 fs-20 fw-400">我的收款码</view>
-
-            </view>
+                <view class="w-20"></view>
+                <view class="rcc pt-20 pb-20 box5 br-20 b-white"  style="flex:1" bindtap="rewardOrder">
+                    <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                    <view class="w-10"></view>
+                    <view class="fs-25 line-h25 fw-400 c-3">奖励</view>
+                </view>
 
             
+
+
+
+
+            </view>
+            
+            
+            <view class="rus">
+                
+                <view class="rcc h-30"><image class="w-25 h-25" mode="aspectFit" src="/images/msg.png"></image></view>
+                <view class="w-20"></view>
+                <view class="rus h-30" style="flex:1">
+                    <view class="rus line-1-start fs-20 fw-400 c-red ">消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="rcc">
+            <view class="w-30"></view>
+            <view class="w-30 h-80 l-line"></view>
+        </view>
+
+
+        <view class="rcc w-130 h-130 br-10 box5 b-white" bindtap="userFeeCode">
+                <view wx:if="{{userCode.url}}" class="rcc">
+                    <view class="absolute ccs w-130 h-150">
+                        <view class="rcc fs-20 line-h20 fw-400 c-white h-40 br-10 pl-10 pr-10 b-5-1 ">{{userCode.statu.name}}</view>
+                    </view>
+                    <image class="w-130 h-130 br-10" src="{{userCode.url}}" mode="aspectFill"></image>
+                </view>
+                <view wx:else class="ccc">
+                    <view class="rcc">
+                        <image class="w-50 h-50" mode="aspectFit" src="/images/uploadFeeCode.png"></image>
+                    </view>
+                    <view class="h-10"></view>
+                    <view class="h-30 fs-20 fw-400">我的收款码</view>
+
+                </view>
+
+                
         </view>
     </view>
 
@@ -266,7 +343,7 @@
     </view>
 </view>
 
-<view class="css bottomBar z20 t-line">
+<view class="css bottomBar z3 t-line">
         <view class="css mr-2vw ml-2vw">
             <scroll-view class="rss" hidden="{{pkStatu!=1}}" scrollX="true" style="white-space:nowrap;width:96vw">
                 <view class="css  pl-10 pr-10" style="display:inline-block" wx:for="{{infos}}" wx:for-index="bindex" wx:for-item="info" wx:key="postkey">
@@ -288,9 +365,9 @@
                 </view>
             </scroll-view>
             <scroll-view class="rss" hidden="{{pkStatu!=2}}" scrollX="true" style="white-space:nowrap;width:96vw">
-                <view bindtap="selectTask" class="css  pl-10 pr-10" data-task="{{task}}" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
+                <view  class="css  pl-10 pr-10" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
                     
-                    <view class="rss p-20">
+                    <view class="rss p-20" bindtap="selectTask" data-task="{{task}}" >
                         <view class="ccs">
                             <image class="w-70 h-70 br-10" mode="aspectFill" src="{{task.cashier.imgUrl}}"></image>
                             <view class="absolute rcc fs-15 fw-400 c-white  br-5 pl-5 pr-5 b-5-1 ">{{task.statu.name}}</view>
@@ -701,13 +778,13 @@
         </view>
     </view>
     <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="coverAll100" hidden="{{singlePostDialog.visible!=true}}"></view>
-    <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="css editDialog-3 b-white" hidden="{{singlePostDialog.visible!=true}}" style="left:{{singlePostDialog.left}}vw">
-        <view catchtap="return" class="css pl-4vw pr-4vw z30">
+    <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="css editDialog-3" hidden="{{singlePostDialog.visible!=true}}" style="left:{{singlePostDialog.left}}vw">
+        <view catchtap="return" class="css pl-4vw pr-4vw z30 br-20 b-white">
             <view class="rbc-nowrap pt-30 pb-30 b-line">
                 <view class="rcc">
                     <view class="css">
-                        <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{singlePostDialog.post.creator.imgUrl}}"></image>
-                        <view class="rcc fs-18 line-h18 fw-400 c-white z7 absolute h-30 br-40 pl-10 pr-10 b-5-1 ">{{singlePostDialog.post.statu.name}}</view>
+                        <image class="w-80 h-80 br-10 box6" mode="aspectFill" src="{{singlePostDialog.post.creator.imgUrl}}"></image>
+                        <!-- <view class="rcc fs-18 line-h18 fw-400 c-white z7 absolute h-30 br-40 pl-10 pr-10 b-5-1 ">{{singlePostDialog.post.statu.name}}</view> -->
                     </view>
                 </view>
                 <view class="w-20"></view>
@@ -722,7 +799,29 @@
                     <view bindtap="_singlePostDialog_upload" class="rcc fs-50 fw-400 c-5 pr-20" data-post="{{singlePostDialog.post}}" wx:else>+</view>
                 </view>
                 <view class="rcc " wx:else>
-                    <view bindtap="singlePostDialog_likeOrDisLike" class="rcc p-20" data-post="{{singlePostDialog.post}}">
+                    <view wx:if="{{user.userId === creator.userId}}" class="rcc">
+
+                            <view  wx:if="{{singlePostDialog.post.statu.key===1}}" class="rcc p-20 box5 br-10 b-white" bindtap="_singlePostDialog_onOffLine" data-id="{{singlePostDialog.post.postId}}">
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/mgt.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">上线</view>
+                            </view>
+                            <view  wx:else class="rcc p-20 box5 br-10 b-white" bindtap="_singlePostDialog_onOffLine"  data-id="{{singlePostDialog.post.postId}}">
+                                <image class="w-30 h-30" mode="aspectFit" src="/images/mgt.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">下线</view>
+                            </view>
+
+
+
+
+
+
+
+                    
+                    
+                    </view>
+                    <view wx:else bindtap="singlePostDialog_likeOrDisLike" class="rcc p-20" data-post="{{singlePostDialog.post}}">
                         <view class="rcc" wx:if="{{singlePostDialog.post.queryerCollect}}">
                             <image class="rcc w-60 h-60 " mode="aspectFit" src="/images/rokit3.png"></image>
                         </view>
@@ -752,7 +851,7 @@
                     </view>
                 </view>
             </scroll-view>
-            <view class="rbc pt-20 pb-50">
+            <view class="rbc pt-30 pb-30">
                 <view class="fs-25 fw-400 c-3">{{singlePostDialog.post.postImages.length}} 张</view>
                 <view class="rcc">
                     <view class="rcc">
@@ -766,7 +865,7 @@
                     </view>
                 </view>
             </view>
-            <view class="rbc pt-30 pb-30 t-line" hidden="{{user.userId!=pkDetail.user.userId}}">
+            <!-- <view class="rbc pt-30 pb-30 t-line" hidden="{{user.userId!=pkDetail.user.userId}}">
                 <view class="rcs">
                     <view class="rcc fs-25 fw-700 c-3-1 pr-20">榜帖状态: </view>
                     <view class="rcc">
@@ -781,12 +880,12 @@
                 <view class="rcc">
                     <switch bindchange="_singlePostDialog_onOffLine" checked="{{singlePostDialog.post.statu.key===1?true:false}}" data-id="{{singlePostDialog.post.postId}}" type="checkbox"></switch>
                 </view>
-            </view>
+            </view> -->
         </view>
     </view>
     <view bindtap="_uploadFeeDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{uploadFeeDialog.visible!=true}}"></view>
-    <view catchtouchmove="catchReturn" class="css editDialog-2 bwhite" hidden="{{uploadFeeDialog.visible!=true}}" style="left:{{uploadFeeDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30 pt-30 pb-30">
+    <view catchtouchmove="catchReturn" class="css editDialog-2" hidden="{{uploadFeeDialog.visible!=true}}" style="left:{{uploadFeeDialog.left}}vw">
+        <view class="css pl-4vw pr-4vw z30 pt-30 pb-30 b-white br-20">
             <view class="rbc">
                 <view class="rcs">
                     <view class="css">
@@ -862,34 +961,68 @@
             </view>
         </view>
     </view>
+    <!-- 创建支付页面 -->
     <view bindtap="_applyOrderDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{applyOrderDialog.visible!=true}}"></view>
-    <view catchtouchmove="catchReturn" class="css editDialog-3 bwhite" hidden="{{applyOrderDialog.visible!=true}}" style="left:{{applyOrderDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30">
-            <view class="rbc pt-20 pb-20">
+    <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{applyOrderDialog.visible!=true}}" style="left:{{applyOrderDialog.left}}vw">
+        <view class="css pl-4vw pr-4vw z30 br-20 b-white">
+            <view class="rbc pt-30 pb-30 ">
                 <view class="rcs">
-                    <view class="css">
+                    <view class="rcc">
+                        <image class="w-80 h-80 br-10  box3" mode="aspectFill" src="{{applyOrderDialog.order.payer.imgUrl}}"></image>
+                        <view class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 payer ">付款方</view></view>
+                    </view>
+                
+                    <view class="w-30"></view>
+
+                    <view class="rcc">
+                        <image class="w-80 h-80 br-10  box3" mode="aspectFill" src="{{applyOrderDialog.order.cashier.imgUrl}}"></image>
+                        <view class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 cashier ">收款方</view></view>
+                        
+                    </view>
+
+
+
+                    <!-- <view class="css">
                         <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{applyOrderDialog.order.cashier.imgUrl}}"></image>
                         <view class="rcc fs-18 line-h18 fw-400 c-white z7 absolute h-30 br-40 pl-10 pr-10 b-5-1 " hidden="{{applyOrderDialog.order.type.key!=1}}">收款方</view>
                     </view>
-                    <view class="fs-30 fw-400 pl-10">{{applyOrderDialog.order.type.name}}:</view>
-                    <view class="fs-30 fw-700">{{applyOrderDialog.order.feeNum}}元</view>
+                    <view class="fs-30 fw-700 pl-10 c-3-1">{{applyOrderDialog.order.type.name}}:</view>
+                    <view class="fs-30 fw-700">{{applyOrderDialog.order.feeNum}}元</view> -->
                 </view>
-                <view bindtap="" class="rcc pr-20 h-70">
-                    <view bindtap="_applyOrderDialog_confirm" class="rcc pt-5 pb-5 pl-20 pr-20 br-10 box2 b-white" wx:if="{{applyOrderDialog.order.statu.key===0&&applyOrderDialog.order.orderCut}}">
+                <view class="rcc">
+                            
+                    <view wx:if="{{applyOrderDialog.order.statu.key===0&&applyOrderDialog.order.orderCut}}" class="rcc p-20 box5 br-10 b-white" bindtap="_applyOrderDialog_confirm">
+                        <image class="w-30 h-30" mode="aspectFit" src="/images/create1.png"></image>
+                        <view class="w-10"></view>
+                        <view class="fs-25 line-h25 fw-400 c-5">确定</view>
+                    </view>
+                    <view wx:else class="rcc p-20 box5 br-10 b-white" >
+                        <image class="w-30 h-30" mode="aspectFit" src="/images/create.png"></image>
+                        <view class="w-10"></view>
+                        <view class="fs-25 line-h25 fw-400 c-3-1">确定</view>
+                    </view>
+
+
+
+
+                    <!-- <view bindtap="_applyOrderDialog_confirm" class="rcc pt-5 pb-5 pl-20 pr-20 br-10 box2 b-white" >
                         <view class="fs-25 fw-700 c-1">确定</view>
                     </view>
                     <view class="rcc pt-5 pb-5 pl-20 pr-20 br-10 box2 b-white" wx:else>
                         <view class="fs-25 fw-700 c-3-1">确定</view>
-                    </view>
+                    </view> -->
                 </view>
+                <!-- <view bindtap="" class="rcc pr-20 h-70" >
+                    <view class="{{applyOrderDialog.order.statu.key === 0?'fs-30 fw-700 c-3-1':'fs-30 fw-700 c-1'}}">{{applyOrderDialog.order.statu.name}}</view>
+                </view> -->
             </view>
-            <view class="rac pt-30 pb-50 b-line t-line">
+            <view class="rbc pt-30 pb-30 b-line t-line">
                 <view class="ccc">
-                    <view class="rcc">
+                    <!-- <view class="rcc">
                         <view class="rcc fs-25 fw-400 c-3-2">收款方</view>
                         <view class="rcc fs-25 fw-400 c-3-2" hidden="{{applyOrderDialog.order.type.key!=1}}">-榜主</view>
                     </view>
-                    <view class="h-30"></view>
+                    <view class="h-30"></view> -->
                     <view class="rcc ">
                         <view class="rcc w-200 h-200 box2 br-10" wx:if="{{applyOrderDialog.order.feeCodeUrl}}">
                             <image class="w-200 h-200 br-10" mode="aspectFill" src="{{applyOrderDialog.order.feeCodeUrl}}"></image>
@@ -898,12 +1031,83 @@
                             <view class="h-30 fs-20 fw-400">收款码(收款方)</view>
                         </view>
                     </view>
-                    <view class="h-50"></view>
+                    <!-- <view class="h-30"></view> -->
                     <view bindtap="_applyOrderDialog_save" class="rcc fs-25 fw-400 c-5" data-url="{{applyOrderDialog.order.feeCodeUrl}}">保存到相册</view>
                 </view>
+
+
+
+
+
+
+
+
+
+
+
                 <view class="ccc">
-                    <view class="rcc fs-25 fw-400 c-3-2">订单截图</view>
-                    <view class="h-30"></view>
+                    
+                    <view class="rsc">
+                        <view class="ccc">
+                            <view class="{{applyOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">分</view>
+                            <view wx:if="{{applyOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view class="fs-50 fw-700 c-3 line-h50">0</view>
+                                <view class="fs-50 fw-700 c-3 line-h50">{{applyOrderDialog.time.minute}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                        <view class="cbc">
+                            <view></view>
+                            <view class="rcc pr-10 pl-10">
+                                <view wx:if="{{applyOrderDialog.order.statu.key === 1}}" class="rcc">
+                                    <view class=" fs-50 fw-700 c-3 line-h50">:</view>
+                                </view>
+                                <view wx:else class="rcc">
+                                    <view class=" fs-50 fw-700 c-3-1 line-h50">:</view>
+                                </view>
+                            
+                            </view>
+
+                        </view>
+                        <view class="ccc">
+                            <view class="{{applyOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">秒</view>
+                            <view wx:if="{{applyOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view hidden="{{applyOrderDialog.time.second > 9}}" class="fs-50 fw-700 c-3 line-h50">0</view>
+                                <view class="fs-50 fw-700 c-3 line-h50">{{applyOrderDialog.time.second}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                    </view>
+
+
+
+                    <view class="rcc fs-25 fw-400 c-3-1 p-20">倒计时</view>
+
+
+                
+                </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <view class="ccc">
+                    <!-- <view class="rcc fs-25 fw-400 c-3-2">订单截图</view>
+                    <view class="h-30"></view> -->
                     <view bindtap="_applyOrderDialog_uploadOrderCut" class="rcc">
                         <view class="w-200 h-200 br-10 b-white box2" wx:if="{{applyOrderDialog.order.orderCut}}">
                             <image class="w-200 h-200 br-10" mode="aspectFill" src="{{applyOrderDialog.order.orderCut}}"></image>
@@ -914,11 +1118,11 @@
                             </view>
                             <view class="h-30 fs-20 fw-400">上传订单截图</view>
                         </view>
-                        <view catchtap="return" class="cbc w-240 h-240 z20 absolute" hidden="{{applyOrderDialog.order.statu.key===0}}">
-                            <view class="rcc z30 fs-20 line-h20 fw-400 c-white h-40 br-10 pl-15 pr-15 b-9">{{applyOrderDialog.order.statu.name}}</view>
+                        <view catchtap="return" class="rcc w-200 h-200 br-10 z20 absolute b-45-1" hidden="{{applyOrderDialog.order.statu.key===0}}">
+                            <view class="rcc z30 fs-30 fw-700 c-1">{{applyOrderDialog.order.statu.name}}</view>
                         </view>
                     </view>
-                    <view class="h-50"></view>
+                    <!-- <view class="h-30"></view> -->
                     <view bindtap="_applyOrderDialog_uploadOrderCut" class="rcc fs-25 fw-400 c-5" wx:if="{{applyOrderDialog.order.statu.key===0}}">上传订单</view>
                     <view class="rcc fs-25 fw-400 c-3-1" wx:else>上传订单</view>
                 </view>
@@ -958,7 +1162,7 @@
                             <image class="w-200 h-200 br-10" mode="aspectFill" src="{{cashierOrderDialog.order.orderCut}}"></image>
                         </view>
                         <view class="ccc w-200 h-200 br-10 b-white box2 " wx:else>
-                            <view class="h-30 fs-20 fw-400">支付订单截图</view>
+                            <view class="h-30 fs-20 fw-400 c-3-1">付款截图</view>
                         </view>
                         <view class="cbc w-240 h-240 z20 absolute">
                             <view class="rcc z30 fs-20 line-h20 fw-400 c-white h-40 br-10 pl-15 pr-15 b-9" hidden="{{cashierOrderDialog.order.statu.key===0}}">{{cashierOrderDialog.order.statu.name}}</view>
@@ -1011,6 +1215,227 @@
             </view>
         </view>
     </view>
+
+    <!-- 打赏记录 -->
+    <view bindtap="_rewardOrderDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{rewardOrderDialog.visible!=true}}"></view>
+    <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{rewardOrderDialog.visible!=true}}" style="left:{{rewardOrderDialog.left}}vw">
+        <view class="css pl-4vw pr-4vw z30 br-20 b-white">
+            <view class="rbc pt-30 pb-30">
+                <view class="rcs">
+
+                    <view class="rcc">
+                        <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{rewardOrderDialog.order.payer.imgUrl}}"></image>
+                        <view class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 payer ">付款方</view></view>
+                    </view>
+                
+                    <view class="w-30"></view>
+
+                    <view class="rcc">
+                        <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{rewardOrderDialog.order.cashier.imgUrl}}"></image>
+                        <view class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 cashier ">收款方</view></view>
+                        
+                    </view>
+                </view>
+                <view bindtap="" class="rcc pr-20 h-70" >
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-30 fw-700 c-3-1':'fs-30 fw-700 c-1'}}">{{rewardOrderDialog.order.statu.name}}</view>
+                </view>
+                <!-- <view bindtap="_rewardOrderDialog_nextOrder" class="rcc pr-20 h-70" wx:else>
+                    <view class="fs-25 fw-700 c-5">下一个</view>
+                </view> -->
+            </view>
+            
+            
+            <view class="rbs pt-60 pb-60 b-line t-line">
+                <view class="ccc">
+                    <view class="rcc">
+                        <view class="w-200 h-200 br-10 b-white box2" wx:if="{{rewardOrderDialog.order.orderCut}}">
+                            <image class="w-200 h-200 br-10" mode="aspectFill" src="{{rewardOrderDialog.order.orderCut}}"></image>
+                        </view>
+                        <view class="ccc w-200 h-200 br-10 b-white box2" wx:else>
+                            <view class="h-30 fs-20 fw-400 c-3-1">付款截图</view>
+                        </view>
+                        <!-- <view class="cbc w-240 h-290 z20 absolute">
+                            <view class="rcc z30 fs-20 line-h20 fw-400 c-white h-40 br-10 pl-15 pr-15 rewardStatu" hidden="{{rewardOrderDialog.order.statu.key===0}}">{{rewardOrderDialog.order.statu.name}}</view>
+                        </view> -->
+                    </view>
+                </view>
+
+                <view class="csc">
+                    
+                    <view class="rsc">
+                        <view class="ccc">
+                            <view class="{{rewardOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">分</view>
+                            <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view class="fs-50 fw-700 c-3 line-h50">0</view>
+                                <view class="fs-50 fw-700 c-3 line-h50">{{rewardOrderDialog.time.minute}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                        <view class="cbc">
+                            <view></view>
+                            <view class="rcc pr-10 pl-10">
+                                <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc">
+                                    <view class=" fs-50 fw-700 c-3 line-h50">:</view>
+                                </view>
+                                <view wx:else class="rcc">
+                                    <view class=" fs-50 fw-700 c-3-1 line-h50">:</view>
+                                </view>
+                            
+                            </view>
+
+                        </view>
+                        <view class="ccc">
+                            <view class="{{rewardOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">秒</view>
+                            <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view hidden="{{rewardOrderDialog.time.second > 9}}" class="fs-50 fw-700 c-3 line-h50">0</view>
+                                <view class="fs-50 fw-700 c-3 line-h50">{{rewardOrderDialog.time.second}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                    </view>
+
+
+
+                    <view class="rcc fs-25 fw-400 c-3-1 p-20">倒计时</view>
+
+
+
+
+                    <!-- <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc">
+                        <view class="fs-50 fw-700 c-3">0</view>
+                        <view class="fs-50 fw-700 c-3">{{rewardOrderDialog.time.minute}}</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-5 pt-20">分</view>
+                        <view class="w-10"></view>
+                        <view hidden="{{rewardOrderDialog.time.second > 9}}" class="fs-50 fw-700 c-3">0</view>
+                        <view class="fs-50 fw-700 c-3">{{rewardOrderDialog.time.second}}</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-5 pt-20">秒</view>
+                    </view>
+                    <view wx:else class="rcc">
+                        <view class="fs-50 fw-700 c-3-1">0</view>
+                        <view class="fs-50 fw-700 c-3-1">0</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-3-1 pt-20">分</view>
+                        <view class="w-10"></view>
+                        <view class="fs-50 fw-700 c-3-1">00</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-3-1 pt-20">秒</view>
+                    
+                    </view> -->
+                
+                </view>
+
+
+                <view class="cbs w-200">
+
+                            <view  wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc p-25 box5 br-20 b-white" bindtap="_rewardOrderDialog_confirm1" data-id="{{rewardOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">已收款</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">已收款</view>
+                            </view>
+
+
+
+                            <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc p-25 box5 br-20 b-white" bindtap="_rewardOrderDialog_confirm2" data-id="{{rewardOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">未收款</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">未收款</view>
+                            </view>
+
+
+
+
+
+
+
+
+
+
+
+
+                </view>
+
+                
+
+                <!-- <view class="cbs h-200" style="flex:1">
+                    
+                    <view wx:if="{{rewardOrderDialog.order.statu.key === 1}}" class="rcc">
+                        <view class="fs-50 fw-700 c-3">0</view>
+                        <view class="fs-50 fw-700 c-3">{{rewardOrderDialog.time.minute}}</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-5 pt-20">分</view>
+                        <view class="w-10"></view>
+                        <view hidden="{{rewardOrderDialog.time.second > 9}}" class="fs-50 fw-700 c-3">0</view>
+                        <view class="fs-50 fw-700 c-3">{{rewardOrderDialog.time.second}}</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-5 pt-20">秒</view>
+                    </view>
+                    <view wx:else class="rcc">
+                        <view class="fs-50 fw-700 c-3-1">0</view>
+                        <view class="fs-50 fw-700 c-3-1">0</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-3-1 pt-20">分</view>
+                        <view class="w-10"></view>
+                        <view class="fs-50 fw-700 c-3-1">00</view>
+                        <view class="w-10"></view>
+                        <view class="fs-20 fw-400 c-3-1 pt-20">秒</view>
+                    
+                    </view>
+                    <view class="rac">
+
+                            <view class="rcc p-25 box5 br-20 b-white" bindtap="_rewardOrderDialog_confirm1" data-id="{{rewardOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">已收款</view>
+                            </view>
+
+                            <view class="rcc p-25 box5 br-20 b-white" bindtap="_rewardOrderDialog_confirm2" data-id="{{rewardOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">未收款</view>
+                            </view>
+
+                    </view>
+        
+                  
+                </view> -->
+            </view>
+
+
+            <view class="rbc pt-30 pb-30">
+                <view class="rcs">
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">单次: </view>
+                    <view class="w-20"></view>
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{rewardOrderDialog.order.feeNum}}</view>
+                    <view class="w-5"></view>
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-20 fw-400 c-3-1 line-h20 pt-5':'fs-20 fw-400 c-3 line-h20 pt-5'}}">(元)</view>
+                </view>
+                <view class="rcs">
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">累计: </view>
+                    <view class="w-20"></view>
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}} ">{{rewardOrderDialog.order.rewardTimes}}</view>
+                    <view class="w-5"></view>
+                    <view class="{{rewardOrderDialog.order.statu.key === 0?' fs-20 fw-400 c-3-1 line-h20 pt-5':' fs-20 fw-400 c-3 line-h20 pt-5'}}">(次)</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
     <view bindtap="_payerOrderDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{payerOrderDialog.visible!=true}}"></view>
     <view catchtouchmove="catchReturn" class="css editDialog-3 bwhite" hidden="{{payerOrderDialog.visible!=true}}" style="left:{{payerOrderDialog.left}}vw">
         <view class="css pl-4vw pr-4vw z30">
@@ -1061,7 +1486,7 @@
                             <image class="w-200 h-200 br-10" mode="aspectFill" src="{{payerOrderDialog.order.orderCut}}"></image>
                         </view>
                         <view class="rcc w-200 h-200 box2 br-10 b-white" wx:else>
-                            <view class="h-30 fs-20 fw-400">支付订单截图</view>
+                            <view class="h-30 fs-20 fw-400 c-3-1">付款截图</view>
                         </view>
                         <view class="cbc w-240 h-240 z20 absolute">
                             <view class="rcc z30 fs-20 line-h20 fw-400 c-white h-40 br-10 pl-15 pr-15 b-9" hidden="{{payerOrderDialog.order.statu.key===0}}">{{payerOrderDialog.order.statu.name}}</view>
@@ -1095,17 +1520,25 @@
             </view>
         </view>
     </view>
+
+    <!-- 榜主审核收款码 -->
     <view bindtap="_approveOrderDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{approveOrderDialog.visible!=true}}"></view>
-    <view catchtouchmove="catchReturn" class="css editDialog-3 bwhite" hidden="{{approveOrderDialog.visible!=true}}" style="left:{{approveOrderDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30">
+    <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{approveOrderDialog.visible!=true}}" style="left:{{approveOrderDialog.left}}vw">
+        <view class="css pl-4vw pr-4vw z30 b-white br-20">
             <view class="rbc pt-30 pb-30">
                 <view class="rcs">
-                    <view class="css" wx:if="{{approveOrderDialog.order.user}}">
+                    <!-- <view class="css" wx:if="{{approveOrderDialog.order.user}}">
                         <image class="w-80 h-80 br-10 border6 box3" mode="aspectFill" src="{{approveOrderDialog.order.user.imgUrl}}"></image>
                         <view class="rcc fs-18 line-h18 fw-400 c-white z7 absolute h-30 br-40 pl-10 pr-10 b-5-1 " hidden="{{!approveOrderDialog.order.dynamicId}}">已付款</view>
                     </view>
                     <view class="css" wx:else>
                         <view class="rcc fs-25 fw-400 c-3-1 w-80 h-80 br-10 border6 box3">头像</view>
+                    </view> -->
+                    <view class="rcc">
+                        
+                        <image class="w-80 h-80 br-10  box6" mode="aspectFill" src="{{approveOrderDialog.order.user.imgUrl}}"></image>
+                        <!-- <view  class="rcc w-80 h-80 br-10 absolute b-45-2"><view class="rcc fs-18 line-h18 fw-700 c-5 z7 ">用户</view></view> -->
+                        <!-- <view wx:else class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 payer ">付款方</view></view> -->
                     </view>
                     <view class="rcs" wx:if="{{approveOrderDialog.order.user}}">
                         <view class="fs-30 fw-400 pl-10">收款码:</view>
@@ -1119,28 +1552,69 @@
                 <view bindtap="" class="rcc pr-20 h-70" wx:if="{{approveOrderDialog.order.statu.key===0}}">
                     <view class="fs-25 fw-700 c-3-1">无订单</view>
                 </view>
-                <view bindtap="_approveOrderDialog_nextOrder" class="rcc pr-20 h-70" wx:else>
-                    <view class="fs-25 fw-700 c-5">下一个</view>
+                <view class="rcc pr-20 h-70" wx:else>
+                    <view class="fs-25 fw-700 c-5">{{approveOrderDialog.order.statu.name}}</view>
                 </view>
             </view>
-            <view class="ras-nowrap pt-30 pb-50 b-line t-line">
+            <view class="ras-nowrap pt-30 pb-30 b-line t-line">
                 <view class="ccc">
-                    <view class="rcc fs-25 fw-400 c-3-2">收款码</view>
-                    <view class="h-30"></view>
                     <view class="rcc">
                         <view class="w-200 h-200 br-10 b-white box2" wx:if="{{approveOrderDialog.order.url}}">
                             <image class="w-200 h-200 br-10" mode="aspectFill" src="{{approveOrderDialog.order.url}}"></image>
                         </view>
                         <view class="ccc w-200 h-200 br-10 b-white box2 " wx:else>
-                            <view class="h-30 fs-20 fw-400">支付订单截图</view>
+                            <view class="h-30 fs-20 fw-400 c-3-1">收款码</view>
                         </view>
                     </view>
-                    <view class="h-50"></view>
+  
                 </view>
                 <view class="ccc">
-                    <view class="rcc fs-25 fw-400 c-3-2">审核处理</view>
-                    <view class="h-30"></view>
-                    <view class="cac w-200 h-200">
+
+
+
+                    <view class="cbs w-200 h-200">
+
+                            <view  wx:if="{{approveOrderDialog.order.statu.key === 2}}" class="rcc p-25 box5 br-20 b-white" bindtap="_approveOrderDialog_confirm1" data-id="{{approveOrderDialog.order.dynamicId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">通过</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">通过</view>
+                            </view>
+
+
+
+
+
+                            <view wx:if="{{approveOrderDialog.order.statu.key === 2}}" class="rcc p-25 box5 br-20 b-white" bindtap="_approveOrderDialog_confirm2" data-id="{{approveOrderDialog.order.dynamicId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">不通过</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">不通过</view>
+                            </view>
+                    </view>
+                    
+                    
+                    
+                    
+                    
+                    <!-- <view class="cac w-200 h-200">
+
+
+
+
+
+
+
+
+
                         <view bindtap="_approveOrderDialog_confirm1" class="rcc pt-15 pb-15 pl-20 pr-20 br-10 box2 b-white" data-id="{{approveOrderDialog.order.dynamicId}}" hidden="{{approveOrderDialog.order.statu.key!=2}}">
                             <view class="fs-25 fw-700 c-1">审核通过</view>
                         </view>
@@ -1160,28 +1634,34 @@
                         <view class="rcc pt-15 pb-15 pl-20 pr-20 br-10 box2 b-white" hidden="{{approveOrderDialog.order.statu.key!=0}}">
                             <view class="fs-25 fw-700 c-3-1">审核结果</view>
                         </view>
-                    </view>
-                    <view class="h-50"></view>
+                    </view> -->
+
                 </view>
             </view>
-            <view class="rcs pt-30 pb-30">
-                <view bindtap="_approveOrderDialog_selectType" class="{{approveOrderDialog.type===2?'rcc b-43 pl-20 pr-20 pt-10 pb-10':'rcc pl-20 pr-20 pt-10 pb-10'}}" data-type="2">
-                    <view class="{{approveOrderDialog.type===2?'rcc fs-20 fw-400 c-5':'rcc fs-20 fw-400 c-3-1'}}">审核中:</view>
-                    <view class="rcc fs-18 line-h18 fw-400 c-1  ">+99</view>
+            <view class="rbc pt-30 pb-30">
+                <view class="rcs">
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">审核中: </view>
+                    <view class="w-20"></view>
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{approveOrderDialog.order.approving}}</view>
                 </view>
-                <view class="w-30"></view>
-                <view bindtap="_approveOrderDialog_selectType" class="{{approveOrderDialog.type===3?'rcc b-43 pl-20 pr-20 pt-10 pb-10':'rcc pl-20 pr-20 pt-10 pb-10'}}" data-type="3">
-                    <view class="{{approveOrderDialog.type===3?'rcc fs-20 fw-400 c-5':'rcc fs-20 fw-400 c-3-1'}}">审核通过:</view>
-                    <view class="rcc fs-18 line-h18 fw-400 c-1  ">+99</view>
+                <view class="rcs">
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">审核通过: </view>
+                    <view class="w-20"></view>
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{approveOrderDialog.order.approved}}</view>
                 </view>
-                <view class="w-30"></view>
-                <view bindtap="_approveOrderDialog_selectType" class="{{approveOrderDialog.type===4?'rcc b-43 pl-20 pr-20 pt-10 pb-10':'rcc pl-20 pr-20 pt-10 pb-10'}}" data-type="4">
-                    <view class="{{approveOrderDialog.type===4?'rcc fs-20 fw-400 c-5':'rcc fs-20 fw-400 c-3-1'}}">审核不通过:</view>
-                    <view class="rcc fs-18 line-h18 fw-400 c-1  ">+99</view>
+                <view class="rcs">
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">审核不通过: </view>
+                    <view class="w-20"></view>
+                    <view class="{{approveOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{approveOrderDialog.order.unapproved}}</view>
                 </view>
+
             </view>
         </view>
     </view>
+
+
+
+
     <view bindtap="_postApproveDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{postApproveDialog.visible!=true}}"></view>
     <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{postApproveDialog.visible!=true}}" style="left:{{postApproveDialog.left}}vw">
         <view class="css pl-4vw pr-4vw z30 b-white">
@@ -1367,6 +1847,262 @@
             </view>
         </view>
     </view>
+
+
+    <!-- 通用订单 -->
+    <view bindtap="_singleOrderDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{singleOrderDialog.visible!=true}}"></view>
+    <view catchtouchmove="catchReturn" class="css editDialog-3" hidden="{{singleOrderDialog.visible!=true}}" style="left:{{singleOrderDialog.left}}vw">
+        <view class="css pl-4vw pr-4vw z30 br-20 b-white">
+            <!-- 头部 -->
+            <view class="rbc pt-30 pb-30">
+                <view class="rcs">
+
+                    <view class="rcc">
+                        
+                        <image class="w-80 h-80 br-10  box6" mode="aspectFill" src="{{singleOrderDialog.order.payer.imgUrl}}"></image>
+                        <view  class="rcc w-80 h-80 br-10 absolute b-45-2"><view class="rcc fs-18 line-h18 fw-700 c-5 z7 ">付款方</view></view>
+                        <!-- <view wx:else class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 payer ">付款方</view></view> -->
+                    </view>
+                
+                    <view class="w-30"></view>
+
+                    <view class="rcc">
+                        <image class="w-80 h-80 br-10  box6" mode="aspectFill" src="{{singleOrderDialog.order.cashier.imgUrl}}"></image>
+                        <view  class="rcc w-80 h-80 br-10 absolute b-45-2"><view class="rcc fs-18 line-h18 fw-700 c-5 z7 ">收款方</view></view>                       
+                        <!-- <view wx:else class="ccs w-80 h-110 absolute "><view class="rcc fs-18 line-h18 fw-400 c-white z7 h-30 br-40 pl-10 pr-10 cashier ">收款方</view></view> -->
+                    </view>
+                </view>
+                <view class="rcc">
+                    <view wx:if="{{(singleOrderDialog.order.statu.key === 0) && (user.userId === singleOrderDialog.order.payer.userId)}}">
+                        <view wx:if="{{singleOrderDialog.order.orderCut}}" class="rcc p-20 box5 br-10 b-white" bindtap="_singleOrderDialog_confirm">
+                            <image class="w-30 h-30" mode="aspectFit" src="/images/create1.png"></image>
+                            <view class="w-10"></view>
+                            <view class="fs-25 line-h25 fw-400 c-5">确定</view>
+                        </view>
+                        <view wx:else class="rcc p-20 box5 br-10 b-white" >
+                            <image class="w-30 h-30" mode="aspectFit" src="/images/create.png"></image>
+                            <view class="w-10"></view>
+                            <view class="fs-25 line-h25 fw-400 c-3-1">确定</view>
+                        </view>
+                    </view>
+                    <view wx:else class="rcc">
+                        <view class="{{singleOrderDialog.order.statu.key === 0?'fs-30 fw-700 c-3-1':'fs-30 fw-700 c-1' }}">{{singleOrderDialog.order.statu.name}}</view>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 中间 -->
+            <view class="rbs pt-60 pb-60 b-line t-line">
+
+                <view class="ccc">
+                    <view wx:if="{{user.userId===singleOrderDialog.order.payer.userId}}" class="rcc">
+                        <view wx:if="{{singleOrderDialog.order.feeCodeUrl}}" class="rcc w-200 h-200 box2 br-10" >
+                            <image class="w-200 h-200 br-10" mode="aspectFill" src="{{singleOrderDialog.order.feeCodeUrl}}"></image>
+                        </view>
+                        <view wx:else class="rcc w-200 h-200 box2 br-10 b-white">
+                            <view class="h-30 fs-25 fw-400 c-3-1">收款码</view>
+                        </view>
+                    </view>
+                    <view wx:elif="{{user.userId===singleOrderDialog.order.cashier.userId}}" class="rcc">
+
+                        <view wx:if="{{singleOrderDialog.order.orderCut}}" class="w-200 h-200 br-10 b-white box2" >
+                            <image class="w-200 h-200 br-10" mode="aspectFill" src="{{singleOrderDialog.order.orderCut}}"></image>
+                        </view>
+                        <view wx:else class="ccc w-200 h-200 br-10 b-white box2">
+                            <view class="h-30 fs-25 fw-400 c-3-1">付款截图</view>
+                        </view>  
+                    </view>
+                    <view wx:else class="rcc">
+                        <view class="rcc w-200 h-200 box2 br-10" >
+                            <image class="w-200 h-200 br-10" mode="aspectFill" src="{{singleOrderDialog.order.feeCodeUrl}}"></image>
+                        </view>
+                    </view>
+                </view>
+
+
+                <!-- 倒计时 -->
+                <view class="csc">
+
+                    <view class="rac">
+                        <view class="{{singleOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">分</view>
+                        <view class="{{singleOrderDialog.order.statu.key === 1?'fs-20 fw-400 c-5 p-20':'fs-20 fw-400 c-3-1 p-20'}}">秒</view>
+                    </view>
+                
+                    <view class="rcc">
+                        <view class="rcc">
+                            <view wx:if="{{singleOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view class="fs-50 fw-700  line-h50">0</view>
+                                <view class="fs-50 fw-700  line-h50">{{singleOrderDialog.time.minute}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                        <view class="rcc">
+                            <view class="rcc pr-10 pl-10">
+                                <view wx:if="{{singleOrderDialog.order.statu.key === 1}}" class="rcc">
+                                    <view class=" fs-50 fw-700 line-h50">:</view>
+                                </view>
+                                <view wx:else class="rcc">
+                                    <view class=" fs-50 fw-700 c-3-1 line-h50">:</view>
+                                </view>
+                            
+                            </view>
+                        </view>
+                        <view class="rcc">
+                            <view wx:if="{{singleOrderDialog.order.statu.key === 1}}" class="rcc">
+                                <view hidden="{{singleOrderDialog.time.second > 9}}" class="fs-50 fw-700 line-h50">0</view>
+                                <view class="fs-50 fw-700 line-h50">{{singleOrderDialog.time.second}}</view>
+                            </view>
+                            <view wx:else class="rcc">
+                                 <view class="fs-50 fw-700 c-3-1 line-h50">00</view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="rcc fs-25 fw-400 c-3-1 p-20">倒计时</view>
+                </view>
+
+
+                <view class="ccc">
+                    <view wx:if="{{user.userId===singleOrderDialog.order.payer.userId}}" class="rcc">
+                          
+                        <view bindtap="_singleOrderDialog_uploadOrderCut" class="rcc">
+                            <view class="w-200 h-200 br-10 b-white box2" wx:if="{{singleOrderDialog.order.orderCut}}">
+                                <image class="w-200 h-200 br-10" mode="aspectFill" src="{{singleOrderDialog.order.orderCut}}"></image>
+                            </view>
+                            <view class="ccc w-200 h-200 br-10 b-white box2 " wx:else>
+                                <view class="rcc p-20">
+                                    <image class="w-50 h-50" mode="aspectFit" src="/images/uploadFeeCode.png"></image>
+                                </view>
+                                <view class="h-30 fs-20 fw-400">上传订单截图</view>
+                            </view>  
+                            <view catchtap="return" class="rcc w-200 h-200 br-10 z20 absolute b-45-1" hidden="{{singleOrderDialog.order.statu.key===0}}">
+                                <view class="rcc z30 fs-30 fw-700 c-3-1">LOCK</view>
+                            </view>
+                        </view>
+
+                    </view>
+                    <view wx:elif="{{user.userId===singleOrderDialog.order.cashier.userId}}" class="rcc">
+                        <view class="cbs w-200 h-200">
+
+                            <view  wx:if="{{singleOrderDialog.order.statu.key === 1}}" class="rcc p-25 box5 br-20 b-white" bindtap="_singleOrderDialog_feeConfirm" data-tag="2" data-id="{{singleOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">已收款</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/getMoney1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">已收款</view>
+                            </view>
+
+                            <view wx:if="{{singleOrderDialog.order.statu.key === 1}}" class="rcc p-25 box5 br-20 b-white" bindtap="_singleOrderDialog_feeConfirm" data-tag="1" data-id="{{singleOrderDialog.order.orderId}}">
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3">未收款</view>
+                            </view>
+                            <view wx:else class="rcc p-25 box5 br-20 b-white" >
+                                <image class="w-40 h-40" mode="aspectFit" src="/images/topic1.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-25 line-h25 fw-400 c-3-1">未收款</view>
+                            </view>
+                        </view>
+
+
+                    </view>
+                    <view wx:else class="rcc">
+                            <view wx:if="{{singleOrderDialog.order.statu.key === 0}}" class="rcc w-200 h-200 br-10 b-white box2" >
+                                <view class="h-30 fs-25 fw-700 c-3-1">支付订单</view>
+                            </view>
+                            <view wx:else class="rcc w-200 h-200 br-10 b-white box2 " >
+                                 <image class="w-200 h-200 br-10" mode="aspectFill" src="{{singleOrderDialog.order.orderCut}}"></image>
+                            </view>  
+
+                    </view>
+
+                </view>
+
+            </view>
+            
+
+
+            <view class="css pt-30 pb-30">
+                    <view wx:if="{{user.userId===singleOrderDialog.order.payer.userId}}" class="rbc">
+
+                        <view wx:if="{{singleOrderDialog.order.statu.key===0}}" class="fs-25 fw-400 c-3-1" class="fs-25 fw-400 c-3">保存到相册扫码支付后上传订单截图...</view>
+                        <view wx:else class="fs-25 fw-400 c-5" class="fs-25 fw-400 c-3">保存到相册扫码支付后上传订单截图...</view>
+
+                        <view wx:if="{{singleOrderDialog.order.statu.key===3}}" class="fs-25 fw-400 c-5" >投诉收款方</view>
+                        <view wx:else class="fs-25 fw-400 c-3-1" >投诉收款方</view>
+
+                    </view>
+                    <view wx:elif="{{user.userId===singleOrderDialog.order.cashier.userId}}" class="rbc">
+               
+                            <view class="rcs">
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">单次: </view>
+                                <view class="w-20"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{singleOrderDialog.order.feeNum}}</view>
+                                <view class="w-5"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-20 fw-400 c-3-1 line-h20 pt-5':'fs-20 fw-400 c-3 line-h20 pt-5'}}">(元)</view>
+                            </view>
+                            <view class="rcs">
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">累计: </view>
+                                <view class="w-20"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}} ">{{singleOrderDialog.order.rewardTimes}}</view>
+                                <view class="w-5"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?' fs-20 fw-400 c-3-1 line-h20 pt-5':' fs-20 fw-400 c-3 line-h20 pt-5'}}">(次)</view>
+                            </view>
+
+                    </view>
+                    <view wx:else class="rbc">
+
+                            <view class="rcs">
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">单次: </view>
+                                <view class="w-20"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{singleOrderDialog.order.feeNum}}</view>
+                                <view class="w-5"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-20 fw-400 c-3-1 line-h20 pt-5':'fs-20 fw-400 c-3 line-h20 pt-5'}}">(元)</view>
+                            </view>
+                            <view class="rcs">
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">累计: </view>
+                                <view class="w-20"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}} ">{{singleOrderDialog.order.rewardTimes}}</view>
+                                <view class="w-5"></view>
+                                <view class="{{singleOrderDialog.order.statu.key === 0?' fs-20 fw-400 c-3-1 line-h20 pt-5':' fs-20 fw-400 c-3 line-h20 pt-5'}}">(次)</view>
+                            </view>
+        
+                    </view>
+            </view>
+
+            <!-- <view class="rbc pt-30 pb-30">
+
+
+
+                <view class="rcs">
+                    <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">单次: </view>
+                    <view class="w-20"></view>
+                    <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}}">{{singleOrderDialog.order.feeNum}}</view>
+                    <view class="w-5"></view>
+                    <view class="{{singleOrderDialog.order.statu.key === 0?'fs-20 fw-400 c-3-1 line-h20 pt-5':'fs-20 fw-400 c-3 line-h20 pt-5'}}">(元)</view>
+                </view>
+                <view class="rcs">
+                    <view class="{{singleOrderDialog.order.statu.key === 0?'fs-25 fw-400 c-3-1 line-h25':'fs-25 fw-400 c-3 line-h25'}}">累计: </view>
+                    <view class="w-20"></view>
+                    <view class="{{singleOrderDialog.order.statu.key === 0?'fs-40 fw-700 c-3-1 line-h40':'fs-40 fw-700 c-1 line-h40'}} ">{{singleOrderDialog.order.rewardTimes}}</view>
+                    <view class="w-5"></view>
+                    <view class="{{singleOrderDialog.order.statu.key === 0?' fs-20 fw-400 c-3-1 line-h20 pt-5':' fs-20 fw-400 c-3 line-h20 pt-5'}}">(次)</view>
+                </view>
+            </view> -->
+
+
+        </view>
+    </view>
+
+
+
+
+
 </view>
 
 

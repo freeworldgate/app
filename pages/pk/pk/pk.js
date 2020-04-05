@@ -67,7 +67,11 @@ Page({
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUser});
-    
+    that.setData({
+      user:user,
+    })
+
+
   },
   publish:function(){
     var that = this;
@@ -332,13 +336,33 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("success", function (order) {
-      template.createCashierOrderDialog(that).show(order);
-      that.setData({
-        'cashierOrderDialog.type': 1,
-        'cashierOrderDialog.page': 1,
-      })
+      template.createSingleOrderDialog(that).show(order);
     })
-    httpClient.send(request.url.feeOrder, "GET", { pkId: that.data.pkId,type:1,page:1});
+    httpClient.send(request.url.verifyOrder, "GET", { pkId: that.data.pkId});
+    // var that = this;
+    // var httpClient = template.createHttpClient(that);
+    // httpClient.setMode("label", true);
+    // httpClient.addHandler("success", function (order) {
+    //   template.createCashierOrderDialog(that).show(order);
+    //   that.setData({
+    //     'cashierOrderDialog.type': 1,
+    //     'cashierOrderDialog.page': 1,
+    //   })
+    // })
+    // httpClient.send(request.url.feeOrder, "GET", { pkId: that.data.pkId,type:1,page:1});
+  },
+  // 查看打赏订单
+  rewardOrder:function(){
+
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (order) {
+      template.createSingleOrderDialog(that).show(order);
+   
+    })
+    httpClient.send(request.url.rewardOrder, "GET", { pkId: that.data.pkId});
+
   },
 
   userPayOrder: function () {
@@ -426,23 +450,43 @@ Page({
 
   updateDynamic:function(){
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("", false);
-    httpClient.addHandler("infos", function (infos) {
-        that.setData({
-          infos:infos,
-          pkStatu: 1 
-        })
-    })
-    httpClient.addHandler("tasks", function (tasks) {
-        that.setData({ 
-          tasks:tasks,
-          pkStatu: 2 
-        })
+    wx.request({
+      url: request.url.queryPkStatu,
+      method:"GET",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      data:{
+        pkId: that.data.pkId,
+      },
+      
+      success:function(res){
+          if(res.data._4_handler_name === "tasks"){
+              that.setData({ 
+                tasks:res.data._4_data,
+                pkStatu: 2 
+              })
+          }
+          else if(res.data._4_handler_name === "infos"){
+              that.setData({ 
+                infos:res.data._4_data,
+                pkStatu: 1
+              })
+          }
+          else
+          {}
 
+   
+
+
+      }
+      
     })
-    httpClient.send(request.url.queryPkStatu, "GET", { pkId: that.data.pkId });
-  },
+
+
+
+},
+
 
   onShow:function(){
     var that = this;
@@ -461,17 +505,25 @@ Page({
   selectTask:function(res){
     var that = this;
     var task = res.currentTarget.dataset.task;
-    login.getUser(function(user){
-      if (task.creator.userId === user.userId) {
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (order) {
-          template.createApplyOrderDialog(that).show(order);
-        })
-        httpClient.send(request.url.queryCreateOrder, "GET", { pkId: task.pkId, cashierId: task.cashier.userId });
-      }
 
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (order) {
+      template.createSingleOrderDialog(that).show(order);
     })
+    httpClient.send(request.url.queryTaskOrder, "GET", { orderId: task.orderId });
+  },
+
+  setUser:function(res){
+    var userId = res.currentTarget.dataset.user;
+
+    var user = wx.getStorageSync('user');
+    user.userId = userId;
+    wx.setStorageSync('user', user);
+    wx.reLaunch({
+      url: '/pages/pk/pk/pk',
+    })
+
   }
 
 

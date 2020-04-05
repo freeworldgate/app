@@ -1,5 +1,5 @@
 
-var host = 'http://192.168.43.67:8084';
+var host = 'http://192.168.137.1:8084';
 
 // 上传图片接口
 var uploadUrl = 'https://oss.211shopper.com';
@@ -39,8 +39,8 @@ var url = {
         setOrderCut: `${host}/pk/setOrderCut`,
         orderConfirm: `${host}/pk/orderConfirm`,
         feeOrder: `${host}/pk/feeOrder`,
-        cashierOrderConfirm2: `${host}/pk/cashierOrderConfirm2`,
-        cashierOrderConfirm1: `${host}/pk/cashierOrderConfirm1`,
+        cashierOrderConfirm: `${host}/pk/cashierOrderConfirm`,
+
         approveOrderConfirm1: `${host}/pk/approveOrderConfirm1`,
         approveOrderConfirm2: `${host}/pk/approveOrderConfirm2`,
         payOrder: `${host}/pk/payOrder`,
@@ -52,9 +52,12 @@ var url = {
         queryTasks: `${host}/pk/queryTasks`,
         userIntegral: `${host}/pk/userIntegral`,
         queryPkStatu: `${host}/pk/queryPkStatu`,
-
-
-
+        
+        rewardOrder: `${host}/pk/rewardOrder`,
+        verifyOrder: `${host}/pk/verifyOrder`,
+        orderConfirmOutOfTime: `${host}/pk/orderConfirmOutOfTime`,
+        queryTaskOrder: `${host}/pk/queryTaskOrder`,
+        
 
 
 

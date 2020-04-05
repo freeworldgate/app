@@ -2078,34 +2078,23 @@ function createUploadFeeDialog(page){
   uploadFeeDialog.show = function (userCode) {
     page.setData({
       'uploadFeeDialog.visible': true,
+      'uploadFeeDialog.userCode': userCode,
     })            
     
     page.setData({ 'uploadFeeDialog.left': '-77' });
-    page.setData({ 'uploadFeeDialog.left': '-67' });
     page.setData({ 'uploadFeeDialog.left': '-57' });
-    page.setData({ 'uploadFeeDialog.left': '-47' });
     page.setData({ 'uploadFeeDialog.left': '-37' });
-    page.setData({ 'uploadFeeDialog.left': '-27' });
     page.setData({ 'uploadFeeDialog.left': '-17' });
-    page.setData({ 'uploadFeeDialog.left': '-7' });
     page.setData({ 'uploadFeeDialog.left': '3' });
 
-    page.setData({
-      'uploadFeeDialog.userCode': userCode,
-    })   
   }
   uploadFeeDialog.hide = function () {
 
     page.setData({ 'uploadFeeDialog.left': '-17' });
-    page.setData({ 'uploadFeeDialog.left': '-27' });
     page.setData({ 'uploadFeeDialog.left': '-37' });
-    page.setData({ 'uploadFeeDialog.left': '-47' });
     page.setData({ 'uploadFeeDialog.left': '-57' });
-    page.setData({ 'uploadFeeDialog.left': '-67' });
     page.setData({ 'uploadFeeDialog.left': '-77' });
-    page.setData({ 'uploadFeeDialog.left': '-87' });
     page.setData({ 'uploadFeeDialog.left': '-90' });
-
     page.setData({
       'uploadFeeDialog': {},
     })
@@ -2201,7 +2190,7 @@ function createUploadFeeDialog(page){
         httpClient.setMode("label", true);
         httpClient.addHandler("success", function (order) {
           createUploadFeeDialog(page).hide();
-          setTimeout(function () { createApplyOrderDialog(page).show(order); }, 500)
+          setTimeout(function () { createSingleOrderDialog(page).show(order); }, 500)
         })
         httpClient.send(request.url.queryCreateOrder, "GET", { pkId: page.data.pkId, cashierId: creatorId });
     })
@@ -2227,32 +2216,61 @@ function createApplyOrderDialog(page) {
 
 
   applyOrderDialog.show = function (order) {
+
+    page.setData({
+      'applyOrderDialog.time.leftTimes': order.leftTimes,
+      'applyOrderDialog.time.minute':  parseInt(order.leftTimes/60),
+      'applyOrderDialog.time.second': order.leftTimes%60,
+
+    })
+    var clock = setInterval(() => {
+      var leftTimes = page.data.applyOrderDialog.time.leftTimes - 1
+      //确认中 模式下才需要定时刷新时间
+      if(page.data.applyOrderDialog.order.statu.key != 1){ clearInterval(page.data.applyOrderDialog.clock);return;}
+      if(leftTimes < 0){
+
+        page._apply_confirm(order.orderId);
+
+        clearInterval(page.data.applyOrderDialog.clock);
+        
+
+        return;
+      }
+      var minute =  parseInt(leftTimes/60);
+      var second =  leftTimes%60;
+      page.setData({
+        'applyOrderDialog.time':{
+          leftTimes:leftTimes,
+          minute:minute,
+          second:second
+        }
+      })
+    }, 1000);
+    page.data.applyOrderDialog.clock = clock;
+
+
+
     page.setData({
       'applyOrderDialog.visible': true,
-    })
-
-    page.setData({ 'applyOrderDialog.left': '-77' });
-    page.setData({ 'applyOrderDialog.left': '-67' });
-    page.setData({ 'applyOrderDialog.left': '-57' });
-    page.setData({ 'applyOrderDialog.left': '-47' });
-    page.setData({ 'applyOrderDialog.left': '-37' });
-    page.setData({ 'applyOrderDialog.left': '-27' });
-    page.setData({ 'applyOrderDialog.left': '-17' });
-    page.setData({ 'applyOrderDialog.left': '-7' });
-    page.setData({ 'applyOrderDialog.left': '3' });
-    page.setData({
       'applyOrderDialog.order': order,
     })
+
+
+
+
+    page.setData({ 'applyOrderDialog.left': '-77' });
+    page.setData({ 'applyOrderDialog.left': '-57' });
+    page.setData({ 'applyOrderDialog.left': '-37' });
+    page.setData({ 'applyOrderDialog.left': '-17' });
+    page.setData({ 'applyOrderDialog.left': '3' });
+
   }
   applyOrderDialog.hide = function () {
+    clearInterval(page.data.applyOrderDialog.clock);
     page.setData({ 'applyOrderDialog.left': '-17' });
-    page.setData({ 'applyOrderDialog.left': '-27' });
     page.setData({ 'applyOrderDialog.left': '-37' });
-    page.setData({ 'applyOrderDialog.left': '-47' });
     page.setData({ 'applyOrderDialog.left': '-57' });
-    page.setData({ 'applyOrderDialog.left': '-67' });
     page.setData({ 'applyOrderDialog.left': '-77' });
-    page.setData({ 'applyOrderDialog.left': '-87' });
     page.setData({ 'applyOrderDialog.left': '-90' });
     page.setData({
       'applyOrderDialog': {},
@@ -2318,15 +2336,18 @@ function createApplyOrderDialog(page) {
   }
   page._applyOrderDialog_save = function(res){
     var imgSrc = res.currentTarget.dataset.url;
+    let fileName = new Date().valueOf();
+    let filePath = wx.env.USER_DATA_PATH + "/" + fileName + ".jpg";
     tip.showContentTip("下载图片中...");
     wx.downloadFile({
       url: imgSrc,
-      success: function (res) {
-        console.log(res);
+      filePath:filePath,
+      success: function (data) {
+     
         //图片保存到本地
         wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success: function (data) {
+          filePath: filePath,
+          success: function (succ) {
             wx.showToast({
               title: '保存成功',
               icon: 'success',
@@ -2369,7 +2390,23 @@ function createApplyOrderDialog(page) {
 
 
   }
+  page._apply_confirm = function(orderId){
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", false);
+    httpClient.addHandler("success", function (order) {
+        createApplyOrderDialog(page).show(order);
+    })
+    httpClient.send(request.url.orderConfirmOutOfTime, "GET", { orderId: orderId});
 
+
+
+
+
+
+
+
+
+  }
 
   page._applyOrderDialog_close = function () {
     page.applyOrderDialog.hide();
@@ -2390,6 +2427,7 @@ function createCashierOrderDialog(page) {
   cashierOrderDialog.show = function (order) {
     page.setData({
       'cashierOrderDialog.visible': true,
+      'cashierOrderDialog.order': order,
     })
 
     page.setData({ 'cashierOrderDialog.left': '-77' });
@@ -2401,9 +2439,7 @@ function createCashierOrderDialog(page) {
     page.setData({ 'cashierOrderDialog.left': '-17' });
     page.setData({ 'cashierOrderDialog.left': '-7' });
     page.setData({ 'cashierOrderDialog.left': '3' });
-    page.setData({
-      'cashierOrderDialog.order': order,
-    })
+
   }
   cashierOrderDialog.hide = function () {
     page.setData({ 'cashierOrderDialog.left': '-17' });
@@ -2493,6 +2529,116 @@ function createCashierOrderDialog(page) {
   };
   return cashierOrderDialog;
 
+}
+
+
+
+// 查看打赏订单
+function createRewardOrderDialog(page) {
+  if (page.rewardOrderDialog) {
+    return page.rewardOrderDialog;
+  }
+  var rewardOrderDialog = new Object();
+
+
+  rewardOrderDialog.show = function (order) {
+
+    page.setData({
+      'rewardOrderDialog.time.leftTimes': order.leftTimes,
+      'rewardOrderDialog.time.minute':  parseInt(order.leftTimes/60),
+      'rewardOrderDialog.time.second': order.leftTimes%60,
+
+    })
+    var clock = setInterval(() => {
+      var leftTimes = page.data.rewardOrderDialog.time.leftTimes - 1
+      //确认中 模式下才需要定时刷新时间
+      if(page.data.rewardOrderDialog.order.statu.key != 1){ clearInterval(page.data.rewardOrderDialog.clock);return;}
+      if(leftTimes < 0){
+
+        page._reward_confirm(request.url.cashierOrderConfirm1,order.orderId);
+
+        clearInterval(page.data.rewardOrderDialog.clock);
+        
+
+        return;
+      }
+      var minute =  parseInt(leftTimes/60);
+      var second =  leftTimes%60;
+      page.setData({
+        'rewardOrderDialog.time':{
+          leftTimes:leftTimes,
+          minute:minute,
+          second:second
+        }
+      })
+    }, 1000);
+    page.data.rewardOrderDialog.clock = clock;
+
+
+
+    page.setData({
+      'rewardOrderDialog.visible': true,
+      'rewardOrderDialog.order': order,
+    })
+
+
+
+
+    page.setData({ 'rewardOrderDialog.left': '-77' });
+    page.setData({ 'rewardOrderDialog.left': '-57' });
+    page.setData({ 'rewardOrderDialog.left': '-37' });
+    page.setData({ 'rewardOrderDialog.left': '-17' });
+    page.setData({ 'rewardOrderDialog.left': '3' });
+
+  }
+  rewardOrderDialog.hide = function () {
+    clearInterval(page.data.rewardOrderDialog.clock);
+    page.setData({ 'rewardOrderDialog.left': '-17' });
+    page.setData({ 'rewardOrderDialog.left': '-37' });
+    page.setData({ 'rewardOrderDialog.left': '-57' });
+    page.setData({ 'rewardOrderDialog.left': '-77' });
+    page.setData({ 'rewardOrderDialog.left': '-90' });
+    page.setData({
+      'rewardOrderDialog': {},
+    })
+  }
+  //-----------------------------page---------------------------------------
+
+
+
+
+  page.rewardOrderDialog = rewardOrderDialog;
+  //已收款
+  page._rewardOrderDialog_confirm1 = function(res){
+    var orderId = res.currentTarget.dataset.id;
+    page._reward_confirm(request.url.cashierOrderConfirm1,orderId);
+  }
+  //未收款
+  page._rewardOrderDialog_confirm2 = function (res) {
+    var orderId = res.currentTarget.dataset.id;
+    page._reward_confirm(request.url.cashierOrderConfirm2,orderId);
+  }
+
+  page._reward_confirm = function (url,orderId) {
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (order) {
+
+      createRewardOrderDialog(page).show(order);
+    })
+    httpClient.send(url, "GET", { orderId: orderId });
+  }
+
+
+
+
+
+
+
+  page._rewardOrderDialog_close = function () {
+    page.rewardOrderDialog.hide();
+  };
+  return rewardOrderDialog;
 }
 
 
@@ -2699,18 +2845,7 @@ function createApproveOrderDialog(page) {
     httpClient.send(request.url.approveOrderConfirm2, "GET", { dynamicId: dynamicId });
 
   }
-  page._approveOrderDialog_nextOrder = function () {
-    var httpClient = createHttpClient(page);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      page.setData({
-        'approveOrderDialog.order': order,
-        'approveOrderDialog.type': parseInt(page.data.approveOrderDialog.type),
-        'approveOrderDialog.page': page.data.approveOrderDialog.page + 1,
-      })
-    })
-    httpClient.send(request.url.feeOrder, "GET", { pkId: page.data.pkId, type: page.data.approveOrderDialog.type, page: page.data.approveOrderDialog.page + 1 });
-  }
+
   page._approveOrderDialog_selectType = function (res) {
     var type = parseInt(res.currentTarget.dataset.type);
     if (type != page.data.approveOrderDialog.type) {
@@ -2719,11 +2854,9 @@ function createApproveOrderDialog(page) {
       httpClient.addHandler("success", function (order) {
         page.setData({
           'approveOrderDialog.order': order,
-          'approveOrderDialog.type': type,
-          'approveOrderDialog.page': 1,
         })
       })
-      httpClient.send(request.url.approveUserCode, "GET", { pkId: page.data.pkId, type: type, page: 1 });
+      httpClient.send(request.url.approveUserCode, "GET", { pkId: page.data.pkId });
 
     }
 
@@ -2937,30 +3070,21 @@ function createIntegralDialog(page) {
   integralDialog.show = function (userIntegral) {
     page.setData({
       'integralDialog.visible': true,
+      'integralDialog.integral': userIntegral,
     })
 
     page.setData({ 'integralDialog.left': '-77' });
-    page.setData({ 'integralDialog.left': '-67' });
     page.setData({ 'integralDialog.left': '-57' });
-    page.setData({ 'integralDialog.left': '-47' });
     page.setData({ 'integralDialog.left': '-37' });
-    page.setData({ 'integralDialog.left': '-27' });
     page.setData({ 'integralDialog.left': '-17' });
-    page.setData({ 'integralDialog.left': '-7' });
     page.setData({ 'integralDialog.left': '3' });
-    page.setData({
-      'integralDialog.integral': userIntegral,
-    })
+
   }
   integralDialog.hide = function () {
     page.setData({ 'integralDialog.left': '-17' });
-    page.setData({ 'integralDialog.left': '-27' });
     page.setData({ 'integralDialog.left': '-37' });
-    page.setData({ 'integralDialog.left': '-47' });
     page.setData({ 'integralDialog.left': '-57' });
-    page.setData({ 'integralDialog.left': '-67' });
     page.setData({ 'integralDialog.left': '-77' });
-    page.setData({ 'integralDialog.left': '-87' });
     page.setData({ 'integralDialog.left': '-90' });
     page.setData({
       'integralDialog': {},
@@ -2980,13 +3104,196 @@ function createIntegralDialog(page) {
 
 }
 
+// /订单页面
+function createSingleOrderDialog(page) {
+  if (page.singleOrderDialog) {
+    return page.singleOrderDialog;
+  }
+  var singleOrderDialog = new Object();
 
+
+  singleOrderDialog.show = function (order) {
+ 
+
+    page.setData({
+      'singleOrderDialog.time.leftTimes': order.leftTimes,
+      'singleOrderDialog.time.minute':  parseInt(order.leftTimes/60),
+      'singleOrderDialog.time.second': order.leftTimes%60,
+
+    })
+    if((order.statu.key===1) && (order.leftTimes > 0)){
+      var clock = setInterval(() => {
+        var leftTimes = page.data.singleOrderDialog.time.leftTimes - 1
+        //确认中 模式下才需要定时刷新时间
+        if(page.data.singleOrderDialog.order.statu.key != 1){ clearInterval(page.data.singleOrderDialog.clock);return;}
+        if(leftTimes <= 0){
+  
+          page._order_outOfTime(order.orderId);
+          clearInterval(page.data.singleOrderDialog.clock);
+        
+          return;
+        }
+        var minute =  parseInt(leftTimes/60);
+        var second =  leftTimes%60;
+        page.setData({
+          'singleOrderDialog.time':{
+            leftTimes:leftTimes,
+            minute:minute,
+            second:second
+          }
+        })
+      }, 1000);
+      page.data.singleOrderDialog.clock = clock;
+
+    }
+
+
+
+
+    page.setData({
+      'singleOrderDialog.visible': true,
+      'singleOrderDialog.order': order,
+    })
+
+
+
+
+    page.setData({ 'singleOrderDialog.left': '-77' });
+    page.setData({ 'singleOrderDialog.left': '-57' });
+    page.setData({ 'singleOrderDialog.left': '-37' });
+    page.setData({ 'singleOrderDialog.left': '-17' });
+    page.setData({ 'singleOrderDialog.left': '3' });
+
+  }
+  singleOrderDialog.hide = function () {
+    
+    clearInterval(page.data.singleOrderDialog.clock);
+
+    page.setData({ 'singleOrderDialog.left': '-17' });
+    page.setData({ 'singleOrderDialog.left': '-37' });
+    page.setData({ 'singleOrderDialog.left': '-57' });
+    page.setData({ 'singleOrderDialog.left': '-77' });
+    page.setData({ 'singleOrderDialog.left': '-90' });
+    page.setData({
+      'singleOrderDialog': {},
+    })
+  }
+  //-----------------------------page---------------------------------------
+
+
+
+
+  page.singleOrderDialog = singleOrderDialog;
+  //收款或者未收款
+  page._singleOrderDialog_feeConfirm = function(res){
+    var orderId = res.currentTarget.dataset.id;
+    var tag = res.currentTarget.dataset.tag;
+    page._reward_confirm(request.url.cashierOrderConfirm,orderId,tag);
+  }
+
+
+  page._reward_confirm = function (url,orderId,tag) {
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (order) {
+      createSingleOrderDialog(page).hide();
+      createSingleOrderDialog(page).show(order);
+    })
+    httpClient.send(url, "GET", { orderId: orderId,tag: tag });
+  }
+  // 订单超时
+  page._order_outOfTime = function(orderId){
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", false);
+    httpClient.addHandler("success", function (order) {
+        createSingleOrderDialog(page).hide();
+        createSingleOrderDialog(page).show(order);
+    })
+    httpClient.send(request.url.orderConfirmOutOfTime, "GET", { orderId: orderId});
+
+  }
+
+  //上传支付截图
+  page._singleOrderDialog_uploadOrderCut = function(){
+
+    //
+    if(page.data.singleOrderDialog.order.statu.statu === 1){return;}
+    if (page.data.singleOrderDialog.order.statu.statu === 2) { return; }
+    if (page.data.singleOrderDialog.order.statu.statu === 3) { return; }
+
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album'],
+      success(res) {
+        login.getUser(function (loginUser) {
+
+          wx.showLoading({
+            title: '上传订单截图...',
+          })
+          upload.uploadImages2(loginUser.userId, "feeCode", [res.tempFilePaths[0]], page,
+            function (urls) {
+              wx.hideLoading();
+              console.log("图片集合", urls);
+              var httpClient = createHttpClient(page);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (order) {
+                page.setData({
+                  'singleOrderDialog.order': order,
+                })
+              })
+              httpClient.send(request.url.setOrderCut, "GET", { orderId: page.data.singleOrderDialog.order.orderId, url: urls[0]});
+            },
+            function () {
+              wx.hideLoading();
+              showTip("上传失败......");
+
+            });
+
+
+        })
+
+
+
+
+
+
+      },
+    })
+
+
+
+
+
+  }
+  //确定创建订单
+  page._singleOrderDialog_confirm = function(){
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (order) {
+      
+      createSingleOrderDialog(page).show(order);
+
+    })
+    httpClient.send(request.url.orderConfirm, "GET", { orderId: page.data.singleOrderDialog.order.orderId});
+
+
+
+  }
+
+
+
+  page._singleOrderDialog_close = function () {
+    page.singleOrderDialog.hide();
+  };
+  return singleOrderDialog;
+}
 
 
 //页面加固
 
 
-module.exports = { createDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 
