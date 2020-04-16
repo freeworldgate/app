@@ -1414,6 +1414,18 @@
   padding-top: 15rpx;
   background-color: rgb(255, 249, 249);
 }
+.t19-1-edit{
+  /* text-align:center; */
+  width: 70vw;
+  font-size: 35rpx;
+  font-weight: 400;
+  height: 20vw;
+  /* padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-bottom: 15rpx;
+  padding-top: 15rpx; */
+  background-color: rgb(255, 249, 249);
+}
 .t19-1-2{
   /* text-align:center; */
   width: 100%;

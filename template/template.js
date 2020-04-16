@@ -1882,17 +1882,37 @@ function createSinglePostDialog(page) {
   //-----------------------------page---------------------------------------
   page.singlePostDialog_likeOrDisLike = function (res){
 
+    var that = this;
     var post = res.currentTarget.dataset.post;
 
     var httpClient = createHttpClient(page);
     httpClient.setMode("", true);
-    httpClient.addHandler("success", function () { })
+    httpClient.addHandler("success", function (score) {
+      if(!post.queryerCollect){
+        page.setData({
+          "singlePostDialog.post.userIntegral.follow": that.data.singlePostDialog.post.userIntegral.follow + score,
+        })
+
+      }
+      else
+      {
+        page.setData({
+          "singlePostDialog.post.userIntegral.follow": that.data.singlePostDialog.post.userIntegral.follow - score,
+        })
+      }
+
+
+
+
+    })
     httpClient.send(request.url.likeOrDisLike, "GET", { pkId: post.pkId, postId: post.postId, isQueryerCollect: post.queryerCollect });
 
-
     page.setData({
-      "singlePostDialog.post.queryerCollect": !post.queryerCollect
+      "singlePostDialog.post.queryerCollect": !post.queryerCollect,
     })
+
+
+
   }
   page._singlePostDialog_upload = function(res){
     // 续传图片
@@ -2174,9 +2194,6 @@ function createUploadFeeDialog(page){
 
   }
 
-
-
-
   page._uploadFeeDialog_apply = function(){
     var httpClient = createHttpClient(page);
     httpClient.setMode("label", true);
@@ -2195,6 +2212,35 @@ function createUploadFeeDialog(page){
         httpClient.send(request.url.queryCreateOrder, "GET", { pkId: page.data.pkId, cashierId: creatorId });
     })
     httpClient.send(request.url.applyOrder, "GET", {pkId:page.data.pkId});
+
+
+  },
+
+  page._uploadFeeDialog_complain = function(res){
+    var id = res.currentTarget.dataset.id;
+    createUploadFeeDialog(page).hide();
+    createOperateDialog(page).show("投诉收款方", "投诉收款方?", function () {
+
+      var httpClient = createHttpClient(page);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (order) {
+
+      })
+      httpClient.send(request.url.complainOrder, "GET", { id:id,tag:1});
+    }, function () { });
+
+
+
+
+  }
+  page._uploadFeeDialog_info = function(){
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("label", false);
+    httpClient.addHandler("success", function (infos) {
+      createHelpInfoDialog(page).show(infos);
+    })
+    httpClient.send(request.url.helpInfo, "GET", {tag:1});
+
 
 
   }
@@ -3282,7 +3328,7 @@ function createSingleOrderDialog(page) {
   },
   // 投诉
   page._singleOrderDialog_complain = function(res){
-    var orderId = res.currentTarget.dataset.order;
+    var id = res.currentTarget.dataset.id;
     createSingleOrderDialog(page).hide();
 
     createOperateDialog(page).show("投诉收款方", "投诉收款方?", function () {
@@ -3292,7 +3338,7 @@ function createSingleOrderDialog(page) {
       httpClient.addHandler("success", function (order) {
 
       })
-      httpClient.send(request.url.complainOrder, "GET", { orderId:orderId});
+      httpClient.send(request.url.complainOrder, "GET", { id:id,tag:2});
     }, function () { });
 
   },
@@ -3301,10 +3347,12 @@ function createSingleOrderDialog(page) {
 
     var httpClient = createHttpClient(page);
     httpClient.setMode("label", false);
-    httpClient.addHandler("success", function (order) {
-        
+    httpClient.addHandler("success", function (infos) {
+
+      createHelpInfoDialog(page).show(infos);
+
     })
-    httpClient.send(request.url.helpInfo, "GET", {});
+    httpClient.send(request.url.helpInfo, "GET", {tag:2});
 
 
 
@@ -3320,11 +3368,42 @@ function createSingleOrderDialog(page) {
   return singleOrderDialog;
 }
 
+// HelpInfo
+function createHelpInfoDialog(page) {
+  if (page.helpInfoDialog) {
+    return page.helpInfoDialog;
+  }
+  var helpInfoDialog = new Object();
+
+
+  helpInfoDialog.show = function (helpInfo) {
+    page.setData({
+      'helpInfoDialog.infos':helpInfo,
+      'helpInfoDialog.visible': true,
+    })
+  }
+
+  helpInfoDialog.hide = function () {
+    
+    page.setData({
+      'helpInfoDialog': {},
+    })
+  }
+  //-----------------------------page---------------------------------------
+
+  page.helpInfoDialog = helpInfoDialog;
+  //收款或者未收款
+
+  page._helpInfoDialog_close = function () {
+    page.helpInfoDialog.hide();
+  };
+  return helpInfoDialog;
+}
 
 //页面加固
 
 
-module.exports = { createDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

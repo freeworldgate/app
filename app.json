@@ -8,16 +8,16 @@
     "pages/pk/cashList/cashList",
     "pages/pk/selectCashier/selectCashier",
     "pages/pk/payList/payList",
-
-
-
+    "pages/pk/complain/complain",
+    "pages/pk/selectApprover/selectApprover",
+    "pages/pk/approver/approver",
 
 
 
     "pages/pk/singlePost/singlePost",
     "pages/pk/userSinglePost/userSinglePost",
     "pages/pk/cashiers/cashiers",
-
+    "pages/pk/approverInfos/approverInfos",
 
     "pages/pk/userCreatePks/userCreatePks",
     "pages/pk/userPkOrder/userPkOrder",

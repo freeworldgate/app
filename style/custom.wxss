@@ -206,6 +206,22 @@
     bottom: 0px; 
     left: 0px;
 }
+.coverAll3-1{
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: rgb(55, 55, 55);
+    position: fixed;
+    bottom: 0px; 
+    left: 0px;
+}
+.coverAll3-2{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0px; 
+    left: 0px;
+}
 .coverAll4{
     width: 100%;
     height: 100%;
@@ -773,6 +789,14 @@
     /* top:0px; */
     left: 3vw;
     border-radius: 40rpx;
+}
+.editDialog-1-1{
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    z-index: 29;
+    bottom: 6vw; 
+
 
 }
 .editDialog-2{
@@ -810,6 +834,17 @@
     z-index: 29;
     bottom: 10vw; 
 }
+
+.editDialog-7{
+
+    height: auto;
+    width: 94vw;
+    position: fixed;
+    z-index: 29;
+    bottom: 10vw; 
+}
+
+
 .editTextDialog{
     width: 100%;
     height: auto;

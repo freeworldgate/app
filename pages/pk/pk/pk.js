@@ -42,8 +42,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    options.pkId = "PK01";
 
+
+    
     var that = this;
+
+
     //Top高度
     inviteReq.getHeight(function (res) {
       that.setData({
@@ -61,7 +66,7 @@ Page({
     
 
     wx.setStorageSync("fromUser", fromUser);
-    wx.setStorageSync("pkId", this.data.pkId);
+    wx.setStorageSync("pkId", pkId);
   
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);

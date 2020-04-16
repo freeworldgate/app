@@ -1,5 +1,5 @@
 
-var host = 'http://192.168.137.1:8084';
+var host = 'http://192.168.43.67:8080';
 
 // 上传图片接口
 var uploadUrl = 'https://oss.211shopper.com';
@@ -59,7 +59,18 @@ var url = {
         queryTaskOrder: `${host}/pk/queryTaskOrder`,
         complainOrder: `${host}/pk/complainOrder`,
         helpInfo: `${host}/pk/helpInfo`,
+        nextComplain: `${host}/pk/nextComplain`,
         
+        approvedComplain: `${host}/pk/approvedComplain`,
+   
+        queryApproveInfo1: `${host}/pk/queryApproveInfo1`,
+        queryApproveInfo2: `${host}/pk/queryApproveInfo2`,
+        setApprover: `${host}/pk/setApprover`,
+        setApproveInfo: `${host}/pk/setApproveInfo`,
+        
+        queryApprovedPost: `${host}/pk/queryApprovedPost`,
+        approve: `${host}/pk/approve`,
+        setComment: `${host}/pk/setComment`,
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/user/login`,
