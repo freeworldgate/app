@@ -9,7 +9,93 @@ var inviteReq = require('./../utils/invite.js')
 var userInvite = require('./../utils/userInvite.js')
 var upload = require('./../utils/uploadFile.js')
 
+// 上传图片
 
+function uploadImages3(upType, files,page, successCallBack, failureCallBack){
+  wx.showLoading({
+    title: '0/' + files.length
+  })
+
+  var urls = new Array();
+  getOssInfo(upType,page,function(ossData){
+
+    uploadMulptiImages3(files, ossData, urls, page, successCallBack, failureCallBack);
+  },function(){
+    failureCallBack();
+  });
+
+}
+//上传图片
+function uploadMulptiImages3(files, data, urls, page, successCallBack, failureCallBack){
+      for(var num=0;num<files.length;num++){
+          uploadSingleImages3(files,num,data,urls,page,successCallBack, failureCallBack);
+      }
+}
+function uploadSingleImages3(files,num,data,urls,page,successCallBack, failureCallBack) {
+  var file = files[num];
+  var fileNameColums = file.split(".");
+  var suffix = fileNameColums[fileNameColums.length - 1];
+  console.log("文件类型:", suffix);
+  var aliyunFileKey = data.directory + '/' + data.prefix + '-' + (new Date().getTime()) + '.' + suffix;
+  wx.uploadFile({
+    url: data.aliyunServerURL,
+    filePath: file,
+    method: "POST",
+    name: "file",
+    header:{
+      'Connection':'close',
+      // 'socketTimeout':'300000',
+      // 'connetionTimeout':'300000',
+    },
+    formData: {
+      'name': file,
+      'key': aliyunFileKey,
+      'OSSAccessKeyId': data.ossaccessKeyId,
+      'policy': data.policyBase64,
+      'Signature': data.signature,
+      'success_action_status': '200',
+    },
+    success: function (aliyunResp) {
+      
+      if (aliyunResp.statusCode === 200) {
+          urls.push(data.aliyunServerURL+"/"+aliyunFileKey);
+          
+          tip.showLoading(urls.length + "/" + files.length);
+
+
+          if(urls.length === files.length){
+              wx.hideLoading({complete: (res) => {},})
+              successCallBack(urls);
+          } 
+        return;
+      }
+      wx.hideLoading({complete: (res) => {},})
+      failureCallBack();
+    },
+    fail: function () {
+      wx.hideLoading({complete: (res) => {},})
+      failureCallBack();
+    }
+  })
+
+
+
+
+
+}
+function getOssInfo(upType, page,successCallBack, failureCallBack){
+
+
+  var httpClient = createHttpClient(page);
+  httpClient.setMode("", true);
+  httpClient.addHandler("success", function (data) {
+    successCallBack(data);
+  })
+  httpClient.send(request.url.getOssUploadUrl, "GET",{type:upType})
+
+
+
+}
 
 
 
@@ -406,7 +492,7 @@ function createEditImageDialog(page) {
         'editImageDialog.visible': false,
       })
       editImageDialog.confirm();
-      upload.uploadImages2(user.userId, "userUpload", page.data.editImageDialog.images, page,
+      uploadImages3("userUpload", page.data.editImageDialog.images, page,
         function (urls) {
           console.log("图片集合", urls);
 
@@ -1920,43 +2006,19 @@ function createSinglePostDialog(page) {
     
     page.singlePostDialog.hide();
 
-    createEditImageDialog(page).setDialog("续传榜帖", post.topic, 9, function () {
-      console.log("-------------confirm------------");
-      page.singlePostDialog.show(post, singlePostDialog.success);
-      page.setData({
-        "singlePostDialog.statu": 'loading'
-      })
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+          var files = res.tempFilePaths;
+          wx.navigateTo({
+            url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + page.data.pkId,
+          })
+      },
+    })
 
-    }, function (text, urls) {
-      //上传成功
-      var httpClient = createHttpClient(page);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (post) {
 
-        page.setData({
-          "singlePostDialog.post": post,
-          "singlePostDialog.statu": 'normal'
-        })
-        page.singlePostDialog.success(post);
-
-      })
-      httpClient.send(request.url.uploadPostImgs, "GET",
-        {
-          pkId:page.data.pkId,
-          postId:post.postId,
-          title: text,
-          imgUrls: urls,
-        }
-      );
-
-    }, function () {
-      //上传失败
-      page.setData({
-        "singlePostDialog.statu": 'normal'
-      })
-      tip.showContentTip("续传失败!");
-      
-    }).show();
 
 
 
@@ -3403,7 +3465,7 @@ function createHelpInfoDialog(page) {
 //页面加固
 
 
-module.exports = { createDialog,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,uploadImages3,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

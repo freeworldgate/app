@@ -815,6 +815,7 @@
     z-index: 29;
     bottom: 10vw; 
 }
+
 .editDialog-4{
     height: 100%;
     position: fixed;

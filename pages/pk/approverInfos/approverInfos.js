@@ -21,15 +21,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tag:0
+    tag:0,
+    approvingEnd:false,
+    approvedEnd:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
     var that = this;
+    inviteReq.getHeight(function (res) {
+      that.setData({
+        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+    })
+
+
+
+   
     that.data.pkId = options.pkId;
     that.data.approverUserId = options.approverUserId;
     var httpClient = template.createHttpClient(that);
@@ -41,15 +51,71 @@ Page({
     this.setData({tag:0})
   },
   changeTag1:function(){
-    this.setData({tag:1})
+    var that = this;
+    if(that.data.approvingPosts){
+      that.setData({tag:1})
+      return;
+    }
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.queryApprovingPost, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId});
+  
+
   },
-  changePost:function(res){
+  changeApprovedPost:function(res){
+    
     console.log(res);
     var that = this;
+    if(!that.data.approvedPosts){return;}
+    if(that.data.approvedPosts.length===0){return;}
     var index = res.detail.current;
     that.setData({
-      currentPost:that.data.approvedPosts[index],
+      currentApprovedPost:that.data.approvedPosts[index],
     })
+    
+    if(that.data.approvedPosts.length - index >3){return;}
+    if(that.data.approvedEnd){return;}
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (posts) {
+      that.setData({
+          currentApprovedPage:that.data.currentApprovedPage + 1,
+          approvedPosts:that.data.approvedPosts.concat(posts)
+      })
+    })
+    httpClient.send(request.url.queryMoreApprovedPost, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId,currentApprovedPage: that.data.currentApprovedPage});
+  
+
+
+
+
+  },
+  changeApprovingPost:function(res){
+    console.log(res);
+    var that = this;
+    if(!that.data.approvingPosts){return;}
+    if(that.data.approvingPosts.length===0){return;}
+    var index = res.detail.current;
+    that.setData({
+      currentApprovingPost:that.data.approvingPosts[index],
+    })
+    if(that.data.approvingPosts.length - index >3){return;}
+    if(that.data.approvingEnd){return;}
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (posts) {
+      that.setData({
+          currentApprovingPage:that.data.currentApprovingPage + 1,
+          approvingPosts:that.data.approvingPosts.concat(posts)
+      })
+    })
+    httpClient.send(request.url.queryMoreApprovingPost, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId,currentApprovingPage: that.data.currentApprovingPage});
+  
+
+
   }
 
 })

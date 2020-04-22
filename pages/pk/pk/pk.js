@@ -107,13 +107,31 @@ Page({
       });
 
     })
+    httpClient.addHandler("uploadImgs", function (post) {
+      
+        that.uploadImgs();
 
+    })
     httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
- 
+  },
 
-
+  uploadImgs:function(successCallBack){
+    var that = this;
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+          var files = res.tempFilePaths;
+          wx.navigateTo({
+            url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + that.data.pkId,
+          })
+      },
+    })
 
   },
+
+
 
   createPost:function(){
     var that = this;
@@ -466,23 +484,10 @@ Page({
       },
       
       success:function(res){
-          if(res.data._4_handler_name === "tasks"){
-              that.setData({ 
-                tasks:res.data._4_data,
-                pkStatu: 2 
-              })
-          }
-          else if(res.data._4_handler_name === "infos"){
-              that.setData({ 
-                infos:res.data._4_data,
-                pkStatu: 1
-              })
-          }
-          else
-          {}
+          that.setData({ 
+             infos:res.data._4_data,
 
-   
-
+          })
 
       }
       
@@ -496,6 +501,34 @@ Page({
   onShow:function(){
     var that = this;
     this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
+
+    // wx.setStorageSync("action", "userPost")
+    var action = wx.getStorageSync('action');
+    if(action==="userPost"){
+          var post = wx.getStorageSync('post');
+
+          wx.removeStorageSync('action')
+          wx.removeStorageSync('post')
+          // that.data.posts.splice(0,0,post);
+          // that.setData({
+          //   posts: that.data.posts
+          // })
+          template.createSinglePostDialog(that).show(post, function (newPost) {
+            if(that.data.posts[0].postId === newPost.postId){
+              that.data.posts.splice(0, 1, newPost);
+            }
+            else{
+              that.data.posts.splice(0, 0, newPost);
+            }
+            that.setData({
+              posts: that.data.posts
+            })
+          });
+
+
+
+
+    }
 
   },
   onHide:function(){

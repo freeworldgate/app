@@ -1,4 +1,4 @@
-
+// var host = 'http://www.211shopper.com';
 var host = 'http://192.168.43.67:8080';
 
 // 上传图片接口
@@ -67,10 +67,20 @@ var url = {
         queryApproveInfo2: `${host}/pk/queryApproveInfo2`,
         setApprover: `${host}/pk/setApprover`,
         setApproveInfo: `${host}/pk/setApproveInfo`,
-        
+        queryApprovingPost: `${host}/pk/queryApprovingPost`,
         queryApprovedPost: `${host}/pk/queryApprovedPost`,
+        queryMoreApprovingPost: `${host}/pk/queryMoreApprovingPost`,
+        queryMoreApprovedPost: `${host}/pk/queryMoreApprovedPost`,
+        
+        setApproveUser: `${host}/pk/setApproveUser`,
+        
         approve: `${host}/pk/approve`,
         setComment: `${host}/pk/setComment`,
+        querySort: `${host}/pk/querySort`,
+
+        queryMoreSort: `${host}/pk/queryMoreSort`,
+        
+        updateTime: `${host}/pk/updateTime`,
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/user/login`,

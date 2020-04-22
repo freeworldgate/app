@@ -1,0 +1,103 @@
+<!--pages/pk/uploadImgs/uploadImgs.wxml-->
+
+<view class="css ">
+    <view class="css pr-3vw pl-3vw">
+        <view class="css p-20 b-40-1 " >
+            <textarea adjustPosition="true" bindinput="_input" class=" h-150 fs-35 fw-400" cursorSpacing="50" fixed="true" maxlength="200" placeholder="给图片加点描述吧" value=""></textarea>
+        </view>
+        <view class="rbc">
+            <view></view>
+            <view class="fs-20 fw-400 c-3">还可输入{{left}}个字</view>
+        </view>
+    </view>
+    <view class="css pr-2vw pl-2vw">
+        <view class="rus-wrap">
+            <block wx:for="{{imgs}}"  wx:for-index="bindex" wx:for-item="img" wx:key="idx2" >
+                <view class="rcc w-32vw h-32vw">
+                    <image class="br-10 w-30vw h-30vw" mode="aspectFill" src="{{img}}"></image>
+                    <view hidden="{{imgs.length<2}}" class="absolute css w-32vw h-32vw">
+                        <view class="rbc">
+                            <view></view>
+                            <view class="rcc w-12vw h-12vw" bindtap="_remove" class="rcc w-100 h-100" data-index="{{bindex}}">
+                                <image class="w-60 h-60" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"></image>
+                            </view>
+                        </view>
+                    </view> 
+                </view>
+                
+            </block>
+
+            <view class="rcc w-32vw h-32vw">
+                <view class="ccc br-10 w-30vw h-30vw b-40" bindtap="_add">
+                  <view class="fs-50 fw-700 c-5">+</view>
+                  <view class="fs-30 fw-700 c-5">添加照片</view>
+                </view>
+
+            </view>
+
+        </view>
+    </view>
+
+
+                <!-- <scroll-view class="rss" scrollX="true" style="white-space:nowrap">
+                    <view class="rcc" style="display:inline-block" wx:for="{{editImageDialog.images}}" wx:for-index="bindex" wx:for-item="image" wx:key="idx2">
+                        <view class="css mr-10">
+                            <image bindtap="_editImageDialog_change" class="br-10" data-index="{{bindex}}" mode="aspectFill" src="{{image}}" style="height:30vw;width:30vw"></image>
+                            <view class="css absolute " hidden="{{editImageDialog.images.length<2}}">
+                                <view class="rbc">
+                                    <view></view>
+                                    <view class="rcc">
+                                        <view bindtap="_editImageDialog_remove" class="rcc w-100 h-100" data-index="{{bindex}}">
+                                            <image class="w-60 h-60" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/remove.png"></image>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view> -->
+
+
+
+
+</view>
+
+
+<view class="ccc uploadButton">
+
+
+    <view class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white" bindtap="upload">立即上传</view>
+    <view class="h-50"></view>
+</view>
+
+<view>
+
+    <view catchtouchmove="return" class="coverAll99" hidden="{{labelLoadingDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="rcc labelLoadingDialog " hidden="{{labelLoadingDialog.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <image class="labelLoadingDialog_image" mode="aspectFill" src="/images/loading.gif"></image>
+            <view class="labelLoadingDialog_text">加载中</view>
+        </view>
+    </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -44,6 +44,7 @@ Page({
     var that = this;
     var index = res.detail.current;
     that.setData({
+      currentIndex:index,
       currentApprover:that.data.approveUserList[index],
     })
 
@@ -59,15 +60,19 @@ Page({
   },
   setComment:function(){
     var that = this;
-    template.createEditImageDialog(that).setDialog("留言", "编辑留言", 1, function () {
-
-    }, function (text, urls) {
+    template.createEditImageDialog(that).setDialog("留言", "编辑留言", 1,function(){}, function (text, urls) {
       //上传成功
-
+      wx.hideLoading({
+        complete: (res) => {},
+      })
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (post) {
-
+      httpClient.addHandler("success", function (currentApprover) {
+          var key = "approveUserList[" +that.data.currentIndex+"]"
+          that.setData({
+            [key]:currentApprover,
+            currentApprover:currentApprover,
+          })
 
       })
       httpClient.send(request.url.setComment, "GET",
@@ -81,7 +86,9 @@ Page({
 
     }, function () {
       //上传失败
-
+      wx.hideLoading({
+        complete: (res) => {},
+      })
     }).show();
 
 

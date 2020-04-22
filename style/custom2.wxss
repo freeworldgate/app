@@ -69,7 +69,10 @@
   color: darkgreen;
 }
 .c-red{
-  color: red;
+  color: #d81e06;
+}
+.c-blue{
+  color: #13227a;
 }
 .c-1{
   color: #ff6600;
@@ -220,7 +223,7 @@
 .p-25{padding: 25rpx;}
 .p-30{padding: 30rpx;}
 .p-50{padding: 50rpx;}
-
+.p-100{padding: 100rpx;}
 
 .pl-p15{
   padding-left: 1.5%;
@@ -313,6 +316,9 @@
 }
 .ml-30{
   margin-left: 30rpx;
+}
+.ml-50{
+  margin-left: 50rpx;
 }
 .ml-10px{
   margin-left: 10px;
@@ -429,6 +435,7 @@
 .h-400{height: 400rpx;}
 .h-450{height: 450rpx;}
 .h-500{height: 500rpx;}
+.h-600{height: 600rpx;}
 .h-700{height: 700rpx;}
 .h-auto{height: auto}
 .max-h-150{
@@ -455,6 +462,14 @@
 
 .h-35vw{
   height: 35vw;
+}
+.h-150vh{
+  height: 150vh;
+
+}
+.h-80vh{
+  height: 80vh;
+
 }
 .minHeight-100vh{
   min-height: 100vh;
@@ -492,6 +507,7 @@
 .w-280{width: 280rpx;}
 .w-300{width: 300rpx;}
 .w-400{width: 400rpx;}
+.w-500{width: 500rpx;}
 .w-auto{width: auto}
 .w-100p{width: 100%}
 .w-100vw{width: 100vw}
@@ -504,7 +520,8 @@
 .w-92vw{width: 92vw}
 .h-100vh{height: 100vh}
 .w-100vw{width: 100vw}
-
+.w-29vw{width: 29vw}
+.w-29vw{width: 29vw}
 .w-1vw{
   width: 1vw;
 }
@@ -538,9 +555,10 @@
 .w-9vw{
   width: 9vw;
 }
-.w-12vw{
-  width: 12vw;
-}
+.w-10vw{width: 10vw;}
+.h-10vw{height: 10vw;}
+.w-12vw{width: 12vw;}
+.h-12vw{height: 12vw;}
 .w-18vw{
   width: 18vw;
 }
@@ -550,8 +568,13 @@
 .w-22vw{
   width: 22vw;
 }
+.p-1vw{
+  padding: 1vw;
+}
 .h-30vw{height: 30vw}
 .w-30vw{width: 30vw}
+.h-32vw{height: 32vw}
+.w-32vw{width: 32vw}
 .w-4vw{width: 4vw}
 .h-4vw{height: 4vw}
 .h-35vw{height: 35vw}
@@ -580,10 +603,12 @@ mw-200{
 .cashier{
   background-color: rgba(187, 134, 0, 0.5)
 }
-
+.detail{
+  background-color: rgba(185, 143, 35, 0.186)
+}
 .rewardStatu{
 
-    background-color: rgba(216, 130, 0, 0.707);
+    background-color: rgba(196, 113, 4, 0.268);
 
 }
 
@@ -703,6 +728,13 @@ mw-200{
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
+.b-upload{
+  background-image: linear-gradient(to right, #4487c5 0%, #4db3d8 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
 .b-35{
     background: radial-gradient(rgb(251, 255, 235),rgb(235, 255, 245));
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -726,7 +758,7 @@ mw-200{
   background-color: rgb(240, 240, 240);
 }
 .b-40-1{
-  background-color: rgb(248, 248, 248);
+  background-color: rgba(240, 240, 240, 0.8);
 }
 .b-41{
   background-color: rgb(240, 240, 240);
@@ -749,6 +781,9 @@ mw-200{
 .b-45-2{
   background-color: rgba(245, 245, 245, 0.5);
 }
+.b-45-3{
+  background-color: rgba(53, 53, 53, 0.625);
+}
 .b-46{
   background-color: rgba(211, 211, 211);
 }
@@ -757,6 +792,9 @@ mw-200{
 }
 .b-48{
   background-color: rgba(250, 250, 250);
+}
+.b-49{
+  background-color: rgba(230, 230, 230);
 }
 .b-green{
   background-color: green;
@@ -798,6 +836,9 @@ mw-200{
 .border6{
       border: 3px solid rgb(255, 255, 255); 
 }
+.border6-1{
+  border: 3px solid rgb(141, 120, 97); 
+}
 .border7{
       border: 2px solid rgba(0, 162, 255, 0.63); 
 }
@@ -806,6 +847,9 @@ mw-200{
 }
 .border9{
       border: 1px solid rgb(165, 165, 165); 
+}
+.border9-1{
+  border: 1px solid rgba(165, 165, 165, 0.858); 
 }
 .border10{
       border: 1px solid rgb(255, 136, 0); 
@@ -1068,6 +1112,7 @@ mw-200{
   height:32px;
   left: 4vw;
 }
+
 .bottomBar{
   position: fixed;
   left: 0;
@@ -1077,7 +1122,14 @@ mw-200{
   background-color: rgba(28, 28, 28, 0.953);
   /* background-color: rgb(255, 255, 255); */
 }
-
+.uploadButton{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  /* background-color: rgb(255, 255, 255); */
+}
 .order{
     position: fixed;
     width: 100%;
@@ -1164,7 +1216,7 @@ button::after {
       height: 0;
       border-left: 15rpx solid transparent;
       border-right: 15rpx solid transparent;
-      border-bottom: 20rpx solid #f5f5f5;
+      border-bottom: 20rpx solid rgba(240, 240, 240, 0.8);
     }
 .pointer {
       width: 15px;
@@ -1497,7 +1549,13 @@ button::after {
   background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/back36.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: top;
+  background-position: bottom;
+}
+.backImg25-1{
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/back33.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: bottom;
 }
 .backImg26{
   background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/back118.png");
@@ -1594,8 +1652,16 @@ button::after {
   bottom:10vw;
 }
 
+.singlePost{
 
 
+  height: auto;
+  width: 100vw;
+  position: fixed;
+  z-index: 29;
+  bottom: 0vw; 
+
+}
 
 
 

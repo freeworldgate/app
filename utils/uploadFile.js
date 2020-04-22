@@ -1,4 +1,7 @@
+
+
 var http = require('./http.js')
+
 var request = require('./request.js')
 var tip = require("./tipUtil.js");
 const MPServerless = require('./mpserverless.js');
@@ -52,15 +55,99 @@ function uploadImages1(userId,imgNum, type, successCallBack,failureCallBack) {
 }
 
 //上传图片
-function uploadImages2(userId, upType, files,page, successCallBack, failureCallBack){
+function uploadImages2(upType, files,page, successCallBack, failureCallBack){
       var urls = [];
-      getOssInfo(userId,upType,function(ossData){
+      getOssInfo(upType,page,function(ossData){
         uploadMulptiImages(files, 0, ossData, urls, page, successCallBack, failureCallBack);
       },function(){
         failureCallBack();
       });
 
 }
+function uploadImages3(upType, files,page,startCallBack, successCallBack, failureCallBack){
+  tip.showContentTip("开始上传...");
+  var urls = new Map();
+  getOssInfo(upType,page,function(ossData){
+    startCallBack();
+    uploadMulptiImages3(files, ossData, urls, page, successCallBack, failureCallBack);
+  },function(){
+    failureCallBack();
+  });
+
+}
+//上传图片
+function uploadMulptiImages3(files, data, urls, page, successCallBack, failureCallBack){
+      for(var num=0;num<files.length;num++){
+          uploadSingleImages3(files,num,data,urls,page,successCallBack, failureCallBack);
+      }
+}
+function uploadSingleImages3(files,num,data,urls,page,successCallBack, failureCallBack) {
+  var file = files[num];
+  var fileNameColums = file.split(".");
+  var suffix = fileNameColums[fileNameColums.length - 1];
+  console.log("文件类型:", suffix);
+  var aliyunFileKey = data.directory + '/' + data.prefix + '-' + (new Date().getTime()) + '.' + suffix;
+  wx.uploadFile({
+    url: data.aliyunServerURL,
+    filePath: file,
+    method: "POST",
+    name: "file",
+    header:{
+      'Connection':'close',
+      // 'socketTimeout':'300000',
+      // 'connetionTimeout':'300000',
+    },
+    formData: {
+      'name': file,
+      'key': aliyunFileKey,
+      'OSSAccessKeyId': data.ossaccessKeyId,
+      'policy': data.policyBase64,
+      'Signature': data.signature,
+      'success_action_status': '200',
+    },
+    success: function (aliyunResp) {
+      
+      if (aliyunResp.statusCode === 200) {
+          urls.set(file, data.aliyunServerURL+"/"+aliyunFileKey);
+          
+          tip.showLoading(urls.size + "/" + files.length);
+
+
+          if(urls.size === files.length){
+              successCallBack(urls);
+          } 
+        return;
+      }
+      failureCallBack();
+    },
+    fail: function () {
+      failureCallBack();
+    }
+  })
+
+
+
+
+
+}
+function getOssInfo(upType, page,successCallBack, failureCallBack){
+
+
+  var httpClient = template.createHttpClient(page);
+  httpClient.setMode("", true);
+  httpClient.addHandler("success", function (data) {
+    successCallBack(data);
+  })
+  httpClient.send(request.url.getOssUploadUrl, "GET",{type:upType})
+
+
+
+}
+
+
+
+
+
 
 function createUpload(userId, files, type) {
 
@@ -120,7 +207,7 @@ function createUpload(userId, files, type) {
     wx.uploadFile({
       url: data.aliyunServerURL,
       filePath: filePaths[num],
-      method: "PUT",
+      // method: "POST",
       name: 'file',
       header: {
         "Connection": "close"
@@ -139,7 +226,7 @@ function createUpload(userId, files, type) {
             that.uploadSingle2Oss(filePaths, data, newNum);
           }
 
-          upload.fileMap.set(filePaths[num], aliyunFileKey);
+          upload.fileMap.set(filePaths[num], data.aliyunServerURL + '/'+ aliyunFileKey);
           if (upload.fileMap.size === upload.upfiles.length) {
             upload.success(upload.fileMap, data.taskId);
           }
@@ -260,17 +347,18 @@ function uploadSingleImages(file,data, successCallBack, failureCallBack) {
 
 }
 // 获取OSS信息
-function getOssInfo(userId, upType, successCallBack, failureCallBack){
-    var httpClient = http.createSubmit(request.url.getOssUploadUrl, "GET");
-    httpClient.setParam("type", upType);
-    if (userId) { httpClient.setParam("userId",userId); }
-    httpClient.setSuccess(function (data) {
-      successCallBack(data);
-    });
-    httpClient.setError(function(){
-      failureCallBack();
-    });
-    httpClient.submit();
+function getOssInfo(upType, page,successCallBack, failureCallBack){
+
+
+      var httpClient = template.createHttpClient(page);
+      httpClient.setMode("", true);
+      httpClient.addHandler("success", function (data) {
+        successCallBack(data);
+      })
+      httpClient.send(request.url.getOssUploadUrl, "GET",{type:upType})
+
+
+
 }
 
 
@@ -281,8 +369,7 @@ function getOssInfo(userId, upType, successCallBack, failureCallBack){
 
 
 
-
-module.exports = { uploadImages1, createUpload, uploadMulptiImages, uploadImages2}
+module.exports = { uploadImages1, createUpload, uploadMulptiImages, uploadImages2,uploadImages3}
 
 
 

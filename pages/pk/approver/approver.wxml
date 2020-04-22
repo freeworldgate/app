@@ -1,11 +1,17 @@
 <!--pages/pk/selectApprover/selectApprover.wxml-->
-<view class="css">
+<view wx:if="{{!outOfTime}}" class="css">
 
 
     <view class="ccc pt-100" style="">
          <view class="rcc fs-50 fw-700 ">审核榜帖</view>
-         <image hidden="{{!approveUser}}" class="h-50 w-50 br-10 m-20" mode="aspectFill" src="{{approveUser.user.imgUrl}}" ></image>
-         <view hidden="{{!approveUser}}"  class="fs-25 fw-700 c-3">当前审核用户</view>
+         <view wx:if="{{approveUser.user.imgUrl}}" class="rcc">
+            <image class="h-50 w-50 br-10 m-20" mode="aspectFill" src="{{approveUser.user.imgUrl}}" ></image>
+         </view>
+         <view wx:else class="rcc h-60 w-60 br-10 b-49">
+                        <image class="h-40 w-40" mode="aspectFill" src="/images/user.png" ></image>
+         </view> 
+
+         <view class="fs-25 fw-400 c-4">有效审批人</view>
     </view>
     
     
@@ -21,29 +27,33 @@
                     <view class="rcc">
                         <image class="h-50 w-50 br-10" mode="aspectFill" src="{{userPost.creator.imgUrl}}" ></image>
                         <view class="w-20"></view>
-                        <view  class="rcc p-10 box5 br-5">
-                            <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
-                            <view class="w-10"></view>
-                            <view class="fs-25 fw-400 c-3">{{userPost.statu.name}}</view>
-                        </view>
+                        <view class="fs-25 fw-400 c-3 ">{{userPost.postImages.length}} 张</view>
+
                     </view>
-                    <view class="fs-25 fw-400 c-5 ">{{userPost.postImages.length}} 张</view>
+                    <view  class="rcc p-10">
+                        <image class="rcc w-30 h-30" mode="aspectFit" src="{{userPost.statu.key===3?'/images/statu2.png':'/images/statu1.png'}}"></image>
+                        <view class="w-10"></view>
+                        <view class="{{userPost.statu.key===3?'rcc fs-25 fw-700 c-blue':'rcc fs-25 fw-700 c-red'}} ">{{userPost.statu.name}}</view>
+                    </view>
+
 
             </view>
-            <view  class="css mr-2vw ml-2vw">
+            <view  class="css mr-2vw ml-2vw backImg25  " style="height:100vw">
+ 
+
                 <view wx:if="{{userPost.postImages.length===1}}" class="rcc b-white p-2vw">
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:92vw;width:92vw"></image>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===2}}" class="rbc b-white p-2vw">
+                <view wx:elif="{{userPost.postImages.length===2}}" class="rbc  p-2vw">
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:45vw;width:45vw"></image>
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:45vw;width:45vw"></image>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===3}}" class="rbc b-white p-1-5vw">
+                <view wx:elif="{{userPost.postImages.length===3}}" class="rbc  p-1-5vw">
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
                     <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===4}}" class="css b-white p-2vw">
+                <view wx:elif="{{userPost.postImages.length===4}}" class="css  p-2vw">
                     <view class="rbc">
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:45vw;width:45vw"></image>
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:45vw;width:45vw"></image>
@@ -54,7 +64,7 @@
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:45vw;width:45vw"></image>
                     </view>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===5}}" class="b-white p-1-5vw">
+                <view wx:elif="{{userPost.postImages.length===5}}" class=" p-1-5vw">
                     <view class="rbc">
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
@@ -67,7 +77,7 @@
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
                     </view>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===6}}" class="b-white p-1-5vw">
+                <view wx:elif="{{userPost.postImages.length===6}}" class=" p-1-5vw">
                     <view class="rbc">
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
@@ -80,26 +90,7 @@
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
                     </view>
                 </view>
-                <view wx:elif="{{userPost.postImages.length===7}}" class="b-white p-1-5vw">
-                    <view class="rbc">
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
-                    </view>
-                    <view style="height:1.5vw"></view>
-                    <view class="rbc">
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[4].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
-                    </view>
-                    <view style="height:1.5vw"></view>
-                    <view class="rbc">
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[6].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[7].imgUrl}}" style="height:30vw;width:30vw"></image>
-                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
-                    </view>
-                </view>
-                <view wx:elif="{{userPost.postImages.length===8}}" class="b-white p-1-5vw">
+                <view wx:elif="{{userPost.postImages.length===7}}" class=" p-1-5vw">
                     <view class="rbc">
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
@@ -118,7 +109,26 @@
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
                     </view>
                 </view>
-                <view wx:else class="b-white p-1-5vw">
+                <view wx:elif="{{userPost.postImages.length===8}}" class=" p-1-5vw">
+                    <view class="rbc">
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
+                    </view>
+                    <view style="height:1.5vw"></view>
+                    <view class="rbc">
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[4].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
+                    </view>
+                    <view style="height:1.5vw"></view>
+                    <view class="rbc">
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[6].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[7].imgUrl}}" style="height:30vw;width:30vw"></image>
+                        <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
+                    </view>
+                </view>
+                <view wx:else class=" p-1-5vw">
                     <view class="rbc">
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
                         <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
@@ -193,36 +203,29 @@
         <view class="rbc pl-4vw pr-4vw " >
                 <view class="rcc">
                                     <view class="ccs">                  
-                                        <image class="h-60 w-60 br-10" mode="aspectFill" src="{{userPost.creator.imgUrl}}" ></image>                
+                                        <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>  
                                     </view>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-700">留言</view>
+                                    <view class="rcs  fs-25 fw-400 c-3 ">留言内容:</view>
                 </view>
 
 
-                <view  class="rcc pl-20 pr-20 pt-20 pb-20 box5 br-10">
-                    <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
-                    <view class="w-10"></view>
-                    <view class="fs-25 line-h25 fw-400 c-3-1">写留言</view>
-                </view>
-             
+
+               <view class="fs-25 fw-400 c-3-1">刚刚</view> 
                 
         </view>
 
         
         <!-- 留言 -->
         <view hidden="{{!approveUser.approveComment.imgUrl}}" class="css mr-1vw ml-1vw">
-                <view class="h-10"></view>
+                <!-- <view class="h-10"></view>
                 <view class="rcs">
                         <view class="rcc w-100"><view class="triangle-up"></view></view>                  
-                </view>
-                <view class="css br-10 pl-2vw pr-2vw pt-30 pb-30 b-white" >
+                </view> -->
+                <view class="css br-10 pl-2vw pr-2vw pt-30 pb-30" >
                                             
                         <view class="css">
-                            <view class="rbc">
-                                <view class="rcs  fs-30 fw-700  line-3-start">留言内容:</view>
-                                <view class="fs-25 fw-400 c-3-1">刚刚</view>          
-                            </view>
+
                             <view class="rbc-nowrap  pt-10 pb-10">
                                 <view class="rus  fs-30 fw-400  line-2-start">{{approveUser.approveComment.text}}</view>
                                 <view></view>
@@ -230,8 +233,9 @@
                             
                         </view>
                         <view class="rcs">
-                            <image class="w-94vw" mode="widthFix" src="{{approveUser.approveComment.imgUrl}}" ></image>
+                            <image class="w-94vw br-20" mode="widthFix" src="{{approveUser.approveComment.imgUrl}}" ></image>
                         </view>
+                                      
                         <view class="h-20"></view>
                                         
                                         
@@ -255,6 +259,17 @@
 
 
     <view class="h-100"></view>
+
+</view>
+
+<view wx:else class="ccc" style="height:100vh">
+
+        <view class="rcc">
+            <image class="h-200 w-200" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/gift.png" ></image>
+        </view>
+        <view class="fs-30 fw-400 c-3-1">订单已过期</view>
+
+
 
 </view>
 
