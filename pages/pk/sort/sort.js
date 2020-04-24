@@ -31,6 +31,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    inviteReq.getHeight(function (res) {
+      that.setData({
+        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+    })
+
+
     var pkId = options.pkId;
     this.data.pkId = pkId; 
     this.querySort(pkId,this.data.index);
@@ -66,58 +74,91 @@ Page({
     }
 
   },
-
-  select:function(res){
+  remove:function(res){
     var that = this;
-    if(that.data.mode != 1){return;}
+    if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
 
     var pkId = that.data.pkId;
     var index = res.currentTarget.dataset.user
-    var key =  'userIntegrals['+index+']';
-    if(that.data.userIntegrals[index].select === 1)
-    {
 
-
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (approver) {
-        var index = -1;
-        for (var i = 0; i < that.data.approvers.length; i++) { 
-          if(that.data.approvers[i].user.userId === approver.user.userId){
-            index = i;
-            break;
-          }
-        }
-        that.data.approvers.splice(index,1);
-        
-        that.setData({
-          [key] : approver,
-          approvers:that.data.approvers
-        })
-      
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (approver) {
+      that.data.approvers.splice(index,1);
+      that.setData({
+        approvers:that.data.approvers
       })
-      httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:0});
+    })
+    httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.approvers[index].user.userId,tag:0});
 
 
+  },
 
+
+  select:function(res){
+    var that = this;
+    if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
+
+    var pkId = that.data.pkId;
+    var index = res.currentTarget.dataset.user
+
+    for(var i = 0;i<that.data.approvers.length;i++){
+      if(that.data.userIntegrals[index].user.userId === that.data.approvers[i].user.userId){
+        return;
+      }
     }
-    else
-    {
 
 
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (approver) {
+
+
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function (approver) {
+
         that.data.approvers.unshift(approver);
         that.setData({
-          [key] : approver,
           approvers:that.data.approvers
         })
-      
-      })
-      httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:1});
 
-    }
+
+      // that.data.approvers.splice(index,1);
+      
+      // that.setData({
+
+      //   approvers:that.data.approvers
+      // })
+    
+    })
+    httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:1});
+
+
+
+    // if(that.data.userIntegrals[index].select === 1)
+    // {
+
+
+
+
+
+    // }
+    // else
+    // {
+
+
+    //   var httpClient = template.createHttpClient(that);
+    //   httpClient.setMode("label", true);
+    //   httpClient.addHandler("success", function (approver) {
+    //     that.data.approvers.unshift(approver);
+    //     that.setData({
+    //       [key] : approver,
+    //       approvers:that.data.approvers
+    //     })
+      
+    //   })
+    //   httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:1});
+
+    // }
 
 
 

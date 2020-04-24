@@ -40,12 +40,12 @@ function uploadSingleImages3(files,num,data,urls,page,successCallBack, failureCa
   wx.uploadFile({
     url: data.aliyunServerURL,
     filePath: file,
-    method: "POST",
+    method: "PUT",
     name: "file",
     header:{
       'Connection':'close',
-      // 'socketTimeout':'300000',
-      // 'connetionTimeout':'300000',
+      'socketTimeout':'300000',
+      'connetionTimeout':'300000',
     },
     formData: {
       'name': file,

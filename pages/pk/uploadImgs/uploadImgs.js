@@ -88,11 +88,7 @@ Page({
 
 
 
-      template.uploadImages3("userUpload", that.data.imgs, that,function(){
-          //开始传输
-          console.log("---start---");
-          tip.showLoading("开始上传");
-      },
+      template.uploadImages3("userUpload", that.data.imgs, that,
       function (urls) {
           //传输成功
           wx.hideLoading({

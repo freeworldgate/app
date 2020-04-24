@@ -97,11 +97,11 @@
 
                             </view>
                             <view class="ccs">
-                                <view class="rcc" bindtap="">
+                                <button class="rcc message b-white pt-20 pb-20" open-type="contact" session-from="type:1,pkId:{{pkId}}">
                                                 <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
                                                 <view class="w-10"></view>
                                                 <view class="fs-25 line-h25 fw-400">审核群</view>
-                                </view>
+                                </button>
                             </view>
 
                         </view>
@@ -186,8 +186,8 @@
 
                     <!-- 留言 -->
                     <view class="css  pl-4vw pr-4vw ">
-                        <view hidden="{{!currentApprover.approveComment}}" class="css b-white br-20 pl-30 pr-30 pt-50 pb-50 box6">
-                            <view class="rbs">
+                        <view hidden="{{!currentApprover.approveComment}}" class="css backImg33 b-white br-20 pl-4vw pr-4vw pt-50 pb-50 box6">
+                            <!-- <view class="rbs">
                                 <view class="rcc">
                                     <view class="ccs">                  
                                         <image class="h-50 w-50 br-10" mode="aspectFill" src="{{user.imgUrl}}" ></image>                
@@ -201,36 +201,41 @@
                                     </view>
                                 </view>
 
-                            </view>
-                            <view class="h-50"></view>
+                            </view> -->
+                            <!-- <view class="h-50"></view> -->
                             <view class="rss  "  >
-                                <view class="ccs">
+                                <!-- <view class="ccs">
                                     <view class="rcc">
                                         <image class="h-40 w-40" mode="aspectFit" src="/images/comment.png" ></image>
                                     </view>
                                                                 
+                                </view> -->
+                                <view class="ccs">                  
+                                        <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{user.imgUrl}}" ></image>                
                                 </view>
-                                <view class="w-20"></view>
+                                <view class="w-4vw"></view>
                                 <view class="css" style="flex:1">
                                     <view class="rbc">
                                         <view class="rcs">
-                                            <view class="rcs  fs-30 line-h40 fw-700 ">用户消息</view>
+                                            <view class="rcs  fs-30 line-h40 fw-700 ">我的留言</view>
                                             <view class="w-20"></view>
                                             <view class="rcc  fs-20 fw-400 pl-15 pr-15 pt-5 pb-5 br-5 detail c-4">详情</view>
                                         </view>
-                                        <view class="fs-20 fw-400 c-4">今天 12:23</view>
+                                        <view class="fs-25 fw-400 c-4">今天 12:23</view>
                                     </view>
 
-                                    <view class="rbc-nowrap">
+                                    <view class="rbc-nowrap pb-30">
                                         <view class="rus  fs-30 fw-400  line-2-start">{{currentApprover.approveComment.text}}消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容</view>
                                         <view></view>
                                     </view>
-                                            
+                                    <view class="rcc">
+                                        <image class="h-70vw w-70vw br-15" mode="aspectFill" src="{{currentApprover.approveComment.imgUrl}}" ></image>
+                                    </view>     
                                 </view>
-                                <view class="w-20"></view>
+                                <!-- <view class="w-20"></view>
                                 <view class="rcc">
                                     <image class="h-130 w-130 br-15" mode="aspectFill" src="{{currentApprover.approveComment.imgUrl}}" ></image>
-                                </view>
+                                </view> -->
                                                         
                                                         
                             </view>
@@ -239,7 +244,7 @@
                         </view>
                     </view>
 
-
+                    <view class="h-50"></view>
 
 
     

@@ -30,6 +30,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    inviteReq.getHeight(function (res) {
+      that.setData({
+        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+    })
+
+
+
+
     that.data.pkId = options.pkId;
     that.data.postId = options.postId;
     that.data.approveUserId = options.approveUserId;

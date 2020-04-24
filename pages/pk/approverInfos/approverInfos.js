@@ -48,12 +48,12 @@ Page({
   },
 
   changeTag0:function(){
-    this.setData({tag:0})
+    this.setData({currentIndex:0,tag:0})
   },
   changeTag1:function(){
     var that = this;
     if(that.data.approvingPosts){
-      that.setData({tag:1})
+      that.setData({currentIndex:0,tag:1})
       return;
     }
 
@@ -72,6 +72,7 @@ Page({
     var index = res.detail.current;
     that.setData({
       currentApprovedPost:that.data.approvedPosts[index],
+      currentIndex:index,
     })
     
     if(that.data.approvedPosts.length - index >3){return;}
@@ -100,6 +101,7 @@ Page({
     var index = res.detail.current;
     that.setData({
       currentApprovingPost:that.data.approvingPosts[index],
+      currentIndex:index,
     })
     if(that.data.approvingPosts.length - index >3){return;}
     if(that.data.approvingEnd){return;}

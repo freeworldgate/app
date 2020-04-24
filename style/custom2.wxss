@@ -74,6 +74,9 @@
 .c-blue{
   color: #13227a;
 }
+.c-0{
+  color: #445858;
+}
 .c-1{
   color: #ff6600;
 }
@@ -577,6 +580,10 @@
 .w-32vw{width: 32vw}
 .w-4vw{width: 4vw}
 .h-4vw{height: 4vw}
+.w-10vw{width: 10vw}
+.h-10vw{height: 10vw}
+.w-70vw{width: 70vw}
+.h-70vw{height: 70vw}
 .h-35vw{height: 35vw}
 .w-35vw{width: 35vw}
 .h-40vw{height: 40vw}

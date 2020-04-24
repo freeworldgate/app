@@ -19,7 +19,7 @@
     "pages/pk/approverInfos/approverInfos",
     "pages/pk/uploadImgs/uploadImgs",
     "pages/pk/sort/sort",
-
+    "pages/pk/message/message",
 
     "pages/pk/userCreatePks/userCreatePks",
     "pages/pk/userPkOrder/userPkOrder",

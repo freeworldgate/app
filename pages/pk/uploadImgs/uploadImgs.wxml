@@ -27,7 +27,7 @@
                 
             </block>
 
-            <view class="rcc w-32vw h-32vw">
+            <view hidden="{{imgs.length>8}}" class="rcc w-32vw h-32vw">
                 <view class="ccc br-10 w-30vw h-30vw b-40" bindtap="_add">
                   <view class="fs-50 fw-700 c-5">+</view>
                   <view class="fs-30 fw-700 c-5">添加照片</view>
@@ -66,7 +66,9 @@
 <view class="ccc uploadButton">
 
 
-    <view class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white" bindtap="upload">立即上传</view>
+    <view wx:if="{{imgs.length === 9}}" class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white" bindtap="upload">立即上传</view>
+    <view wx:else class="rcc fs-30 fw-700 w-500 h-100 br-100 b-40 c-4" >立即上传</view>
+
     <view class="h-50"></view>
 </view>
 

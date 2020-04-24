@@ -29,9 +29,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
+
     var that = this;
-    that.data.pkId = options.pkId;
-    that.data.postId = options.postId;
+
+    that.setData({
+      pkId : options.pkId,
+      postId : options.postId
+    })
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
     httpClient.send(request.url.queryApproveInfo1, "GET", { pkId: that.data.pkId ,postId:that.data.postId  });
