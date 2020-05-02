@@ -242,20 +242,25 @@ Page({
 
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("", true);
-    httpClient.addHandler("success",function(){})
+    httpClient.addHandler("success",function(){
+
+
+      var key = 'posts[' + index + ']' +".queryerCollect"
+      if (that.data.posts[index].queryerCollect){
+        that.setData({
+          [key]: false
+        })
+      }
+      else{
+        that.setData({
+          [key]: true
+        })
+      }
+
+
+    })
     httpClient.send(request.url.likeOrDisLike, "GET", { pkId: that.data.pkId, postId: postId, isQueryerCollect: that.data.posts[index].queryerCollect });
 
-    var key = 'posts[' + index + ']' +".queryerCollect"
-    if (this.data.posts[index].queryerCollect){
-      this.setData({
-        [key]: false
-      })
-    }
-    else{
-      this.setData({
-        [key]: true
-      })
-    }
 
 
 

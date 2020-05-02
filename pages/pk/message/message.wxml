@@ -1,2 +1,202 @@
 <!--pages/pk/message/message.wxml-->
-<text>pages/pk/message/message.wxml</text>
+<view class="cbs b-white" style="height:100vh;background-position: center;background-image: url({{groupCode}});background-repeat: no-repeat;background-size: 100% 100%; ">
+  <view class="css">
+      <view style="height:{{top}}px"></view>
+      <view class="rcs pl-4vw pr-4vw" style="height:32px">
+          <view class="rcc">
+              <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
+          </view>
+          <view class="rcs">
+              <view class="rcc fs-30 fw-700">{{date}}</view>
+              <view class="fs-30 fw-700">日审核群</view>
+
+          </view>
+          
+        
+      </view>
+  </view>
+
+
+    <view class="css">
+        <view wx:if="{{groupCode}}">
+
+        </view>
+        <view wx:else class="css">
+            <view wx:if="{{creator.userId === user.userId}}" class="ccc">
+                <view class="ccc br-20" >
+
+                            <view class="rcc">
+                            <image class="" style="width:100vw;height:100vw" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty.png" mode="aspectFit"></image>
+                            </view>
+                            <view class="rcc fs-30 fw-700 c-word-1">上传群名片</view>
+                            <view class="h-50"></view>
+                            <view class="rcc fs-25 fw-400 c-5">每日只有一次上传机会，请使用微信群组名片...</view>
+                </view>
+            </view>
+            <view wx:else class="ccc">
+                            <view class="ccc br-20" >
+
+                                        <view class="rcc">
+                                        <image class="" style="width:100vw;height:100vw" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty.png" mode="aspectFit"></image>
+                                        </view>
+                                        <view class="rcc fs-30 fw-700 c-word-1">等待更新...</view>
+                            </view>
+            
+            </view>
+        
+        
+        
+        </view>
+
+
+
+
+    </view>
+
+
+
+    <view wx:if="{{groupCode}}" class="css pt-100 pb-100">
+            <view class="rcc " bindtap="return">
+                <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">拉取图片</button>
+            </view>
+    </view>
+    <view wx:else class="css pt-100 pb-100">
+            <view wx:if="{{creator.userId === user.userId}}" class="rac" bindtap="return">
+                <view class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white"  bindtap="uploadGroupCode" >上传</view>
+            </view>
+            <view wx:else class="rcc">
+                <view class="rcc fs-30 fw-700 w-400 h-100 br-100  c-3-5 "  ></view>
+            </view>
+    </view>
+
+
+
+
+
+
+</view>
+
+
+
+<view>
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"></view>
+    <view class="css dialog " hidden="{{dialog.visible!=true}}">
+        <view class="css dialog-padding">
+            <view class="rcs t21-8-1 ">{{dialog.title}}</view>
+            <view style="height:80rpx"></view>
+            <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
+            <view style="height:80rpx"></view>
+            <view class="rbc ">
+                <view></view>
+                <view bindtap="dialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            </view>
+        </view>
+    </view>
+    <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
+        <view class="ccc levelDialog_view">
+            <view class="rcc">
+                <image class="tipDialog_image" mode="aspectFit" src="/images/warn.png" wx:if="{{tipDialog.level==='warn'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/error.png" wx:elif="{{tipDialog.level==='error'}}"></image>
+                <image class="tipDialog_image" mode="aspectFit" src="/images/info.png" wx:else></image>
+            </view>
+            <view style="height:30rpx"></view>
+            <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
+        </view>
+    </view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"></view>
+    <view class="css dialog " hidden="{{operateDialog.visible!=true}}">
+        <view class="css dialog-padding">
+            <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
+            <view style="height:80rpx"></view>
+            <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
+            <view style="height:80rpx"></view>
+            <view class="rbc">
+                <view bindtap="operateDialog_cancel" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
+                <view bindtap="operateDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            </view>
+        </view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+        <view></view>
+    </view>
+    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialogError.visible!=true}}">
+        <view></view>
+        <view class="ccc ">
+            <view class="rcc">
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+            </view>
+            <view class="rcc"></view>
+        </view>
+    </view>
+    <view catchtouchmove="return" class="coverAll99" hidden="{{labelLoadingDialog.visible!=true}}"></view>
+    <view catchtouchmove="return" class="rcc labelLoadingDialog " hidden="{{labelLoadingDialog.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <image class="labelLoadingDialog_image" mode="aspectFill" src="/images/loading.gif"></image>
+            <view class="labelLoadingDialog_text">加载中</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogSuccess.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadsuccess.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载成功</view>
+        </view>
+    </view>
+    <view class="rcc labelLoadingDialog " hidden="{{labelLoadingDialogError.visible!=true}}">
+        <view class="rcc labelLoadingDialog_view">
+            <view class="rcc">
+                <image class="labelLoadingDialog_image" mode="aspectFit" src="/images/loadfail.png"></image>
+            </view>
+            <view class="labelLoadingDialog_text">加载失败</view>
+        </view>
+    </view>
+    <view bindtap="_selectionDialog_hide" class="coverAll" hidden="{{selectionDialog.visible!=true}}"></view>
+    <view class="{{selectionDialog._selectionDialog_layout}}" hidden="{{selectionDialog.visible!=true}}">
+        <view class="css selectionDialog_BT " wx:if="{{selectionDialog.style===1||selectionDialog.style===5}}">
+            <view class="rcc selectionDialog_BT1_title">选项</view>
+            <view style="height:20rpx"></view>
+            <view class="rac">
+                <view bindtap="_selectDialog_choose" class="ccc" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="*idx1">
+                    <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
+                    <view style="height:20rpx"></view>
+                    <view class="selectionDialog_BT1_title">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="css selectionDialog_RL" wx:elif="{{selectionDialog.style===2||selectionDialog.style===3}}">
+            <view class="rcc selectionDialog_RL_title">选项</view>
+            <view bindtap="_selectDialog_choose" class="ccc selectionDialog_RL_item" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="*idx1">
+                <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
+                <view style="height:10rpx"></view>
+                <view class="selectionDialog_RL_title">{{item.name}}</view>
+            </view>
+        </view>
+        <view class="css selectionDialog_BT" wx:else>
+            <view class="rcs selectionDialog_BT2_title">选项</view>
+            <view bindtap="_selectDialog_choose" class="rcs selectionDialog_BT2_item" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="idx1">
+                <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
+                <view style="width:30rpx"></view>
+                <view class="selectionDialog_BT1_title">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

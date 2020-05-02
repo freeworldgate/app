@@ -1,113 +1,68 @@
-<view class="css b-44">
-    <view class="css ">
+<view class="css b-pk">
+    <view class="cbs h-100vw " style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
         <view class="" style="height:{{top+32}}px"></view>
-        <view class="h-20 b-line mr-4vw ml-4vw"></view>
-        <view class="h-20"></view>
-        <view class="css z2 mr-4vw ml-4vw">
-            <view class="rbs">
-                <view class="css">
-                    <view class="css">
-                        <image class="w-110 h-110 br-10 border6 box3" mode="aspectFill" src="{{pkDetail.user.imgUrl}}"></image>
-                        <view class="rcc fs-18 line-h18 fw-400 c-white z7 absolute h-30 br-40 pl-10 pr-10 b-5-1 ">榜主</view>
-                    </view>
-                </view>
-                <view class="w-20"></view>
-                <view class="cas" style="flex:1">
-                    <view class="css">
-                        <view class="rcs-nowrap line-1-start fs-30 fw-700">红色高跟鞋</view>
-                    </view>
-                    <view class="css">
-                        <view class="rus line-2-start fs-25 fw-400  ">该怎么形容你最贴切,拿什么跟你做比较才算特别，对你的感觉 强烈 ，却又不太了解 只凭直觉!</view>
-                    </view>
-                </view>
-                <view class="w-20"></view>
-                <view class="rus">
-                    <view class="rcc">
-                        <view bindtap="publish" class="rcc h-80 w-80 bar-back2 br-80 box3" wx:if="{{publish==='off'}}">
-                            <view class="rcc">
-                                <view class="rcc ">
-                                    <image class="rcc w-40 h-40 " mode="aspectFit" src="/images/write.png"></image>
-                                </view>
-                            </view>
-                        </view>
-                        <view class="rcc" wx:else>
-                            <image class="w-80 h-80 br-80 " mode="aspectFit" src="/images/loading.gif"></image>
-                        </view>
+
+        <view class="rss pl-4vw" style="flex:1">
+            <view class="cas">
+                <view></view>
+                <navigator class="rcs h-80 pl-40 pr-40 br-80 b-card"  url="/pages/pk/message/message?pkId={{pkId}}">
+                    <view class="rcc ">
+                        <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/group.png"></image>
                     </view>
                     <view class="w-20"></view>
-                    <view bindtap="share" class="rcc h-80 w-80 bar-back2 br-80 box3 ">
-                        <view class="rcc">
-                            <view class="rcc ">
-                                <image class="rcc w-40 h-40 " mode="aspectFit" src="/images/share5.png"></image>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <!-- 消息和操作 -->
-            <view class="rcs">
-                <view class="rcs">
-                    <view class="rcc w-110 pt-10">
-                        <view class="triangle-up"></view>
-                    </view>
-                </view>
-            </view>
-            <view class="rbc ">
-                <!-- <button style="flex:1" class="rss b-white message p-20" open-type="contact" session-from="{id:122,name:fuck}">
-                        <view class="css" style="flex:1">
-                            <view class="rbc-nowrap">
-                                <view class="rus fs-30 line-h40 fw-700 c-4 line-1-start">核标标准审核标标准核标标准审核标标准核标标准审核标标准</view>
-                                <view></view>
-                            </view>
-                            <view class="rbc-nowrap">
-                                <view class="rus fs-25 line-h35 fw-400  c-3 line-2-start">具具体内容容具具体内容容具具体内容容具具体内容容具具体内容容具具体内容容</view>
-                                <view></view>
-                            </view>
-                        </view>
-                        <view class="w-20"></view>
-                        <view class="rcc">
-                            <image class="h-110 w-110" mode="aspectFill" src="{{img}}" ></image>
-                        </view>       
-                </button>  -->
-
-                <navigator class="ccc message" url="/pages/pk/message/message">
-                        <image class="rcc w-60 h-60 p-10 " mode="aspectFit" src="/images/sort.png"></image>
-                        <view class="fs-25 fw-700 c-4">相册群</view>
-                </navigator> 
-                <navigator url="/pages/pk/sort/sort?pkId={{pkId}}" class="ccc w-100 ">
-                        <image class="rcc w-60 h-60 p-10 " mode="aspectFit" src="/images/sort.png"></image>
-                        <view class="fs-25 fw-700 c-4">排行榜</view>
+                        <!-- <view class="rcc fs-25 fw-700 c-word">按钮1</view> -->
+                    <view class="rcc fs-25 fw-700 c-word">打榜群</view>
                 </navigator>
-                
+                <view class="rcs h-80 pl-40 pr-40 br-80 b-card" bindtap="publish">
+                    <view class="rcc ">
+                        <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/dabang.png"></image>
+                    </view>
+                    <view class="w-20"></view>
+                    <!-- <view class="rcc fs-25 fw-700 c-word">按钮2</view> -->
+                    <view class="rcc fs-25 fw-700 c-word">我要打榜</view>
+                </view>
+                <navigator class="rcs h-80 pl-40 pr-40 br-80 b-card" url="/pages/pk/sort/sort?pkId={{pkId}}">
+                    <view class="rcc ">
+                        <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/approve4.png"></image>
+                    </view>
+                    <view class="w-20"></view>
+                    <!-- <view class="rcc fs-25 fw-700 c-word">按钮3</view> -->
+                    <view class="rcc fs-25 fw-700 c-word">今日排名</view>
+                </navigator>
+                <view></view>
+                <view></view>
             </view>
-            
-            
-
-
+          
+        
+        
+        
         </view>
-        <view class="h-10"></view>
+
+
         <!-- User -->
-        <view class="rus-wrap mr-4vw ml-4vw">
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="ozm2e4r6IgyVMlA6goFt7AbB3wVw"><view class="{{user.userId==='ozm2e4r6IgyVMlA6goFt7AbB3wVw'?'c-1':'c-3'}}">local</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U1"><view class="{{user.userId==='U1'?'c-1':'c-3'}}">U1</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U2"><view class="{{user.userId==='U2'?'c-1':'c-3'}}">U2</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U3"><view class="{{user.userId==='U3'?'c-1':'c-3'}}">U3</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U4"><view class="{{user.userId==='U4'?'c-1':'c-3'}}">U4</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U5"><view class="{{user.userId==='U5'?'c-1':'c-3'}}">U5</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U6"><view class="{{user.userId==='U6'?'c-1':'c-3'}}">U6</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U7"><view class="{{user.userId==='U7'?'c-1':'c-3'}}">U7</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U8"><view class="{{user.userId==='U8'?'c-1':'c-3'}}">U8</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U9"><view class="{{user.userId==='U9'?'c-1':'c-3'}}">U9</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U10"><view class="{{user.userId==='U10'?'c-1':'c-3'}}">U10</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U11"><view class="{{user.userId==='U11'?'c-1':'c-3'}}">U11</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U12"><view class="{{user.userId==='U12'?'c-1':'c-3'}}">U12</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U13"><view class="{{user.userId==='U13'?'c-1':'c-3'}}">U13</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U14"><view class="{{user.userId==='U14'?'c-1':'c-3'}}">U14</view></view>
-            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U15"><view class="{{user.userId==='U15'?'c-1':'c-3'}}">U15</view></view>
-            <navigator url="/pages/pk/complain/complain" class="rcc pt-10 m-10 pb-10 pl-20 pr-20 box5 br-10 b-white fs-25 fw-400 c-3" ><view class="c-3">投诉处理</view></navigator>
-            <button open-type="contact" session-from="{id:122,name:fuck}" bindcontact="handleContact">客服</button>
+
+        <view></view>
+        <view class="css">
+            <view class="rbs pl-8vw pr-8vw">
+                <view class="cas" style="flex:1">
+                        <view class="rbc-nowrap ">
+                            <view></view>
+                            <view class="rus line-1-start fs-35 fw-700 c-white">主题</view>
+                        </view>
+                    
+                        <view class="rbc-nowrap ">
+                            <view></view>
+                            <view class="rus line-1-start fs-25 fw-400 c-white ">该怎么形容你最贴切,拿什么跟你做比较才算特别，对你的感觉 强烈 ，却又不太了解 只凭直觉!</view>
+                        </view>
+                </view>
+                <view class="w-4vw"></view>
+                <view class="ccs">
+                    <image class="w-110 h-110 br-10" mode="aspectFill" src="{{pkDetail.user.imgUrl}}"></image>
+                </view>
+            </view>
+            <view class="h-50"></view>
         </view>
-        <view class="h-30"></view>
+
 
 
     </view>
@@ -115,38 +70,38 @@
 
 
     <view class="css">
-        <view class="css mr-2vw ml-2vw">
-            <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:96vw">
+        <view class="css mr-1vw ml-1vw">
+            <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:98vw">
                 
-                <view class="css pt-20 pb-20 pl-10 pr-10" style="display:inline-block" wx:for="{{userIntegrals}}" wx:for-index="bindex" wx:for-item="integral" wx:key="postkey">
-                    <navigator class="css box5 p-20 b-white" bindtap="" url="/pages/pk/approverInfos/approverInfos?approverUserId={{integral.user.userId}}&pkId={{pkId}}" >
+                <view class="css pt-20 pb-20 pr-20" style="display:inline-block" wx:for="{{userIntegrals}}" wx:for-index="bindex" wx:for-item="integral" wx:key="postkey">
+                    <navigator class="css p-20 b-card br-10 c-word" bindtap="" url="/pages/pk/approverInfos/approverInfos?approverUserId={{integral.user.userId}}&pkId={{pkId}}" >
                         <view class="rss">
                             <view class="rcc">
-                                <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{integral.user.imgUrl}}"></image>
+                                <image class="w-70 h-70 br-10" mode="aspectFill" src="{{integral.user.imgUrl}}"></image>
                             </view>
                             <view class="w-10"></view>
                             <view class="cas">
                                 <view class="rcs">
                                     <view class="rcc fs-20 fw-400 ">审核中</view>
                                     <view class="w-20"></view>
-                                    <view class="rcc fs-20 fw-400 c-3">{{integral.approving}}</view>
+                                    <view class="rcc fs-20 fw-400 ">{{integral.approving}}</view>
                                 </view>
                                 
                                 <view class="rcs">
                                     <view class="rcc fs-20 fw-400 ">已审核</view>
                                     <view class="w-20"></view>
-                                    <view class="rcc fs-20 fw-400 c-3">{{integral.approved}}</view>
+                                    <view class="rcc fs-20 fw-400 ">{{integral.approved}}</view>
                                 </view>
                             </view>
                         </view>
                         <view class="h-20"></view>
-                        <view wx:if="{{creator.userId === integral.user.userId}}" class="rbc">
-                            <view class="rcc fs-20 fw-400 ">榜主</view>
-                            <view class="rcc fs-20 fw-400 c-3">榜主</view>
+                        <view wx:if="{{creator.userId === integral.user.userId}}" class="rbc line-h30">
+                            <view class="rcc fs-20 fw-400 ">角色</view>
+                            <view class="rcc fs-20 fw-700 c-red">榜主</view>
                         </view>
-                        <view wx:else class="rbc">
+                        <view wx:else class="rbc line-h30">
                             <view class="rcc fs-20 fw-400 ">昨日排名</view>
-                            <view class="rcc fs-20 fw-400 c-3">{{integral.index + 1}}</view>
+                            <view class="rcc fs-25 fw-700 ">{{integral.index + 1}}</view>
                         </view>
                     
                     </navigator>
@@ -267,61 +222,29 @@
         </view>
     </view> -->
 
-
-
-
-
-
-    <!-- 动态信息 -->
-    <!-- <view class="css b-48">
-        <view class="css mr-2vw ml-2vw">
-            <scroll-view class="rss" hidden="{{pkStatu!=1}}" scrollX="true" style="white-space:nowrap;width:96vw">
-                <view class="css pt-20 pb-20 pl-10 pr-10" style="display:inline-block" wx:for="{{infos}}" wx:for-index="bindex" wx:for-item="info" wx:key="postkey">
-                    <view class="rss box5 b-white p-20">
-                        <view class="rcc">
-                            <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{info.user.imgUrl}}"></image>
-                        </view>
-                        <view class="w-10"></view>
-                        <view class="cas">
-                            <view class="rcs">
-                                <view class="rcc fs-20 fw-400 c-5">{{info.operType.name}}</view>
-                            </view>
-                            <view class="rbc">
-                                <view></view>
-                                <view class="rcc fs-18 fw-400 c-3-1">{{info.time}}</view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </scroll-view>
-            <scroll-view class="rss" hidden="{{pkStatu!=2}}" scrollX="true" style="white-space:nowrap;width:96vw">
-                <view bindtap="selectTask" class="css pt-20 pb-20 pl-10 pr-10" data-task="{{task}}" style="display:inline-block" wx:for="{{tasks}}" wx:for-index="bindex" wx:for-item="task" wx:key="postkey">
-                    <view class="absolute rcc fs-18 line-h18 fw-400 c-white h-30 br-10 pl-10 pr-10 b-5-1 ">{{task.statu.name}}</view>
-                    <view class="rss box5 b-white p-20">
-                        <view class="rcc">
-                            <image class="w-70 h-70 br-10 box3" mode="aspectFill" src="{{task.cashier.imgUrl}}"></image>
-                        </view>
-                        <view class="w-10"></view>
-                        <view class="cas">
-                            <view class="rbc">
-                                <view class="rcc fs-20 fw-400 c-3-1">积分:</view>
-                                <view class="w-20"></view>
-                                <view class="rcc fs-20 fw-400 c-5">{{task.integral}}</view>
-                            </view>
-                            <view class="rbc">
-                                <view class="rcc fs-18 fw-400 c-3-1">排名:</view>
-                                <view class="rcc fs-18 fw-400 c-5">{{task.index}}</view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </scroll-view>
-        </view>
-    </view> -->
-
     <view class="h-30"></view>
-
-    <view class="css  b-44">
+    <view class="rus-wrap mr-4vw ml-4vw">
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="ozm2e4r6IgyVMlA6goFt7AbB3wVw"><view class="{{user.userId==='ozm2e4r6IgyVMlA6goFt7AbB3wVw'?'c-1':'c-3'}}">local</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U1"><view class="{{user.userId==='U1'?'c-1':'c-3'}}">U1</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U2"><view class="{{user.userId==='U2'?'c-1':'c-3'}}">U2</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U3"><view class="{{user.userId==='U3'?'c-1':'c-3'}}">U3</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U4"><view class="{{user.userId==='U4'?'c-1':'c-3'}}">U4</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U5"><view class="{{user.userId==='U5'?'c-1':'c-3'}}">U5</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U6"><view class="{{user.userId==='U6'?'c-1':'c-3'}}">U6</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U7"><view class="{{user.userId==='U7'?'c-1':'c-3'}}">U7</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U8"><view class="{{user.userId==='U8'?'c-1':'c-3'}}">U8</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U9"><view class="{{user.userId==='U9'?'c-1':'c-3'}}">U9</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U10"><view class="{{user.userId==='U10'?'c-1':'c-3'}}">U10</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U11"><view class="{{user.userId==='U11'?'c-1':'c-3'}}">U11</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U12"><view class="{{user.userId==='U12'?'c-1':'c-3'}}">U12</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U13"><view class="{{user.userId==='U13'?'c-1':'c-3'}}">U13</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U14"><view class="{{user.userId==='U14'?'c-1':'c-3'}}">U14</view></view>
+            <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U15"><view class="{{user.userId==='U15'?'c-1':'c-3'}}">U15</view></view>
+   
+    </view>
+    <view class="h-30"></view>
+    <!-- b-44 -->
+    <view class="css">   
 
         
         <view class="rbs z2">
@@ -433,11 +356,11 @@
 
 </view>
 <view class="rcs z30 customBar" style="top:{{top}}px">
-    <view class="rcc h-32px w-32px br-32px bar-back box2">
+    <view class="rcc h-32px w-32px br-32px bar-back ">
         <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
     </view>
     <view class="w-20"></view>
-    <view class="rcc h-32px w-32px br-32px bar-back box2">
+    <view class="rcc h-32px w-32px br-32px bar-back ">
         <image class="w-45 h-45" mode="aspectFit" src="/images/share3.png"></image>
     </view>
 </view>
@@ -877,8 +800,8 @@
         </view>
     </view>
     <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="coverAll100" hidden="{{singlePostDialog.visible!=true}}"></view>
-    <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="css singlePost" hidden="{{singlePostDialog.visible!=true}}" >
-        <view catchtap="return" class="css z30 b-white">
+    <view bindtap="_singlePostDialog_close" catchtouchmove="return" class="css singlePost " hidden="{{singlePostDialog.visible!=true}}" >
+        <view catchtap="return" class="css z30 b-card-1 br-20" >
             <view class="css pr-4vw pl-4vw">
                 <!-- 榜帖发布者 -->
                 <view wx:if="{{user.userId === singlePostDialog.post.creator.userId}}" class="rbc-nowrap pt-30 pb-30 b-line">
@@ -893,10 +816,10 @@
                     <view class="css" style="flex:1">
                         <view class="rus line-1-start fs-30 fw-400 ">{{singlePostDialog.post.creator.userName}}</view>
                     </view>
-                    
+                    <view class="w-150"></view>
 
                     <view wx:if="{{singlePostDialog.post.statu.key === 3}}" class="rcc">
-                        <navigator class="rcc" hover-class="b-white" url="/pages/pk/selectApprover/selectApprover?pkId={{pkId}}&postId={{singlePostDialog.post.postId}}">
+                        <navigator class="rcc" hover-class="none" url="/pages/pk/selectApprover/selectApprover?pkId={{pkId}}&postId={{singlePostDialog.post.postId}}">
                             
                             <view  class="rcc ">
                                 <view class="rcc fs-30 fw-700 c-0">选择审核人</view>
@@ -913,8 +836,8 @@
                         <!-- //审核人员头像 -->
                 
                             <view  class="rcc">
-                                <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
-                                <view class="w-10"></view>
+                                <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
+                                <view class="w-10"></view> -->
                                 <view class="fs-30 fw-700 c-0">已审核</view>
                             </view>
 
@@ -933,17 +856,17 @@
                     <view class="css" style="flex:1">
                         <view class="rus line-1-start fs-30 fw-400 ">{{singlePostDialog.post.creator.userName}}</view>
                     </view>
-                    <view class="w-100"></view>
+                    <view class="w-150"></view>
                     <view class="rcc">
                         <view class="rcc">
                             <view wx:if="{{user.userId === creator.userId}}" class="rcc">
 
-                                    <view  wx:if="{{singlePostDialog.post.statu.key===1}}" class="rcc p-20 box5 br-10 b-white" bindtap="_singlePostDialog_onOffLine" data-id="{{singlePostDialog.post.postId}}">
+                                    <view  wx:if="{{singlePostDialog.post.statu.key===1}}" class="rcc p-20 br-10" bindtap="_singlePostDialog_onOffLine" data-id="{{singlePostDialog.post.postId}}">
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/mgt.png"></image>
                                         <view class="w-10"></view>
                                         <view class="fs-25 line-h25 fw-400 c-3">已上线</view>
                                     </view>
-                                    <view  wx:else class="rcc p-20 box5 br-10 b-white" bindtap="_singlePostDialog_onOffLine"  data-id="{{singlePostDialog.post.postId}}">
+                                    <view  wx:else class="rcc p-20  br-10 " bindtap="_singlePostDialog_onOffLine"  data-id="{{singlePostDialog.post.postId}}">
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/mgt1.png"></image>
                                         <view class="w-10"></view>
                                         <view class="fs-25 line-h25 fw-400 c-3">已下线</view>
@@ -983,27 +906,27 @@
                     <view class=" p-1-5vw">
                                             <view class="rbc">
                                                 <image wx:if="{{singlePostDialog.post.postImages[0].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >1</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >1</view>
                                                 <image wx:if="{{singlePostDialog.post.postImages[1].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >2</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >2</view>
                                                 <image wx:if="{{singlePostDialog.post.postImages[2].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >3</view>                                            </view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >3</view>                                            </view>
                                             <view style="height:1.5vw"></view>
                                             <view class="rbc">
                                                 <image wx:if="{{singlePostDialog.post.postImages[3].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[3].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >4</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >4</view>
                                                 <image wx:if="{{singlePostDialog.post.postImages[4].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[4].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >5</view>   
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >5</view>   
                                                 <image wx:if="{{singlePostDialog.post.postImages[5].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >6</view>                                            </view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >6</view>                                            </view>
                                             <view style="height:1.5vw"></view>
                                             <view class="rbc">
                                                 <image wx:if="{{singlePostDialog.post.postImages[6].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[6].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >7</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >7</view>
                                                 <image wx:if="{{singlePostDialog.post.postImages[7].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[7].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >8</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >8</view>
                                                 <image wx:if="{{singlePostDialog.post.postImages[8].imgUrl}}" class="br-10" mode="aspectFill" src="{{singlePostDialog.post.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <view wx:else class="rcc b-48 fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >9</view>
+                                                <view wx:else class="rcc b-card fs-50 fw-700 c-white br-10" style="height:30vw;width:30vw" >9</view>
                                             </view>
                     </view>
 
@@ -1081,7 +1004,7 @@
                 </view>
             </view> -->
         </view>
-        <view class="h-100 b-45-3"></view>
+        <!-- <view class="h-100 b-card"></view> -->
     </view>
 
 

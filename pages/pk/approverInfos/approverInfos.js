@@ -103,7 +103,7 @@ Page({
       currentApprovingPost:that.data.approvingPosts[index],
       currentIndex:index,
     })
-    if(that.data.approvingPosts.length - index >3){return;}
+    if(that.data.approvingPosts.length - index > 3 || that.data.approvingPosts.length < 10){return;}
     if(that.data.approvingEnd){return;}
 
     var httpClient = template.createHttpClient(that);
@@ -118,6 +118,131 @@ Page({
   
 
 
-  }
+  },
 
+
+  approverMessage:function(){
+    var that = this;
+    
+    if(that.data.approver.approveMessage){
+      wx.navigateTo({
+        url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.approver.user.userId,
+      })
+      return;
+    }
+    if(that.data.user.userId != that.data.approver.user.userId){
+      return ;
+    }
+
+
+
+
+
+
+    template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+      //上传成功
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("message", function (message) {
+
+          that.setData({
+            'approver.approveMessage':message,
+          })
+
+      })
+      httpClient.send(request.url.publishApproveMessage, "GET",
+        {
+          pkId: that.data.pkId,
+          approvorId:that.data.user.userId,
+          text: text,
+          imgUrl: urls[0],
+        }
+      );
+
+    }, function () {
+      //上传失败
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+    }).show();
+
+
+
+  },
+  
+
+
+
+  publishMessage:function(){
+    var that = this;
+    
+    template.createEditImageDialog(that).show();
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function () {
+      that.setData({
+
+
+      })
+    })
+    httpClient.send(request.url.publishApproveMessage, "GET",{pkId: that.data.pkId, approverUserId: that.data.user.userId});
+  
+  },
+
+
+
+
+  playVoice:function (res) {
+    var that = this;
+    var voiceUrl = res.currentTarget.dataset.voiceurl;
+    var speck_time = res.currentTarget.dataset.specktime;
+    if(that.data.viewStatu === 1){return;}
+    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+  },
+  startVoice:function() {
+    var that = this;
+    that.data.viewStatu = 1;
+    template.createVoiceDialog(that).start();
+  
+  },
+  endVoice:function (params) {
+    var that = this;
+  
+    template.createVoiceDialog(that).stop(function(speck_time,file) {
+      template.uploadImages3("MP4", [file],that, function (files) {
+  
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function (approveMessage) {
+          that.setData({
+            'approver.approveMessage':approveMessage,
+          })
+  
+      })
+        httpClient.send(request.url.setApproverVoice, "GET",{pkId: that.data.pkId,approvorId:that.data.approver.user.userId,fileUrl:files[0],speckTime:speck_time})
+  
+      }, function(params) {
+      });
+    })
+    setTimeout(function name(params) {
+      that.data.viewStatu = 0;
+    },1000)
+  
+  
+  
+  
+  },
+  
+  playVoice1:function (res) {
+    var that = this;
+    if(that.data.viewStatu === 1){return;}
+    var voiceUrl = res.currentTarget.dataset.voiceurl;
+    var speck_time = res.currentTarget.dataset.specktime;
+    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+  }
+  
 })

@@ -13,16 +13,16 @@
 
 .rcc{
   display: flex;
-  flex-flow: wrap;
+  flex-flow: nowrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   
 }
 
-.rcc-nowrap{
+.rcc-wrap{
   display: flex;
-  flex-flow: nowrap;
+  flex-flow: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;

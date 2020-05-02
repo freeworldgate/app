@@ -96,4 +96,11 @@ Page({
   },
   
 
+  playVoice:function (res) {
+    var that = this;
+    var voiceUrl = res.currentTarget.dataset.voiceurl;
+    var speck_time = res.currentTarget.dataset.specktime;
+    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+  }
+  
 })

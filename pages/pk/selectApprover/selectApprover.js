@@ -11,7 +11,8 @@ var userInvite = require('./../../../utils/userInvite.js')
 var upload = require('./../../../utils/uploadFile.js')
 var template = require('./../../../template/template.js')
 
-
+const recorderManager = wx.getRecorderManager()
+const innerAudioContext = wx.createInnerAudioContext()
 
 
 
@@ -22,13 +23,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentIndex:0
+    currentIndex:0,
+    viewStatu:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that = this;
+    inviteReq.getHeight(function (res) {
+      that.setData({
+        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+    })
+
     wx.hideShareMenu({
       complete: (res) => {},
     })
@@ -65,8 +75,15 @@ Page({
     httpClient.send(request.url.setApproveInfo, "GET", { pkId: that.data.pkId,approvorId:that.data.currentApprover.user.userId  });
 
   },
+
+
   setComment:function(){
     var that = this;
+    var capprover = that.data.currentApprover;
+    var cindex = that.data.currentIndex;
+
+    
+
     template.createEditImageDialog(that).setDialog("留言", "编辑留言", 1,function(){}, function (text, urls) {
       //上传成功
       wx.hideLoading({
@@ -75,17 +92,27 @@ Page({
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function (currentApprover) {
-          var key = "approveUserList[" +that.data.currentIndex+"]"
+          var key = "approveUserList[" +cindex+"]"
           that.setData({
             [key]:currentApprover,
-            currentApprover:currentApprover,
           })
+          // 未滑动改变当前审核人
+          if(cindex === that.data.currentIndex)
+          {
+            that.setData({
+              currentApprover:currentApprover,
+            })
+
+          }
+
+
+
 
       })
       httpClient.send(request.url.setComment, "GET",
         {
           pkId: that.data.pkId,
-          approvorId:that.data.currentApprover.user.userId,
+          approvorId:capprover.user.userId,
           text: text,
           imgUrl: urls[0],
         }
@@ -147,6 +174,68 @@ Page({
     httpClient.setMode("label", true);
     httpClient.send(request.url.approve, "GET",{pkId: that.data.pkId,postId: that.data.postId,tag:2}
     );
-  }
+  },
+
+  approverMessage:function(){
+    var that = this;
+    
+    if(that.data.currentApprover.approveMessage){
+      wx.navigateTo({
+        url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.currentApprover.user.userId,
+      })
+    }
+
+
+  },
+
+
+startVoice:function() {
+  var that = this;
+  that.data.viewStatu = 1;
+  template.createVoiceDialog(that).start();
+
+},
+endVoice:function (params) {
+  var that = this;
+
+  var capprover = that.data.currentApprover;
+  var cindex = that.data.currentIndex;
+  template.createVoiceDialog(that).stop(function(speck_time,file) {
+    template.uploadImages3("MP4", [file],that, function (files) {
+
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (currentApprover) {
+        var key = "approveUserList[" +cindex+"]"
+        that.setData({
+          [key]:currentApprover,
+          currentApprover:currentApprover,
+        })
+
+    })
+      httpClient.send(request.url.setCommentVoice, "GET",{pkId: that.data.pkId,approvorId:capprover.user.userId,fileUrl:files[0],speckTime:speck_time})
+
+    }, function(params) {
+    });
+  })
+  setTimeout(function name(params) {
+    that.data.viewStatu = 0;
+  },1000)
+
+
+
+
+},
+
+playVoice:function (res) {
+  var that = this;
+  if(that.data.viewStatu === 1){return;}
+  var voiceUrl = res.currentTarget.dataset.voiceurl;
+  var speck_time = res.currentTarget.dataset.specktime;
+  template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+}
+
+
+
 
 })

@@ -795,7 +795,7 @@
     height: auto;
     position: fixed;
     z-index: 29;
-    bottom: 6vw; 
+    bottom: 0vw; 
 
 
 }
@@ -872,12 +872,28 @@
     top: 15%;
     /* background-color: white; */
 }
+
 .shortTextDialog_view{
     width: 500rpx;
     border-radius: 10rpx;
     box-shadow: 2px 2px 2px #949494;
     background-color: white;
     padding: 70rpx;
+}
+.voiceDialog_view{
+    width:60vw;
+    border-radius: 20rpx;
+    box-shadow: 2px 2px 2px #949494;
+
+}
+.voiceDialog{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 105;
+    left: 0px;
+    top: 0vh;
+    /* background-color: white; */
 }
 .shortTextDialog_cancel{
     width: 220rpx;

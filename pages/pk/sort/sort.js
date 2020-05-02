@@ -76,6 +76,7 @@ Page({
   },
   remove:function(res){
     var that = this;
+    if(that.data.user.userId != that.data.creator.userId){return;}
     if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
 
     var pkId = that.data.pkId;
@@ -97,6 +98,7 @@ Page({
 
   select:function(res){
     var that = this;
+    if(that.data.user.userId != that.data.creator.userId){return;}
     if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
 
     var pkId = that.data.pkId;

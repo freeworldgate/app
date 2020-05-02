@@ -1424,7 +1424,8 @@
   padding-right: 15rpx;
   padding-bottom: 15rpx;
   padding-top: 15rpx; */
-  background-color: rgb(255, 249, 249);
+  /* background-color: rgb(255, 249, 249); */
+  background-color: rgb(231, 225, 212);
 }
 .t19-1-2{
   /* text-align:center; */
@@ -1465,6 +1466,15 @@
   padding-right: 30rpx;
   border-radius: 50rpx;
   background-color: rgb(0, 118, 165);
+  font-size: 20rpx;
+  color: white;
+}
+.t19-5-1-1{
+  height: 50rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-radius: 50rpx;
+  background-color: rgb(198, 198, 198);
   font-size: 20rpx;
   color: white;
 }
