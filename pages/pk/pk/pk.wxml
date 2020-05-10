@@ -1,25 +1,25 @@
-<view class="css b-pk">
-    <view class="cbs h-100vw " style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+<view class="css" style="min-height:100vh">
+    <view class="cbs h-100vw  b-pk" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
         <view class="" style="height:{{top+32}}px"></view>
 
         <view class="rss pl-4vw" style="flex:1">
             <view class="cas">
                 <view></view>
-                <navigator class="rcs h-80 pl-40 pr-40 br-80 b-card"  url="/pages/pk/message/message?pkId={{pkId}}">
+                <view class="rcs h-80 pl-40 pr-40 br-80 b-card"   bindtap="groupCode">
                     <view class="rcc ">
                         <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/group.png"></image>
                     </view>
                     <view class="w-20"></view>
                         <!-- <view class="rcc fs-25 fw-700 c-word">按钮1</view> -->
                     <view class="rcc fs-25 fw-700 c-word">打榜群</view>
-                </navigator>
+                </view>
                 <view class="rcs h-80 pl-40 pr-40 br-80 b-card" bindtap="publish">
                     <view class="rcc ">
                         <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/dabang.png"></image>
                     </view>
                     <view class="w-20"></view>
                     <!-- <view class="rcc fs-25 fw-700 c-word">按钮2</view> -->
-                    <view class="rcc fs-25 fw-700 c-word">我要打榜</view>
+                    <view class="rcc fs-25 fw-700 c-word">我的榜帖</view>
                 </view>
                 <navigator class="rcs h-80 pl-40 pr-40 br-80 b-card" url="/pages/pk/sort/sort?pkId={{pkId}}">
                     <view class="rcc ">
@@ -41,18 +41,33 @@
 
         <!-- User -->
 
-        <view></view>
+        <!-- <view class="rbc pl-4vw pr-4vw">
+
+            <view class="css ">
+          
+                    <view class="rcs">
+                        <view class="rcc fs-30 fw-700 c-white ">今日打榜:</view>
+                        <view class="rcc fs-30 fw-400 c-white ">{{pkDetail.totalSort.name}}人</view>
+                    </view>
+                    <view class="h-20"></view>
+                    <view class="rcs">
+                        <view class="rcc fs-30 fw-700 c-white  ">今日审核员:</view>
+                        <view class="rcc fs-30 fw-400 c-white  ">{{pkDetail.totalApprover.name}}人</view>
+                    </view>
+            </view>
+            <view></view>
+        </view> -->
         <view class="css">
             <view class="rbs pl-8vw pr-8vw">
                 <view class="cas" style="flex:1">
                         <view class="rbc-nowrap ">
                             <view></view>
-                            <view class="rus line-1-start fs-35 fw-700 c-white">主题</view>
+                            <view class="rus line-1-start fs-35 fw-700 c-white">{{pkDetail.topic}}</view>
                         </view>
                     
                         <view class="rbc-nowrap ">
                             <view></view>
-                            <view class="rus line-1-start fs-25 fw-400 c-white ">该怎么形容你最贴切,拿什么跟你做比较才算特别，对你的感觉 强烈 ，却又不太了解 只凭直觉!</view>
+                            <view class="rus line-1-start fs-25 fw-400 c-white ">{{pkDetail.watchWord}}</view>
                         </view>
                 </view>
                 <view class="w-4vw"></view>
@@ -63,18 +78,16 @@
             <view class="h-50"></view>
         </view>
 
-
-
     </view>
 
 
 
-    <view class="css">
+    <view class="css b-pk">
         <view class="css mr-1vw ml-1vw">
             <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:98vw">
                 
                 <view class="css pt-20 pb-20 pr-20" style="display:inline-block" wx:for="{{userIntegrals}}" wx:for-index="bindex" wx:for-item="integral" wx:key="postkey">
-                    <navigator class="css p-20 b-card br-10 c-word" bindtap="" url="/pages/pk/approverInfos/approverInfos?approverUserId={{integral.user.userId}}&pkId={{pkId}}" >
+                    <view class="css p-20 b-card br-10 c-word" bindtap="approverView" data-approver="{{integral.user.userId}}" >
                         <view class="rss">
                             <view class="rcc">
                                 <image class="w-70 h-70 br-10" mode="aspectFill" src="{{integral.user.imgUrl}}"></image>
@@ -104,11 +117,12 @@
                             <view class="rcc fs-25 fw-700 ">{{integral.index + 1}}</view>
                         </view>
                     
-                    </navigator>
+                    </view>
 
                 </view>
             </scroll-view>
         </view>
+
     </view>
 
 
@@ -272,26 +286,27 @@
                                 <view class="w-20"></view>
                                 <view class="rcc">
                                     <image class="rcc w-25 h-25 " mode="aspectFit" src="/images/share2.png"></image>
-                                    <view class="rcc fs-20 fw-400 c-4">769</view>
+                                    <view class="rcc fs-20 fw-400 c-4">{{post.userIntegral.share}}</view>
                                 </view>
                                 <view class="w-20"></view>
                                 <view class="rcc ">
                                     <image class="rcc w-25 h-25 " mode="aspectFit" src="/images/like2.png"></image>
-                                    <view class="rcc fs-20 fw-400 c-4">769</view>
+                                    <view class="rcc fs-20 fw-400 c-4">{{post.userIntegral.follow}}</view>
                                 </view>
                             </view>
                         </view>
                         <view class="rbc absolute" style="width:48.5%">
                             <view class="rcc p-20 ">
-                                <view class="rcc fs-25 fw-700 c-white h-50 w-50 br-50 b-45 z4 ">{{post.postImages.length}}</view>
+                                <view wx:if="{{post.userIntegral.index===-1}}" class="rcc fs-20 fw-700 z4 c-white"></view>
+                                <view wx:else class="rcc fs-20 fw-700 c-white h-35 pl-20 pr-20 br-10 b-45 z4 ">{{post.userIntegral.index + 1}}</view>
                             </view>
                             <view class="rcc">
                                 <view bindtap="likeOrDisLike" class="rcc p-20 z4" data-index="{{bindex}}" data-postid="{{post.postId}}">
                                     <view class="rcc" wx:if="{{post.queryerCollect}}">
-                                        <image class="rcc w-70 h-70 " mode="aspectFit" src="/images/rokit3.png"></image>
+                                        <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/rokit3.png"></image>
                                     </view>
                                     <view class="rcc" wx:else>
-                                        <image class="rcc w-70 h-70 " mode="aspectFit" src="/images/rokit2.png"></image>
+                                        <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/rokit2.png"></image>
                                     </view>
                                 </view>
                             </view>
@@ -321,26 +336,27 @@
                                 <view class="w-20"></view>
                                 <view class="rcc">
                                     <image class="rcc w-25 h-25 " mode="aspectFit" src="/images/share2.png"></image>
-                                    <view class="rcc fs-20 fw-400 c-4">769</view>
+                                    <view class="rcc fs-20 fw-400 c-4">{{post.userIntegral.share}}</view>
                                 </view>
                                 <view class="w-20"></view>
                                 <view class="rcc ">
                                     <image class="rcc w-25 h-25 " mode="aspectFit" src="/images/like2.png"></image>
-                                    <view class="rcc fs-20 fw-400 c-4">769</view>
+                                    <view class="rcc fs-20 fw-400 c-4">{{post.userIntegral.follow}}</view>
                                 </view>
                             </view>
                         </view>
                         <view class="rbc absolute" style="width:48.5%">
                             <view class="rcc p-20 ">
-                                <view class="rcc fs-25 fw-700 c-white h-50 w-50 br-50 b-45 z4 ">{{post.postImages.length}}</view>
+                                <view wx:if="{{post.userIntegral.index===-1}}" class="rcc fs-20 fw-700 z4 c-white"></view>
+                                <view wx:else class="rcc fs-20 fw-700 c-white h-35 pl-20 pr-20 br-10 b-45 z4 ">{{post.userIntegral.index + 1}}</view>
                             </view>
                             <view class="rcc">
                                 <view bindtap="likeOrDisLike" class="rcc p-20 z4" data-index="{{bindex}}" data-postid="{{post.postId}}">
                                     <view class="rcc" wx:if="{{post.queryerCollect}}">
-                                        <image class="rcc w-70 h-70 " mode="aspectFit" src="/images/rokit3.png"></image>
+                                        <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/rokit3.png"></image>
                                     </view>
                                     <view class="rcc" wx:else>
-                                        <image class="rcc w-70 h-70 " mode="aspectFit" src="/images/rokit2.png"></image>
+                                        <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/rokit2.png"></image>
                                     </view>
                                 </view>
                             </view>
@@ -353,6 +369,7 @@
         </view>
     </view>
 
+    <view class="h-100"></view>
 
 </view>
 <view class="rcs z30 customBar" style="top:{{top}}px">
@@ -963,8 +980,8 @@
                             <!-- <view class="rcc fs-30 fw-400  c-yellow ">今日排名:</view> -->
                             <view class="rcc ">
                                 <view  class="rcc">
-                                        <view wx:if="{{singlePostDialog.post.userIntegral.index < 1}}" class="rcc fs-30 fw-700 c-4">未排名</view>
-                                        <view wx:else class=" fs-30 fw-700 c-4">{{singlePostDialog.post.userIntegral.index}}</view>
+                                        <view wx:if="{{singlePostDialog.post.userIntegral.index === -1}}" class="rcc fs-30 fw-700 c-4">未排名</view>
+                                        <view wx:else class=" fs-30 fw-700 c-4">{{singlePostDialog.post.userIntegral.index + 1}}</view>
                                 </view>
                                 <!-- <view wx:else class="rcc">
                                         <view class="fs-30 fw-700 c-4">未排名</view>

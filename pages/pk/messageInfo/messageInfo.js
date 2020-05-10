@@ -26,6 +26,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    inviteReq.getHeight(function (res) {
+      that.setData({
+        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+    })
+
+
+
+
     this.setData({
       pkId:options.pkId,
       approverUserId:options.approverUserId
@@ -91,6 +101,12 @@ Page({
 
 
   },
+  playVoice:function (res) {
+    var that = this;
+    var voiceUrl = res.currentTarget.dataset.voiceurl;
+    var speck_time = res.currentTarget.dataset.specktime;
+    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+  }
   
 
 

@@ -100,7 +100,10 @@
   color: rgba(63, 63, 63, 0.849);
 }
 .c-5{
-  color: rgb(0, 153, 255);
+  color: #0099ff;
+}
+.c-5-1{
+  color:#1296db;
 }
 .c-6{
   color: #ec4602;
@@ -277,6 +280,9 @@
 .pl-7vw{
   padding-left: 7vw
 }
+.p-8vw{
+  padding: 8vw
+}
 .pr-8vw{
   padding-right: 8vw
 }
@@ -441,6 +447,7 @@
 .h-600{height: 600rpx;}
 .h-650{height: 650rpx;}
 .h-700{height: 700rpx;}
+.h-800{height: 800rpx;}
 .h-auto{height: auto}
 .max-h-150{
   max-height: 150rpx;
@@ -638,13 +645,16 @@ mw-200{
   color: rgb(202, 169, 134);
 }
 .c-word-3{
-  color: #e3e1ee;
+  color: #ffffff;
 }
 .c-word-4{
-  color: rgb(232, 195, 195);
+  color: rgb(208, 66, 0);
 }
 .c-word-5{
-  color: rgb(245, 236, 236);
+  color: rgb(51, 51, 51);
+}
+.c-word-6{
+  color: rgb(80, 121, 153);
 }
 .b-card{
   background-color: rgba(255, 255, 255, 0.2);
@@ -652,7 +662,9 @@ mw-200{
 .b-card-1{
   background-color: rgb(231, 225, 212);
 }
-
+.b-card-2{
+  background-color: rgba(223, 223, 223, 0.7);
+}
 
 
 .b-1{
@@ -782,7 +794,7 @@ mw-200{
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
 .b-upload-1{
-  background-image: linear-gradient(to right, #e69c81 0%, #d8ba58 100%);
+  background-image: linear-gradient(to right, #e69c8182 0%, #d8ba5882 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -851,7 +863,7 @@ mw-200{
   background-color: rgba(207, 207, 207, 0.853);
 }
 .b-48{
-  background-color: rgba(250, 250, 250);
+  background-color: rgba(248, 248, 248);
 }
 .b-49{
   background-color: rgba(230, 230, 230);
@@ -923,6 +935,12 @@ mw-200{
 .border12{
       border: 0.2rpx solid #949494d0; 
 }
+.border13{
+  border: 3px solid rgb(0, 106, 167); 
+}
+.border14{
+  border: 1px solid rgba(158, 158, 158, 0.084); 
+}
 .br-5{
   border-radius: 5rpx;
 }
@@ -956,6 +974,9 @@ mw-200{
 .br-80{
   border-radius: 80rpx;
 }
+.br-90{
+  border-radius: 90rpx;
+}
 .br-100{
   border-radius: 100rpx;
 }
@@ -973,6 +994,9 @@ mw-200{
 }
 .br-150{
   border-radius: 150rpx;
+}
+.br-180{
+  border-radius: 180rpx;
 }
 .br-200{
   border-radius: 200rpx;
@@ -1029,6 +1053,16 @@ mw-200{
     -webkit-line-clamp:1;
     -webkit-box-orient:vertical;
     word-break:break-all;
+}
+.line-1-center{
+  word-wrap: break-word;
+  display:-webkit-box;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  text-align: center;
 }
 .line-5-start{
     word-wrap: break-word;

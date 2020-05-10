@@ -15,117 +15,192 @@
         <view style="flex:1"></view>
     </view>
 
-    <view class="css pt-50 pb-50">
-        <view class="rcc">
-            <view class="rcc">
-                <view hidden="{{hour>9}}" class="rcc fs-50 fw-700 c-4">0</view>
-                <view class="rcc fs-50 fw-700 c-4">{{hour}}</view>
-                <view class="rcc fs-50 fw-700 c-4">:</view>
-                <view hidden="{{minute>9}}" class="rcc fs-50 fw-700 c-4">0</view>
-                <view class="rcc fs-50 fw-700 c-4">{{minute}}</view>
-                <view class="rcc fs-50 fw-700 c-4">:</view>
-                <view hidden="{{second>9}}" class="rcc fs-50 fw-700 c-4">0</view>
-                <view class="rcc fs-50 fw-700 c-4">{{second}}</view>
+
+    <view class="rss pl-4vw pr-4vw pt-30 pb-30">
+        <view class="cbs br-10 b-white p-20"  style="flex:1">
+            <view class="rbc">
+                <view class="rcc fs-20 fw-400 c-3" >剩余时间</view>
+                
+                <view class="rcc fs-20 fw-400 c-word-1">{{date}}</view>
             </view>
-        </view>
-        <view class="h-50"></view>
-        <view class="rcc">a</view>
-    </view>
-    <!-- <view class="rcc"><view class="fs-40 fw-700 p-20">预审核用户{{approvers.length}}/{{approverNum}}</view></view> -->
-
-    <!-- <view class="css mr-4vw ml-4vw">
-        <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:96vw">
-                <view class="css pr-4vw" style="display:inline-block" wx:for="{{approvers}}" wx:for-index="bindex" wx:for-item="approver" wx:key="postkey">
-                    <view class="css box5 p-20 b-white" bindtap="remove" data-user="{{bindex}}">
-                                    <view class="rss">
-                                        <view class="rcc">
-                                            <image class="w-100 h-100 br-10 box3" mode="aspectFill" src="{{approver.user.imgUrl}}"></image>
-                                        </view>
-                                        <view class="w-10"></view>
-                                        <view class="cas" style="flex:1">
-                                            <view class="rbc">
-                                                <view class="rcc">
-                                                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/like2.png"></image>
-                                                    <view class="rcc fs-20 fw-400 ">打榜积分</view>
-                                                </view>
-                                                <view class="rcc fs-25 fw-400 c-4">{{approver.follow}}</view>
-                                            </view>
-
-                                            <view class="rbc">
-                                                <view class="rcc">
-                                                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/share2.png"></image>
-                                                    <view class="rcc fs-20 fw-400 ">分享积分</view>
-                                                </view>
-                                                <view class="rcc fs-25 fw-400 c-4">{{approver.share}}</view>
-                                            </view>
-                                        </view>
-                                    </view>
-                                    <view class="h-20"></view>
-
-                                    <view class="rbc">
-                                        <view class="rcc">
-                                            <image class="rcc w-30 h-30 p-10" mode="aspectFit" src="/images/sort.png"></image>
-                                            <view class="rcc fs-25 fw-400 ">排名</view>
-                                        </view>
-                                        <view class="rcc fs-30 fw-700 ">{{approver.index + 1}}</view>
-                                    </view>
-                    </view>
+            <view class="css p-20">
+                <view class="rcc">
+                    <view hidden="{{hour>9}}" class="rcc fs-30 fw-700 c-4">0</view>
+                    <view class="rcc fs-30 fw-700 c-4">{{hour}}</view>
+                    <view class="rcc fs-30 fw-700 c-4">:</view>
+                    <view hidden="{{minute>9}}" class="rcc fs-30 fw-700 c-4">0</view>
+                    <view class="rcc fs-30 fw-700 c-4">{{minute}}</view>
+                    <view class="rcc fs-30 fw-700 c-4">:</view>
+                    <view hidden="{{second>9}}" class="rcc fs-30 fw-700 c-4">0</view>
+                    <view class="rcc fs-30 fw-700 c-4">{{second}}</view>
                 </view>
-        </scroll-view>
-    </view> -->
-   
 
-    <view wx:if="{{userIntegrals}}" class="rus-wrap pl-2vw pr-2vw" style="flex:1">
+            </view>
+            <view class="rbc h-40">
+                <view class="rcc">
+                    <view class="rcc fs-20 fw-400 c-3" >今日打榜:</view>
+                    <view class="rcc fs-20 fw-400 c-3" >{{sortNum}}人</view>
+                </view>
+                
+                
+                <view class="rcc">
+                    <view class="rcc fs-20 fw-400 c-3" >可抢审核权:</view>
+                    <view class="rcc fs-20 fw-400 c-3" >{{approverNum}}个</view>
+                </view>
+                
+            </view>
+            
+        </view>
+        <view class="w-4vw"></view>
+        <view class="cbs br-10 b-white p-20" style="flex:1">
+            <view class="rbc">
+                <view class="rcc fs-20 fw-400 c-3" >我的信息</view>
+                <view class="rcc fs-20 fw-400 c-word-1" >23:00开抢</view>
+            </view>
+            <view class="rbc p-20">
+                <view class="rcc">
+                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/like2.png"></image>
+                    <view class="rcc fs-20 fw-400 ">{{userIntegralInfo.follow}}</view>
+                </view>
+                <view class="rcc">
+                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/share2.png"></image>
+                    <view class="rcc fs-20 fw-400 ">{{userIntegralInfo.share}}</view>
+                </view>  
+                <view class="rcc">
+                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/sort.png"></image>
+                    <view class="rcc fs-20 fw-400 ">{{userIntegralInfo.index < 0?'待激活':(userIntegralInfo.index+1)}}</view>
+                </view>
+   
+            </view>
+            <view class="rbc h-40">
+                   
+                <view class="rus fs-20 fw-400 line-2-start">{{ userIntegralInfo.index < 0?'分享新用户激活排名':'前10%用户可抢'}}</view>
+                <image class="rcc w-35 h-35" mode="aspectFit" src="{{((userIntegralInfo.index + 1)>0)&&((userIntegralInfo.index + 1) <= (sortNum/10))?'/images/yu.png':'/images/yu1.png'}}"></image>
+            </view>
+        
+        </view>
+
+
+
     
-        <block wx:for="{{userIntegrals}}" wx:for-index="bindex" wx:for-item="userIntegral" wx:key="idx2">
-
-            <view class="css" style="width:48vw">
-
-                <view class="css pl-2vw pr-2vw pb-30">
-                    <view class="css box5 p-20 b-white br-10" bindtap="select" data-user="{{bindex}}">
-                                    <view class="rss">
-                                        <view class="rcc">
-                                            <image class="w-100 h-100 br-10 box3" mode="aspectFill" src="{{userIntegral.user.imgUrl}}"></image>
-                                        </view>
-                                        <view class="w-10"></view>
-                                        <view class="cas" style="flex:1">
-                                            <view class="rbc">
-                                                <view class="rcc">
-                                                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/like2.png"></image>
-                                                    <view class="rcc fs-20 fw-400 ">打榜积分</view>
-                                                </view>
-                                                <view class="rcc fs-25 fw-400 c-4">{{userIntegral.follow}}</view>
-                                            </view>
-
-                                            <view class="rbc">
-                                                <view class="rcc">
-                                                    <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/share2.png"></image>
-                                                    <view class="rcc fs-20 fw-400 ">分享积分</view>
-                                                </view>
-                                                <view class="rcc fs-25 fw-400 c-4">{{userIntegral.share}}</view>
-                                            </view>
-                                        </view>
-                                    </view>
-                                    <view class="h-20"></view>
-
-                                    <view class="rbc">
-                                        <view class="rcc">
-                                            <image class="rcc w-30 h-30 p-10" mode="aspectFit" src="/images/sort.png"></image>
-                                            <view class="rcc fs-25 fw-400 ">排名</view>
-                                        </view>
-                                        <view class="rcc fs-30 fw-700 ">{{userIntegral.index + 1}}</view>
-                                    </view>
-                    </view>
-                </view>
-
-            </view>
-        </block>
-   
-        <view hidden="{{!end}}" class="rcc p-30" style="width:100vw">
-            <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
-        </view>
-        <view hidden="{{approvers.length === 0}}" class="h-300"></view>
     </view>
+    <!-- 抢 -->
+    <view class="css pl-4vw pr-4vw">
+            <view class="cbs h-400 br-20 b-pk">
+                <view class="rcc h-80 fs-25 fw-400 c-white" >23:00~23:45可以抢审核权</view>
+                <view class="rcc">
+                    <view class="rcc fs-50 fw-700 b-card h-150 w-150 br-100 c-white" bindtap="select">抢</view>
+                </view>
+                <view class="h-80"></view>
+            </view>
+            <view class="h-30"></view>
+            <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:92vw">
+                    <view class="css " style="display:inline-block" wx:for="{{approvers}}" wx:for-index="bindex" wx:for-item="approver" wx:key="postkey">
+                        
+                        <view class="css mr-4vw" style="width:28vw">
+                                    <view class="cas b-white p-20 br-10" >
+                                        <view class="rcc">
+                                            <image class="w-80 h-80 br-80" mode="aspectFill" src="{{approver.user.imgUrl}}"></image>
+                                        </view>
+                                        <view class="h-10"></view>
+                                        <view class="rcc-nowrap line-1-center fs-20 fw-700 c-word-1">{{approver.user.userName}}</view>
+                                        <view class="h-10"></view>
+                                        <view class="rbc ">
+                                            <view class="ccc">
+                                                <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/scores.png"></image>    
+                                                <view class="rcc fs-25 fw-400 c-4">{{approver.follow + approver.share}}</view>           
+                                            </view>
+                         
+                                            <view class="ccc">
+                                                <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/sort.png"></image>              
+                                                <view class="rcc fs-25 fw-400 c-4">{{approver.index + 1}}</view>  
+                                            </view> 
+                                        </view>
+
+                                    </view>
+                                    <view hidden="{{user.userId != approver.user.userId}}" class="absolute rcc p-20" bindtap="remove">
+                                        <image class="h-40 w-40" mode="aspectFit" src="/images/remove.png" ></image>
+                                    </view>
+                        </view>
+
+
+
+
+
+
+
+                    </view>
+            </scroll-view>
+
+
+        
+    </view>
+
+
+    <view wx:if="{{userIntegrals}}" class="css ">
+
+        <view class="rbc pl-4vw pr-4vw pb-30 pt-30">
+            <view class="rcc fs-30 fw-700 c-3">今日打榜</view>
+            <view class="rcc fs-25 fw-700 c-3">{{sortNum}}</view>
+        </view>
+        <view  class="rus-wrap pl-2vw pr-2vw" >
+        
+            <block wx:for="{{userIntegrals}}" wx:for-index="bindex" wx:for-item="userIntegral" wx:key="idx2">
+
+                <view class="css" style="width:48vw">
+
+                    <view class="css pl-2vw pr-2vw pb-30">
+                        <view class="css box5 p-20 b-white br-10" >
+                                        <view class="rss">
+                                            <view class="rcc">
+                                                <image class="w-100 h-100 br-10 box3" mode="aspectFill" src="{{userIntegral.user.imgUrl}}"></image>
+                                            </view>
+                                            <view class="w-10"></view>
+                                            <view class="cas" style="flex:1">
+                                                <view class="rbc">
+                                                    <view class="rcc">
+                                                        <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/like2.png"></image>
+                                                        <view class="rcc fs-20 fw-400 ">打榜积分</view>
+                                                    </view>
+                                                    <view class="rcc fs-25 fw-400 c-4">{{userIntegral.follow}}</view>
+                                                </view>
+
+                                                <view class="rbc">
+                                                    <view class="rcc">
+                                                        <image class="rcc w-25 h-25 p-10" mode="aspectFit" src="/images/share2.png"></image>
+                                                        <view class="rcc fs-20 fw-400 ">分享积分</view>
+                                                    </view>
+                                                    <view class="rcc fs-25 fw-400 c-4">{{userIntegral.share}}</view>
+                                                </view>
+                                            </view>
+                                        </view>
+                                        <view class="h-20"></view>
+
+                                        <view class="rbc">
+                                            <view class="rcc">
+                                                <image class="rcc w-30 h-30 p-10" mode="aspectFit" src="/images/sort.png"></image>
+                                                <view class="rcc fs-25 fw-400 ">排名</view>
+                                            </view>
+                                            <view class="rcc">
+                                                <image class="rcc w-35 h-35" mode="aspectFit" src="{{(userIntegral.index + 1) > (sortNum/10)?'/images/yu1.png':'/images/yu.png'}}"></image>
+                                                <view class="w-10"></view>
+                                                <view class="rcc fs-30 fw-700 ">{{userIntegral.index + 1}}</view>
+                                            </view>
+                                            
+                                        </view>
+                        </view>
+                    </view>
+
+                </view>
+            </block>
+    
+            <view hidden="{{!end}}" class="rcc p-30" style="width:100vw">
+                <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
+            </view>
+            <view hidden="{{approvers.length === 0}}" class="h-300"></view>
+        </view>
+    </view> 
+
     <view wx:else class="ccc" style="flex:1">
         <view class="rcc">
             <image class="h-200 w-200" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/gift.png" ></image>
@@ -141,34 +216,8 @@
 
 
 </view>
- <view class="css bottomBar z3 t-line">
-        <!-- <view hidden="{{approvers.length === 0}}" class="cas mr-2vw ml-2vw" >
-            <view class="rbc pt-5 pb-5">
-                <view class="fs-25 fw-400 c-white">预选审核员</view>
-                <view class="fs-25 fw-400 c-white">{{approvers.length}}/{{approverNum}}</view>
-            </view>
-            <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:96vw">
-                <view class="css  pl-10 pr-10" style="display:inline-block" wx:for="{{approvers}}" wx:for-index="bindex" wx:for-item="approver" wx:key="postkey">
-                    <view class="rss pb-20 pr-20" >
-                        <view class="rcc">
-                            <image class="w-70 h-70 br-10" mode="aspectFill" src="{{approver.user.imgUrl}}"></image>
-                        </view>
-                        <view class="w-10"></view>
-                        <view class="cas">
-                            <view class="rbc">
-                                <view class="rcc fs-20 fw-400 c-white">积分:</view>
-                                <view class="rcc fs-20 fw-400 c-white">{{approver.follow + approver.share}}</view>
-                            </view>
-                            <view class="rbc">
-                                <view class="rcc fs-20 fw-400 c-white">排名:</view>
-                                <view class="rcc fs-20 fw-400 c-white">{{approver.index + 1}}</view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </scroll-view>
- 
-        </view> -->
+ <!-- <view class="css bottomBar z3 t-line">
+  
         <view hidden="{{approvers.length === 0}}" class="cas mr-4vw ml-4vw  pb-30">
             <view class="rbc pt-20 pb-20">
                 <view class="rcc">
@@ -183,7 +232,7 @@
                     <view class="rcc fs-30 fw-400 c-white">:</view>
                     <view hidden="{{second>9}}" class="rcc fs-30 fw-400 c-white">0</view>
                     <view class="rcc fs-30 fw-400 c-white">{{second}}</view>
-                    <view class="{{((5 * 60 < leftTime) &&  (leftTime < 20 * 60 ))?'rcc fs-30 fw-400 c-green pl-20':'rcc fs-30 fw-400 c-red  pl-20'}} ">{{((5 * 60 < leftTime) &&  (leftTime < 20 * 60 ))?'确定中':'已锁定'}}</view>
+                    <view class="{{((5 * 60 < leftTime) &&  (leftTime < 20 * 60 ))?'rcc fs-30 fw-400 c-green pl-20':'rcc fs-30 fw-400 c-red  pl-20'}} ">{{((15 * 60 < leftTime) &&  (leftTime < 60 * 60 ))?'选择中':'已锁定'}}</view>
 
                 </view>
 
@@ -224,7 +273,11 @@
                                                             <view class="rcc fs-25 fw-400 ">排名</view>
                                                         </view>
                                                         <view class="rcc fs-30 fw-700 ">{{approver.index + 1}}</view>
+                                                        
                                                     </view>
+                                    </view>
+                                    <view class="absolute rcc">
+                                        <image class="h-60 w-60" mode="aspectFit" src="/images/remove.png" ></image>
                                     </view>
                         </view>
 
@@ -237,7 +290,7 @@
                     </view>
             </scroll-view>
         </view>
-</view>
+</view> -->
 <!--<view wx:else   class="css bottomBar z3 t-line">
         <view hidden="{{currentApprovers.length === 0}}" class="cas mr-2vw ml-2vw h-150">
             <view class="rbc">

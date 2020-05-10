@@ -1,6 +1,6 @@
 // var host = 'http://www.211shopper.com';
-// var host = 'http://192.168.137.1:8080';
-var host = 'http://192.168.43.67:8080';
+var host = 'http://192.168.137.1:8080';
+// var host = 'http://192.168.43.67:8080';
 // 上传图片接口
 var uploadUrl = 'https://oss.211shopper.com';
 
@@ -77,7 +77,8 @@ var url = {
         queryGroupCode: `${host}/pk/queryGroupCode`,
         uploadGroupCode: `${host}/pk/uploadGroupCode`,
         setApproveUser: `${host}/pk/setApproveUser`,
-        
+
+        removeApproveUser: `${host}/pk/removeApproveUser`,
         approve: `${host}/pk/approve`,
         setComment: `${host}/pk/setComment`,
         querySort: `${host}/pk/querySort`,
@@ -87,8 +88,11 @@ var url = {
         updateTime: `${host}/pk/updateTime`,
         setCommentVoice:`${host}/pk/setCommentVoice`,
         setApproverVoice:`${host}/pk/setApproverVoice`,
+        approverDetail:`${host}/pk/approverDetail`,
 
 
+        
+        oneTimeTask:`${host}/pk/oneTimeTask`,
         // 登录地址，用于建立会话
         loginUrl: `${host}/user/login`,
         userRegister: `${host}/user/register`,

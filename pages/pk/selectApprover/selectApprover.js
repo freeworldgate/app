@@ -197,7 +197,7 @@ startVoice:function() {
 },
 endVoice:function (params) {
   var that = this;
-
+  if(that.data.viewStatu != 1){return;}
   var capprover = that.data.currentApprover;
   var cindex = that.data.currentIndex;
   template.createVoiceDialog(that).stop(function(speck_time,file) {

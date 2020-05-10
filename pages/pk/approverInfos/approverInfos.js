@@ -45,6 +45,11 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
     httpClient.send(request.url.queryApprovedPost, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId});
+
+
+
+
+
   },
 
   changeTag0:function(){
@@ -136,38 +141,47 @@ Page({
 
 
 
+    template.createOperateDialog(that).show("编辑公告", "您可以发布编辑公告信息面向新用户，告知他们你的审核标准和内容要求,支持实时发布语音消息...", function () {
+
+      template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+        //上传成功
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("message", function (message) {
+  
+            that.setData({
+              'approver.approveMessage':message,
+            })
+  
+        })
+        httpClient.send(request.url.publishApproveMessage, "GET",
+          {
+            pkId: that.data.pkId,
+            approvorId:that.data.user.userId,
+            text: text,
+            imgUrl: urls[0],
+          }
+        );
+  
+      }, function () {
+        //上传失败
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+      }).show();
+
+    }, function () {});
+
+  
 
 
 
-    template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
-      //上传成功
-      wx.hideLoading({
-        complete: (res) => {},
-      })
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("message", function (message) {
 
-          that.setData({
-            'approver.approveMessage':message,
-          })
 
-      })
-      httpClient.send(request.url.publishApproveMessage, "GET",
-        {
-          pkId: that.data.pkId,
-          approvorId:that.data.user.userId,
-          text: text,
-          imgUrl: urls[0],
-        }
-      );
 
-    }, function () {
-      //上传失败
-      wx.hideLoading({
-        complete: (res) => {},
-      })
-    }).show();
 
 
 
@@ -178,18 +192,21 @@ Page({
 
   publishMessage:function(){
     var that = this;
-    
-    template.createEditImageDialog(that).show();
+    template.createOperateDialog(that).show("编辑公告", "您可以发布编辑公告信息面向新用户，告知他们你的审核标准和内容要求...", function () {
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
-      that.setData({
+      template.createEditImageDialog(that).show();
 
-
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+        that.setData({
+  
+  
+        })
       })
-    })
-    httpClient.send(request.url.publishApproveMessage, "GET",{pkId: that.data.pkId, approverUserId: that.data.user.userId});
+      httpClient.send(request.url.publishApproveMessage, "GET",{pkId: that.data.pkId, approverUserId: that.data.user.userId});
+    }, function () {});
+
   
   },
 
@@ -198,9 +215,10 @@ Page({
 
   playVoice:function (res) {
     var that = this;
+    if(that.data.viewStatu === 1){return;}
     var voiceUrl = res.currentTarget.dataset.voiceurl;
     var speck_time = res.currentTarget.dataset.specktime;
-    if(that.data.viewStatu === 1){return;}
+   
     template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
   },
   startVoice:function() {
@@ -211,7 +229,7 @@ Page({
   },
   endVoice:function (params) {
     var that = this;
-  
+    if(that.data.viewStatu != 1){return;}
     template.createVoiceDialog(that).stop(function(speck_time,file) {
       template.uploadImages3("MP4", [file],that, function (files) {
   
@@ -231,7 +249,7 @@ Page({
     setTimeout(function name(params) {
       that.data.viewStatu = 0;
     },1000)
-  
+
   
   
   

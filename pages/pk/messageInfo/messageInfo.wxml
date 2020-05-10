@@ -1,10 +1,23 @@
 <!--pages/pk/messageInfo/messageInfo.wxml-->
-<view class="csc" style="height:100vh">
-        <view class="rcc pt-100 pb-100" bindtap="return">
-            <view class="rcc fs-50 fw-700">2020-09-20</view>
+<view class="cbs" style="height:100vh">
+        <view class="css">
+            <view style="height:{{top}}px"></view>
+            <view class="rcs pl-4vw pr-4vw" style="height:32px">
+                <view class="rcc">
+                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
+                </view>
+                <view class="rcs c-4">
+                    <view class="rcc fs-30 fw-400 ">{{date}}</view>
+                    <view class="fs-30 fw-400 ">审核员公告</view>
+
+                </view>
+                
+                
+            </view>
         </view>
+        <view></view>
         <view class="css pl-4vw pr-4vw">
-            <view class="css b-white br-20 pl-4vw pr-4vw pt-30 pb-30 box6 backImg33">
+            <view class="css b-white br-20 pl-4vw pr-4vw pt-30 pb-30 ">
 
                             <view class="h-30"></view>
                             <view class="rss" bindtap="approverMessage" >
@@ -17,16 +30,16 @@
                                 <view class="w-4vw"></view>
                                 <view class="css" style="flex:1">
                                     <view class="rbc-nowrap">  
-                                        <view class="rus  fs-30 fw-700 line-1-start">{{message.user.userName}}</view>
-                                        <view class="rbc-nowrap w-200">
+                                        <view class="rus  fs-30 fw-700 line-1-start c-word-6">{{message.user.userName}}</view>
+                                        <view class="rbc-nowrap w-300">
                                             <view class=""></view>
-                                            <view class="rcc  fs-20 fw-400 pl-15 pr-15 pt-5 pb-5 br-5 detail c-4">{{user.userId===message.user.userId?'编辑消息':'详情'}}</view>
+                                            <view class="rcc  fs-20 fw-400 pl-15 pr-15 pt-10 pb-10 br-5 b-9 c-white">{{user.userId===message.user.userId?'编辑消息':'详情'}}</view>
                                         </view>
                             
                                     </view>
 
                                     <view class="rbc-nowrap">
-                                        <view class="rus  fs-30 fw-400  line-2-start">{{message.text}}</view>
+                                        <view class="rus  fs-30 fw-400  line-2-start pt-20 pb-20  c-word-5">{{message.text}}</view>
                                         <view></view>
                                     </view>
                                             
@@ -46,14 +59,19 @@
                             
                             <view class="rbs">
                                 
-                                <view class="rcc">
-                                    <view class="rcc" bindtap="">
-                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
+                                <navigator class="rcc p-10" url="/pages/pk/message/message?pkId={{pkId}}">
+                                                    <image class="w-40 h-40" mode="aspectFit" src="/images/group1.png"></image>
                                                     <view class="w-10"></view>
-                                                    <view class="fs-25 line-h25 fw-400">审核群</view>
-                                    </view>
+                                                    <view class="fs-25 line-h25 fw-400 c-3-1">审核群</view>
+                                </navigator>
+                                <view class="rcc" bindtap='playVoice' data-specktime="{{message.speckTime}}" data-voiceurl="{{message.voiceUrl}}" >
+                                        <image class="w-40 h-40" mode="aspectFit" src="/images/publish3.png"></image>    
+                                        <view class="w-10"></view>
+                                        <view  class="rcc fs-20 fw-400 c-3-1">{{ (message.speckTime<1)?'':'('+message.speckTime + 's)'}}</view>
+
+                            
+
                                 </view>
-                                <view class="fs-25 fw-400 c-4">{{message.time}}</view>
                             </view>
               
 
@@ -62,10 +80,11 @@
                             
             </view>
         </view>
-
         <view class="rcc pt-100 pb-100" bindtap="return">
               <button class="rcc fs-30 fw-700 w-300 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{message.user.userId}},{{message.mediaId}}">拉取图片</button>
         </view>
+
+        <view></view>
 </view>
 
 
@@ -181,11 +200,11 @@
             </view>
         </view>
     </view>
-    <view bindtap="_editImageDialog_closeEdit" catchtouchmove="return" class="coverAll100" hidden="{{editImageDialog.visible!=true}}"></view>
-    <view bindtap="_editImageDialog_closeEdit" catchtouchmove="return" class="cbs editDialog-1-1" hidden="{{editImageDialog.visible!=true}}">
-        <view class="css ">
-            <view catchtap="return" class="css b-white pl-4vw pr-4vw pt-50 pb-50 z30 br-10">
-                <view class="rbc-nowrap">
+    <view bindtap="_editImageDialog_closeEdit" catchtouchmove="return" class="rcc coverAll" hidden="{{editImageDialog.visible!=true}}">
+    
+
+        <view catchtap="return" class="css pl-8vw pr-8vw z30 br-20  b-white"  style="width:70vw" >
+                <!-- <view class="rbc-nowrap">
                     <view class="rcc">
                         <image class="w-60 h-60 br-10" mode="aspectFit" src="{{user.imgUrl}}"></image>
                     </view>
@@ -193,28 +212,37 @@
                     <view class="css" style="flex:1">
                         <view class="rus line-1-start fs-30 fw-400 ">{{user.userName}}</view>
                     </view>
-                    <view class="ccc pl-50 ">
-                        <view bindtap="_editImageDialog_confirm" class="rcc t19-5">确定</view>
+                    <view class="w-100"></view>
+                    <view class="ccc p-20 " bindtap="{{(editImageDialog.text && editImageDialog.images[0])?'_editImageDialog_confirm':''}}">
+                        <view  class="{{(editImageDialog.text && editImageDialog.images[0])?'rcc c-5 fs-25 fw-700':'rcc c-3-1 fs-25 fw-700'}}">确定</view>
                     </view>
-                </view>
-                <view class="h-30"></view>
-                <view class="rbs b-50 pt-20 pb-20">
-                    <view class="rcc b-white">
-                        <image class="br-10" mode="aspectFill" src="{{editImageDialog.images[0]}}" style="height:20vw;width:20vw"></image>
-                    </view>
-                    
-                    <view class="css ">
-                        <textarea adjustPosition="true" bindinput="_editImageDialog_input" class="t19-1-edit" cursorSpacing="50" fixed="true" maxlength="50" placeholder="{{editImageDialog._default_edit_text}}" value="{{editImageDialog.text}}"></textarea>
-                    </view>
-                    
-                </view>
-                <view class="h-30"></view>
-                <view class="rbc">
+                </view> -->
+                <!-- <view class="rbc">
                     <view class="fs-30 fw-400 c-3">{{editImageDialog.images.length}} 张</view>
                      <view class="fs-20 fw-400 c-3">还可输入{{editImageDialog.left}}个字</view>
+                </view> -->
+
+                <view class="rcc pt-50 pb-50 fs-30 fw-700">编辑消息</view>
+                <view class="css  ">
+
+                    
+                    <view class="css ">
+                        <textarea adjustPosition="true" bindinput="_editImageDialog_input" class="t19-1-edit"  style="height:20vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="50" placeholder="{{editImageDialog._default_edit_text}}" value="{{editImageDialog.text}}"></textarea>
+                    </view>
+                    <view class="h-20"></view>
+                    <view class="rcc">
+                        <image class="br-10" mode="aspectFill" src="{{editImageDialog.images[0]}}" style="height:70vw;width:70vw" ></image>
+                    </view>
+
                 </view>
-            </view>
+
+                <view class="ccc pt-50 pb-50" bindtap="{{(editImageDialog.text && editImageDialog.images[0])?'_editImageDialog_confirm':''}}">
+                    <view  class="{{(editImageDialog.text && editImageDialog.images[0])?'rcc c-5 fs-25 fw-700':'rcc c-3-1 fs-25 fw-700'}}">确定</view>
+                </view>
         </view>
+
+    
+    
     </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{editTextDialog.visible!=true}}"></view>
     <view catchtouchmove="return" class="css editTextDialog" hidden="{{editTextDialog.visible!=true}}">
@@ -295,7 +323,17 @@
         </view>
     </view>
 
+    <view hidden='{{playVoiceDialog.visible != true}}' class="rcc voiceDialog"  >
+              <view class="ccc pt-100">
+                    <view class="ccc w-200 h-200 br-200 b-card-2">
+                        <view class="rcc"> <image class="w-80 h-80 " mode="aspectFit" src="/images/voice.png"></image></view>
+                        <view class="rcc fs-40 fw-700 c-3">{{playVoiceDialog.time}}</view>
+                    </view>
 
+                    
+              </view>
+
+    </view>
 
 
 

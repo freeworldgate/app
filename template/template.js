@@ -1679,6 +1679,9 @@ function createHttpClient(page) {
       },
       data: args,
       success: function (res) {
+        wx.stopPullDownRefresh({
+          complete: (res) => {},
+        })
         if (res.statusCode === 200) {
           httpClient.resultProcess(res.data);
         }
@@ -1687,7 +1690,9 @@ function createHttpClient(page) {
         }
       },
       fail: function () {
-
+        wx.stopPullDownRefresh({
+          complete: (res) => {},
+        })
 
         if (httpClient.loadingMode === "label") { createLabelLoadingError(page).show(); }
         else if (httpClient.loadingMode === "page") { createPageLoadingError(page).show(); }
@@ -3622,7 +3627,7 @@ function createPlayVoiceDialog(page) {
 
 
   playVoiceDialog.play = function(voiceUrl,speck_time){
-      if(!speck_time){tip.showContentTip("无内容");return;}
+      if(!speck_time){tip.showContentTip("用户未讲话");return;}
 
       page.setData({
 

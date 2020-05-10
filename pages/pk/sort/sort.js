@@ -23,7 +23,11 @@ Page({
     index:0,
     userIntegrals:[],
     sort:0,
-    contains:[]
+    contains:[],
+    leftTime:0,
+    hour:0,
+    minute:0,
+    second:0
 
   },
 
@@ -76,128 +80,99 @@ Page({
   },
   remove:function(res){
     var that = this;
-    if(that.data.user.userId != that.data.creator.userId){return;}
-    if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
 
-    var pkId = that.data.pkId;
-    var index = res.currentTarget.dataset.user
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (approver) {
-      that.data.approvers.splice(index,1);
-      that.setData({
-        approvers:that.data.approvers
+
+
+    template.createOperateDialog(that).show("放弃审核权", "确定放弃吗?...", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+        for(var index=0;index < that.data.approvers.length;i++)
+        {
+          if(that.data.approvers[index].user.userId === that.data.user.userId)
+          {
+            that.data.approvers.splice(index,1);
+            that.setData({
+              approvers:that.data.approvers
+            })
+          }
+  
+        }
+  
       })
-    })
-    httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.approvers[index].user.userId,tag:0});
+      httpClient.send(request.url.removeApproveUser, "GET",{pkId: that.data.pkId});
+
+    }, function () {});
+
+
 
 
   },
 
 
-  select:function(res){
+  select:function(){
     var that = this;
-    if(that.data.user.userId != that.data.creator.userId){return;}
-    if(!( (5 * 60 < that.data.leftTime) &&  (that.data.leftTime < 20 * 60 )) ){return;}
-
     var pkId = that.data.pkId;
-    var index = res.currentTarget.dataset.user
 
-    for(var i = 0;i<that.data.approvers.length;i++){
-      if(that.data.userIntegrals[index].user.userId === that.data.approvers[i].user.userId){
-        return;
+    for(var i=0;i<that.data.approvers.length;i++)
+    {
+        if(that.data.approvers[i].user.userId === that.data.user.userId)
+        {
+          template.createOperateDialog(that).show("您已经是审核员", "不可重复设置...", function () {}, function () {});
+          return;
+        }
+    }
+
+
+    if(that.data.user.userId != that.data.creator.userId){
+      if(((that.data.userIntegralInfo.index + 1) > (that.data.sortNum/10)) || (that.data.userIntegralInfo.index < 0))
+      {
+          template.createOperateDialog(that).show("无权限", "排名前10%用户参与抢夺...", function () {}, function () {});
+          return;
       }
+    }
+    else
+    {
+      template.createOperateDialog(that).show("您已经是审核员", "榜主默认审核权限...", function () {}, function () {});
+      return;
+    }
+
+
+    if(that.data.approvers.length >= that.data.approverNum )
+    {
+        template.createOperateDialog(that).show("名额已满", "审核用户已满...", function () {}, function () {});
+        return;
     }
 
 
 
 
 
+
+
+
+
+
+
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (approver) {
-
-        that.data.approvers.unshift(approver);
-        that.setData({
-          approvers:that.data.approvers
-        })
-
-
-      // that.data.approvers.splice(index,1);
-      
-      // that.setData({
-
-      //   approvers:that.data.approvers
-      // })
-    
+    httpClient.addHandler("erroTime", function () {template.createOperateDialog(that).show("无法设置", "当前时间段不可设置预审核用户...", function () {}, function () {});})
+    httpClient.addHandler("success", function (approvers) {
+      that.setData({approvers:approvers})
+      template.createOperateDialog(that).show("恭喜", "成功抢到审核权，24:00后可设置发布公告...", function () {}, function () {});
     })
-    httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:1});
-
-
-
-    // if(that.data.userIntegrals[index].select === 1)
-    // {
-
-
-
-
-
-    // }
-    // else
-    // {
-
-
-    //   var httpClient = template.createHttpClient(that);
-    //   httpClient.setMode("label", true);
-    //   httpClient.addHandler("success", function (approver) {
-    //     that.data.approvers.unshift(approver);
-    //     that.setData({
-    //       [key] : approver,
-    //       approvers:that.data.approvers
-    //     })
-      
-    //   })
-    //   httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId,approverId: that.data.userIntegrals[index].user.userId,tag:1});
-
-    // }
-
-
-
+    httpClient.addHandler("fail", function (approvers) {
+      that.setData({approvers:approvers})
+      template.createOperateDialog(that).show("好遗憾", "你慢了一步，已经被抢空了...", function () {}, function () {});
+    })
+    httpClient.addHandler("noPrivilige", function () {template.createOperateDialog(that).show("无权限", "排名前10%用户参与抢夺...", function () {}, function () {});})
+    httpClient.addHandler("noMore", function () {template.createOperateDialog(that).show("名额已满", "审核用户已满...", function () {}, function () {});})
+    httpClient.send(request.url.setApproveUser, "GET",{pkId: pkId});
 
   },
 
-  selectPrepare:function(){
-    var that = this;
-    that.updateTime(function(){
 
-        if(!(that.data.hour === 0 && 5<that.data.minute < 20)){
-          tip.showContentTip("当前时间段不可设置");
-          return;
-        }
-        if(that.data.mode === 0){
-          that.setData({
-              mode:1
-            })
-        }
-        else
-        {
-          that.setData({
-            mode:0
-          })
-        }
-    })
-
-
-
-
-
-
-
-
-
-
-  },
 
   sort:function(){
       var that = this;
@@ -227,6 +202,7 @@ Page({
 
 
       that.setData({
+        leftTime :that.data.leftTime,
         hour:parseInt(that.data.leftTime/(60*60)),
         minute:parseInt(that.data.leftTime%(60*60)/60),
         second:parseInt(that.data.leftTime%(60*60)%60),
@@ -257,6 +233,15 @@ Page({
         success();
     })
     httpClient.send(request.url.updateTime, "GET",{pkId: that.data.pkId});
-  }
+  },
+  onPullDownRefresh: function() {
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("", true);
+    httpClient.send(request.url.querySort, "GET",{pkId: that.data.pkId,index: 0});
+
+  },
+
+  
 
 })
