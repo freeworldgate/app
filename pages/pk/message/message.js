@@ -54,8 +54,11 @@ Page({
 
 
 
-
-
+  onUnload:function (params) {
+    // if(this.data.creator.userId === this.data.user.userId){
+    //   wx.setStorageSync('isApprove', 1)
+    // }
+  },
 
   uploadGroupCode:function(){
     var that = this;

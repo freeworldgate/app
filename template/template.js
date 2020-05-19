@@ -10,8 +10,67 @@ var userInvite = require('./../utils/userInvite.js')
 var upload = require('./../utils/uploadFile.js')
 const recorderManager = wx.getRecorderManager()
 const innerAudioContext = wx.createInnerAudioContext()
-// 上传图片
 
+
+function uploadVoice(upType, speck_time,file,page, successCallBack, failureCallBack){
+  if(speck_time < 1){tip.showContentTip("录音时间太短");return }
+  wx.showLoading({
+    title: '发送中'
+  })
+  var urls = new Array();
+  getOssInfo(upType,page,function(ossData){
+    uploadVoiceFile(file, ossData, page, successCallBack, failureCallBack);
+  },function(){
+    failureCallBack();
+  });
+}
+//上传图片
+
+function uploadVoiceFile(file,data,page,successCallBack, failureCallBack)
+{
+  var fileNameColums = file.split(".");
+  var suffix = fileNameColums[fileNameColums.length - 1];
+  console.log("文件类型:", suffix);
+  var aliyunFileKey = data.directory + '/' + data.prefix + '-' + (new Date().getTime()) + '.' + suffix;
+  wx.uploadFile({
+    url: data.aliyunServerURL,
+    filePath: file,
+    method: "PUT",
+    name: "file",
+    header:{
+      'Connection':'close',
+      'socketTimeout':'300000',
+      'connetionTimeout':'300000',
+    },
+    formData: {
+      'name': file,
+      'key': aliyunFileKey,
+      'OSSAccessKeyId': data.ossaccessKeyId,
+      'policy': data.policyBase64,
+      'Signature': data.signature,
+      'success_action_status': '200',
+    },
+    success: function (aliyunResp) {
+    
+      if (aliyunResp.statusCode === 200) {
+
+        successCallBack(data.aliyunServerURL+"/"+aliyunFileKey);
+
+        return;
+      }
+      failureCallBack();
+    },
+    fail: function () {
+      failureCallBack();
+    },
+    complete:function(){wx.hideLoading({
+      complete: (res) => {},
+    })}
+  })
+  
+}
+
+// 上传图片
 function uploadImages3(upType, files,page, successCallBack, failureCallBack){
   wx.showLoading({
     title: '0/' + files.length
@@ -205,9 +264,9 @@ function showTip(text) {
   })
 }
 //中间位置 图片展示框(可以下载并保存图片)
-function createImageShowDialog(page) { };
+function createImageShowDialog(page) { }
 //编辑图片和文字窗口
-function createEditMessageDialog(page) { };
+function createEditMessageDialog(page) { }
 //图片集合
 function createImageListDialog(page) {
 };
@@ -427,7 +486,7 @@ function createEditImageDialog(page) {
     //初始化
     page.setData({
       'editImageDialog.images': new Array(),
-      'editImageDialog.left':50,
+      'editImageDialog.left':100,
       'editImageDialog.text': '',
       'editImageDialog.width': editImageDialog.width,
       'editImageDialog._dialog_title': _dialog_title,
@@ -547,7 +606,7 @@ function createEditImageDialog(page) {
   };
   page._editImageDialog_input = function (res) {
     var value = res.detail.value;
-    var left = 50 - value.length;
+    var left = 100 - value.length;
     page.setData({
       'editImageDialog.text':value,
       'editImageDialog.left': left
@@ -3475,12 +3534,13 @@ function createHelpInfoDialog(page) {
 
 //录音..
 function createVoiceDialog(page) {
+
+
+
   if (page.voiceDialog) {
     return page.voiceDialog;
   }
   var voiceDialog = new Object();
-  page.voiceDialog = voiceDialog;
-  voiceDialog.confirm = function () {}
   voiceDialog.show = function () {
 
 
@@ -3495,7 +3555,7 @@ function createVoiceDialog(page) {
   }
   voiceDialog.hide = function () {
     page.setData({
-      'voiceDialog.visible': false,
+      'voiceDialog': {},
     })
   }
   voiceDialog.start = function () {
@@ -3510,105 +3570,67 @@ function createVoiceDialog(page) {
       frameSize: 50, //指定帧大小，单位 KB
     }
     //开始录音
-    recorderManager.stop();
+    // recorderManager.stop();
     recorderManager.start(options);
+    recorderManager.onStart((res)=>{
 
-    var time = 0;
-    var clock = setInterval(function(){
-
-      page.setData({
-        'voiceDialog.time':++time
-      })
-      if(time >=10){
-        if(voiceDialog.clock != -1){clearInterval(voiceDialog.clock);voiceDialog.clock = -1}
-        recorderManager.stop();
-        recorderManager.onStop((res) => {
-          page.data.voiceDialog.tempFilePath = res.tempFilePath;
+      var time = 1;
+      var clock = setInterval(function(){
+  
+        page.setData({
+          'voiceDialog.time':time++
         })
-      }
-    },1000)
-    voiceDialog.clock = clock;
+        if(time >10){
+          if(voiceDialog.clock != -1){clearInterval(voiceDialog.clock);voiceDialog.clock = -1}
+          
+          recorderManager.pause();
+        }
+      },1000)
+      voiceDialog.clock = clock;
+    })
+
   },
-
-
-
-
   voiceDialog.stop = function (finish) {
 
 
+      
 
       if(voiceDialog.clock != -1){clearInterval(voiceDialog.clock);voiceDialog.clock = -1}
-      if(page.data.voiceDialog.time >=10){
+      recorderManager.stop();
+      recorderManager.onStop((res) => {
+        finish(page.data.voiceDialog.time,res.tempFilePath);
         voiceDialog.hide();
-        finish(page.data.voiceDialog.time,page.data.voiceDialog.tempFilePath);
-      }
-      else
-      {
-        
-        voiceDialog.hide();
-        recorderManager.stop();
-        recorderManager.onStop((res) => {
-          finish(page.data.voiceDialog.time,res.tempFilePath);
-        })
-        recorderManager.onError((res) => {
-          console.log(res);
-        })
+      })
+      recorderManager.onError((res) => {
+        console.log(res);
+      })
 
-      }
+  },
+
+  voiceDialog.cancel = function (cancel) {
+
+      voiceDialog.hide();
+      recorderManager.stop();
+      recorderManager.onStop((res) => {
+        cancel();
+      })
 
 
   },
-  
-
-
-  voiceDialog.play = function(voiceUrl,speck_time){
 
 
 
 
-    if(page.data.voiceDialog && page.data.voiceDialog.statu === 'play')
-    {
-      return;
-    }
-    else 
-    {
-      page.setData({
-        'voiceDialog.statu':'play',
-        'voiceDialog.time': 0,
-        'voiceDialog.visible': true,
-      })
-      var time = 1;
-      var clock = setInterval(() => {
-        
-        page.setData({
-          'voiceDialog.time':++time
-        })
-        if(time >= speck_time){
-          clearInterval(clock);
-        }
-
-      }, 1000);
 
 
-      innerAudioContext.src = voiceUrl,
-      innerAudioContext.play()
-      innerAudioContext.onPlay((res) => {
-        page.setData({
-          'voiceDialog.statu':'done',
-          'voiceDialog.time': 0,
-          'voiceDialog.visible': false,
-        })
-
-      })
-      
 
 
-    }
-
-  }
 
 
-  
+
+
+
+
 
 
 
@@ -3617,6 +3639,14 @@ function createVoiceDialog(page) {
   page.voiceDialog = voiceDialog;
   return voiceDialog;
 }
+
+
+
+
+
+
+
+
 //录音..
 function createPlayVoiceDialog(page) {
   if (page.playVoiceDialog) {
@@ -3640,7 +3670,7 @@ function createPlayVoiceDialog(page) {
         page.setData({
           'playVoiceDialog.time':++time
         })
-        if(time >= speck_time){
+        if(time > speck_time){
           clearInterval(clock);
           page.setData({
             'playVoiceDialog.visible': false,
@@ -3677,7 +3707,7 @@ function createPlayVoiceDialog(page) {
 
 
 
-module.exports = { createDialog,createPlayVoiceDialog,createVoiceDialog,uploadImages3,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,uploadVoice,createPlayVoiceDialog,createVoiceDialog,uploadImages3,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

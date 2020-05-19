@@ -21,7 +21,8 @@
     "pages/pk/sort/sort",
     "pages/pk/message/message",
     "pages/pk/messageInfo/messageInfo",
-
+    "pages/pk/commentInfo/commentInfo",
+    "pages/pk/post/post",
 
 
     "pages/pk/userCreatePks/userCreatePks",

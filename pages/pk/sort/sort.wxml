@@ -75,7 +75,7 @@
             <view class="rbc h-40">
                    
                 <view class="rus fs-20 fw-400 line-2-start">{{ userIntegralInfo.index < 0?'分享新用户激活排名':'前10%用户可抢'}}</view>
-                <image class="rcc w-35 h-35" mode="aspectFit" src="{{((userIntegralInfo.index + 1)>0)&&((userIntegralInfo.index + 1) <= (sortNum/10))?'/images/yu.png':'/images/yu1.png'}}"></image>
+                <image class="rcc w-35 h-35" mode="aspectFit" src="{{userIntegralInfo.isPreApprover?'/images/yu.png':'/images/yu1.png'}}"></image>
             </view>
         
         </view>
@@ -182,7 +182,7 @@
                                                 <view class="rcc fs-25 fw-400 ">排名</view>
                                             </view>
                                             <view class="rcc">
-                                                <image class="rcc w-35 h-35" mode="aspectFit" src="{{(userIntegral.index + 1) > (sortNum/10)?'/images/yu1.png':'/images/yu.png'}}"></image>
+                                                <image class="rcc w-35 h-35" mode="aspectFit" src="{{userIntegral.preApprover?'/images/yu.png':'/images/yu1.png'}}"></image>
                                                 <view class="w-10"></view>
                                                 <view class="rcc fs-30 fw-700 ">{{userIntegral.index + 1}}</view>
                                             </view>
@@ -197,7 +197,7 @@
             <view hidden="{{!end}}" class="rcc p-30" style="width:100vw">
                 <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
             </view>
-            <view hidden="{{approvers.length === 0}}" class="h-300"></view>
+            <view hidden="{{approvers.length === 0}}" class="h-50"></view>
         </view>
     </view> 
 

@@ -504,14 +504,14 @@
   /* background-color: rgb(255, 0, 0); */
 }
 .dialog{
-    width: 90%;
+    width: 80%;
     /* height: 30%; */
     background-color: rgb(255, 255, 255);
     position: fixed;
     z-index: 31;
     top: 25%; 
     /* top:0px; */
-    left: 5%;
+    left: 10%;
     border-radius: 20rpx;
     /* padding-right: 70rx;
     padding-left: 70rpx; */
@@ -849,7 +849,7 @@
     width: 100%;
     height: auto;
     position: fixed;
-    z-index: 2;
+    z-index: 31;
     left: 0px;
     top: 15%;
 }
@@ -886,13 +886,14 @@
 
 }
 .voiceDialog{
-    width: 100%;
-    height: auto;
+    width: 200vw;
+    height: 200vw;
+    border-radius: 180vw;
     position: fixed;
     z-index: 105;
-    left: 0px;
-    bottom: 10vh;
-    /* background-color: white; */
+    left: -50vw;
+    bottom: -175vw;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .shortTextDialog_cancel{
     width: 220rpx;

@@ -23,7 +23,7 @@ Page({
    */
   data: {
 
-    left:200,
+    left:100,
     imgs:new Array(),
 
 
@@ -107,7 +107,12 @@ Page({
             wx.setStorageSync("action", "userPost")
             wx.setStorageSync("post", post)
             wx.navigateBack({
-              complete: (res) => {},
+              complete: (res) => {
+                  wx.navigateTo({
+                    url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
+                  })
+
+              },
             })
 
           })

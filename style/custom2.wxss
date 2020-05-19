@@ -249,6 +249,12 @@
 .pr-2vw{
   padding-right: 2vw;
 }
+.pl-2-5vw{
+  padding-left: 2.5vw;
+}
+.pr-2-5vw{
+  padding-right: 2.5vw;
+}
 .pl-3vw{
   padding-left: 3vw;
 }
@@ -365,6 +371,9 @@
 .ml-4vw{
   margin-left: 4vw
 }
+.mt-4vw{
+  margin-top: 4vw
+}
 .mr-7vw{
   margin-right: 7vw
 }
@@ -428,6 +437,7 @@
 .h-120{height: 120rpx;}
 .h-125{height: 125rpx;}
 .h-130{height: 130rpx;}
+.h-140{height: 140rpx;}
 .h-100p{height: 100%;}
 .h-140{height:140rpx;}
 .h-150{height:150rpx;}
@@ -448,6 +458,7 @@
 .h-650{height: 650rpx;}
 .h-700{height: 700rpx;}
 .h-800{height: 800rpx;}
+.h-900{height: 900rpx;}
 .h-auto{height: auto}
 .max-h-150{
   max-height: 150rpx;
@@ -596,11 +607,14 @@
 .h-32vw{height: 32vw}
 .w-32vw{width: 32vw}
 .w-4vw{width: 4vw}
+.w-2vw{width: 2vw}
 .h-4vw{height: 4vw}
 .w-10vw{width: 10vw}
 .h-10vw{height: 10vw}
 .w-70vw{width: 70vw}
 .h-70vw{height: 70vw}
+.w-84vw{width: 84vw}
+.h-84vw{height: 84vw}
 .h-35vw{height: 35vw}
 .w-35vw{width: 35vw}
 .h-40vw{height: 40vw}
@@ -794,7 +808,7 @@ mw-200{
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
 .b-upload-1{
-  background-image: linear-gradient(to right, #e69c8182 0%, #d8ba5882 100%);
+  background-image: linear-gradient(to right, #ff9a75 0%, #ffc635 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -840,6 +854,9 @@ mw-200{
 }
 .b-44{
   background-color: rgb(245, 245, 245);
+}
+.b-44-1{
+  background-color: rgba(138, 138, 138, 0.3);
 }
 .b-pk{
   background-color: rgb(0, 137, 179);
@@ -889,7 +906,9 @@ mw-200{
 .b-creator{
   background-color: rgba(240, 240, 240, 0.1);
 }
-
+.border0{
+  border: 1px solid rgb(0, 146, 199); 
+}
 .border1{
     border: 5rpx solid rgb(255, 255, 255); 
 }
@@ -918,7 +937,7 @@ mw-200{
       border: 2px solid rgba(0, 162, 255, 0.63); 
 }
 .border8{
-      border: 3px solid rgb(0, 162, 255); 
+      border: 1px solid #00a2ff; 
 }
 .border9{
       border: 1px solid rgb(165, 165, 165); 
@@ -1060,6 +1079,17 @@ mw-200{
   overflow:hidden;
   text-overflow:ellipsis;
   -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  text-align: center;
+}
+
+.line-5-center{
+  word-wrap: break-word;
+  display:-webkit-box;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:5;
   -webkit-box-orient:vertical;
   word-break:break-all;
   text-align: center;
@@ -1495,6 +1525,38 @@ button::after {
 .absolute{
   position: absolute;
 }
+
+.cardback1{
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/card1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+.cardback2{
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/card22.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+}
+.cardback3{
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/card3.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+.cardback4{
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/card4.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+
+
+
+
+
+
 .backImg1{
   background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/fly1.png");
   background-repeat: no-repeat;

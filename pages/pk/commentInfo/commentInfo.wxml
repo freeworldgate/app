@@ -1,20 +1,6 @@
+<!--pages/pk/commentInfo/commentInfo.wxml-->
 <!--pages/pk/messageInfo/messageInfo.wxml-->
-<view wx:if="{{message}}" class="cbs" style="height:100vh">
-        <view class="css">
-            <view style="height:{{top}}px"></view>
-            <view class="rcs pl-4vw pr-4vw" style="height:32px">
-                <view class="rcc">
-                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
-                </view>
-                <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 ">{{date}}</view>
-                    <view class="fs-30 fw-400 ">审核员公告</view>
-
-                </view>
-                
-                
-            </view>
-        </view>
+<view class="cas" style="height:100vh">
 
       
 
@@ -29,17 +15,18 @@
 
 
                                 <view class="rcc pb-30 pt-30">
-                                    <view class="rcc  fs-25 fw-400 c-4">{{message.time}}</view>
+                                    <view class="rcc fs-25 fw-400 c-3">{{message.time}}</view>
                                 </view>
 
 
-                                <view class="rcc pt-30 pb-30" bindtap="approverMessage" >
+                                <view class="rcc pt-30 pb-30" bindtap="approverComment" >
                                     <view wx:if="{{user.userId===message.user.userId}}" class="rcc ">
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
                                         <view  class="rcc fs-25 fw-400 c-4">编辑内容</view>
                                     </view>
-                                    <view wx:else class="rcc fs-25 fw-400 c-4">审核公告</view>
+
+                                    <view wx:else class="rcc  fs-25 fw-400 c-4">审核留言</view>
                                 </view>
                                 
                     
@@ -61,45 +48,17 @@
                             <view class="css pt-30 pb-30">
                                 <view class="rcc-wrap  fs-30 fw-400 line-5-center c-word-5">{{message.text}}</view>
                                 <view class="h-30"></view>
-                                <view class="rcc h-84vw w-84vw br-15" style="background-position: top;background-image: url({{message.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                                <image class="rcc h-84vw w-84vw br-15" src="{{message.imgUrl}}" mode="aspectFill"></image>
                             </view>
          
             </view>
         </view>
 
 
-        <view class="rcc" bindtap="return">
-              <button class="rcc fs-30 fw-700 w-300 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{message.user.userId}},{{message.mediaId}}">拉取图片</button>
-        </view>
+ 
 
         <view></view>
      
-</view>
-<view wx:else class="cbs" style="height:100vh">
-        <view class="css">
-            <view style="height:{{top}}px"></view>
-            <view class="rcs pl-4vw pr-4vw" style="height:32px">
-                <view class="rcc">
-                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
-                </view>
-                <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 ">{{date}}</view>
-                    <view class="fs-30 fw-400 ">审核员公告</view>
-
-                </view>
-                
-                
-            </view>
-        </view>
-        <view class="rcc" style="flex:1">
-            <view class="rcc p-50" bindtap="approverMessage">
-                <image class="w-40 h-40" mode="aspectFit" src="/images/write.png"></image>
-                <view  class="w-10"></view>
-                <view  class="rcc fs-30 fw-400 c-4">编辑公告</view>
-            </view>
-
-        </view>
-
 </view>
 
 

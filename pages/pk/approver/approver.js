@@ -38,7 +38,6 @@ Page({
 
 
 
-
     that.data.pkId = options.pkId;
     that.data.postId = options.postId;
     that.data.approveUserId = options.approveUserId;
@@ -94,7 +93,9 @@ Page({
 
 
   },
-  
+  onShow:function () {
+
+  },
 
   playVoice:function (res) {
     var that = this;

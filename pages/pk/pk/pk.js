@@ -32,7 +32,7 @@ Page({
     pkId:"PK01",
     isApprove:true,
     factualInfos:[],
-
+    autoplay:true,
     albums: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     img: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2812%29.jpeg",
   
@@ -193,12 +193,15 @@ Page({
 
   },
   onReachBottom:function(){
-    this.nextPage();
+    if(!this.data.nomore)
+    {
+      this.nextPage();
+    }
+
 
   },
   nextPage: function () {
     var that = this;
-    if(that.data.posts.length < 50){return;}
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", false);
     var user = wx.getStorageSync("user");
@@ -304,28 +307,26 @@ Page({
   showPost:function(res){
       var that = this;
       var post = res.currentTarget.dataset.post;
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (singlepost) {
-        template.createSinglePostDialog(that).show(singlepost,function(newPost){
-          if (that.data.posts[0].postId === newPost.postId) {
-            that.data.posts.splice(0, 1, newPost);
-          }
-          else {
-            that.data.posts.splice(0, 0, newPost);
-          }
-          that.setData({
-            posts: that.data.posts
-          })
-        });
+      wx.navigateTo({
+        url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
       })
-      httpClient.send(request.url.queryPostById, "GET", { pkId: that.data.pkId, postId:post.postId });
 
-
-
-
-
-
+      // var httpClient = template.createHttpClient(that);
+      // httpClient.setMode("label", true);
+      // httpClient.addHandler("success", function (singlepost) {
+      //   template.createSinglePostDialog(that).show(singlepost,function(newPost){
+      //     if (that.data.posts[0].postId === newPost.postId) {
+      //       that.data.posts.splice(0, 1, newPost);
+      //     }
+      //     else {
+      //       that.data.posts.splice(0, 0, newPost);
+      //     }
+      //     that.setData({
+      //       posts: that.data.posts
+      //     })
+      //   });
+      // })
+      // httpClient.send(request.url.queryPostById, "GET", { pkId: that.data.pkId, postId:post.postId });
 
 
   },
@@ -496,6 +497,20 @@ Page({
       
     })
 
+    // if(that.data.isApprove && that.data.posts && that.data.user)
+
+    // var tag = wx.getStorageSync("isApprove");
+    
+    // if(tag === 1){
+    //    wx.removeStorageSync('isApprove');
+    //    that.data.isApprove = true;
+    // }
+    that.onTimeTask();
+  },
+
+
+  onTimeTask:function () {
+    var that = this;
     if(that.data.isApprove && that.data.posts && that.data.user)
     {
       that.data.isApprove = false;  
@@ -522,6 +537,14 @@ Page({
           }, function () {});
           
         })
+        httpClient.addHandler("active", function (postid) {
+            // 激活排名
+            template.createOperateDialog(that).show("激活今日排名", "转发好友激活几日排名...", function () {
+
+
+          }, function () {});
+          
+        })
         httpClient.addHandler("select", function (postid) {
           template.createOperateDialog(that).show("审核榜帖", "榜帖未选择审核员审核，未上线...", function () {
 
@@ -535,7 +558,7 @@ Page({
         })
         httpClient.addHandler("publish", function (tip) {
           template.createOperateDialog(that).show("打榜", "参与打榜...", function () {
-
+                that.publish();
   
           }, function () {});
           
@@ -543,7 +566,9 @@ Page({
         
         httpClient.addHandler("robPrivilege", function (tip) {
           template.createOperateDialog(that).show("开抢啦", "抢夺明日审核权...", function () {
-
+              wx.navigateTo({
+                url: "/pages/pk/sort/sort?pkId=" + that.data.pkId,
+              })
   
           }, function () {});
           
@@ -558,53 +583,80 @@ Page({
 
 
     }
-
-
-
-
-
-
-},
-
-
+  },
+  onReady:function (params) {
+    
+  },
   onShow:function(){
     var that = this;
+
+
     this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
 
-    // wx.setStorageSync("action", "userPost")
-    var action = wx.getStorageSync('action');
-    if(action==="userPost"){
-          var post = wx.getStorageSync('post');
+    var myMessage = wx.getStorageSync('myMessage')
+    if(myMessage)
+    {
+      wx.removeStorageSync('myMessage')
 
-          wx.removeStorageSync('action')
-          wx.removeStorageSync('post')
-          // that.data.posts.splice(0,0,post);
-          // that.setData({
-          //   posts: that.data.posts
-          // })
-          template.createSinglePostDialog(that).show(post, function (newPost) {
-            if(that.data.posts[0].postId === newPost.postId){
-              that.data.posts.splice(0, 1, newPost);
-            }
-            else{
-              that.data.posts.splice(0, 0, newPost);
-            }
-            that.setData({
-              posts: that.data.posts
-            })
-          });
+      for(var index=0;index < that.data.userIntegrals.length;i++)
+      {
+        if(that.data.userIntegrals[index].user.userId === that.data.user.userId)
+        {
+          var key = "userIntegrals[" + index + "].approveMessage"
+          that.setData({
+            [key]:myMessage
+          })
+        }
 
-
+      }
 
 
     }
+
+
+
+
+    // wx.setStorageSync("action", "userPost")
+    // var action = wx.getStorageSync('action');
+    // if(action==="userPost"){
+    //       var post = wx.getStorageSync('post');
+
+    //       wx.removeStorageSync('action')
+    //       wx.removeStorageSync('post')
+    //       // that.data.posts.splice(0,0,post);
+    //       // that.setData({
+    //       //   posts: that.data.posts
+    //       // })
+    //       template.createSinglePostDialog(that).show(post, function (newPost) {
+    //         if(that.data.posts[0].postId === newPost.postId){
+    //           that.data.posts.splice(0, 1, newPost);
+    //         }
+    //         else{
+    //           that.data.posts.splice(0, 0, newPost);
+    //         }
+    //         that.setData({
+    //           posts: that.data.posts
+    //         })
+    //       });
+
+
+
+
+    // }
 
   },
   onHide:function(){
     clearInterval(this.data.interval);
   },
 
+  complain:function (res) {
+    var that = this;  
+    var approverId = res.currentTarget.dataset.approver;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId, approverUserId: approverId});
 
+},
 
 
 
@@ -672,7 +724,29 @@ Page({
 
 
 
-  }
+  },
+  approverMessage:function(res){
+    var that = this;
+    that.setData({
+      autoplay:false
+    })
+    var approver = res.currentTarget.dataset.approver;
+    wx.navigateTo({
+      url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + approver,
+    })
+
+
+  
+
+
+
+
+
+
+
+
+
+  },
 
 
 

@@ -141,6 +141,36 @@ Page({
 
   },
 
+  onShow:function (params) {
+    var that = this;
+    var cApprover = wx.getStorageSync('currentApprover')
+    if(cApprover){
+      wx.removeStorageSync('currentApprover');
+      for(var index=0;index < that.data.approveUserList.length;index++)
+      {
+        if(that.data.approveUserList[index].user.userId === that.data.user.userId)
+        {
+          var key = "approveUserList[" + index + "]"
+          that.setData({
+            [key]:cApprover
+          })
+        }
+
+      }
+
+
+
+    }
+
+
+
+
+  },
+
+
+
+
+
   onShareAppMessage:function(){
     var that = this;
     var that = this;
@@ -184,56 +214,16 @@ Page({
         url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.currentApprover.user.userId,
       })
     }
-
-
+  },
+  approverComment:function (res) {
+    var comment = res.currentTarget.dataset.comment;
+    wx.setStorageSync('comment', comment)
+    wx.navigateTo({
+      url: '/pages/pk/commentInfo/commentInfo',
+    })
   },
 
 
-startVoice:function() {
-  var that = this;
-  that.data.viewStatu = 1;
-  template.createVoiceDialog(that).start();
-
-},
-endVoice:function (params) {
-  var that = this;
-  if(that.data.viewStatu != 1){return;}
-  var capprover = that.data.currentApprover;
-  var cindex = that.data.currentIndex;
-  template.createVoiceDialog(that).stop(function(speck_time,file) {
-    template.uploadImages3("MP4", [file],that, function (files) {
-
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (currentApprover) {
-        var key = "approveUserList[" +cindex+"]"
-        that.setData({
-          [key]:currentApprover,
-          currentApprover:currentApprover,
-        })
-
-    })
-      httpClient.send(request.url.setCommentVoice, "GET",{pkId: that.data.pkId,approvorId:capprover.user.userId,fileUrl:files[0],speckTime:speck_time})
-
-    }, function(params) {
-    });
-  })
-  setTimeout(function name(params) {
-    that.data.viewStatu = 0;
-  },1000)
-
-
-
-
-},
-
-playVoice:function (res) {
-  var that = this;
-  if(that.data.viewStatu === 1){return;}
-  var voiceUrl = res.currentTarget.dataset.voiceurl;
-  var speck_time = res.currentTarget.dataset.specktime;
-  template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
-}
 
 
 

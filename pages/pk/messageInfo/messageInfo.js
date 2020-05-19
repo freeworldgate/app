@@ -60,7 +60,7 @@ Page({
   approverMessage:function(){
     var that = this;
     
-    if(that.data.user.userId != that.data.message.user.userId){
+    if(that.data.user.userId != that.data.approverUserId){
       return ;
     }
 
@@ -77,10 +77,11 @@ Page({
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("message", function (message) {
-
           that.setData({
             'message':message,
           })
+          wx.setStorageSync('myMessage', message)
+
       })
       httpClient.send(request.url.publishApproveMessage, "GET",
         {

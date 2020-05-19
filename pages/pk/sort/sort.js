@@ -54,6 +54,13 @@ Page({
     httpClient.setMode("page", true);
     httpClient.send(request.url.querySort, "GET",{pkId: pkId,index: index});
   },
+  refresh:function(pkId,index){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.querySort, "GET",{pkId: pkId,index: index});
+  },
+  
   queryMoreSort:function(pkId,cIndex){
     var that = this;
     
@@ -115,42 +122,37 @@ Page({
     var that = this;
     var pkId = that.data.pkId;
 
-    for(var i=0;i<that.data.approvers.length;i++)
+    if(that.data.leftTime > 3600){template.createOperateDialog(that).show("提示","23:00开抢...", function () {}, function () {});}
+
+
+    if(that.data.userIntegralInfo.selectPreApprover)
     {
-        if(that.data.approvers[i].user.userId === that.data.user.userId)
-        {
-          template.createOperateDialog(that).show("您已经是审核员", "不可重复设置...", function () {}, function () {});
-          return;
-        }
+      template.createOperateDialog(that).show("提示", "你已经是审核员...", function () {}, function () {});
+      return;
     }
 
 
-    if(that.data.user.userId != that.data.creator.userId){
-      if(((that.data.userIntegralInfo.index + 1) > (that.data.sortNum/10)) || (that.data.userIntegralInfo.index < 0))
-      {
-          template.createOperateDialog(that).show("无权限", "排名前10%用户参与抢夺...", function () {}, function () {});
-          return;
-      }
+
+    if(that.data.userIntegralInfo.isCreator)
+    {
+      template.createOperateDialog(that).show("提示", "榜主为每日默认审核员...", function () {}, function () {});
+      return;
     }
     else
     {
-      template.createOperateDialog(that).show("您已经是审核员", "榜主默认审核权限...", function () {}, function () {});
-      return;
+      if(!that.data.userIntegralInfo.preApprover)
+      {
+          template.createOperateDialog(that).show("排名过低","积分20%用户可以参与...", function () {}, function () {})
+          return;
+      }
     }
 
 
     if(that.data.approvers.length >= that.data.approverNum )
     {
-        template.createOperateDialog(that).show("名额已满", "审核用户已满...", function () {}, function () {});
+      template.createOperateDialog(that).show("好遗憾", "你慢了一步，已经被抢空了...", function () {}, function () {});
         return;
     }
-
-
-
-
-
-
-
 
 
 
@@ -160,7 +162,7 @@ Page({
     httpClient.addHandler("erroTime", function () {template.createOperateDialog(that).show("无法设置", "当前时间段不可设置预审核用户...", function () {}, function () {});})
     httpClient.addHandler("success", function (approvers) {
       that.setData({approvers:approvers})
-      template.createOperateDialog(that).show("恭喜", "成功抢到审核权，24:00后可设置发布公告...", function () {}, function () {});
+      template.createOperateDialog(that).show("恭喜", "成功抢到审核权，00:00后可设置发布公告...", function () {}, function () {});
     })
     httpClient.addHandler("fail", function (approvers) {
       that.setData({approvers:approvers})
@@ -174,26 +176,6 @@ Page({
 
 
 
-  sort:function(){
-      var that = this;
-      var compare = function (integral1, integral2) {
-        var val1 = that.data.sort!=1? integral1.select:integral1.index;
-        var val2 = that.data.sort!=1? integral2.select:integral2.index;
-        if (val1 < val2) {
-            return that.data.sort!=1?1:-1;
-        } else if (val1 > val2) {
-            return that.data.sort!=1?-1:1;
-        } else {
-            return 0;
-        }            
-      } 
-      that.data.userIntegrals.sort(compare);
-      that.setData({
-        userIntegrals:that.data.userIntegrals,
-        sort:that.data.sort!=1?1:0
-
-      })
-  },
 
   onShow:function(){
     var that = this;
@@ -208,7 +190,7 @@ Page({
         second:parseInt(that.data.leftTime%(60*60)%60),
       })
       if(that.data.leftTime === 0){
-        clearInterval(that.data.interval);
+        that.refresh(that.data.pkId,0);
       }
 
 
