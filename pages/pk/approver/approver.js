@@ -51,7 +51,13 @@ Page({
 
 
   
+  approverComment:function(){
 
+      wx.setStorageSync('comment', this.data.userPost.approveComment)
+      wx.navigateTo({
+        url: '/pages/pk/commentInfo/commentInfo',
+      })
+  },
 
  
 
@@ -73,10 +79,7 @@ Page({
 
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (post) {
 
-
-      })
       httpClient.send(request.url.setComment, "GET",
         {
           pkId: that.data.pkId,

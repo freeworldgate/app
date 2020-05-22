@@ -38,7 +38,6 @@ Page({
 
     this.setData({
       pkId:options.pkId,
-      approverUserId:options.approverUserId
     })
     this.queryApproverMessage();
   },
@@ -47,7 +46,7 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
-    httpClient.send(request.url.queryApproveMessage, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId});
+    httpClient.send(request.url.queryApproveMessage, "GET",{pkId: that.data.pkId});
 
 
 
@@ -60,7 +59,7 @@ Page({
   approverMessage:function(){
     var that = this;
     
-    if(that.data.user.userId != that.data.approverUserId){
+    if(that.data.user.userId != that.data.creator.userId){
       return ;
     }
 
@@ -86,7 +85,6 @@ Page({
       httpClient.send(request.url.publishApproveMessage, "GET",
         {
           pkId: that.data.pkId,
-          approvorId:that.data.approverUserId,
           text: text,
           imgUrl: urls[0],
         }

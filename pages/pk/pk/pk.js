@@ -537,19 +537,12 @@ Page({
           }, function () {});
           
         })
-        httpClient.addHandler("active", function (postid) {
-            // 激活排名
-            template.createOperateDialog(that).show("激活今日排名", "转发好友激活几日排名...", function () {
 
-
-          }, function () {});
-          
-        })
         httpClient.addHandler("select", function (postid) {
           template.createOperateDialog(that).show("审核榜帖", "榜帖未选择审核员审核，未上线...", function () {
 
               wx.navigateTo({
-                url: "/pages/pk/selectApprover/selectApprover?pkId=" + that.data.pkId + "&postId=" + postid ,
+                url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + postid ,
               })
 
 
@@ -564,15 +557,7 @@ Page({
           
         })
         
-        httpClient.addHandler("robPrivilege", function (tip) {
-          template.createOperateDialog(that).show("开抢啦", "抢夺明日审核权...", function () {
-              wx.navigateTo({
-                url: "/pages/pk/sort/sort?pkId=" + that.data.pkId,
-              })
-  
-          }, function () {});
-          
-        })
+
 
         httpClient.addHandler("no", function (tip) {
           
@@ -598,17 +583,9 @@ Page({
     {
       wx.removeStorageSync('myMessage')
 
-      for(var index=0;index < that.data.userIntegrals.length;i++)
-      {
-        if(that.data.userIntegrals[index].user.userId === that.data.user.userId)
-        {
-          var key = "userIntegrals[" + index + "].approveMessage"
-          that.setData({
-            [key]:myMessage
-          })
-        }
-
-      }
+      that.setData({
+        pkMessage:myMessage
+      })
 
 
     }
@@ -684,6 +661,45 @@ Page({
     })
 
   },
+
+  approverMessage:function(){
+    var that = this;
+    
+    if(that.data.user.userId != that.data.creator.userId){
+      return ;
+    }
+
+    template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+      //上传成功
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("message", function (message) {
+        that.setData({
+          'pkMessage':message,
+        })
+    })
+      httpClient.send(request.url.publishApproveMessage, "GET",
+        {
+          pkId: that.data.pkId,
+          text: text,
+          imgUrl: urls[0],
+        }
+      );
+
+    }, function () {
+      //上传失败
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+    }).show();
+
+
+
+  },
+
   approverView:function (res) {
     var that = this;
     var approver = res.currentTarget.dataset.approver;
@@ -725,14 +741,13 @@ Page({
 
 
   },
-  approverMessage:function(res){
+  approverMessageDetail:function(res){
     var that = this;
     that.setData({
       autoplay:false
     })
-    var approver = res.currentTarget.dataset.approver;
     wx.navigateTo({
-      url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + approver,
+      url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId ,
     })
 
 

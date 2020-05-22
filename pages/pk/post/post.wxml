@@ -141,7 +141,7 @@
                                             </view>
           </view>
           <view class="css pt-50 pb-50">
-              <view class="rcc-wrap c-4 ">{{post.topic}}</view>
+              <view class="rcc-wrap c-4 line-5-center">{{post.topic}}</view>
           </view>                          
 
           <view class="css">
@@ -750,7 +750,7 @@
 
   
             <view class="css pr-4vw pl-4vw pt-30 pb-30">
-                <view class="rss fs-30 fw-600 line-5-center">{{singlePostDialog.post.topic}}</view>
+                <view class="rcc-wrap fs-30 fw-600 line-5-center">{{singlePostDialog.post.topic}}</view>
             </view>
 
             <view class="css pr-2vw pl-2vw">

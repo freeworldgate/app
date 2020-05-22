@@ -37,7 +37,7 @@
                                     <view wx:if="{{user.userId===message.user.userId}}" class="rcc ">
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-4">编辑内容</view>
+                                        <view  class="rcc fs-25 fw-400 c-4">编辑公告</view>
                                     </view>
                                     <view wx:else class="rcc fs-25 fw-400 c-4">审核公告</view>
                                 </view>
