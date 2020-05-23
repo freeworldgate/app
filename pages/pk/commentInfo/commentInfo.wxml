@@ -15,12 +15,12 @@
 
 
                                 <view class="rcc pb-30 pt-30">
-                                    <view class="rcc fs-25 fw-400 c-3">{{message.time}}</view>
+                                    <view class="rcc fs-25 fw-400 c-3">{{message.date}}</view>
                                 </view>
 
 
-                                <view class="rcc pt-30 pb-30" bindtap="approverComment" >
-                                    <view wx:if="{{user.userId===message.user.userId}}" class="rcc ">
+                                <view class="rcc pt-30 pb-30">
+                                    <view wx:if="{{(user.userId===message.user.userId) && (message.statu.key === 3) }}" class="rcc "  bindtap="approverComment" >
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
                                         <view  class="rcc fs-25 fw-400 c-4">编辑内容</view>

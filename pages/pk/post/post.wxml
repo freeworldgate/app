@@ -208,7 +208,47 @@
                                                     </view>
                                                 </view>
           </view>
+          <view hidden="{{!post.selfComment}}" class="css ">
+                                                                                <view class="h-50"></view>
+                                                                                <view class="rbc pb-10 ">
+                                                                                        <view class="rcc">
+                                                                                            <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
+                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">游客胡评</view>
+                                                                                          
+                                                                                        </view>
+                                                                                        <view  class="rcc fs-25 fw-400 c-4">{{post.selfCommentTime}}</view> 
+                                                                                        <!-- <view class="rcc">
 
+                                                                                            <view class="rcc" >
+                                                                                        
+                                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
+                                                                                                <view  class="w-10"></view>
+                                                                                                <view  class="rcc fs-25 fw-400 c-4">{{post.selfComment?"修改自评":"添加自评"}}</view>
+                                                                                        
+                                                                                            </view>
+                                                                                            <view wx:else class="rcc fs-25 fw-400 c-4">{{userPost.selfComment?userPost.selfComment.date:""}}</view> 
+                                                                                            
+                                                                                        </view> -->
+
+                                                                                        
+                                                                                </view>
+                                                                                <view   class="css ">
+
+                                                                                    <view class="css" >
+                                                                                            <view class="rbs">                                                                    
+
+                                                                                                    <view class=""></view>
+                                                                                                    <view class="css" style="flex:1" >
+                                                                                                        <view class="rus fs-30 fw-400 line-3-start c-word-6">{{post.selfComment}}</view>
+                                                                                                    </view>
+                                                                                                    <view class=""></view>
+
+                                                                                            </view>    
+                                                                                    </view>
+                                                                                </view>
+                                                            
+                                                                                <view class="h-50"></view>
+          </view>
           <view class="h-50"></view>
 
           <!-- <view class="css">
@@ -276,9 +316,9 @@
       </view>
 
     </view>
-
-
     <view class="h-50"></view>
+
+
   
   </view>
 
@@ -310,16 +350,16 @@
             <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"></view>
-    <view class="css dialog " hidden="{{operateDialog.visible!=true}}">
-        <view class="css dialog-padding">
-            <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rbc">
-                <view bindtap="operateDialog_cancel" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="operateDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel"></view>
+    <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
+        <view class="css ">
+            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
+            <view class="rcc fs-35 fw-700">{{operateDialog.title}}</view>
+         
+            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{operateDialog.text}}</view>
+            
+            <view class="csc t-line">
+                <view bindtap="operateDialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
             </view>
         </view>
     </view>

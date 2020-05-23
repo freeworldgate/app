@@ -57,28 +57,8 @@ Page({
     setTimeout(() => {
       if(!that.data.verfiy)
       {
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("", true);
-        httpClient.addHandler("noApprove", function () {
-          template.createOperateDialog(that).show("审核", "选择审核员...", function () {
-
-              wx.navigateTo({
-                url: "/pages/pk/selectApprover/selectApprover?pkId="+that.data.pkId + "&postId=" + that.data.postId,
-              })
-              that.setData({verfiy:true})
-        }, function () {});
-        })
-        httpClient.send(request.url.isPostApproved, "GET", { pkId: that.data.pkId, postId: that.data.postId});
-
+        this.isPostApproved();
       }
-
-
-
-
-
-
-
-
 
 
     }, 1000);
@@ -87,6 +67,58 @@ Page({
 
 
 
+
+
+
+  },
+
+
+  isPostApproved:function () {
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("", true);
+    httpClient.addHandler("noApprove", function () {
+      template.createOperateDialog(that).show("审核", "选择审核员...", function () {
+
+          wx.navigateTo({
+            url: "/pages/pk/editApproveComment/editApproveComment?pkId="+that.data.pkId + "&postId=" + that.data.postId,
+          })
+          that.setData({verfiy:true})
+    }, function () {});
+    })
+    httpClient.send(request.url.isPostApproved, "GET", { pkId: that.data.pkId, postId: that.data.postId});
+
+
+
+
+  },
+
+  editSelfComment:function(){
+    var that = this;
+    template.createEditTextDialog(that).show("修改主题", "修改主题内容",that.data.post.selfComment, 60, function (text) {
+      
+              // , urls
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (post) {
+      
+    
+                that.setData({
+                  "post.topic":text
+                })
+    
+              })
+              httpClient.send(request.url.editSelfComment, "GET",
+                {
+                  pkId: that.data.pkId,
+                  postId: that.data.postId,
+                  text:text
+                }
+              );    
+
+
+
+    });
 
 
 
@@ -142,7 +174,7 @@ Page({
               that.setData({
                 post:post
               })
-  
+              that.isPostApproved();
             })
             httpClient.send(request.url.replaceImg, "GET",
               {

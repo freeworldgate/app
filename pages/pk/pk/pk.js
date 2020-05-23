@@ -520,11 +520,12 @@ Page({
         httpClient.setMode("", true);
         httpClient.addHandler("editApproverMessage", function (tip) {
           template.createOperateDialog(that).show("提示", "编辑审核公告...", function () {
-            wx.navigateTo({
-              // url: "/pages/pk/approverInfos/approverInfos?approverUserId=" + that.data.user.userId + "&pkId=" + that.data.pkId,
-              url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.user.userId,
-            })
-  
+            // wx.navigateTo({
+            //   // url: "/pages/pk/approverInfos/approverInfos?approverUserId=" + that.data.user.userId + "&pkId=" + that.data.pkId,
+            //   url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.user.userId,
+            // })
+            that.approverMessage();
+
           }, function () {});
           
         })
@@ -711,10 +712,10 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("editMessage", function (order) {
       template.createOperateDialog(that).show("提示", "编辑审核公告...", function () {
-        wx.navigateTo({
-          url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + approver,
-        })
-
+        // wx.navigateTo({
+          // url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + approver,
+        // })
+        that.approverMessage();
       }, function () {});
 
     })
@@ -763,6 +764,40 @@ Page({
 
   },
 
+  editSelfComment:function(res){
+    var that = this;
+    var index = res.currentTarget.dataset.index;
+    var post = res.currentTarget.dataset.post;
+
+
+    template.createEditTextDialog(that).show("胡评", "编辑胡评","", 60, function (text) {
+      
+              // , urls
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (post) {
+      
+                var key = "posts[" + index + "]"
+                that.setData({
+                  [key]:post
+                })
+    
+              })
+              httpClient.send(request.url.editSelfComment, "GET",
+                {
+                  pkId: that.data.pkId,
+                  postId: post.postId,
+                  text:text
+                }
+              );    
+
+
+
+    });
+
+
+
+  },
 
 
 

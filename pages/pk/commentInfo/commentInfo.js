@@ -63,12 +63,12 @@ Page({
         })
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (currentApprover) {
+        httpClient.addHandler("message", function (approveComment) {
    
             that.setData({
-              message:currentApprover.approveComment,
+              message:approveComment,
             })
-            wx.setStorageSync('currentApprover', currentApprover)
+            wx.setStorageSync('pkComment', approveComment)
   
   
   
@@ -76,7 +76,6 @@ Page({
         httpClient.send(request.url.setComment, "GET",
           {
             pkId: that.data.message.pkId,
-            approvorId:that.data.message.approverId,
             text: text,
             imgUrl: urls[0],
           }

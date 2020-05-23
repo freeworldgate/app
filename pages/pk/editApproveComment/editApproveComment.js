@@ -40,24 +40,14 @@ Page({
 
     that.data.pkId = options.pkId;
     that.data.postId = options.postId;
-    that.data.approveUserId = options.approveUserId;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
-    // httpClient.send(request.url.queryApproveInfo, "GET", { pkId: this.data.pkId  });
     httpClient.send(request.url.queryApproveInfo2, "GET", { pkId: that.data.pkId ,postId:that.data.postId  });
 
 
   },
 
 
-  
-  approverComment:function(){
-
-      wx.setStorageSync('comment', this.data.userPost.approveComment)
-      wx.navigateTo({
-        url: '/pages/pk/commentInfo/commentInfo',
-      })
-  },
 
   approverCommentDetail:function(){
     wx.setStorageSync('comment', this.data.pkComment)
@@ -67,16 +57,8 @@ Page({
   },
  
 
-  agree:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.send(request.url.approve, "GET",{pkId: that.data.pkId,postId: that.data.postId}
-    );
 
-
-  },
-  setComment:function(){
+  approverComment:function(){
     var that = this;
     template.createEditImageDialog(that).setDialog("留言", "编辑留言", 1, function () {
 
@@ -85,7 +67,12 @@ Page({
 
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
+      httpClient.addHandler("message", function (approveComment) {
+     
+          that.setData({pkComment:approveComment})
 
+
+      })
       httpClient.send(request.url.setComment, "GET",
         {
           pkId: that.data.pkId,
@@ -103,6 +90,12 @@ Page({
 
   },
   onShow:function () {
+    var pkComment = wx.getStorageSync('pkComment');
+    if(pkComment){
+      wx.removeStorageSync('pkComment');
+      this.setData({pkComment:pkComment})
+    
+    }
 
   },
 
@@ -111,6 +104,23 @@ Page({
     var voiceUrl = res.currentTarget.dataset.voiceurl;
     var speck_time = res.currentTarget.dataset.specktime;
     template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
-  }
+  },
+
+  onShareAppMessage:function(){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("", true);
+    httpClient.send(request.url.setApprover, "GET",{pkId: that.data.pkId,postId: that.data.postId})
+
+    return {
+      title: '审核榜帖' +  "@" + that.data.creator.userName ,
+      desc: "from" + that.data.userPost.creator.userName + '',
+      imageUrl:that.data.userPost.creator.imgUrl,
+      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId ,
+    }
+
+
+  },
+
   
 })

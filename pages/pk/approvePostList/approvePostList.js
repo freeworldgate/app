@@ -48,7 +48,12 @@ Page({
 
   },
 
-
+  approverCommentDetail:function(res){
+    wx.setStorageSync('comment',res.currentTarget.dataset.comment)
+    wx.navigateTo({
+      url: '/pages/pk/commentInfo/commentInfo',
+    })
+  },
 
   onReachBottom:function () {
     var that = this;
