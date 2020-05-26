@@ -12,7 +12,7 @@
         </view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">
-                <button hidden='{{loginStatu === 1}}' class="weui-btn" type="primary"  bindgetuserinfo="login"open-type="getUserInfo">登录</button>
+                <button hidden='{{loginStatu === 1}}' class="weui-btn" type="primary"  bindgetuserinfo="login" open-type="getUserInfo">登录</button>
                 <button class="weui-btn" type="default" bindtap='back'>返回</button>
             </view>
         </view>

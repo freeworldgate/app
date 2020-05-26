@@ -40,11 +40,13 @@ Page({
 
     that.data.pkId = options.pkId;
     that.data.postId = options.postId;
-    that.data.approveUserId = options.approveUserId;
+    that.data.fromUser = options.fromUser;
+    wx.setStorageSync('fromUser', options.fromUser)
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", true);
+    var user = wx.getStorageSync('user');
+    httpClient.setMode("page", false);
     // httpClient.send(request.url.queryApproveInfo, "GET", { pkId: this.data.pkId  });
-    httpClient.send(request.url.queryApproveInfo2, "GET", { pkId: that.data.pkId ,postId:that.data.postId  });
+    httpClient.send(request.url.queryApproveInfo3, "GET", { pkId: that.data.pkId ,postId:that.data.postId,userId:user.userId,fromUser:that.data.fromUser  });
 
 
   },
@@ -60,10 +62,14 @@ Page({
   },
 
   approverCommentDetail:function(){
-    wx.setStorageSync('comment', this.data.pkComment)
-    wx.navigateTo({
-      url: '/pages/pk/commentInfo/commentInfo',
+    var that = this;
+    login.getUser(function (user) {
+      wx.setStorageSync('comment', that.data.pkComment)
+      wx.navigateTo({
+        url: '/pages/pk/commentInfo/commentInfo',
+      })  
     })
+
   },
  
 

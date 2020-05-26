@@ -73,7 +73,7 @@
                                                 </view>
                                     </view>
 
-                                    <view class="css ">
+                                    <view hidden="{{!userPost.approveComment}}" class="css ">
                                                                                 <view class="h-30"></view>
                                                                                 <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
@@ -82,7 +82,7 @@
                                                                                           
                                                                                         </view>
                                                                                         <view class="rcc">
-                                                                                            <view class="rcc fs-25 fw-400 c-4"> {{userPost.approveComment.date?userPost.approveComment.date:""}}</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-4"> {{userPost.approveComment.date}}</view>
                                                                                             
                                                                                         </view>
 
@@ -333,154 +333,6 @@
     </view> -->
 
 
-    <!-- <view wx:if="{{(tag===0 && (approvedPosts.length > 0))||(tag===1 && (approvingPosts.length > 0))}}" class="css">
-        <view class="css">
-        
-                <view class="csc">
-                        <swiper wx:if="{{tag===0 && (approvedPosts.length > 0)}}" class="" bindchange="changeApprovedPost" current="{{currentApprovedIndex}}" style="height:96vw" >
-                            <block wx:for="{{approvedPosts}}" wx:for-item="userPost" wx:key="*idx2" >
-                                <swiper-item class="csc ">
-                                    <view class="css mr-2vw ml-2vw backImg25" style="flex:1">
-                                    <view  class="css  ">
-                               
-                                        <view class=" p-1-5vw">
-                                            <view class="rbc">
-                                                <image class="br-10 " mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                            <view style="height:1.5vw"></view>
-                                            <view class="rbc">
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[4].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                            <view style="height:1.5vw"></view>
-                                            <view class="rbc">
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[6].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[7].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                        </view>
-                                        
-    
-
-                                    </view>  
-                                    </view>       
-                                </swiper-item>
-                            </block>
-                        </swiper>    
-                        <swiper wx:elif="{{tag===1 && (approvingPosts.length > 0)}}" class="" bindchange="changeApprovingPost" current="{{currentApprovingIndex}}" style="height:96vw" >
-    
-                            <block wx:for="{{approvingPosts}}" wx:for-item="userPost" wx:key="*idx2" >
-                                <swiper-item class="csc ">
-                                    <view class="css mr-2vw ml-2vw backImg25" style="flex:1">
-                                    <view  class="css  ">
-                                     
-                                        <view class=" p-1-5vw">
-                                            <view class="rbc">
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                            <view style="height:1.5vw"></view>
-                                            <view class="rbc">
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[4].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                            <view style="height:1.5vw"></view>
-                                            <view class="rbc">
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[6].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[7].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                                <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:30vw;width:30vw"></image>
-                                            </view>
-                                        </view>
-                         
-
-                                    </view>  
-                                    </view>
-        
-                                </swiper-item>
-                            </block>
-                        </swiper>  
-                        <view wx:else class="ccc" style="height:100vw">
-
-
-                            <view class="fs-30 fw-400 c-3-1">图片</view>
-                 
-                            <view class="fs-30 fw-400 c-3-1">没有内容</view>
-
-
-                        
-                        </view> 
-                </view>
-        </view>
-        <view  class="h-50"></view>
-        <view class="css">
-     
-            <view class="css  pl-4vw pr-4vw ">
-                            <view class="css  br-20 pl-4vw pr-4vw   b-white">
-                                <view class="rbs ">
-                                    <view class="rcc  " >
-                                                        <image class="w-35 h-35" mode="aspectFit" src="/images/comment5.png"></image>
-                                                        <view class="w-10"></view>
-                                                        <view class="fs-25 fw-400 ">留言</view>
-                                    </view>
-                                    <view class="rcc pb-50 pt-50" bindtap='playVoice' data-specktime="{{tag===0?currentApprovedPost.approveComment.speckTime:currentApprovingPost.approveComment.speckTime}}" data-voiceurl="{{tag===0?currentApprovedPost.approveComment.voiceUrl:currentApprovingPost.approveComment.voiceUrl}}" >
-                                        <image class="w-40 h-40" mode="aspectFit" src="/images/publish3.png"></image>    
-                                        <view class="w-10"></view>
-                                        <view class="fs-20 fw-400 c-3">{{tag===0?currentApprovedPost.approveComment.speckTime:currentApprovingPost.approveComment.speckTime}}s</view>
-                                    </view>
-                                </view>
-                                <view class="rss  "  >
-                                    <view class="ccs">
-                                        <view class="ccs">                  
-                                            <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{tag===0?currentApprovedPost.creator.imgUrl:currentApprovingPost.creator.imgUrl}}" ></image>                
-                                        </view>
-                                                                    
-                                    </view>
-                                    <view class="w-4vw"></view>
-                                    <view class="css" style="flex:1">
-                                        <view class="rbc-nowrap">
-                                            <view class="rus  fs-30 fw-700 line-1-start c-word-6">{{tag===0?currentApprovedPost.creator.userName:currentApprovingPost.creator.userName}}</view>
-                                            <view class="w-100"></view>
-                                        </view>
-
-                                        <view class="rbc-nowrap">
-                                            <view class="rus fs-30 fw-400 line-3-start c-word-5">{{tag===0?currentApprovedPost.approveComment.text:currentApprovingPost.approveComment.text}}</view>
-                                            <view></view>
-                                        </view>
-
-                                                
-                                    </view>
-                                    <view class="w-4vw"></view>
-                                    <view class="ccs">
-                                        <view class="rcc">
-                                            <image class="h-180 w-180 br-15" mode="aspectFill" src="{{tag===0?currentApprovedPost.approveComment.imgUrl:currentApprovingPost.approveComment.imgUrl}}" ></image>
-                                        </view>
-                                    </view>                
-                                </view>
-                                <view class="rbc">
-                                
-                                    <view class="fs-25 fw-400 c-4 pt-50 pb-50">今天 12:23</view>
-                                    <view></view>
-                                </view>
-                       
-                            </view>
-            </view>
-
-
-        </view>
-        <view  class="h-50"></view>
-    </view>
-    <view wx:else class="ccc" style="flex:1">
-        <view class="rcc">
-            <image class="h-300 w-300" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" ></image>
-        </view>
-        <view class="fs-30 fw-400 c-3-1">暂无内容</view>
-    
-    </view> -->
 
         
 

@@ -151,7 +151,7 @@
         <view class="rbs" style="flex:1">
             <view class="cas">
                 <view></view>
-                <view class="rcs operkey h-70 b-card pl-20 pr-30"   bindtap="groupCode">
+                <view hidden="{{hidden}}" class="rcs operkey h-70 b-card pl-20 pr-30"   bindtap="groupCode">
                     <view class="rcc ">
                         <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/group.png"></image>
                     </view>
@@ -167,14 +167,14 @@
    
                     <view class="rcc fs-25 fw-400 c-word">我的榜帖</view>
                 </view>
-                <navigator class="rcs operkey h-70 b-card pl-20 pr-30" url="/pages/pk/approvePostList/approvePostList?pkId={{pkId}}">
+                <view  hidden="{{hidden}}"  class="rcs operkey h-70 b-card pl-20 pr-30"  bindtap="approveList">
                     <view class="rcc ">
                         <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/approve4.png"></image>
                     </view>
                     <view class="w-10"></view>
             
                     <view class="rcc fs-25 fw-400 c-word">审核记录</view>
-                </navigator>
+                </view>
                 <view></view>
                 <view></view>
             </view>
@@ -211,7 +211,7 @@
             <view class="h-30"></view>
             <view class="css h-100">
               
-                    <view  class=" absolute rcc w-100vw">
+                    <view hidden="{{hidden}}"  class=" absolute rcc w-100vw">
                             <view class="css w-92vw b-white br-20">
                                                                     <view class="h-30"></view>
                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
@@ -922,13 +922,23 @@
 
 </view>
 <view class="rcs z30 customBar" style="top:{{top}}px">
-    <view class="rcc h-32px w-32px br-32px bar-back ">
+
+    <view wx:if="{{fromUser}}" class="rcc h-32px w-32px br-32px bar-back " bindtap="relaunch">
         <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
     </view>
-    <view class="w-20"></view>
-    <view class="rcc h-32px w-32px br-32px bar-back ">
-        <image class="w-45 h-45" mode="aspectFit" src="/images/share3.png"></image>
+    <view wx:else class="rcc h-32px w-32px br-32px bar-back " bindtap="back">
+        <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
     </view>
+
+
+    <view class="w-20"></view>
+    
+    
+    
+    <button hidden="{{!user}}" open-type="share" class="rcc message0 h-32px w-32px br-32px bar-back">
+        <view class="fs-20 fw-400">邀请</view>
+    </button>
+
 </view>
 
 <view class="css bottomBar z3 t-line">
@@ -1193,11 +1203,16 @@
                 <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
             </view>
             <view style="height:20rpx"></view>
-            <view class="rac">
-                <view bindtap="_editTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="_editTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            <view class="rbc pt-50 pb-20 t-line">
+                <view></view>
+                <view class="rcc">
+                    <view bindtap="_editTextDialog_close" class="rcc c-3 fs-30 fw-700" hoverClass="c-3-1">取消</view>
+                    <view class="w-100"></view>
+                    <view bindtap="_editTextDialog_confirm" class="rcc c-1 fs-30 fw-700" hoverClass="c-3-1">确定</view>
+                    <view class="w-50"></view>
+                </view>
+
             </view>
-            <view class="t7-5-2" style="height:35rpx"></view>
         </view>
     </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>

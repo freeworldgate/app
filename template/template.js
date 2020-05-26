@@ -671,7 +671,11 @@ function createEditTextDialog(page) {
   page._editTextDialog_confirm = function () {
     var tempText = page.data.editTextDialog.text
     if (tempText.length > page.data.editTextDialog.maxLength) {
-      showTip("内容超出长度");
+      tip.showContentTip("内容超出长度");
+      return;
+    }
+    if (tempText.length === 0) {
+      tip.showContentTip("没有内容");
       return;
     }
     page.editTextDialog.hide();

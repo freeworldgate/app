@@ -894,7 +894,7 @@ mw-200{
   background-color: rgba(207, 207, 207, 0.853);
 }
 .b-48{
-  background-color: rgba(248, 248, 248);
+  background-color: #f8f8f8;
 }
 .b-49{
   background-color: rgba(230, 230, 230);

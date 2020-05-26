@@ -116,7 +116,7 @@ Page({
       title: '审核榜帖' +  "@" + that.data.creator.userName ,
       desc: "from" + that.data.userPost.creator.userName + '',
       imageUrl:that.data.userPost.creator.imgUrl,
-      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId ,
+      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId + "&fromUser=" + that.data.user.userId ,
     }
 
 

@@ -58,7 +58,7 @@
                                                 </view>
                                         </view>
 
-                                        <view class="css ">
+                                        <view hidden="{{hidden}}" class="css ">
                                                                                 <view class="h-30"></view>
                                                                                 <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
@@ -67,7 +67,7 @@
                                                                                           
                                                                                         </view>
                                                                                         <view class="rcc">
-                                                                                            <view class="rcc fs-25 fw-400 c-4">日期: {{pkComment.date?pkComment.date:""}}</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-4">{{pkComment.date?pkComment.date:""}}</view>
                                                                                             
                                                                                         </view>
 

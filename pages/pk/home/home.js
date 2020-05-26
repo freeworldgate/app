@@ -20,19 +20,8 @@ Page({
   data: {
 
 
-    pkId: "PK01",
 
-    img1: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2812%29.jpeg",
-    img2: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg",
-    img3: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%286%29.jpeg",
-    img4: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%287%29.jpeg",
-    img5: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%288%29.jpeg",
-    img6: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg",
-    img7: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg",
-    img8: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2811%29.jpeg",
-
-    pks: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    albums: ["https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%286%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%287%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%288%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2811%29.jpeg"]
+    pks: [],
 
   },
 
@@ -40,16 +29,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: '#65b3fc',
-    })
-    var sessionId = uuid.uuid();
+
+
+
     var that = this;
-    var user = wx.getStorageSync("user");
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", false);
-    httpClient.send(request.url.zoneRefresh, "GET", { userId: user.userId, pkId: that.data.pkId, page: 1, sessionId: sessionId });
+    httpClient.setMode("label", false);
+    var user = wx.getStorageSync('user');
+    var fromUser = wx.getStorageSync('fromUser')
+    httpClient.send(request.url.queryHomePage, "GET", { userId:user.userId,fromUser:fromUser });
+
+
+
+
+
+
+
 
   },
 
@@ -138,7 +133,21 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var that = this;
 
+      if(that.data.pkEnd){return;}
+      var user = wx.getStorageSync('user');
+      var fromUser = wx.getStorageSync('fromUser')
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", false);
+      httpClient.addHandler("success", function (pagePks) {
+        that.setData({
+            page:that.data.page + 1,
+            pks:that.data.pks.concat(pagePks)
+        })
+      })
+      httpClient.send(request.url.nextHomePage, "GET",{ userId:user.userId,fromUser:fromUser ,page:that.data.page});
+    
   },
 
   /**
@@ -146,11 +155,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  pkDetail:function (params) {
+    wx.navigateTo({
+      url: '/pages/pk/pk/pk?pkId=PK01',
+    })
+  },
+  viewPk:function (res) {
+    var pkid = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/pk/pk?pkId=' + pkid,
+    })
+
+
+
+
   }
-
-
-
-
-
-
 })

@@ -42,41 +42,60 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options.pkId = "PK01";
+    var that = this;
+
+        //Top高度
+    inviteReq.getHeight(function (res) {
+        that.setData({
+            top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+        })
+    })
 
 
     
-    var that = this;
 
 
-    //Top高度
-    inviteReq.getHeight(function (res) {
-      that.setData({
-        top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
-      })
-    })
+
 
     // wx.setNavigationBarColor({
     //   frontColor: '#ffffff',
     //   backgroundColor: '#ff3300',
     // })
     // 上一级分享人
-    var fromUser = options.fromUser;
-    var pkId = options.pkId;
     
+    var fromUser = options.fromUser;
+    if(fromUser){
+      wx.setStorageSync("fromUser", fromUser);
+      this.setData({
+        fromUser:fromUser,
+      })
+    }
 
-    wx.setStorageSync("fromUser", fromUser);
+    var pkId = options.pkId;    
+    this.setData({
+      pkId:pkId
+    })
     wx.setStorageSync("pkId", pkId);
-  
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
-    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUser});
+    var fromUserId = wx.getStorageSync('fromUser');
+    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});
     that.setData({
       user:user,
     })
 
 
+  },
+  approveList:function (params) {
+    var that = this;
+    login.getUser(function (user) {
+      wx.navigateTo({
+        url: '/pages/pk/approvePostList/approvePostList?pkId=' + that.data.pkId,
+      })
+
+
+    })
   },
   publish:function(){
     var that = this;
@@ -190,6 +209,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this;
+    
+
+    return {
+        title: '邀请打榜',
+        desc: "from",
+        imageUrl:that.data.creator.imgUrl,
+        path: '/pages/pk/pk/pk?pkId=' + that.data.pkId + "&fromUser=" + that.data.user.userId ,
+    }
+
+ 
+
+
+
+
+
+
+
+
 
   },
   onReachBottom:function(){
@@ -591,7 +629,10 @@ Page({
 
     }
 
-
+    var user = wx.getStorageSync('user');
+    if(user){
+      this.setData({user:user})
+    }
 
 
     // wx.setStorageSync("action", "userPost")
@@ -744,12 +785,15 @@ Page({
   },
   approverMessageDetail:function(res){
     var that = this;
-    that.setData({
-      autoplay:false
+    login.getUser(function (user) {
+      that.setData({
+        autoplay:false
+      })
+      wx.navigateTo({
+        url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId ,
+      })   
     })
-    wx.navigateTo({
-      url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId ,
-    })
+
 
 
   
@@ -798,6 +842,16 @@ Page({
 
 
   },
+  back:function (params) {
+    wx.navigateBack({
+      complete: (res) => {},
+    })
+  },
+  relaunch:function (params) {
+    wx.reLaunch({
+      url: '/pages/pk/home/home',
+    })
+  }
 
 
 
