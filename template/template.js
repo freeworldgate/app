@@ -623,6 +623,78 @@ function createEditImageDialog(page) {
 }
 
 
+
+
+function createEditPkDialog(page){
+  if (page.editPkDialog) {
+    return page.editPkDialog;
+  }
+  var editPkDialog = new Object();
+  editPkDialog.success = function(topic,watchWord){}
+  
+
+  editPkDialog.show = function(success){
+    editPkDialog.success = success;
+    page.setData({
+      'editPkDialog.visible': true,
+    })
+  }
+  editPkDialog.hide = function(){
+    page.setData({
+      'editPkDialog': {},
+    })
+  } 
+  page._editPkDialog_input_topic = function(res)
+  {
+    var value = res.detail.value;
+    page.setData({
+      'editPkDialog.topic':value,
+    })
+  }
+  page._editPkDialog_input_watchword = function(res)
+  {
+    var value = res.detail.value;
+    page.setData({
+      'editPkDialog.watchWord':value,
+    })
+  }
+  page._editPkDialog_createPk = function()
+  {
+    
+    editPkDialog.success(page.data.editPkDialog.topic,page.data.editPkDialog.watchWord);
+  }
+
+  page.editPkDialog = editPkDialog;
+  page._editPkDialog_hide = function () {
+    page.editPkDialog.hide()
+  }
+  return editPkDialog;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //文本编辑的窗口
 function createEditTextDialog(page) {
   if (page.editTextDialog) {
@@ -3536,182 +3608,12 @@ function createHelpInfoDialog(page) {
 //页面加固
 
 
-//录音..
-function createVoiceDialog(page) {
 
 
 
-  if (page.voiceDialog) {
-    return page.voiceDialog;
-  }
-  var voiceDialog = new Object();
-  voiceDialog.show = function () {
 
 
-    page.setData({
-      'voiceDialog.statu': 'off', //off on done play
-      'voiceDialog.time': 0,
-      'voiceDialog.clock': -1,
-      'voiceDialog.visible': true,
-    })
-
-
-  }
-  voiceDialog.hide = function () {
-    page.setData({
-      'voiceDialog': {},
-    })
-  }
-  voiceDialog.start = function () {
-
-    voiceDialog.show();
-    const options = {
-      duration: 60000, //指定录音的时长，单位 ms
-      sampleRate: 16000, //采样率
-      numberOfChannels: 1, //录音通道数
-      encodeBitRate: 96000, //编码码率
-      format: 'mp3', //音频格式，有效值 aac/mp3
-      frameSize: 50, //指定帧大小，单位 KB
-    }
-    //开始录音
-    // recorderManager.stop();
-    recorderManager.start(options);
-    recorderManager.onStart((res)=>{
-
-      var time = 1;
-      var clock = setInterval(function(){
-  
-        page.setData({
-          'voiceDialog.time':time++
-        })
-        if(time >10){
-          if(voiceDialog.clock != -1){clearInterval(voiceDialog.clock);voiceDialog.clock = -1}
-          
-          recorderManager.pause();
-        }
-      },1000)
-      voiceDialog.clock = clock;
-    })
-
-  },
-  voiceDialog.stop = function (finish) {
-
-
-      
-
-      if(voiceDialog.clock != -1){clearInterval(voiceDialog.clock);voiceDialog.clock = -1}
-      recorderManager.stop();
-      recorderManager.onStop((res) => {
-        finish(page.data.voiceDialog.time,res.tempFilePath);
-        voiceDialog.hide();
-      })
-      recorderManager.onError((res) => {
-        console.log(res);
-      })
-
-  },
-
-  voiceDialog.cancel = function (cancel) {
-
-      voiceDialog.hide();
-      recorderManager.stop();
-      recorderManager.onStop((res) => {
-        cancel();
-      })
-
-
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  page.voiceDialog = voiceDialog;
-  return voiceDialog;
-}
-
-
-
-
-
-
-
-
-//录音..
-function createPlayVoiceDialog(page) {
-  if (page.playVoiceDialog) {
-    return page.playVoiceDialog;
-  }
-  var playVoiceDialog = new Object();
-  page.playVoiceDialog = playVoiceDialog;
-
-
-  playVoiceDialog.play = function(voiceUrl,speck_time){
-      if(!speck_time){tip.showContentTip("用户未讲话");return;}
-
-      page.setData({
-
-        'playVoiceDialog.time': 0,
-        'playVoiceDialog.visible': true,
-      })
-      var time = 0;
-      var clock = setInterval(() => {
-        
-        page.setData({
-          'playVoiceDialog.time':++time
-        })
-        if(time > speck_time){
-          clearInterval(clock);
-          page.setData({
-            'playVoiceDialog.visible': false,
-          })
-        }
-
-      }, 1000);
-
-
-      innerAudioContext.src = voiceUrl,
-      innerAudioContext.play()
-      innerAudioContext.onPlay((res) => {
-
-
-      })
-      
-
-
-    }
-
-
-
-
-  
-
-
-
-
-
-  page.playVoiceDialog = playVoiceDialog;
-  return playVoiceDialog;
-}
-
-
-
-
-module.exports = { createDialog,uploadVoice,createPlayVoiceDialog,createVoiceDialog,uploadImages3,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createEditPkDialog,uploadVoice,uploadImages3,createHelpInfoDialog,createSingleOrderDialog,createRewardOrderDialog,createIntegralDialog, createTaskDialog, createPostApproveDialog ,createApproveOrderDialog,createPayerOrderDialog,createCashierOrderDialog, createUploadFeeDialog, createApplyOrderDialog, createSinglePostDialog, createShareDialog, createFeeDialog, createFinanceDialog,createMemberDialog,createPhoneCallDialog, createOperDialog, createChooseDialog, createOrderDialog, createOrgDialog, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

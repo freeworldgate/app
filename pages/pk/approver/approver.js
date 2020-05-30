@@ -22,7 +22,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    hasInivte:false
   },
 
   /**
@@ -71,7 +71,17 @@ Page({
     })
 
   },
- 
+  addInvite:function(pkId){
+    var that = this;
+    var user = wx.getStorageSync('user');
+    if(user && (!that.data.hasInivte) )
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId, userId: user.userId});
+    }
+  
+},
 
   agree:function(){
     var that = this;
@@ -109,7 +119,8 @@ Page({
 
   },
   onShow:function () {
-
+    var that = this;
+    that.addInvite(that.data.pkId ,that.data.fromUser );
   },
 
   playVoice:function (res) {

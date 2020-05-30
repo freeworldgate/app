@@ -1,5 +1,5 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
-<view class="css b-48 " >
+<view class="css b-48" style="flex:1" >
 
 
 
@@ -11,7 +11,7 @@
                             <block wx:for="{{pks}}" wx:for-index="bindex1" wx:for-item="pk" >
                                 <view class="css br-20 b-white mt-4vw" bindtap="viewPk" data-pkid="{{pk.pkId}}">
 
-                                    <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}</view>
+                                    <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view>
                 
                                 </view>
                             </block>

@@ -55,12 +55,13 @@
 
   ],
   "window": {
-
+    "backgroundColor": "#f8f8f8",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "主题相册",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#ffffff"
+    "navigationBarTextStyle": "black"
+    
+
     
   },
   "tabBar": {

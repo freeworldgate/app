@@ -1,5 +1,7 @@
 {
-  "enablePullDownRefresh": true,
-  "navigationStyle": "custom",
-  "backgroundColor": "#f0f0f0"
+
+  "navigationBarBackgroundColor": "#f8f8f8",
+   "backgroundColor": "#f8f8f8",
+   "navigationBarTitleText": "审核记录"
+
 }

@@ -779,6 +779,23 @@
     /* top:0px; */
     left: 0px;
 }
+.editPkDialog{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 31;
+    bottom: 0; 
+    /* top:0px; */
+    left: 0px;
+}
+.editPkDialog_topic{
+    background-color: rgb(250, 250, 250);
+    padding: 20rpx;
+    border-radius: 5rpx;
+    font-size: 30rpx;
+    font-weight: 400;
+  }
+
 .editDialog-1{
     width: 94vw;
     height: auto;

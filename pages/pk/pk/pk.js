@@ -28,14 +28,12 @@ Page({
    */
   data: {
     interval:0,
-    publish:'off',
+
     pkId:"PK01",
     isApprove:true,
     factualInfos:[],
-    autoplay:true,
-    albums: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    img: "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2812%29.jpeg",
-  
+
+    hasInivte:false
   },
 
   /**
@@ -43,7 +41,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
+    that.addInvite(options.pkId,options.fromUser);
         //Top高度
     inviteReq.getHeight(function (res) {
         that.setData({
@@ -51,22 +49,11 @@ Page({
         })
     })
 
-
-    
-
-
-
-
-    // wx.setNavigationBarColor({
-    //   frontColor: '#ffffff',
-    //   backgroundColor: '#ff3300',
-    // })
-    // 上一级分享人
-    
     var fromUser = options.fromUser;
     if(fromUser){
+     
       wx.setStorageSync("fromUser", fromUser);
-      this.setData({
+      that.setData({
         fromUser:fromUser,
       })
     }
@@ -76,16 +63,32 @@ Page({
       pkId:pkId
     })
     wx.setStorageSync("pkId", pkId);
+
+    
+
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
     var fromUserId = wx.getStorageSync('fromUser');
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});
+    
     that.setData({
       user:user,
     })
 
 
+  },
+
+  addInvite:function(pkId,fromUser){
+      var that = this;
+      var user = wx.getStorageSync('user');
+      if(user && fromUser && (!that.data.hasInivte) )
+      {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("", true);
+        httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId, userId: user.userId});
+      }
+    
   },
   approveList:function (params) {
     var that = this;
@@ -632,6 +635,8 @@ Page({
     var user = wx.getStorageSync('user');
     if(user){
       this.setData({user:user})
+      that.addInvite(that.data.pkId,that.data.fromUser);
+
     }
 
 
@@ -699,7 +704,7 @@ Page({
     user.userId = userId;
     wx.setStorageSync('user', user);
     wx.reLaunch({
-      url: '/pages/pk/pk/pk',
+      url: '/pages/pk/home/home',
     })
 
   },

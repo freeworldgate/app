@@ -399,6 +399,9 @@
 .mt-150{
   margin-top: 150rpx;
 }
+.m-20{
+  margin: 20rpx;
+}
 .m-30{
   margin: 30rpx;
 }
