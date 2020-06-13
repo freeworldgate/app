@@ -151,7 +151,7 @@ Page({
   replaceImage:function (index) {
     var that = this;
     wx.chooseImage({
-      count: 9,
+      count: 1,
       sizeType: ['compressed', 'original'],
       sourceType: ['album', 'camera'],
       success(res) {

@@ -216,12 +216,12 @@
                                                                     <view class="h-30"></view>
                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                             <view class="rcc">
-                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                <view class="rcc fs-25 fw-400 c-4 pl-10">审核公告</view>
+                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/statu1.png"></image>
+                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核公告</view>
                                                                                
                                                                             </view>
                                                                             <view class="rcc">
-                                                                                <view class="rcc fs-25 fw-400 c-4">日期: {{date}}</view>
+                                                                                <view class="rcc fs-25 fw-400 c-3">公开/仅邀请用户</view>
                                                                                 
                                                                             </view>
 
@@ -246,7 +246,6 @@
                                                                                 </view>    
                                                                         </view>
                                                                     </view>
-
                                                                     <view wx:else class="rcc h-150  pl-4vw pr-4vw">
                                                                             <view wx:if="{{user.userId === creator.userId}}" class="rcc">
                                                                                 <view  class="rcc p-30"  bindtap="approverMessage">
@@ -691,7 +690,7 @@
                                                                                
                                                                                         <view class="rbc pb-10 ">
                                                                                                 <view class="rcc">
-                                                                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
+                                                                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/point1.png"></image>
                                                                                                     <view class="rcc fs-25 fw-400 c-4 pl-10">游客胡评</view>
                                                                                                 
                                                                                                 </view>
@@ -921,13 +920,13 @@
     <view hidden="{{!nomore}}" class="rcc h-200 fs-30 fw-400 c-3-1">没有更多...</view>
 
 </view>
-<view class="rcs z30 customBar" style="top:{{top}}px">
+<view class="rcs z2 customBar" style="top:{{top}}px">
 
     <view wx:if="{{fromUser}}" class="rcc h-32px w-32px br-32px bar-back " bindtap="relaunch">
         <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
     </view>
-    <view wx:else class="rcc h-32px w-32px br-32px bar-back " bindtap="back">
-        <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
+    <view wx:else class="rcc h-32px w-32px br-32px bar-back" bindtap="back">
+        <image class="w-30 h-30" mode="aspectFit" src="/images/left1.png"></image>
     </view>
 
 
@@ -935,8 +934,8 @@
     
     
     
-    <button hidden="{{!user}}" open-type="share" class="rcc message0 h-32px w-32px br-32px bar-back">
-        <view class="fs-20 fw-400">邀请</view>
+    <button hidden="{{!user}}" open-type="share" class="rcc message0 h-32px w-40vw br-32px bar-back">
+        <view class="fs-25 fw-400 c-4">邀请</view>
     </button>
 
 </view>
@@ -1058,7 +1057,7 @@
 
 
     
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel"></view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel" catchtouchmove="return"></view>
     <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
         <view class="css ">
             <view class="rcc p-30"><icon type="info" size="93"></icon></view>

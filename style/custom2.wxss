@@ -532,6 +532,7 @@
 .w-170{width: 170rpx;}
 .w-180{width: 180rpx;}
 .w-200{width: 200rpx;}
+.max-w-150{max-width: 150rpx;}
 .w-240{width: 240rpx;}
 .w-250{width: 250rpx;}
 .w-270{width: 270rpx;}
@@ -621,6 +622,7 @@
 .h-32vw{height: 32vw}
 .w-32vw{width: 32vw}
 .w-4vw{width: 4vw}
+.w-3vw{width: 3vw}
 .w-2vw{width: 2vw}
 .h-4vw{height: 4vw}
 .w-10vw{width: 10vw}
@@ -684,6 +686,9 @@ mw-200{
 }
 .c-word-6{
   color: rgb(80, 121, 153);
+}
+.c-word-7{
+  color: rgb(97, 88, 77);
 }
 .b-card{
   background-color: rgba(255, 255, 255, 0.2);
@@ -1274,11 +1279,19 @@ mw-200{
 
 }
 
+.createPk
+{
+  position: fixed;
+  bottom:30px;
+  right: 10vw;
+}
+
+
 
 .customBar{
   position: fixed;
   height:32px;
-  left: 4vw;
+  left: 3vw;
 }
 
 .bottomBar{
@@ -1960,9 +1973,10 @@ button::after {
 
 .h-32px{height: 32px}
 .w-32px{width: 32px}
+
 .br-32px{border-radius: 32px}
 .bar-back{
-  background-color: rgba(255, 255, 255, 0.8)
+  background-color: rgba(255, 255, 255, 0.6)
 }
 .bar-back1{
   background-color: rgba(0, 119, 155, 0.774)
@@ -1973,7 +1987,9 @@ button::after {
 .bar-back2{
   background-color: rgba(255, 255, 255)
 }
-
+.bar-back3{
+  background-color: rgb(194, 100, 0)
+}
 
 
 

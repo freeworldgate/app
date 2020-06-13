@@ -107,14 +107,43 @@ Page({
       url: '/pages/pk/pk/pk?pkId=PK01',
     })
   },
-  viewPk:function (res) {
+  viewPk:function(res)
+  {
+    var that = this;
     var pkid = res.currentTarget.dataset.pkid;
-    wx.navigateTo({
-      url: '/pages/pk/pk/pk?pkId=' + pkid,
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    // httpClient.addHandler("approve", function (pk) {
+
+    //   template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
+    //     wx.navigateTo({
+    //       url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
+    //     })
+
+    // },function(){});
+    // })
+    httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
+
+  },
+  groupCode:function(res) {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
+
+  },
+  approverMessageDetail:function(res){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    login.getUser(function (user) {
+
+      wx.navigateTo({
+        url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkId ,
+      })   
     })
 
 
-
-
-  }
+  },
 })

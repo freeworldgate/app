@@ -606,7 +606,7 @@ Page({
         })
         httpClient.send(request.url.oneTimeTask, "GET", { pkId: that.data.pkId });
         
-      },1000)
+      },10)
 
 
     }
@@ -798,17 +798,6 @@ Page({
         url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId ,
       })   
     })
-
-
-
-  
-
-
-
-
-
-
-
 
 
   },
