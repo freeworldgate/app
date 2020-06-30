@@ -1,5 +1,5 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
-<view class="css b-48" style="flex:1" >
+<view class="css " style="flex:1" >
 
 
 
@@ -40,29 +40,46 @@
                                     <view hidden="{{!pk.approveMessage}}" class="css"  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
                                                                             <view class="h-30 b-line"></view>
                                                                             <view class="h-30"></view>
-                                                                            <view class="rbc pb-20">
-                                                                                    <view class="rcc">
-                                                                                        <image class="w-30 h-30" mode="aspectFit" src="/images/statu1.png"></image>
-                                                                                        <view class="rcc fs-25 fw-400 c-3 pl-10">审核公告</view>
+                                                                            <view class="rss">
+                                                                                <view class="css" style="flex:1">
                                                                                     
+                                                                                    <view class="rbc pb-10">
+                                                                                            <view class="rcc">
+                                                                                                <view class="rcc w-40 h-40">
+                                                                                                    <image class="w-35 h-35" mode="aspectFit" src="/images/statu1.png"></image>
+                                                                                                </view>
+                                                                                                <view class="w-20"></view>
+                                                                                                <view class="rcc fs-25 fw-400 c-3">审核公告({{pk.invite}})</view>
+                                                                                            
+                                                                                            </view>
+                                                                                            <view class="rcc">
+                                                                                                <!-- <view class="rcc fs-25 fw-400 c-3">{{pk.invite}}</view> -->
+                                                                                                
+                                                                                            </view>
+
+                                                                                            
                                                                                     </view>
-                                                                                    <view class="rcc">
-                                                                                        <view class="rcc fs-25 fw-400 c-3">{{pk.invite}}</view>
+                                                                                    <view class="css  pl-60 ">
+
+                                                                                    
+                                                                                            <view class="css">
+                                                                    
+                                                                                                    <view class="rus fs-30 fw-400 line-2-start c-word-6">{{pk.approveMessage.text}}</view>
+                                                                                    
+                                                                                            </view>    
                                                                                         
-                                                                                    </view>
-
-                                                                                    
+                                                                                    </view>  
+                                                                                </view>
+                                                                                <view class="w-20"></view>
+                                                                                <view class="rcc">
+                                                                                    <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{pk.approveMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                                                                                </view>
+                                                                                <view class="w-20"></view>
+                                                                                <view class="rcc"> <image class="w-30 h-30" mode="aspectFit" src="/images/right3.png"></image></view>
                                                                             </view>
-                                                                            <view class="css  pl-40 pr-40 ">
-
-                                                                               
-                                                                                    <view class="css">
-                                                              
-                                                                                            <view class="rus fs-30 fw-400 line-3-start c-word-6">{{pk.approveMessage.text}}</view>
-                                                                             
-                                                                                    </view>    
-                                                                                
-                                                                            </view>   
+ 
+                                                                            
+                                                                            
                                                                             <view class="h-30 b-line"></view>                                                              
                                     </view>
 
@@ -94,7 +111,7 @@
         </view>
 
     </view>
-    <view wx:else class="ccc pt-100 pb-100" >
+    <view wx:else class="ccc "  style="padding-top:30vh">
         <view class="rcc">
             <image class="h-300 w-300" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" ></image>
         </view>
@@ -140,7 +157,8 @@
 
 <view>
 
-    <view class="coverAll" hidden="{{dialog.visible!=true}}" bindtap="dialog_confirm"></view>
+
+    <view class="coverAll" hidden="{{dialog.visible!=true}}" ></view>
     <view class="css dialog b-white br-20" hidden="{{dialog.visible!=true}}">
         <view class="css ">
             <view class="rcc p-30"><icon type="info" size="93"></icon></view>
@@ -153,7 +171,6 @@
             </view>
         </view>
     </view>
-
     <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
         <view class="ccc levelDialog_view">
             <view class="rcc">
@@ -165,16 +182,16 @@
             <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"></view>
-    <view class="css dialog " hidden="{{operateDialog.visible!=true}}">
-        <view class="css dialog-padding">
-            <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rbc">
-                <view bindtap="operateDialog_cancel" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="operateDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel" catchtouchmove="return"></view>
+    <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
+        <view class="css ">
+            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
+            <view class="rcc fs-35 fw-700">{{operateDialog.title}}</view>
+         
+            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{operateDialog.text}}</view>
+            
+            <view class="csc t-line">
+                <view bindtap="operateDialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
             </view>
         </view>
     </view>

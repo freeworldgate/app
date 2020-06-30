@@ -73,7 +73,6 @@ Page({
   onShow:function () {
     var that = this;
     that.init("");
-
   },
 
   init:function (tab) {
@@ -82,10 +81,10 @@ Page({
     if(user){
       that.setData({user:user})
     }
-    if(user && (that.data.pks.length === 0))
-    {
-      that.queryPks(tab);
-    }
+    // if(user && (that.data.pks.length === 0))
+    // {
+    that.queryPks(tab);
+    // }
   },
   onPullDownRefresh:function (params) {
       var that = this;
@@ -143,6 +142,24 @@ Page({
       template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
         wx.navigateTo({
           url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
+        })
+
+    },function(){});
+    })
+    httpClient.addHandler("group", function (pk) {
+
+      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
+        wx.navigateTo({
+          url: '/pages/pk/message/message?pkId=' + pkid,
+        })
+
+    },function(){});
+    })
+    httpClient.addHandler("message", function (pk) {
+
+      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
+        wx.navigateTo({
+          url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkid ,
         })
 
     },function(){});

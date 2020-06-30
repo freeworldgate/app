@@ -63,39 +63,50 @@ Page({
       return ;
     }
 
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function () {
+      
+      template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+        //上传成功
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("message", function (message) {
+            that.setData({
+              'message':message,
+            })
+            wx.setStorageSync('myMessage', message)
+  
+        })
+        httpClient.send(request.url.publishApproveMessage, "GET",
+          {
+            pkId: that.data.pkId,
+            text: text,
+            imgUrl: urls[0],
+          }
+        );
+  
+      }, function () {
+        //上传失败
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+      }).show();
+
+    })
+    httpClient.send(request.url.canEditApproveMessage, "GET",
+      {
+        pkId: that.data.pkId,
+      }
+    );
 
 
 
 
 
-    template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
-      //上传成功
-      wx.hideLoading({
-        complete: (res) => {},
-      })
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("message", function (message) {
-          that.setData({
-            'message':message,
-          })
-          wx.setStorageSync('myMessage', message)
-
-      })
-      httpClient.send(request.url.publishApproveMessage, "GET",
-        {
-          pkId: that.data.pkId,
-          text: text,
-          imgUrl: urls[0],
-        }
-      );
-
-    }, function () {
-      //上传失败
-      wx.hideLoading({
-        complete: (res) => {},
-      })
-    }).show();
 
 
 

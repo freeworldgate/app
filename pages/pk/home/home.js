@@ -172,19 +172,36 @@ Page({
     var pkid = res.currentTarget.dataset.pkid;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    // httpClient.addHandler("approve", function (pk) {
+    httpClient.addHandler("approve", function (pk) {
 
-    //   template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
-    //     wx.navigateTo({
-    //       url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
-    //     })
+      template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
+        wx.navigateTo({
+          url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
+        })
 
-    // },function(){});
-    // })
+    },function(){});
+    })
+    httpClient.addHandler("group", function (pk) {
+
+      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
+        wx.navigateTo({
+          url: '/pages/pk/message/message?pkId=' + pkid,
+        })
+
+    },function(){});
+    })
+    httpClient.addHandler("message", function (pk) {
+
+      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
+        wx.navigateTo({
+          url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkid ,
+        })
+
+    },function(){});
+    })
     httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },
-  
   groupCode:function(res) {
     var that = this;
     var pkId = res.currentTarget.dataset.pkid;

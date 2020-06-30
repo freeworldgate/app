@@ -72,7 +72,12 @@ Page({
 
   onShow:function () {
     var that = this;
-    that.init("");
+    if(that.data.pks.length === 0){
+      // that.init("");
+      that.init("label");
+    }
+
+    
 
   },
 
@@ -89,7 +94,7 @@ Page({
   },
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryInvites("");
+      that.queryInvites("label");
   },
 
   /**
@@ -113,15 +118,33 @@ Page({
     var pkid = res.currentTarget.dataset.pkid;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    // httpClient.addHandler("approve", function (pk) {
+    httpClient.addHandler("approve", function (pk) {
 
-    //   template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
-    //     wx.navigateTo({
-    //       url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
-    //     })
+      template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
+        wx.navigateTo({
+          url: '/pages/pk/selectPker/selectPker?pkId=' + pkid,
+        })
 
-    // },function(){});
-    // })
+    },function(){});
+    })
+    httpClient.addHandler("group", function (pk) {
+
+      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
+        wx.navigateTo({
+          url: '/pages/pk/message/message?pkId=' + pkid,
+        })
+
+    },function(){});
+    })
+    httpClient.addHandler("message", function (pk) {
+
+      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
+        wx.navigateTo({
+          url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkid ,
+        })
+
+    },function(){});
+    })
     httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },

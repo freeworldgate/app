@@ -228,6 +228,7 @@ function createOperateDialog(page) {
   operateDialog.show = function (title, text, confirm, cancel) {
     operateDialog.confirm = confirm;
     operateDialog.cancel = cancel;
+
     page.setData({
       'operateDialog.title': title,
       'operateDialog.text': text,
@@ -235,6 +236,7 @@ function createOperateDialog(page) {
     })
   }
   operateDialog.hide = function () {
+
     page.setData({
       'operateDialog.visible': false,
     })

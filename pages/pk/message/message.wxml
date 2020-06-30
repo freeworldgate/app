@@ -57,7 +57,7 @@
 
     <view wx:if="{{groupCode}}" class="css pt-100 pb-100">
             <view class="rcc " bindtap="return">
-                <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">拉取图片</button>
+                <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">获取图片</button>
             </view>
     </view>
     <view wx:else class="css pt-100 pb-100">

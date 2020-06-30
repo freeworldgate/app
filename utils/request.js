@@ -77,6 +77,15 @@ var url = {
         userPks: `${host}/pk/userPks`, 
         nextUserPks: `${host}/pk/nextUserPks`, 
         viewGroupCode: `${host}/pk/viewGroupCode`, 
+        queryPkApprove: `${host}/pk/queryPkApprove`, 
+        canEditApproveMessage: `${host}/pk/canEditApproveMessage`,
+
+
+
+
+
+
+
 
         setApprover: `${host}/pk/setApprover`, 
         setApproveInfo: `${host}/pk/setApproveInfo`, 
