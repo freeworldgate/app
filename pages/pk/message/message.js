@@ -38,16 +38,30 @@ Page({
       })
     })
 
-
-
-
     that.setData({
       pkId:options.pkId
     })
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", true);
-    httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId});
+    if(options.cashierId)
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("page", true);
+      httpClient.send(request.url.queryActiveGroupCode, "GET",{pkId: that.data.pkId,cashierId: options.cashierId});
+  
+    }
+    else
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("page", true);
+      httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId});
+  
+
+    }
+
+
+
+
+
 
 
   },

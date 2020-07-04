@@ -907,6 +907,7 @@ mw-200{
 .b-49{
   background-color: rgba(230, 230, 230);
 }
+
 .b-green{
   background-color: green;
 }
@@ -928,6 +929,14 @@ mw-200{
 .b-creator{
   background-color: rgba(240, 240, 240, 0.1);
 }
+.b-51{
+  background-color: rgba(204, 204, 204, 0.714);
+}
+
+
+
+
+
 .border0{
   border: 1px solid rgb(0, 146, 199); 
 }

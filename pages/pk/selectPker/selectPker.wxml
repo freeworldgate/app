@@ -2,100 +2,219 @@
 <view class="css">
 
 
-            <view class="css pr-3vw pl-3vw"  >
-                  <view class="css br-20 b-white mt-4vw pr-3vw pl-3vw">
-                                    <view class="rbc ">
+    <view class="cbs pr-3vw pl-3vw  h-100vh"  >
+        <view class="css">
+            <view class="css br-20 b-white mt-4vw pr-3vw pl-3vw">
+                                        <view class="rbc ">
 
-                                        <view class="rcc">
-                                            <image class="w-25 h-25" mode="aspectFit" src="/images/time.png"></image>
-                                            <view class="w-10"></view>
-                                            <view class="rus fs-25 fw-400 c-3">{{pk.time}}</view>
+                                            <view class="rcc">
+                                                <!-- <image class="w-25 h-25" mode="aspectFit" src="/images/time.png"></image>
+                                                <view class="w-10"></view> -->
+                                                <view class="rus fs-30 fw-700 c-4-1">我的相册</view>
+                                            </view>
+
+
+
+
+                                            <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
+                                                <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
+                                                <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                            </view>
+                                        </view>
+                                        <view class="css" data-pkid="{{pk.pkId}}">
+                                            <view class="rss">
+                                                <view class="rcc"><view class="rcc w-40"><image class="w-30 h-30" mode="aspectFit" src="/images/topic.png"></image></view></view>
+                                                <view class="w-20"></view>
+                                                <view class="css" style="flex:1"><view class="rus line-1-start fs-35 fw-400 line-h40">{{pk.topic}}</view></view>
+                                            </view>
+                                            <view class="h-20"></view>
+                                            <view class="rss">
+                                                <view class="ccs"><view class="rcc w-40"><image class="w-30 h-30" mode="aspectFit" src="/images/share2.png"></image></view></view>
+                                                <view class="w-20"></view>
+                                                <view class="css" style="flex:1"><view class="rus line-2-start fs-25 fw-400 line-h40">{{pk.watchWord}}</view></view>
+                                            </view>
+                                        
+                                        
+                                        
                                         </view>
 
-
-
-
-                                        <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                            <view class="rcc fs-25 fw-400 c-3">{{pk.pkStatu.name}}</view>
-                                            <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image> -->
-                                        </view>
-                                    </view>
-                                    <view class="rss" data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                        <view class="rcc">
-                                            <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
-                                        </view>
-                                        <view class="w-3vw"></view>
-                                        <view class="cas" style="flex:1">
-                                            <view class="css"><view class="rus line-1-start fs-35 fw-700">{{pk.topic}}</view></view>
-                                            <view class="css"><view class="rus line-2-start fs-25 fw-400">{{pk.watchWord}}</view></view>
-                                        </view>
-                                    </view>
-
-                                    <view hidden="{{!pk.approveMessage}}" class="css"  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
-                                                                            <view class="h-30 b-line"></view>
-                                                                            <view class="h-30"></view>
-                                                                            <view class="rss">
-                                                                                <view class="css" style="flex:1">
-                                                                                    
-                                                                                    <view class="rbc pb-10">
-                                                                                            <view class="rcc">
-                                                                                                <view class="rcc w-40 h-40">
-                                                                                                    <image class="w-35 h-35" mode="aspectFit" src="/images/statu1.png"></image>
-                                                                                                </view>
-                                                                                                <view class="w-20"></view>
-                                                                                                <view class="rcc fs-25 fw-400 c-3">审核公告({{pk.invite}})</view>
-                                                                                            
-                                                                                            </view>
-                                                                                            <view class="rcc">
-                                                                                                <!-- <view class="rcc fs-25 fw-400 c-3">{{pk.invite}}</view> -->
-                                                                                                
-                                                                                            </view>
-
-                                                                                            
-                                                                                    </view>
-                                                                                    <view class="css  pl-60 ">
-
-                                                                                    
-                                                                                            <view class="css">
-                                                                    
-                                                                                                    <view class="rus fs-30 fw-400 line-2-start c-word-6">{{pk.approveMessage.text}}</view>
-                                                                                    
-                                                                                            </view>    
+                                        <view hidden="{{!pk.approveMessage}}" class="css"  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
+                                                                                <view class="h-30 b-line"></view>
+                                                                                <view class="h-30"></view>
+                                                                                <view class="rss">
+                                                                                    <view class="css" style="flex:1">
                                                                                         
-                                                                                    </view>  
+                                                                                        <view class="rbc pb-10">
+                                                                                                <view class="rcc">
+                                                                                                    <view class="rcc w-40 h-40">
+                                                                                                        <image class="w-35 h-35" mode="aspectFit" src="/images/statu1.png"></image>
+                                                                                                    </view>
+                                                                                                    <view class="w-20"></view>
+                                                                                                    <view class="rcc fs-25 fw-400 c-3">审核公告({{pk.invite}})</view>
+                                                                                                
+                                                                                                </view>
+                                                                                                <view class="rcc">
+                                                                                                    <!-- <view class="rcc fs-25 fw-400 c-3">{{pk.invite}}</view> -->
+                                                                                                    
+                                                                                                </view>
+
+                                                                                                
+                                                                                        </view>
+                                                                                        <view class="css  pl-60 ">
+
+                                                                                        
+                                                                                                <view class="css">
+                                                                        
+                                                                                                        <view class="rus fs-30 fw-400 line-2-start c-word-6">{{pk.approveMessage.text}}</view>
+                                                                                        
+                                                                                                </view>    
+                                                                                            
+                                                                                        </view>  
+                                                                                    </view>
+                                                                                    <view class="w-20"></view>
+                                                                                    <view class="rcc">
+                                                                                        <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{pk.approveMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                                                                                    </view>
+                                                                                    <view class="w-20"></view>
+                                                                                    <view class="rcc"> <image class="w-30 h-30" mode="aspectFit" src="/images/right3.png"></image></view>
                                                                                 </view>
-                                                                                <view class="w-20"></view>
-                                                                                <view class="rcc">
-                                                                                    <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{pk.approveMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
-                                                                                </view>
-                                                                                <view class="w-20"></view>
-                                                                                <view class="rcc"> <image class="w-30 h-30" mode="aspectFit" src="/images/right3.png"></image></view>
-                                                                            </view>
- 
-                                                                            
-                                                                            
-                                                                            <view class="h-30 b-line"></view>                                                              
-                                    </view>
-
-                                    <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
-                                    <view class="rbc c-word-7">
-
-                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view>
-                                        <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
-                                        <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
-
-
-                                        <view class="rcc"></view>
-                                        <view class="rcc"></view>
-                                        <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
-                                            <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
-                                            <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
-                                            <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+    
+                                                                                
+                                                                                
+                                                                                <view class="h-50"></view>                                                              
                                         </view>
-                                    </view>    
-                  </view>
+
+                                        <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
+                                        <!-- <view class="rbc c-word-7">
+
+                                            <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view>
+                                            <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
+                                            <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
+
+
+                                            <view class="rcc"></view>
+                                            <view class="rcc"></view>
+                                            <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
+                                                <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
+                                                <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                            </view>
+                                        </view>     -->
+            </view>
+            <view class="h-30"></view>
+     
+            <view class="css br-20 b-white pr-3vw pl-3vw">
+                <view class="rbc ">
+
+                                            <view class="rcc">
+                                                <!-- <image class="w-25 h-25" mode="aspectFit" src="/images/time.png"></image>
+                                                <view class="w-10"></view> -->
+                                                <view class="rus fs-30 fw-700 c-4-1">今日值班榜主</view>
+                                            </view>
+                                            
+                                            <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
+                                                <view class="rcc fs-25 fw-400 c-3">{{cashiers.length}}个</view>
+                                              
+                                            </view>
+                </view>
+
+                <view class="css ">
+                    <scroll-view class="rss" scroll-x="true"  style="white-space:nowrap">
+                        <block  wx:for="{{cashiers}}" wx:for-item="cashier" wx:key="*idx2" >
+                                                <view class="rcc" style="display:inline-block">
+                                                    <view class="rcc" bindtap="selectCashier" data-cashier="{{cashier}}">
+                                                        <image src="{{cashier.cashierImg}}" class="w-100 h-100 br-100 border2 bwhite" mode="aspectFill"/>
+                                                        <view hidden="{{cashier.cashierId != selectCashier.cashierId}}" class="rcc w-100 h-100 br-100 absolute b-51">
+                                                            <image src="/images/choose.png" class="w-60 h-60 " mode="aspectFit"/>
+                                                        </view>
+                                                        <!-- <image src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/imgBack3.png" class="w-120 h-120 absolute " mode="aspectFit"/>      -->
+                                                        
+                                                    </view>
+                                                </view>
+                        </block>
+                    </scroll-view>
                 
-            </view>  
+                </view>
+                
+                <view class="css t-line">
+                    <view hidden="{{!pk.approveMessage}}" class="css"  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
+                                                                                    <view class="h-30"></view>
+                                                                            
+                                                                                    <view class="rss">
+                                                                                        <view class="css" style="flex:1">
+                                                                                            
+                                                                                            <view class="rbc pb-10">
+                                                                                                    <view class="rcc">
+                                                                                                        <view class="rcc w-40 h-40">
+                                                                                                            <image class="w-35 h-35" mode="aspectFit" src="/images/statu1.png"></image>
+                                                                                                        </view>
+                                                                                                        <view class="w-20"></view>
+                                                                                                        <view class="rcc fs-25 fw-400 c-3">激活公告</view>
+                                                                                                    
+                                                                                                    </view>
+                                                                                                    <view class="rcc">
+                                                                                                        <!-- <view class="rcc fs-25 fw-400 c-3">{{pk.invite}}</view> -->
+                                                                                                        
+                                                                                                    </view>
+
+                                                                                                    
+                                                                                            </view>
+                                                                                            <view class="css  pl-60 ">
+
+                                                                                            
+                                                                                                    <view class="css">
+                                                                            
+                                                                                                            <view class="rus fs-30 fw-400 line-2-start c-word-6">{{selectCashier.text}}</view>
+                                                                                            
+                                                                                                    </view>    
+                                                                                                
+                                                                                            </view>  
+                                                                                        </view>
+                                                                                        <view class="w-20"></view>
+                                                                                        <view class="rcc">
+                                                                                            <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{selectCashier.imgUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                                                                                        </view>
+                                                                                        <view class="w-20"></view>
+                                                                                        <view class="rcc"> <image class="w-30 h-30" mode="aspectFit" src="/images/right3.png"></image></view>
+                                                                                    </view>
+        
+                                                                                    
+                                                                                    
+                                                                                    <view class="h-30 b-line"></view>                                                              
+                    </view>
+                    <view class="rbc c-word-7">
+                                                <view class="rcc pt-40 pb-40" bindtap="activeGroupCode" data-cashierid="{{selectCashier.cashierId}}" data-pkid="{{pk.pkId}}">
+                                                    <image class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                    <view  class="w-10"></view>
+                                                    <view class="rus fs-25 fw-400 ">激活群</view>
+                                                </view>
+
+                                
+                                                <view class="rus fs-25 fw-400 ">{{selectCashier.confirmTimes}}已激活</view>
+                                                <view class="rcc"></view>
+
+                                                <view class="rcc"></view>
+                                                <view class="rcc"></view>
+                                                <view class="rcc pt-40 pb-40" >
+                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/comment1.png"></image>
+                                                    <view  class="w-10"></view>
+                                                    <view  class="rus fs-25 fw-400 ">留言</view>
+                                                </view>
+                    </view>    
+                
+                </view>
+            </view>
+
+        </view>
+        <view class="csc" style="flex:1">
+            <view class="rcc" bindtap="return">
+                <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">转发激活群</button>
+            </view>
+        </view>
+
+      
+    </view>  
 
 
 
@@ -108,16 +227,16 @@
 
 
 <view>
-    <view class="coverAll" hidden="{{dialog.visible!=true}}"></view>
-    <view class="css dialog " hidden="{{dialog.visible!=true}}">
-        <view class="css dialog-padding">
-            <view class="rcs t21-8-1 ">{{dialog.title}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rbc ">
-                <view></view>
-                <view bindtap="dialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+    <view class="coverAll" hidden="{{dialog.visible!=true}}" ></view>
+    <view class="css dialog b-white br-20" hidden="{{dialog.visible!=true}}">
+        <view class="css ">
+            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
+            <view class="rcc fs-35 fw-700">{{dialog.title}}</view>
+         
+            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{dialog.text}}</view>
+            
+            <view class="csc t-line">
+                <view bindtap="dialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
             </view>
         </view>
     </view>
@@ -132,16 +251,16 @@
             <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"></view>
-    <view class="css dialog " hidden="{{operateDialog.visible!=true}}">
-        <view class="css dialog-padding">
-            <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rbc">
-                <view bindtap="operateDialog_cancel" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="operateDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel" catchtouchmove="return"></view>
+    <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
+        <view class="css ">
+            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
+            <view class="rcc fs-35 fw-700">{{operateDialog.title}}</view>
+         
+            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{operateDialog.text}}</view>
+            
+            <view class="csc t-line">
+                <view bindtap="operateDialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
             </view>
         </view>
     </view>

@@ -81,10 +81,10 @@ Page({
     if(user){
       that.setData({user:user})
     }
-    // if(user && (that.data.pks.length === 0))
-    // {
-    that.queryPks(tab);
-    // }
+    if(user && (that.data.pks.length === 0))
+    {
+      that.queryPks(tab);
+    }
   },
   onPullDownRefresh:function (params) {
       var that = this;

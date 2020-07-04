@@ -19,7 +19,9 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+  data: 
+  {
+    albums: ["https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg"]
 
   },
 
@@ -70,6 +72,50 @@ Page({
     httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
 
   },
+  selectCashier:function (res) {
+    var that = this;
+    var cashier = res.currentTarget.dataset.cashier;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function () {
+      that.setData({
+        selectCashier:cashier
+      })
+    })
+    httpClient.send(request.url.selectCashier, "GET",{pkId:that.data.pkId});   
+
+
+
+s
+
+
+
+
+
+
+  },
+  activeGroupCode:function(res) {
+    var that = this;
+    var cashierId = res.currentTarget.dataset.cashierid;
+    var pkId = res.currentTarget.dataset.pkid;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    
+    httpClient.addHandler("selectCashier", function (tip) {
+      template.createOperateDialog(that).show("选择激活群", "确定选择，不能修改...", function () {
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("label", true);
+          httpClient.send(request.url.confirmSelectCashier, "GET",{cashierId:cashierId,pkId:pkId});   
+
+    }, function () {});
+    })
+
+
+
+    httpClient.send(request.url.viewActiveGroupCode, "GET",{cashierId:cashierId,pkId:pkId});   
+
+  },
+
   /**
    * 用户点击右上角分享
    */

@@ -8,7 +8,7 @@
           </view>
           <view class="rcs">
               <view class="rcc fs-30 fw-400">{{date}}</view>
-              <view class="fs-30 fw-400">日审核群</view>
+              <!-- <view class="fs-30 fw-400">日审核群</view> -->
 
           </view>
           

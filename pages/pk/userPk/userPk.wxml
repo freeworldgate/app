@@ -105,11 +105,13 @@
                                     <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
                                     <view class="rbc c-word-7">
 
-                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view>
+                                        <!-- <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view> -->
+                                        <view class="rus fs-25 fw-400 pl-10 pr-10 pt-5 pb-5 br-5 b-card-1 c-word-6">{{pk.pkStatu.name}}</view>
                                         <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
                                         <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
 
 
+                                        <view class="rcc"></view>
                                         <view class="rcc"></view>
                                         <view class="rcc"></view>
                                         <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
