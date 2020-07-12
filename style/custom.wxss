@@ -967,6 +967,20 @@
   font-size: 35rpx;
   font-weight: 400;
 }
+.createEditActiveNumberDialog_input{
+    text-align: center;
+    background-color: rgb(240, 240, 240);
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+    border-radius: 15rpx;
+    font-size: 40rpx;
+    font-weight: 400;
+    border-radius: 100rpx;
+    letter-spacing:5px;
+    /* color: rgb(0, 0, 0); */
+  }
 .downloadImageDialog{
     width: 90%;
     height: auto;

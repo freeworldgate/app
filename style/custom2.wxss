@@ -24,7 +24,9 @@
 .textShadow{
   text-shadow:2px 2px 0px rgb(225, 239, 240)
 }
-
+.line-h80{
+  line-height: 80rpx;
+}
 .line-h70{
   line-height: 70rpx;
 }
