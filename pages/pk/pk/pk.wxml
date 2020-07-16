@@ -157,7 +157,7 @@
                     </view>
                     <view class="w-10"></view>
                         <!-- <view class="rcc fs-25 fw-700 c-word">按钮1</view> -->
-                    <view class="rcc fs-25 fw-400 c-word">打榜群</view>
+                    <view class="rcc fs-25 fw-400 c-word">审核群组</view>
                 </view>
                 <view class="rcs operkey h-70 b-card pl-20 pr-30" bindtap="publish">
                     <view class="rcc ">

@@ -832,11 +832,28 @@ mw-200{
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
 .b-upload-1{
-  background-image: linear-gradient(to right, #ff9a75 0%, #ffc635 100%);
+  background-image: linear-gradient(to right, #ff9a75 0%, #ffc635f3 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+.b-statu1{
+  background-image: linear-gradient(to right, #ffcc75e7 0%, #e8a600e8 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+.b-statu2{
+  background-image: linear-gradient(to right, #75c3ffe7 0%, #3599dbe8 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+.b-msg-back{
+  background-color: rgb(237, 237, 235);
 }
 .b-comment{
   background-image: linear-gradient(to right, #8bb7e0 2%, #95cfe4 50%);

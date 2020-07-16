@@ -1,5 +1,5 @@
 <!--pages/pk/message/message.wxml-->
-<view class="cbs b-white" style="height:100vh;background-position: center;background-image: url({{groupCode}});background-repeat: no-repeat;background-size: 100% 100%; ">
+<view class="cbs b-msg-back" style="height:100vh;background-position: center;background-image: url({{imgUrl}});background-repeat: no-repeat;background-size: 100% auto; ">
   <view class="css">
       <view style="height:{{top}}px"></view>
       <view class="rcs pl-4vw pr-4vw" style="height:32px">
@@ -7,7 +7,7 @@
               <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
           </view>
           <view class="rcs">
-              <view class="rcc fs-30 fw-400">{{date}}</view>
+              <view class="rcc fs-30 fw-400">{{title}}</view>
               <!-- <view class="fs-30 fw-400">日审核群</view> -->
 
           </view>
@@ -18,22 +18,21 @@
 
 
     <view class="css">
-        <view wx:if="{{groupCode}}">
-
+        <view wx:if="{{mode === 'show'}}">
         </view>
         <view wx:else class="css">
-            <view wx:if="{{creator.userId === user.userId}}" class="ccc">
+            <view class="ccc">
                 <view class="ccc br-20" >
 
                             <view class="rcc">
                             <image class="" style="width:100vw;height:100vw" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty.png" mode="aspectFit"></image>
                             </view>
-                            <view class="rcc fs-30 fw-700 c-word-1">上传群名片</view>
+                            <view class="rcc fs-30 fw-700 c-word-1">{{t1}}</view>
                             <view class="h-50"></view>
-                            <view class="rcc fs-25 fw-400 c-5">每日只有一次上传机会，请使用微信群组名片...</view>
+                            <view class="rcc fs-25 fw-400 c-5">{{t2}}</view>
                 </view>
             </view>
-            <view wx:else class="ccc">
+            <!-- <view wx:else class="ccc">
                             <view class="ccc br-20" >
 
                                         <view class="rcc">
@@ -42,7 +41,7 @@
                                         <view class="rcc fs-30 fw-700 c-word-1">等待更新...</view>
                             </view>
             
-            </view>
+            </view> -->
         
         
         
@@ -55,19 +54,18 @@
 
 
 
-    <view wx:if="{{groupCode}}" class="css pt-100 pb-100">
+    <view wx:if="{{mode === 'show'}}" class="css pt-100 pb-100">
             <view class="rcc " bindtap="return">
                 <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">获取图片</button>
             </view>
     </view>
-    <view wx:else class="css pt-100 pb-100">
-            <view wx:if="{{creator.userId === user.userId}}" class="rac" bindtap="return">
+    <view wx:elif="{{mode === 'upload'}}" class="css pt-100 pb-100">
+            <view class="rac">
                 <view class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white"  bindtap="uploadGroupCode" >上传</view>
             </view>
-            <view wx:else class="rcc">
-                <view class="rcc fs-30 fw-700 w-400 h-100 br-100  c-3-5 "  ></view>
-            </view>
     </view>
+    <view wx:else></view>
+
 
 
 

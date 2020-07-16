@@ -12,18 +12,18 @@
                                     <view class="rbc ">
 
                                         <view class="rcc">
-                                            <!-- <view class="rcc w-40">
+                                            <view class="rcc w-40">
                                                 <image class="w-25 h-25" mode="aspectFit" src="/images/time.png"></image>
                                             </view>
-                                            <view class="w-20"></view> -->
-                                            <view class="rus fs-25 fw-400 c-3">{{pk.time}}</view>
+                                            <view class="w-20"></view>
+                                            <view class="rus fs-25 fw-400 c-4">{{pk.time}}</view>
                                         </view>
 
 
 
 
                                         <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                            <view class="rcc fs-25 fw-400 c-3">进入相册</view>
+                                            <view class="rcc fs-25 fw-400 c-4">进入相册</view>
                                             <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                                         </view>
                                     </view>
@@ -38,7 +38,7 @@
                                         <view class="rss">
                                             <view class="ccs"><view class="rcc w-40"><image class="w-30 h-30" mode="aspectFit" src="/images/share2.png"></image></view></view>
                                             <view class="w-20"></view>
-                                            <view class="css" style="flex:1"><view class="rus line-2-start fs-25 fw-400 line-h40 c-4">{{pk.watchWord}}</view></view>
+                                            <view class="css" style="flex:1"><view class="rus line-3-start fs-25 fw-400 line-h40 c-4">{{pk.watchWord}}</view></view>
                                         </view>
                                     
                                     
@@ -108,7 +108,8 @@
                                     <view class="rbc c-word-7">
 
                                         <!-- <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view> -->
-                                        <view class="rus fs-25 fw-400 pl-10 pr-10 pt-5 pb-5 br-5 b-card-1 c-word-6">{{pk.pkStatu.name}}</view>
+                                        <view wx:if="{{pk.pkStatu.key === 0}}" class="rcc fs-20 fw-700 pl-15 pr-15 h-45 br-50  b-statu2 c-white">{{pk.pkStatu.name}}</view>
+                                        <view wx:else class="rcc fs-20 fw-700 pl-15 pr-15 h-45 br-50  b-statu1 c-white">{{pk.pkStatu.name}}</view>
                                         <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
                                         <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
 
@@ -413,7 +414,7 @@
                           <view class="fs-25 fw-400">副标题</view>
                           <view class="fs-25 fw-400">描述口号</view>
                         </view>
-                        <view class="fs-25 fw-400">最多100字</view>
+                        <view class="fs-25 fw-400">最多60字</view>
                     </view>
                 </view>
                 <view class="h-20"></view>
@@ -424,7 +425,7 @@
                         <view class="rcs">
                           <view class="w-20 b-red"></view>
                           <view class="css" style="flex:1">
-                            <textarea adjustPosition="true" bindinput="_editPkDialog_input_watchword" class="fs-30 fw-400 b-48"  style="height:20vw" cursorSpacing="50" fixed="true" maxlength="100" placeholder="口号" value="{{editPkDialog.watchWord}}"></textarea>
+                            <textarea adjustPosition="true" bindinput="_editPkDialog_input_watchword" class="fs-30 fw-400 b-48"  style="height:20vw" cursorSpacing="50" fixed="true" maxlength="60" placeholder="口号" value="{{editPkDialog.watchWord}}"></textarea>
                           </view>
                         </view>
 

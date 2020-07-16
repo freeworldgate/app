@@ -5,17 +5,17 @@
     <view class="cbs pr-8vw pl-8vw  h-100vh"  >
         <view class="css">
             <view class="h-80"></view>
-            <view class="rcc fs-40 fw-500 c-10">输入激活码</view>
+            <view class="rcc fs-40 fw-500 c-10">{{title}}</view>
             <view class="h-80"></view>
             <view class="css">
-                <input bindinput="_editNumberDialog_input" class="createEditActiveNumberDialog_input" maxlength="6" placeholder="输入激活码" type="number"></input>
+                <input bindinput="_editNumberDialog_input" class="createEditActiveNumberDialog_input" maxlength="6" placeholder="{{title}}" type="number"></input>
             </view>
             <view class="h-80"></view>
             <view class="css">
                 <view class="rus fs-30 fw-700 c-4 line-h80 ">温馨提示:</view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">1、只有比别人更早,更勤奋的努力,才能尝到成功的滋味。</view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">2、书籍便是这种改造灵魂的工具。人类所需要的，是富有启发性的养料。而阅读，则正是这种养料———雨果 </view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">3、有创见的书籍传布在黑暗的时代里，犹如一些太阳光照耀在荒凉的沙漠上，为的是化黑暗为光明。这些书是人类精神史上划时代的作品，人们凭借它们的原则，向种种新的发现迈进。书本是将圣贤豪杰的心照射到我们心里的忠实的镜子。——吉本</view>
+                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip1}}</view>
+                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip2}}</view>
+                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip3}}</view>
 
             </view>
             <view class="h-80"></view>
@@ -33,27 +33,27 @@
         <view class="rac">
        
             <view class="ccc">
-                <view class="ccc">
-                    <image class="w-100 h-100" mode="aspectFit" src="/images/group1.png"></image>
+                <navigator class="ccc" url="{{link1Url}}" hover-class="none">
+                    <image class="w-100 h-100" mode="aspectFit" src="{{link1Icon}}"></image>
                     <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">激活群</view>
-                </view>
+                    <view class="rcc fs-30 c-4">{{link1Name}}</view>
+                </navigator>
                 
             </view>
             <view class="ccc">
-                <view class="ccc">
-                    <image class="w-100 h-100" mode="aspectFit" src="/images/dashang.png"></image>
+                <navigator class="ccc" url="{{link2Url}}" hover-class="none">
+                    <image class="w-100 h-100" mode="aspectFit" src="{{link2Icon}}"></image>
                     <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">打赏</view>
-                </view>
+                    <view class="rcc fs-30 c-4">{{link2Name}}</view>
+                </navigator>
                 
             </view>
             <view class="ccc">
-                <view class="ccc">
-                    <image class="w-100 h-100" mode="aspectFit" src="/images/comments.png"></image>
+                <navigator class="ccc" url="{{link3Url}}" hover-class="none">
+                    <image class="w-100 h-100" mode="aspectFit" src="{{link3Icon}}"></image>
                     <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">留言</view>
-                </view>
+                    <view class="rcc fs-30 c-4">{{link3Name}}</view>
+                </navigator>
                 
             </view>
       
@@ -67,7 +67,11 @@
                 <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" open-type="share" session-from="2,{{creator.userId}},{{message.mediaId}}">转发激活群</button>
             </view>
             <view class="h-120"></view>
+            <view class="rcc pt-30">
+                <navigator url="/pages/manage/cashiers/cashiers">收款</navigator>
+            </view>
         </view>
+
         
       
     </view>  

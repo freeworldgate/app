@@ -14,15 +14,15 @@
 
                                         <view class="rcc">
                                             <image class="w-25 h-25" mode="aspectFit" src="/images/time.png"></image>
-                                            <view class="w-10"></view>
-                                            <view class="rus fs-25 fw-400 c-3">{{pk.time}}</view>
+                                            <view class="w-20"></view>
+                                            <view class="rus fs-25 fw-400 c-4">{{pk.time}}</view>
                                         </view>
 
 
 
 
                                         <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                            <view class="rcc fs-25 fw-400 c-3">进入相册</view>
+                                            <view class="rcc fs-25 fw-400 c-4">进入相册</view>
                                             <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                                         </view>
                                     </view>

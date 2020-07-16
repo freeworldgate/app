@@ -773,17 +773,23 @@ Page({
   },
 
   groupCode:function(params) {
+
     var that = this;
-    login.getUser(function (user) {
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.viewGroupCode, "GET",{pkId:that.data.pkId});   
 
-        wx.navigateTo({
-          url: "/pages/pk/message/message?pkId=" + that.data.pkId ,
-        })
+    // var that = this;
+    // login.getUser(function (user) {
+
+    //     wx.navigateTo({
+    //       url: "/pages/pk/message/message?pkId=" +  ,
+    //     })
 
 
 
 
-    })
+    // })
 
 
 

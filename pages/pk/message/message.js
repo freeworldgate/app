@@ -39,30 +39,13 @@ Page({
     })
 
     that.setData({
-      pkId:options.pkId
+      pkId:options.pkId,
+      userId:options.userId,
+      type:options.type
     })
-
-    if(options.cashierId)
-    {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("page", true);
-      httpClient.send(request.url.queryActiveGroupCode, "GET",{pkId: that.data.pkId,cashierId: options.cashierId});
-  
-    }
-    else
-    {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("page", true);
-      httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId});
-  
-
-    }
-
-
-
-
-
-
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("page", true);
+    httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId,type: that.data.type});
 
   },
 
@@ -88,7 +71,7 @@ Page({
 
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);
-            httpClient.send(request.url.uploadGroupCode, "GET",{pkId: that.data.pkId,url:urls[0]});
+            httpClient.send(request.url.uploadGroupCode, "GET",{pkId: that.data.pkId,url:urls[0],type:that.data.type});
 
         }, function(){});
 

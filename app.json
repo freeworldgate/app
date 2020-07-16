@@ -41,7 +41,9 @@
     "pages/pk/pkPrizes/pkPrizes",
     "pages/pk/pkRankList/pkRankList",
 
-
+    "pages/manage/cashiers/cashiers",
+    "pages/manage/feeCodes/feeCodes",
+    "pages/manage/groups/groups",
 
     "pages/test/page/page",
     "pages/test/template/template",
