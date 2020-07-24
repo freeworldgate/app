@@ -6,7 +6,6 @@
 
 
     "pages/pk/pk/pk",
-    "pages/pk/uploadErCode/uploadErCode",
     "pages/pk/selectCashier/selectCashier",
 
     "pages/pk/complain/complain",
@@ -20,6 +19,7 @@
     "pages/pk/cashiers/cashiers",
     "pages/pk/approverInfos/approverInfos",
     "pages/pk/approvePostList/approvePostList",
+    "pages/pk/approvingPostList/approvingPostList",
     "pages/pk/uploadImgs/uploadImgs",
     "pages/pk/sort/sort",
     "pages/pk/message/message",
@@ -28,29 +28,29 @@
     "pages/pk/post/post",
     "pages/pk/selectPker/selectPker",
 
-    "pages/pk/userCreatePks/userCreatePks",
-    "pages/pk/userPkOrder/userPkOrder",
+
+
     "pages/pk/singlePk/singlePk",
-    "pages/pk/userPks/userPks",
-    "pages/pk/postRankList/postRankList",
+
+
     "pages/pk/publishPost/publishPost",
     "pages/pk/userSinglePk/userSinglePk",
     "pages/pk/zone/zone",
     "pages/pk/userHome/userHome",
     "pages/pk/createPk/createPk",
-    "pages/pk/pkPrizes/pkPrizes",
-    "pages/pk/pkRankList/pkRankList",
 
     "pages/manage/cashiers/cashiers",
     "pages/manage/feeCodes/feeCodes",
     "pages/manage/groups/groups",
+    "pages/manage/setting/setting",
+
 
     "pages/test/page/page",
     "pages/test/template/template",
     "pages/user/login/login",
     "pages/user/register/register",
-    "pages/user/userPage/userPage",
-    "pages/user/identificate/identificate",
+
+
 
     "pages/login/login/login",
     "pages/login/register/register"
@@ -68,18 +68,18 @@
     "borderStyle": "black" ,
     "list": [{
       "pagePath":"pages/pk/home/home",
-      "iconPath": "images/like2.png", 
-      "selectedIconPath": "images/like2.png", 
+      "iconPath": "images/pk.png", 
+      "selectedIconPath": "images/pk.png", 
       "text": "首页"
     },{
       "pagePath": "pages/pk/userPk/userPk",
-      "iconPath": "images/like2.png",  
-      "selectedIconPath": "images/like2.png", 
+      "iconPath": "images/pk.png",  
+      "selectedIconPath": "images/pk.png", 
       "text": "我的相册"
     },{
       "pagePath": "pages/pk/invite/invite",
-      "iconPath": "images/like2.png",  
-      "selectedIconPath": "images/like2.png", 
+      "iconPath": "images/pk.png",  
+      "selectedIconPath": "images/pk.png", 
       "text": "邀请"
     }]
   },

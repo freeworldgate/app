@@ -129,6 +129,15 @@ Page({
     httpClient.addHandler("success", function () {
       that.init("label");
     })
+    httpClient.addHandler("init", function () {
+        that.init("");
+        template.createOperateDialog(that).show("提示","请先完全初始化收款码",function(){
+        
+        },function(){});
+    })
+
+
+    
     httpClient.send(request.url.changeCahierStatu, "GET",{cashierId:cashierId});
 
 

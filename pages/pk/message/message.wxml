@@ -80,17 +80,31 @@
 <view>
 
 
-    <view class="coverAll" hidden="{{dialog.visible!=true}}" ></view>
-    <view class="css dialog b-white br-20" hidden="{{dialog.visible!=true}}">
-        <view class="css ">
-            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
-            <view class="rcc fs-35 fw-700">{{dialog.title}}</view>
-         
-            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{dialog.text}}</view>
-            
-            <view class="csc t-line">
-                <view bindtap="dialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+            <view class="rcc">
+                <view class="rcc absolute">
+                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                </view>
             </view>
+            <view class="css">
+                <view class="h-200"></view>
+                <view class="h-30"></view>
+                <view class="rcc fs-35 fw-700 tipColor">{{dialog.title}}</view>
+            
+                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{dialog.text}}</view>
+                
+                <view class="rcc pt-50 pb-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="dialog_confirm" >知道了</view>
+                </view>
+    
+            </view>
+
+
+        </view>
+        <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="dialog_confirm"></image>
         </view>
     </view>
     <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
@@ -104,17 +118,31 @@
             <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel" catchtouchmove="return"></view>
-    <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
-        <view class="css ">
-            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
-            <view class="rcc fs-35 fw-700">{{operateDialog.title}}</view>
-         
-            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{operateDialog.text}}</view>
-            
-            <view class="csc t-line">
-                <view bindtap="operateDialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+            <view class="rcc">
+                <view class="rcc absolute">
+                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                </view>
             </view>
+            <view class="css">
+                <view class="h-200"></view>
+                <view class="h-30"></view>
+                <view class="rcc fs-35 fw-700 tipColor">{{operateDialog.title}}</view>
+            
+                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{operateDialog.text}}</view>
+                
+                <view class="rcc pt-50 pb-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
+                </view>
+    
+            </view>
+
+
+        </view>
+        <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
     <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">

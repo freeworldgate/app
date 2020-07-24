@@ -90,6 +90,14 @@ Page({
       }
     
   },
+  approvingList:function (params) {
+    var that = this;
+    login.getUser(function (user) {
+      wx.navigateTo({
+        url: '/pages/pk/approvingPostList/approvingPostList?pkId=' + that.data.pkId,
+      })
+    })
+  },
   approveList:function (params) {
     var that = this;
     login.getUser(function (user) {

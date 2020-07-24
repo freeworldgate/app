@@ -77,17 +77,30 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("", true);
-    httpClient.addHandler("noApprove", function () {
+    httpClient.addHandler("noApprove", function (urlPath) {
       template.createOperateDialog(that).show("审核", "选择审核员...", function () {
 
           wx.navigateTo({
-            url: "/pages/pk/editApproveComment/editApproveComment?pkId="+that.data.pkId + "&postId=" + that.data.postId,
+            url: urlPath,
           })
           that.setData({verfiy:true})
     }, function () {});
     })
     httpClient.send(request.url.isPostApproved, "GET", { pkId: that.data.pkId, postId: that.data.postId});
+  },
 
+  goApproving:function () {
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("noApprove", function (urlPath) {
+          wx.navigateTo({
+            url: urlPath,
+          })
+          that.setData({verfiy:true})
+
+    })
+    httpClient.send(request.url.goApproving, "GET", { pkId: that.data.pkId, postId: that.data.postId});
 
 
 

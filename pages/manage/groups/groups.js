@@ -89,13 +89,94 @@ Page({
     httpClient.addHandler("success", function () {
       that.init("label");
     })
+    httpClient.addHandler("openCashier", function () {
+      that.init("");
+      template.createOperateDialog(that).show("提示","请先启用用户",function(){
+        
+      },function(){});
+
+
+
+    })
+
+
+    
     httpClient.send(request.url.changeGroupStatu, "GET",{cashierId:cashierId,groupId:groupId});
 
   },
 
 
+  replaceImg:function (res) {
+    var that = this;
+ 
+    var groupId = res.currentTarget.dataset.groupid;
 
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+
+        template.uploadImages3("cashierGroup", res.tempFilePaths, that,
+        function (urls) {
+            //传输成功
+            wx.hideLoading({
+              complete: (res) => {},
+            })
+            console.log("---start---" ,urls);
+
+    
+            // , urls
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function (post) {
+              tip.showTip("上传成功......");
+              that.queryGroups("label");
+
+            })
+            httpClient.send(request.url.replaceCashierGroup, "GET",{imgUrl: urls[0],cashierId:that.data.cashierId,groupId:groupId}
+            );
   
+  
+            // page.editImageDialog.success();
+            // createLabelLoading(page).hide();
+            // createLabelLoadingSuccess(page).show();
+        },
+        function () {
+            
+            //传输失败
+            wx.hideLoading({
+              complete: (res) => {
+                tip.showContentTip("上传失败......");
+              },
+            })
+            
+  
+        });
+        
+      },
+    })
+
+
+
+
+
+
+
+
+
+
+  },
+  
+  replace:function(res){
+    var that = this;
+
+
+    template.createOperateDialog(that).show("更新群组","确认更新群组",function(){
+      that.replaceImg(res);
+    },function(){});
+
+  },
   upload:function()
   {
     var that = this;
@@ -161,5 +242,26 @@ Page({
       fail: (res) => {},
       success: (res) => {},
     })
+  },
+
+  remove:function(res){
+    var that = this;
+    var cashierId = res.currentTarget.dataset.cashierid;
+    var groupId = res.currentTarget.dataset.groupid;
+
+    template.createOperateDialog(that).show("删除群组","确认删除群组",function(){
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function () {
+          that.init("label");
+        })
+        httpClient.send(request.url.deleteGroup, "GET",{cashierId:cashierId,groupId:groupId});
+
+    },function(){});
+
+
+
+
+
   }
 })

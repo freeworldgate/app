@@ -104,6 +104,7 @@ var url = {
 
         postStatu: `${host}/pk/postStatu`,      
         isPostApproved: `${host}/pk/isPostApproved`,     
+        goApproving: `${host}/pk/goApproving`,    
         
         editSelfComment: `${host}/pk/editSelfComment`, 
         queryGroupCode: `${host}/pk/queryGroupCode`, 
@@ -125,7 +126,7 @@ var url = {
         allCashiers:`${host}/pk/allCashiers`, 
         nextPageCashiers:`${host}/pk/nextPageCashiers`, 
 
-        allFeeCodes:`${host}/pk/allFeeCodes`, 
+
      
         allCashierGroups:`${host}/pk/allCashierGroups`, 
         nextPageCashierGroups:`${host}/pk/nextPageCashierGroups`, 
@@ -137,6 +138,23 @@ var url = {
         uploadCashierGroup:`${host}/pk/uploadCashierGroup`, 
         
         changeGroupStatu:`${host}/pk/changeGroupStatu`, 
+        
+        deleteGroup:`${host}/pk/deleteGroup`, 
+
+
+
+        allFeeCodes:`${host}/pk/allFeeCodes`, 
+        deleteFeeCode:`${host}/pk/deleteFeeCode`, 
+        changeFeeCodeStatu:`${host}/pk/changeFeeCodeStatu`, 
+        uploadFeeCode:`${host}/pk/uploadFeeCode`, 
+
+        
+        replaceCashierGroup:`${host}/pk/replaceCashierGroup`, 
+        
+        replaceFeeCode:`${host}/pk/replaceFeeCode`, 
+        systemSetting:`${host}/pk/systemSetting`, 
+        
+        querySystemSetting:`${host}/pk/querySystemSetting`, 
 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 

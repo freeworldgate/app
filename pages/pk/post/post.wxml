@@ -72,7 +72,7 @@
                                             
                                                     <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                                     <view  class="w-10"></view>
-                                                    <view  class="rcc fs-25 fw-400 c-4">修改主题</view>
+                                                    <view  class="rcc fs-25 fw-400 c-4">修改标题</view>
                                               
                                                 </view>
                                                 <view wx:else class="rcc">
@@ -99,47 +99,27 @@
                                             <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
                                             <view class="h-20"></view>
                                             <view class="rus  fs-40 fw-700 line-1-center c-word-6 w-300">{{post.creator.userName}}</view>
-                                            <view class="h-50" ></view>
+                                            <view class="h-30" ></view>
           </view>
 
-          <view class="rbc">
-                                            <view class="rcc r-line" style="flex:1">
-                                                <view class="ccc">
-                                                    <view class="rcc fs-30 fw-700 c-word-6">{{post.userIntegral.follow}}</view>
-                                                    <view class="rcc">
-                                                        <!-- <image class="rcc w-25 h-25 p-10 " mode="aspectFit" src="/images/like2.png"></image> -->
-                                                        <view class="rcc fs-25 fw-400 c-4">打榜积分</view>
-                                                    </view>
-                                                    
-                                                </view>
-                                            </view>
+          <view class="rcc">
+             <view class="rcc w-180 h-60 br-60 border16 b-white " bindtap="{{post.statu.key ===3 ?'goApproving':''}}">
+                
+                
+                <image class="rcc w-30 h-30" mode="aspectFit" src="/images/approve2.png"></image>
+                
+                <view class="w-10"></view>
+                
+                <view class="rcc fs-25 fw-400 c-red">{{post.statu.name}}</view>
+                <!-- <view hidden="{{post.statu.key !=3}}" class="w-10"></view> -->
+                <image hidden="{{post.statu.key !=3}}" class="rcc w-25 h-25" mode="aspectFit" src="/images/rright.png"></image>
+             </view>
+             
 
-                                            
-                                            <view class="rcc r-line" style="flex:1">
-                                                <view class="ccc">
-                                                    <view class="rcc fs-30 fw-700 c-word-6">{{post.userIntegral.share}}</view>
-                                                    
-                                                    <view class="rcc">
-                                                        <!-- <image class="rcc w-25 h-25 p-10 " mode="aspectFit" src="/images/share2.png"></image> -->
-                                                        <view class="rcc fs-25 fw-400 c-4">分享积分</view>
-                                                    </view>
-                                                </view>
-                                            </view>
 
-                                            <view class="rcc" style="flex:1">
-                                                <view class="ccc">
-                                                    <view  class="rcc">
-                                                            <view wx:if="{{post.userIntegral.index === -1}}" class="rcc fs-30 fw-700 c-word-6">未激活</view>
-                                                            <view wx:else class="rcc fs-30 fw-700 c-word-6">{{post.userIntegral.index + 1}}</view>
-                                                    </view>
-                    
-                                                    <view class="rcc">
-                                                        <!-- <image class="rcc w-25 h-25 p-10 " mode="aspectFit" src="/images/sort.png"></image> -->
-                                                        <view class="rcc fs-25 fw-400 c-4">今日排名</view>
-                                                    </view>
-                                                </view>
-                                            </view>
+
           </view>
+
           <view class="css pt-50 pb-50">
               <view class="rcc-wrap c-4 line-5-center">{{post.topic}}</view>
           </view>                          
@@ -208,12 +188,13 @@
                                                     </view>
                                                 </view>
           </view>
-          <view hidden="{{!post.selfComment}}" class="css ">
+
+          <view hidden="{{!post.selfComment}}" class="css">
                                                                                 <view class="h-50"></view>
                                                                                 <view class="rbc pb-10 ">
                                                                                         <view class="rcc">
                                                                                             <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">游客胡评</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">留言</view>
                                                                                           
                                                                                         </view>
                                                                                         <view  class="rcc fs-25 fw-400 c-4">{{post.selfCommentTime}}</view> 
@@ -249,7 +230,7 @@
                                                             
                                                                                 <view class="h-50"></view>
           </view>
-          <view class="h-50"></view>
+          <!-- <view class="h-50"></view> -->
 
           <!-- <view class="css">
               <view class="rbc">
@@ -314,6 +295,7 @@
 
 
       </view>
+      <view class="h-30"></view>
 
     </view>
     <view class="h-50"></view>
@@ -326,17 +308,31 @@
 
 
 <view>
-    <view class="coverAll" hidden="{{dialog.visible!=true}}"></view>
-    <view class="css dialog " hidden="{{dialog.visible!=true}}">
-        <view class="css dialog-padding">
-            <view class="rcs t21-8-1 ">{{dialog.title}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rus-wrap t21-8-2 ">{{dialog.text}}</view>
-            <view style="height:80rpx"></view>
-            <view class="rbc ">
-                <view></view>
-                <view bindtap="dialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+    <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
+        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+            <view class="rcc">
+                <view class="rcc absolute">
+                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                </view>
             </view>
+            <view class="css">
+                <view class="h-200"></view>
+                <view class="h-30"></view>
+                <view class="rcc fs-35 fw-700 tipColor">{{dialog.title}}</view>
+            
+                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{dialog.text}}</view>
+                
+                <view class="rcc pt-50 pb-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="dialog_confirm" >知道了</view>
+                </view>
+    
+            </view>
+
+
+        </view>
+        <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="dialog_confirm"></image>
         </view>
     </view>
     <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
@@ -350,17 +346,31 @@
             <view class="rcc levelDialog_text">{{tipDialog.message}}</view>
         </view>
     </view>
-    <view class="coverAll" hidden="{{operateDialog.visible!=true}}" bindtap="operateDialog_cancel"></view>
-    <view class="css dialog b-white br-20" hidden="{{operateDialog.visible!=true}}">
-        <view class="css ">
-            <view class="rcc p-30"><icon type="info" size="93"></icon></view>
-            <view class="rcc fs-35 fw-700">{{operateDialog.title}}</view>
-         
-            <view class="rcc-wrap fs-30 fw-400 c-3-1 p-30 line-3-center">{{operateDialog.text}}</view>
-            
-            <view class="csc t-line">
-                <view bindtap="operateDialog_confirm" class="rcc p-30 fs-30 fw-400 c-green" hoverClass="b-44">确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+            <view class="rcc">
+                <view class="rcc absolute">
+                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                </view>
             </view>
+            <view class="css">
+                <view class="h-200"></view>
+                <view class="h-30"></view>
+                <view class="rcc fs-35 fw-700 tipColor">{{operateDialog.title}}</view>
+            
+                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{operateDialog.text}}</view>
+                
+                <view class="rcc pt-50 pb-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
+                </view>
+    
+            </view>
+
+
+        </view>
+        <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
     <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">

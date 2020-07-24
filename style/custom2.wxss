@@ -76,6 +76,12 @@
 .c-blue{
   color: #13227a;
 }
+.bTipColor{
+  background-color: #009dc1;
+}
+.tipColor{
+  color:  #009dc1;
+}
 .c-0{
   color: #445858;
 }
@@ -309,6 +315,7 @@
 
 .m-20{margin: 20rpx;}
 .m-10{margin: 10rpx;}
+.m-5{margin: 5rpx;}
 .mr-5{
   margin-right: 5rpx;
 }
@@ -824,6 +831,7 @@ mw-200{
 .c-group{
   color: #3bbb03;
 }
+
 .b-upload{
   background-image: linear-gradient(to right, #4487c5 0%, #4db3d8 100%);
 
@@ -926,7 +934,9 @@ mw-200{
 .b-49{
   background-color: rgba(230, 230, 230);
 }
-
+.b-52{
+  background-color: rgb(245, 245, 245);
+}
 .b-green{
   background-color: green;
 }
@@ -951,7 +961,10 @@ mw-200{
 .b-51{
   background-color: rgba(204, 204, 204, 0.714);
 }
-
+.b-approving
+{
+  background-color: rgb(131, 126, 119);
+}
 
 
 
@@ -1013,6 +1026,10 @@ mw-200{
 .border15{
   border: 5px solid rgb(255, 255, 255); 
 }
+.border16{
+  border: 1px solid red; 
+}
+
 .br-5{
   border-radius: 5rpx;
 }
@@ -1292,6 +1309,9 @@ mw-200{
 
 .z101{
   z-index: 101;
+}
+.z102{
+  z-index: 102;
 }
 
 

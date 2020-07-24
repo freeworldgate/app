@@ -27,6 +27,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.data.cashierId = options.cashierId;
+    that.setData({cashierId: options.cashierId})
     that.init("label");
   },
   queryFeeCodes:function (tab) {
@@ -42,7 +44,7 @@ Page({
         complete: (res) => {},
       })
     })
-    httpClient.send(request.url.allFeeCodes, "GET", {});
+    httpClient.send(request.url.allFeeCodes, "GET", {cashierId:that.data.cashierId});
   },
 
   /**
@@ -63,29 +65,193 @@ Page({
 
 
 
-  // viewPk:function (res) {
-  //   var pkid = res.currentTarget.dataset.pkid;
-  //   wx.navigateTo({
-  //     url: '/pages/pk/pk/pk?pkId=' + pkid,
-  //   })
-  // },
-  createPk:function()
+
+  changeStatu:function (res) {
+    var that = this;
+ 
+    var feeCodeId = res.currentTarget.dataset.feecodeid;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function () {
+      that.init("label");
+    })
+    httpClient.send(request.url.changeFeeCodeStatu, "GET",{cashierId:that.data.cashierId,feeCodeId:feeCodeId});
+
+  },
+
+
+
+  
+  upload:function(res)
   {
     var that = this;
-    login.getUser(function(user){
-      template.createEditPkDialog(that).show(function (topic,watchWord,invite) {
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (pk) {
-          template.createEditPkDialog(that).hide();
-          that.data.pks.push(pk);
-          that.setData({pks: that.data.pks})
-        })
+    var feeNumber = res.currentTarget.dataset.feenumber;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+
+        template.uploadImages3("cashierFeeCode", res.tempFilePaths, that,
+        function (urls) {
+            //传输成功
+            wx.hideLoading({
+              complete: (res) => {},
+            })
+            console.log("---start---" ,urls);
+
+    
+            // , urls
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function (post) {
+              tip.showTip("上传成功......");
+              that.queryFeeCodes("label");
+
+            })
+            httpClient.send(request.url.uploadFeeCode, "GET",{imgUrl: urls[0],cashierId:that.data.cashierId,feeNumber:feeNumber}
+            );
+  
+  
+            // page.editImageDialog.success();
+            // createLabelLoading(page).hide();
+            // createLabelLoadingSuccess(page).show();
+        },
+        function () {
+            
+            //传输失败
+            wx.hideLoading({
+              complete: (res) => {
+                tip.showContentTip("上传失败......");
+              },
+            })
+            
+  
+        });
+        
+      },
+    })
 
 
-        httpClient.send(request.url.createPk, "GET",{topic:topic,watchWord:watchWord,invite:invite});
-      });
 
+
+
+  },
+
+  showImg:function (res) {
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
+      complete: (res) => {},
+      current: 'current',
+      fail: (res) => {},
+      success: (res) => {},
     })
   },
+
+
+
+  replace:function(res){
+    var that = this;
+
+
+    template.createOperateDialog(that).show("更新打赏码","确认更新打赏码",function(){
+      that.replaceImg(res);
+    },function(){});
+
+  },
+
+  replaceImg:function (res) {
+    var that = this;
+ 
+    var feeCodeId = res.currentTarget.dataset.feecodeid;
+
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+
+        template.uploadImages3("cashierGroup", res.tempFilePaths, that,
+        function (urls) {
+            //传输成功
+            wx.hideLoading({
+              complete: (res) => {},
+            })
+            console.log("---start---" ,urls);
+
+    
+            // , urls
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function (post) {
+              tip.showTip("上传成功......");
+              that.queryFeeCodes("label");
+
+            })
+            httpClient.send(request.url.replaceFeeCode, "GET",{imgUrl: urls[0],cashierId:that.data.cashierId,feeCodeId:feeCodeId}
+            );
+  
+  
+            // page.editImageDialog.success();
+            // createLabelLoading(page).hide();
+            // createLabelLoadingSuccess(page).show();
+        },
+        function () {
+            
+            //传输失败
+            wx.hideLoading({
+              complete: (res) => {
+                tip.showContentTip("上传失败......");
+              },
+            })
+            
+  
+        });
+        
+      },
+    })
+
+
+
+
+
+
+
+
+
+
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+  remove:function(res){
+    var that = this;
+ 
+    var feeCodeId = res.currentTarget.dataset.feecodeid;
+
+    template.createOperateDialog(that).show("删除群组","确认删除群组",function(){
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function () {
+          that.init("label");
+        })
+        httpClient.send(request.url.deleteFeeCode, "GET",{cashierId:that.data.cashierId,feeCodeId:feeCodeId});
+
+    },function(){});
+
+
+
+
+
+  }
 })

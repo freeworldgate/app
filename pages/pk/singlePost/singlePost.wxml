@@ -180,20 +180,33 @@
 
       </view>
       <!-- 操作窗口 -->
-      <view hidden='{{operateDialog.visible != true}}' class="coverAll" ></view>
-      <view hidden='{{operateDialog.visible != true}}'  class="css dialog ">
-            <view class="css dialog-padding">
-                <view class="rcs t21-8-1 ">{{operateDialog.title}}</view>
-                <view style="height:80rpx"></view>
-                <view class="rus-wrap t21-8-2 ">{{operateDialog.text}}</view>
-                <view style="height:80rpx"></view>
-                <view class="rbc">
-                        <view class="rcc shortTextDialog_cancel"  hover-class='dialog_cancel_hoverClass' bindtap='operateDialog_cancel'>取消</view>
-                        <view class="rcc shortTextDialog_confirm"  hover-class='dialog_confirm_hoverClass' bindtap='operateDialog_confirm'>确定</view>
+    <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
+    <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
+        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+            <view class="rcc">
+                <view class="rcc absolute">
+                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
                 </view>
             </view>
+            <view class="css">
+                <view class="h-200"></view>
+                <view class="h-30"></view>
+                <view class="rcc fs-35 fw-700 tipColor">{{operateDialog.title}}</view>
+            
+                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{operateDialog.text}}</view>
+                
+                <view class="rcc pt-50 pb-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
+                </view>
+    
+            </view>
 
-      </view>
+
+        </view>
+        <view class="rcc p-100">
+            <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
+        </view>
+    </view>
       <!-- 页面加载中窗口 -->
       <view hidden='{{pageLoadingDialog.visible != true}}'  class="cac pageLoadingDialog ">
             <view class="ccc ">
