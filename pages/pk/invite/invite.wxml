@@ -48,7 +48,7 @@
                                                                                                     <image class="w-35 h-35" mode="aspectFit" src="/images/statu1.png"></image>
                                                                                                 </view>
                                                                                                 <view class="w-20"></view>
-                                                                                                <view class="rcc fs-25 fw-400 c-3">{{pk.publishName}}({{pk.invite}})</view>
+                                                                                                <view class="rcc fs-25 fw-400 c-3">{{pk.publishName}}</view>
                                                                                             
                                                                                             </view>
                                                                                             <view class="rcc">
@@ -85,18 +85,22 @@
                                     <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
                                     <view class="rbc c-word-7">
 
-                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view>
+                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name">{{pk.user.userName}}</view>
                                         <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
                                         <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
 
 
                                         <view class="rcc"></view>
                                         <view class="rcc"></view>
-                                        <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
-                                            <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
-                                            <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
-                                            <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                        <view class="rcc pt-40 pb-40">
+                                            <view wx:if="{{pk.groupInfo}}" class="rcc " bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
+                                                <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
+                                                <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                            </view>
+                                            <view wx:else class="rcc fs-25 fw-400 c-3-1">{{pk.time}}</view>
                                         </view>
+
                                     </view>    
                                 </view>
                             </block>

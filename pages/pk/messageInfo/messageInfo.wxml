@@ -8,7 +8,7 @@
                 </view>
                 <view class="rcs c-4">
                     <view class="rcc fs-30 fw-400 ">{{date}}</view>
-                    <!-- <view class="fs-30 fw-400 ">榜主审核公告</view> -->
+       
 
                 </view>
                 
@@ -37,9 +37,9 @@
                                     <view wx:if="{{user.userId===creator.userId}}" class="rcc "  bindtap="approverMessage" >
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-4">编辑公告</view>
+                                        <view  class="rcc fs-25 fw-400 c-4">{{word1}}</view>
                                     </view>
-                                    <view wx:else class="rcc fs-25 fw-400 c-4">审核公告</view>
+                                    <view wx:else class="rcc fs-25 fw-400 c-4">{{word2}}</view>
                                 </view>
                                 
                     
@@ -68,8 +68,10 @@
         </view>
 
 
-        <view class="rcc" bindtap="return">
-              <button class="rcc fs-30 fw-700 w-300 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">拉取图片</button>
+        <view class="rcc" >
+              <button wx:if="{{mode===true}}" class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">{{buttonStr}}</button>
+
+              <button wx:else class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >{{buttonStr}}</button>
         </view>
 
         <view></view>

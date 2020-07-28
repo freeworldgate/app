@@ -683,10 +683,22 @@ Page({
 
   complain:function (res) {
     var that = this;  
-    var approverId = res.currentTarget.dataset.approver;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId, approverUserId: approverId});
+    httpClient.addHandler("complain", function (tipStr) {
+
+      template.createOperateDialog(that).show("提示", tipStr, function () {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);  
+        httpClient.send(request.url.confirmComplain, "GET",{pkId: that.data.pkId});
+
+      }, function () {});
+
+
+    })
+    
+
+    httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId});
 
 },
 

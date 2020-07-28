@@ -21,9 +21,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tag:0,
-    approvingEnd:false,
-    approvedEnd:false
+    approvedPosts:[]
   },
 
   /**
@@ -77,6 +75,30 @@ Page({
       url: '/pages/pk/commentInfo/commentInfo',
     })
   },
+
+  approve:function(res)
+  {
+
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("success", function () {
+   
+      that.data.approvedPosts.splice(index, 1); 
+      that.setData({
+        approvedPosts:that.data.approvedPosts
+      })
+    
+
+    })
+    httpClient.send(request.url.approve, "GET",{pkId: post.pkId,postId: post.postId}
+    );
+
+
+
+  }
 
 
 

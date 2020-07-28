@@ -30,9 +30,11 @@ Page({
    */
   onLoad: function (options) {
 
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
 
-
-  this.queryInvites();
+    this.queryInvites();
 
 
 

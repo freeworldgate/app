@@ -83,8 +83,8 @@ var url = {
         viewActiveGroupCode: `${host}/pk/viewActiveGroupCode`,
         confirmSelectCashier: `${host}/pk/confirmSelectCashier`,
         queryActiveGroupCode: `${host}/pk/queryActiveGroupCode`,
-
-
+        
+        confirmComplain: `${host}/pk/confirmComplain`,
 
 
         setApprover: `${host}/pk/setApprover`, 
@@ -155,6 +155,17 @@ var url = {
         systemSetting:`${host}/pk/systemSetting`, 
         
         querySystemSetting:`${host}/pk/querySystemSetting`, 
+
+        //管理
+
+        checkPk:`${host}/pk/checkPk`, 
+        activePk:`${host}/pk/activePk`, 
+        hiddenPk:`${host}/pk/hiddenPk`, 
+        activePks:`${host}/pk/activePks`, 
+        manageApprovingPosts:`${host}/pk/manageApprovingPosts`, 
+        hiddenPost:`${host}/pk/hiddenPost`, 
+        approvePost:`${host}/pk/approvePost`, 
+
 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 

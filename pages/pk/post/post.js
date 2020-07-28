@@ -79,7 +79,6 @@ Page({
     httpClient.setMode("", true);
     httpClient.addHandler("noApprove", function (urlPath) {
       template.createOperateDialog(that).show("审核", "选择审核员...", function () {
-
           wx.navigateTo({
             url: urlPath,
           })

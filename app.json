@@ -6,7 +6,7 @@
 
 
     "pages/pk/pk/pk",
-    "pages/pk/selectCashier/selectCashier",
+
 
     "pages/pk/complain/complain",
     "pages/pk/selectApprover/selectApprover",
@@ -16,12 +16,12 @@
 
     "pages/pk/singlePost/singlePost",
     "pages/pk/userSinglePost/userSinglePost",
-    "pages/pk/cashiers/cashiers",
+
     "pages/pk/approverInfos/approverInfos",
     "pages/pk/approvePostList/approvePostList",
     "pages/pk/approvingPostList/approvingPostList",
     "pages/pk/uploadImgs/uploadImgs",
-    "pages/pk/sort/sort",
+ 
     "pages/pk/message/message",
     "pages/pk/messageInfo/messageInfo",
     "pages/pk/commentInfo/commentInfo",
@@ -30,20 +30,19 @@
 
 
 
-    "pages/pk/singlePk/singlePk",
 
-
-    "pages/pk/publishPost/publishPost",
     "pages/pk/userSinglePk/userSinglePk",
     "pages/pk/zone/zone",
-    "pages/pk/userHome/userHome",
+
     "pages/pk/createPk/createPk",
 
     "pages/manage/cashiers/cashiers",
     "pages/manage/feeCodes/feeCodes",
     "pages/manage/groups/groups",
     "pages/manage/setting/setting",
-
+    "pages/manage/approvePost/approvePost",
+    "pages/manage/activePk/activePk",
+    "pages/manage/complainPk/complainPk",
 
     "pages/test/page/page",
     "pages/test/template/template",

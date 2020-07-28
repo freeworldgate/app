@@ -189,14 +189,14 @@
                                     <view class="fs-30 fw-400">审核通过</view>
                                     <view class="w-80"></view>
                                 </button>
-                                <button wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc message h-100 w-400 br-100 b-card ">
+                                <button wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc message h-100 w-400 br-100 b-approve">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400 c-3-1">审核中</view>
                                     <view class="w-80"></view>
                                 </button>
-                                <button wx:else type=""  class="rcc message h-100 w-400 br-100 b-card ">
+                                <button wx:else type=""  class="rcc message h-100 w-400 br-100 b-approve ">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>

@@ -25,7 +25,7 @@
         
 
             <view class="css pr-3vw pl-3vw"  >
-                            <block wx:for="{{approvedPosts}}" wx:for-index="bindex1" wx:for-item="userPost" >
+                            <block wx:for="{{approvedPosts}}" wx:for-index="bindex" wx:for-item="userPost" >
                                 <view class="css br-20 b-white mt-4vw">
 
                                     <view class="rss pl-4vw pr-4vw pt-50 ">
@@ -110,6 +110,9 @@
                                                                                 </view>
                                                             
                                                                                 <view class="h-30"></view>
+                                    </view>
+                                    <view class="p-30" >
+                                        <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" bindtap="approve" data-post="{{userPost}}" data-index="{{bindex}}">审核通过</button>
                                     </view>
 
                                     <!-- <view class="css p-30 t-line">

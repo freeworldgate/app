@@ -1,6 +1,6 @@
 <!--pages/pk/commentInfo/commentInfo.wxml-->
 <!--pages/pk/messageInfo/messageInfo.wxml-->
-<view class="cas" style="height:100vh">
+<view class="cas b-48" style="height:100vh">
 
       
 
@@ -23,10 +23,10 @@
                                     <view wx:if="{{(user.userId===message.user.userId) && (message.statu.key === 3) }}" class="rcc "  bindtap="approverComment" >
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-4">编辑内容</view>
+                                        <view  class="rcc fs-25 fw-400 c-4">{{message.word1}}</view>
                                     </view>
 
-                                    <view wx:else class="rcc  fs-25 fw-400 c-4">审核留言</view>
+                                    <view wx:else class="rcc  fs-25 fw-400 c-4">{{message.word2}}</view>
                                 </view>
                                 
                     
@@ -304,38 +304,6 @@
     </view>
 
 
-    <view bindtap="_uploadImageDialog_close" catchtouchmove="return" class="coverAll" hidden="{{uploadImageDialog.visible!=true}}"></view>
-    <view catchtouchmove="return" class="css downloadImageDialog" hidden="{{uploadImageDialog.visible!=true}}">
-        <view class="css downloadImageDialog_view">
-            <view class="rcc downloadImageDialog_title">{{uploadImageDialog.title}}</view>
-            <view style="height:30rpx"></view>
-            <view class="rcc downloadImageDialog_subtitle">{{uploadImageDialog.subTitle}}</view>
-            <view style="height:40rpx"></view>
-            <view bindtap="_uploadImageDialog_save" class="rcc">
-                <view class="rcc downloadImageDialog_image f1-31" wx:if="{{!uploadImageDialog._image}}">+</view>
-                <image bindlongtap="getInfo" class="downloadImageDialog_image" mode="aspectFill" src="{{uploadImageDialog._image}}" wx:else></image>
-            </view>
-            <view style="height:10rpx"></view>
-            <view class="rcc downloadImageDialog_longtab">长按图片查看详情</view>
-            <view style="height:90rpx"></view>
-            <view class="rbc">
-                <view bindtap="_uploadImageDialog_save" class="rcc uploadImageDialog_confirm" hoverClass="dialog_confirm_hoverClass">上传图片</view>
-                <view bindtap="_uploadImageDialog_confirm" class="rcc uploadImageDialog_confirm" data-url="{{uploadImageDialog._image}}" hoverClass="dialog_confirm_hoverClass">确定</view>
-            </view>
-        </view>
-    </view>
-
-    <view hidden='{{playVoiceDialog.visible != true}}' class="rcc voiceDialog"  >
-              <view class="ccc pt-100">
-                    <view class="ccc w-200 h-200 br-200 b-card-2">
-                        <view class="rcc"> <image class="w-80 h-80 " mode="aspectFit" src="/images/voice.png"></image></view>
-                        <view class="rcc fs-40 fw-700 c-3">{{playVoiceDialog.time}}</view>
-                    </view>
-
-                    
-              </view>
-
-    </view>
 
 
 

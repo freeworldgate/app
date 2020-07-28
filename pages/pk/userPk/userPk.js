@@ -90,21 +90,33 @@ Page({
   createPk:function()
   {
     var that = this;
-    login.getUser(function(user){
-      template.createEditPkDialog(that).show(function (topic,watchWord,invite) {
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function (pk) {
-          template.createEditPkDialog(that).hide();
-          that.data.pks.push(pk);
-          that.setData({pks: that.data.pks})
-        })
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.addHandler("create", function (tip) {
+      template.createOperateDialog(that).show("建榜",tip,function(){
 
 
-        httpClient.send(request.url.createPk, "GET",{topic:topic,watchWord:watchWord,invite:invite});
-      });
+          template.createEditPkDialog(that).show(function (topic,watchWord,invite) {
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            httpClient.addHandler("success", function (pk) {
+              template.createEditPkDialog(that).hide();
+              that.data.pks.push(pk);
+              that.setData({pks: that.data.pks})
+            })
+    
+    
+            httpClient.send(request.url.createPk, "GET",{topic:topic,watchWord:watchWord,invite:invite});
+          });
 
+      },function(){});
+
+
+  
     })
+    httpClient.send(request.url.checkPk, "GET",{});   
+
+
   },
   viewPk:function(res)
   {

@@ -55,8 +55,11 @@
 
 
     <view wx:if="{{mode === 'show'}}" class="css pt-100 pb-100">
-            <view class="rcc " bindtap="return">
-                <button class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">获取图片</button>
+            <view class="rcc ">
+                <button wx:if="{{download}}" class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr}}</button>
+                <button wx:else class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message"  bindtap="saveImg" data-url="{{imgUrl}}" >{{buttonStr}}</button>
+
+           
             </view>
     </view>
     <view wx:elif="{{mode === 'upload'}}" class="css pt-100 pb-100">

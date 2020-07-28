@@ -1071,52 +1071,6 @@
     </view>
 
 
-    <view bindtap="_uploadImageDialog_close" catchtouchmove="return" class="coverAll" hidden="{{uploadImageDialog.visible!=true}}"></view>
-    <view catchtouchmove="return" class="css downloadImageDialog" hidden="{{uploadImageDialog.visible!=true}}">
-        <view class="css downloadImageDialog_view">
-            <view class="rcc downloadImageDialog_title">{{uploadImageDialog.title}}</view>
-            <view style="height:30rpx"></view>
-            <view class="rcc downloadImageDialog_subtitle">{{uploadImageDialog.subTitle}}</view>
-            <view style="height:40rpx"></view>
-            <view bindtap="_uploadImageDialog_save" class="rcc">
-                <view class="rcc downloadImageDialog_image f1-31" wx:if="{{!uploadImageDialog._image}}">+</view>
-                <image bindlongtap="getInfo" class="downloadImageDialog_image" mode="aspectFill" src="{{uploadImageDialog._image}}" wx:else></image>
-            </view>
-            <view style="height:10rpx"></view>
-            <view class="rcc downloadImageDialog_longtab">长按图片查看详情</view>
-            <view style="height:90rpx"></view>
-            <view class="rbc">
-                <view bindtap="_uploadImageDialog_save" class="rcc uploadImageDialog_confirm" hoverClass="dialog_confirm_hoverClass">上传图片</view>
-                <view bindtap="_uploadImageDialog_confirm" class="rcc uploadImageDialog_confirm" data-url="{{uploadImageDialog._image}}" hoverClass="dialog_confirm_hoverClass">确定</view>
-            </view>
-        </view>
-    </view>
-
-      <!-- 录音 -->
-    <!-- <view hidden='{{voiceDialog.visible != true}}' class="coverAll" bindtap='_voiceDialog_close'  catchtouchmove="return" ></view> -->
-    <view hidden='{{voiceDialog.visible != true}}' class="css voiceDialog"  >
-
-        <view class="ccc pt-20">
-            <view class="rcc"> <image class="w-80 h-80 " mode="aspectFit" src="/images/voice1.png"></image></view>
-            <view class="rcc fs-40 fw-700 c-white">{{voiceDialog.time}}</view>
-            <view class="rcc fs-25 fw-400 c-white ">最多10秒钟</view>
-        </view>
-
-
-    </view>
-    <!-- 播放 -->
-    <view hidden='{{playVoiceDialog.visible != true}}' class="css voiceDialog"  >
-
-        <view class="ccc pt-20">
-            <view class="rcc"> <image class="w-80 h-80 " mode="aspectFit" src="/images/voice1.png"></image></view>
-            <view class="rcc fs-40 fw-700 c-white ">{{playVoiceDialog.time}}</view>
-        </view>
-
-                    
-
-
-    </view>
-
 
 
 

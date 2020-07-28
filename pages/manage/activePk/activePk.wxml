@@ -1,96 +1,103 @@
-<!--pages/manage/setting/setting.wxml-->
-<view class="css p-30">
-  <view class="rcs fs-30 fw-700">激活方案</view>
-  <view class="rbc ">
+<view class="css b-48" >
+
+
+
+
+
+
+
+    
+    
+    <view class="css" wx:for="{{pks}}" wx:for-index="bindex" wx:for-item="pk" wx:key="postkey">
+        <view class="h-30"></view>
+        <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-white br-20  ">
+            <view class="h-50"></view>
+            <view class="rss" >
+                                        <view class="rcc">
+                                            <image class="w-150 h-150 br-15" mode="aspectFill" src="{{pk.pk.user.imgUrl}}"></image>
+                                        </view>
+                                        <view class="w-3vw"></view>
+                                        <view class="cas" style="flex:1">
+                                            <view class="css"><view class="rus line-1-start fs-35 fw-700">{{pk.pk.topic}}</view></view>
+                                            <view class="css"><view class="rus line-2-start fs-25 fw-400">{{pk.pk.watchWord}}</view></view>
+                                        </view>
+            </view>
+
+
+            <view class="css">
+
+                <view class="rss pt-30 pb-30">
+                            
+
+                                       
+                                        <view class="css" style="flex:1">
+
+                                            <view class="rbc-nowrap ">
+                                                <view class="rus fs-30 fw-400 line-3-start c-word-5">{{pk.approveMessage.text}}</view>
+                                                <view></view>
+                                            </view>
+
+                                                    
+                                        </view>
+                              
       
-      <view class="{{feeNumber === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="0">9.9</view>
-      <view class="{{feeNumber === '1'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="1">19.9</view>
-      <view class="{{feeNumber === '2'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="2">29.9</view>
-      <view class="{{feeNumber === '3'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="3">39.9</view>
-      <view class="{{feeNumber === '4'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="4">49.9</view>
-      <view class="{{feeNumber === '5'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="5">59.9</view>
-  </view>
+                </view>
 
-  <view class="css">
-  
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="groupMaxMembers" >
-          <view class="rcc fs-30 fw-400">单群组容量</view>
-          <view class="rcc fs-30 fw-400">{{groupMaxMembers}}</view>
-      </view>
-
-  
-      <view class="rbc b-line pt-30 pb-30 br-10 "   >
-          <view class="rcc fs-30 fw-400">消息模式(wechat客服接口)</view>
-          <!-- <view class="rcc fs-30 fw-400">{{isWechatMsgService}}</view> -->
-          <switch checked="{{isWechatMsgService === 'true'}}" bindchange="setmode" data-type="isWechatMsgService"></switch>
-      </view>
-  
-  
-      <view class="rbc b-line pt-30 pb-30 br-10 "   >
-          <view class="rcc fs-30 fw-400">传播模式</view>
-          <!-- <view class="rcc fs-30 fw-400">{{isWechatMsgService}}</view> -->
-          <view class="rcs">
-            <view class="{{mode === '1'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="1">审查</view>
-            <view class="{{mode === '2'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="2">运营</view>
-            <view class="{{mode === '3'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="3">开放</view>
-          </view>
-      </view>
-
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="groupMaxMembers" >
-          <view class="rcc fs-30 fw-400">顶级运营官</view>
-          <view class="rcc">
-             <view class="rcc fs-30 fw-400">Sober</view>
-             <view class="w-20"></view>
-             <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
-          </view>
-      </view>
-
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="approveWaitingTime" >
-          <view class="rcc fs-30 fw-400">榜帖审核等待时间</view>
-          <view class="rcc">
-             <view class="rcc fs-30 fw-400">{{approveWaitingTime}}分钟</view>
-          </view>
-      </view>
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="canComplainWaitingTime" >
-          <view class="rcc fs-30 fw-400">转发榜帖后可投诉最长等待时间</view>
-          <view class="rcc">
-             <view class="rcc fs-30 fw-400">{{canComplainWaitingTime}}分钟</view>
-          </view>
-      </view>
-      <view class="fs-30 fw-700 pt-20">定时器每晚4点执行一次关闭即将失效群组</view>
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="groupMaxAliveTime" >
-          <view class="rcc fs-30 fw-400">群组有效时间间隔(0 ~ 6 * 24)</view>
-          <view class="rcc">
-             <view class="rcc fs-30 fw-400">{{groupMaxAliveTime}}小时</view>
-          </view>
-      </view>
-      <view class="fs-30 fw-700 pt-20">定时器每晚5点执行一次更新即将过期媒体文件</view>
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="mediaMaxOutTime" >
-          <view class="rcc fs-30 fw-400">媒体文件最大过期时间(0 ~ 2 * 24 之间)</view>
-          <view class="rcc">
-             <view class="rcc fs-30 fw-400">{{mediaMaxOutTime}}小时</view>
-          </view>
-      </view>
-
-      <view class="rbc b-line pt-30 pb-30 br-10 "   >
-          <view class="rcc fs-30 fw-400">是否对非遗传用户展示审核系统</view>
-          <!-- <view class="rcc fs-30 fw-400">{{isWechatMsgService}}</view> -->
-          <switch checked="{{showApproveSys === 'true'}}" bindchange="setmode" data-type="showApproveSys"></switch>
-      </view>
+                <view class="css ">
+            
+                    <view class="rbc">
+                      <view class="rcc">
+          
+                         <view class="rcc fs-30 fw-400  c-word-6">激活员-{{pk.pkCashier.cashierName}}</view>
+                          
+                      </view>
+                      
 
 
 
-  </view>
+                      <view class="rcc fs-30 fw-700 c-word-6 max-w-400 line-1-start">{{pk.cashierFeeCode.feeNumber.name}}</view>
+                    
+                    </view>
+                    <view class="h-30"></view>
+                    <view class="rbc">
+                        <view class="ccc ">
+                            <view wx:if="{{pk.approveMessage.imgeUrl}}" data-url="{{pk.approveMessage.imgeUrl}}" bindtap="view" class="rcc br-30" style="height:28vw;width:28vw;background-position: top;background-image: url({{pk.approveMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                            <view wx:else  class="rcc h-300 w-300 br-30 b-48">空</view>
+                            <view class="rcc fs-30 fw-400  c-word-6 p-20">榜主收款码</view>
+                        </view>
+                        <view class="ccc ">
+                            <!-- <view wx:if="{{pk.cashierFeeCode.feeCodeUrl}}" class="rcc br-30" style="height:28vw;width:28vw;background-position: top;background-image: url({{pk.cashierFeeCode.feeCodeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view> -->
+                            <image wx:if="{{pk.cashierFeeCode.feeCodeUrl}}" data-url="{{pk.cashierFeeCode.feeCodeUrl}}" bindtap="view" class=" br-30" mode="aspectFill" style="height:28vw;width:28vw" src="{{pk.cashierFeeCode.feeCodeUrl}}"></image>
+                            <view wx:else  class="rcc h-300 w-300 br-30 b-48">空</view>
+                            <view class="rcc fs-30 fw-400  c-word-6 p-20">激活员收款码</view>
+                        </view>
+                        <view class="ccc ">
+                            <image wx:if="{{pk.cashierCommentUrl}}"  data-url="{{pk.cashierCommentUrl}}" bindtap="view" class=" br-30" mode="aspectFill" style="height:28vw;width:28vw" src="{{pk.cashierCommentUrl}}"></image>
+                            <view wx:else  class="rcc h-300 w-300 br-30 b-48">空</view>
+                            <view class="rcc fs-30 fw-400  c-word-6 p-20">激活付款截图</view>
+                        </view>
+                    
+                    </view>
+                                      
+            
+                </view>
 
 
 
 
+            </view>
 
+            <view class="rac">
 
+                <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload c-white message" bindtap="activePk" data-pk="{{pk}}" data-index="{{bindex}}">激活</view>
+                <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload-2 c-white message" bindtap="hiddenPk" data-pk="{{pk}}" data-index="{{bindex}}">标记已处理</view>
 
+            </view>
+            <view class="h-50"></view>
+        </view>
+    </view>
 
-
-
+    <view class="h-100"></view>
 
 
 
@@ -107,9 +114,7 @@
 
 
 
-
 <view>
-
 
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
@@ -176,8 +181,7 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
-
-    <view class="cac pageLoadingDialog1 " hidden="{{pageLoadingDialog.visible!=true}}">
+    <view class="cac pageLoadingDialog b-48" hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
                 <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
@@ -186,7 +190,7 @@
         </view>
         <view></view>
     </view>
-    <view class="cac pageLoadingDialog1 " hidden="{{pageLoadingDialogError.visible!=true}}">
+    <view class="cac pageLoadingDialog b-48" hidden="{{pageLoadingDialogError.visible!=true}}">
         <view></view>
         <view class="ccc ">
             <view class="rcc">
@@ -275,7 +279,7 @@
 
                     
                     <view class="css ">
-                        <textarea adjustPosition="true" bindinput="_editImageDialog_input" class="t19-1-edit"  style="height:20vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="50" placeholder="{{editImageDialog._default_edit_text}}" value="{{editImageDialog.text}}"></textarea>
+                        <textarea adjustPosition="true" bindinput="_editImageDialog_input" class="t19-1-edit"  style="height:20vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="100" placeholder="{{editImageDialog._default_edit_text}}" value="{{editImageDialog.text}}"></textarea>
                     </view>
                     <view class="h-20"></view>
                     <view class="rcc">
@@ -309,11 +313,16 @@
                 <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
             </view>
             <view style="height:20rpx"></view>
-            <view class="rac">
-                <view bindtap="_editTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="_editTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            <view class="rbc pt-50 pb-20 t-line">
+                <view></view>
+                <view class="rcc">
+                    <view bindtap="_editTextDialog_close" class="rcc c-3 fs-30 fw-700" hoverClass="c-3-1">取消</view>
+                    <view class="w-100"></view>
+                    <view bindtap="_editTextDialog_confirm" class="rcc c-1 fs-30 fw-700" hoverClass="c-3-1">确定</view>
+                    <view class="w-50"></view>
+                </view>
+
             </view>
-            <view class="t7-5-2" style="height:35rpx"></view>
         </view>
     </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>
@@ -349,114 +358,6 @@
         </view>
     </view>
 
-    <view bindtap="_editPkDialog_hide" catchtouchmove="return" class="coverAll-1" hidden="{{editPkDialog.visible!=true}}" ></view>
-    <view class="css b-white editPkDialog" hidden="{{editPkDialog.visible!=true}}">
-
-        <view class="css pl-4vw pr-4vw">
-            <view class="rbc pt-30 pb-30 b-line">
-                <view class="fs-30 fw-400">创建相册</view>
-                <view class='rcc' bindtap="_editPkDialog_hide"><image class="w-40 h-40" mode="aspectFit" src="/images/close.png"></image></view>
-            </view>
-            <view class="css pt-20 pb-20">
-                <view class="rcs">
-                    <view class="rcc"><view class='rcc'><image class="w-30 h-30" mode="aspectFit" src="/images/topic.png"></image></view></view>
-                    <view class="w-20"></view>
-                    <view class="rbc" style="flex:1">
-                        <view class="fs-25 fw-400">主题</view>
-                        <view class="fs-25 fw-400">最多20字</view>
-                    </view>
-                </view>
-                <view class="h-20"></view>
-                <view class="rcs">
-                    <view class="w-50"></view>
-                    <view class="css" style="flex:1">
-                      <view class="css">
-                          <input bindinput="_editPkDialog_input_topic" class="editPkDialog_topic" maxlength="20" placeholder="主题"  value="{{editPkDialog.topic}}"></input>
-                      </view>
-                    </view>
-                </view>
-            
-            
-            </view>
-            <view class="css pt-20 pb-20">
-                <view class="rcs">
-                    <view class="rcc"><view class='rcc'><image class="w-30 h-30" mode="aspectFit" src="/images/topic.png"></image></view></view>
-                    <view class="w-20"></view>
-                    <view class="rbc" style="flex:1">
-                        <view class="rcs">
-                          <view class="fs-25 fw-400">副标题</view>
-                          <view class="fs-25 fw-400">描述口号</view>
-                        </view>
-                        <view class="fs-25 fw-400">最多60字</view>
-                    </view>
-                </view>
-                <view class="h-20"></view>
-                <view class="rcs">
-                    <view class="w-50"></view>
-                    <view class="css b-48 br-5" style="flex:1">
-                        <view class="h-20 b-48"></view>
-                        <view class="rcs">
-                          <view class="w-20 b-red"></view>
-                          <view class="css" style="flex:1">
-                            <textarea adjustPosition="true" bindinput="_editPkDialog_input_watchword" class="fs-30 fw-400 b-48"  style="height:20vw" cursorSpacing="50" fixed="true" maxlength="60" placeholder="口号" value="{{editPkDialog.watchWord}}"></textarea>
-                          </view>
-                        </view>
-
-                        <view class="h-20 b-48"></view>
-                    </view>
-                </view>
-         
-            
-            </view>
-            <view class="css pt-20 pb-20">
-                <view class="rcs">
-                    <view class="rcc"><view class='rcc'><image class="w-30 h-30" mode="aspectFit" src="/images/topic.png"></image></view></view>
-                    <view class="w-20"></view>
-                    <view class="rbc" style="flex:1">
-                        <view class="rcs">
-                          <view class="fs-25 fw-400">仅邀请</view>
-                          <view class="fs-25 fw-400 c-3-1">邀请可打榜</view>
-                        </view>
-                        
-                        <switch checked="true" bindchange="_editPkDialog_selectInvite"></switch>
-                    </view>
-                </view>
-   
-         
-            
-            </view>
-        
-            <view class="h-100"></view>
-            <view wx:if="{{editPkDialog.watchWord && editPkDialog.topic}}" class="rcc p-30" bindtap="_editPkDialog_createPk">
-                <view class="rcc fs-30 fw-700 w-400 h-80 br-100 b-upload c-white message">确定</view>
-            </view>
-            <view wx:else class="rcc p-30">
-                <view class="rcc fs-30 fw-700 w-400 h-80 br-100 b-40 c-white message">确定</view>
-            </view>
-        
-        </view>
-
-
-
-
-        <!-- <view class="css shortTextDialog_view">
-            <view class="rcc shortTextDialog_title">{{editNumberDialog.title}}</view>
-            <view style="height:60rpx"></view>
-            <view class="css">
-                <input bindinput="_editNumberDialog_input" class="createEditNumberDialog_input" maxlength="{{editNumberDialog.maxLength}}" placeholder="点击输入最多{{editNumberDialog.maxLength}}位数字" type="number" value="{{editNumberDialog.text}}"></input>
-            </view>
-            <view style="height:60rpx"></view>
-            <view class="rac">
-                <view bindtap="_editNumberDialog_close" class="rcc shortTextDialog_cancel">取消</view>
-                <view bindtap="_editNumberDialog_confirm" class="rcc shortTextDialog_confirm " hoverClass="dialog_confirm_hoverClass" wx:if="{{editNumberDialog.text.length>0}}">确定</view>
-                <view class="rcc  shortTextDialog_cancel" wx:else>确定</view>
-            </view>
-        </view> -->
-    </view>
-
-
-
-
 
 
 
@@ -465,3 +366,6 @@
 
 
 </view>
+
+
+

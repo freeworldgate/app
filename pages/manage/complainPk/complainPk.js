@@ -1,4 +1,4 @@
-// pages/pk/publishPost/publishPost.js
+// pages/manage/complainPk/complainPk.js
 Page({
 
   /**

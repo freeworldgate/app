@@ -1,13 +1,28 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
 <view class="css " style="flex:1" >
-    <view class="rac">
+    <view class="rac pt-30 pb-30">
         <view class="rcc">
-            <navigator url="/pages/manage/cashiers/cashiers" class="rcc p-30">
+            <navigator url="/pages/manage/complainPk/complainPk" class="rcc ">
+                <view class="rcc fs-30 fw-400">投诉处理</view>
+            </navigator>
+        </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/activePk/activePk" class="rcc ">
+                <view class="rcc fs-30 fw-400">开榜激活</view>
+            </navigator>
+        </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/approvePost/approvePost" class="rcc">
+                <view class="rcc fs-30 fw-400">审核榜帖</view>
+            </navigator>
+        </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/cashiers/cashiers" class="rcc">
                 <view class="rcc fs-30 fw-400">收款</view>
             </navigator>
         </view>
         <view class="rcc">
-            <navigator url="/pages/manage/setting/setting" class="rcc p-30">
+            <navigator url="/pages/manage/setting/setting" class="rcc">
                 <view class="rcc fs-30 fw-400">设置</view>
             </navigator>
         </view>
@@ -96,17 +111,20 @@
                                     <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
                                     <view class="rbc c-word-7">
 
-                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start">{{pk.user.userName}}</view>
+                                        <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name ">{{pk.user.userName}}</view>
                                         <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 ">{{pk.approved}}</view>
                                         <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 ">{{pk.approving}}</view>
 
 
                                         <view class="rcc"></view>
                                         <view class="rcc"></view>
-                                        <view class="rcc pt-40 pb-40" bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
-                                            <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
-                                            <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
-                                            <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                        <view class="rcc pt-40 pb-40">
+                                            <view wx:if="{{pk.groupInfo}}" class="rcc " bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
+                                                <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
+                                                <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
+                                            </view>
+                                            <view wx:else class="rcc fs-25 fw-400 c-3-1">{{pk.time}}</view>
                                         </view>
                                     </view>     
                                 </view>

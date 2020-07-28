@@ -594,6 +594,9 @@
 .max-w-300{
   max-width: 300rpx;
 }
+.max-w-400{
+  max-width: 400rpx;
+}
 .max-w-500{
   max-width: 500rpx;
 }
@@ -833,7 +836,7 @@ mw-200{
 }
 
 .b-upload{
-  background-image: linear-gradient(to right, #4487c5 0%, #4db3d8 100%);
+  background-image: linear-gradient(to right, #ff713d 0%, #ffbd4bc0 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -845,6 +848,10 @@ mw-200{
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+.b-upload-2{
+  background-image: linear-gradient(to right, #3dabff 0%, #4bfffcc0 100%);
+
 }
 .b-statu1{
   background-image: linear-gradient(to right, #ffcc75e7 0%, #e8a600e8 100%);
@@ -961,11 +968,17 @@ mw-200{
 .b-51{
   background-color: rgba(204, 204, 204, 0.714);
 }
+.b-approve{
+  background-color: rgb(240, 240, 240);
+}
 .b-approving
 {
   background-color: rgb(131, 126, 119);
 }
+.c-name{
+  color:rgb(131, 117, 103);
 
+}
 
 
 
