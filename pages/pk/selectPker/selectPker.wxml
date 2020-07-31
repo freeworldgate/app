@@ -65,13 +65,13 @@
         <view class="css">
             <view class="h-30"></view>
             <view class="css" bindtap="return">
-                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" open-type="share" session-from="2,{{creator.userId}},{{message.mediaId}}">转发激活群</button>
+                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" open-type="{{buttonType}}">{{buttonName}}</button>
             </view>
             <view class="h-50"></view>
 
         </view>
 
-        <view class="rcc fs-30 fw-400 c-word-6 p-30">申请激活码</view>
+        <view class="rcc fs-30 fw-400 c-word-6 p-30">{{activeCode}}</view>
 
     </view>  
 

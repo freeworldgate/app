@@ -51,7 +51,7 @@ Page({
         complete: (res) => {},
       })
     })
-    httpClient.send(request.url.queryInvites, "GET", {});
+    httpClient.send(request.url.querySort, "GET", {});
   },
 
   /**
@@ -71,22 +71,8 @@ Page({
             pks:that.data.pks.concat(pagePks)
         })
       })
-      httpClient.send(request.url.nextInvitePage, "GET",{ userId:user.userId ,page:that.data.page});
+      httpClient.send(request.url.nextSortPage, "GET",{ userId:user.userId ,page:that.data.page});
     
-  },
-
-
-
-
-  onShow:function () {
-    var that = this;
-    if(that.data.pks.length === 0){
-      // that.init("");
-      that.init("label");
-    }
-
-    
-
   },
 
   init:function (tab) {
@@ -105,12 +91,7 @@ Page({
       that.queryInvites("label");
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  },
   
 
 
@@ -124,36 +105,9 @@ Page({
   {
     var that = this;
     var pkid = res.currentTarget.dataset.pkid;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("approve", function (link) {
-
-      template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
-        wx.navigateTo({
-          url: link,
-        })
-
-    },function(){});
+    wx.navigateTo({
+      url: '/pages/pk/pk/pk?pkId=' + pkid,
     })
-    httpClient.addHandler("group", function (link) {
-
-      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
-        wx.navigateTo({
-          url: link,
-        })
-
-    },function(){});
-    })
-    httpClient.addHandler("message", function (link) {
-
-      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
-        wx.navigateTo({
-          url: link ,
-        })
-
-    },function(){});
-    })
-    httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },
   groupCode:function(res) {

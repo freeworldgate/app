@@ -165,8 +165,8 @@ var url = {
         manageApprovingPosts:`${host}/pk/manageApprovingPosts`, 
         hiddenPost:`${host}/pk/hiddenPost`, 
         approvePost:`${host}/pk/approvePost`, 
-
-
+        querySort:`${host}/pk/querySort`, 
+        nextSortPage:`${host}/pk/nextSortPage`, 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

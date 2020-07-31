@@ -30,7 +30,7 @@
           <view class="rcc fs-30 fw-400">传播模式</view>
           <!-- <view class="rcc fs-30 fw-400">{{isWechatMsgService}}</view> -->
           <view class="rcs">
-            <view class="{{mode === '1'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="1">审查</view>
+            <view class="{{mode === '1'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="1">审核</view>
             <view class="{{mode === '2'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="2">运营</view>
             <view class="{{mode === '3'?'rcc p-20 br-10 b-1 fs-25 fw-400 m-5':'rcc p-20 br-10 b-white fs-25 fw-400 m-5'}}" bindtap="set" data-type="mode" data-value="3">开放</view>
           </view>
@@ -51,6 +51,16 @@
              <view class="rcc fs-30 fw-400">{{approveWaitingTime}}分钟</view>
           </view>
       </view>
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxPksUserCreate" >
+          <view class="rcc fs-30 fw-400">用户最大建榜数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{maxPksUserCreate}}个</view>
+          </view>
+      </view>
+
+
+
+
       <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="canComplainWaitingTime" >
           <view class="rcc fs-30 fw-400">转发榜帖后可投诉最长等待时间</view>
           <view class="rcc">

@@ -109,7 +109,18 @@ Page({
     httpClient.send(request.url.manageApprovingPosts, "GET", {});
 
   },
+  approverMessageDetail:function(res){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    login.getUser(function (user) {
 
+      wx.navigateTo({
+        url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkId ,
+      })   
+    })
+
+
+  },
 
 
 

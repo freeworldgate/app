@@ -63,7 +63,7 @@
                                                                                 <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
                                                                                             <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">审核留言</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">{{t3}}</view>
                                                                                           
                                                                                         </view>
                                                                                         <view class="rcc">
@@ -186,21 +186,21 @@
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve3.png"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400">审核通过</view>
+                                    <view class="fs-30 fw-400">{{t1}}</view>
                                     <view class="w-80"></view>
                                 </button>
                                 <button wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc message h-100 w-400 br-100 b-approve">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400 c-3-1">审核中</view>
+                                    <view class="fs-30 fw-400 c-3-1">{{t2}}</view>
                                     <view class="w-80"></view>
                                 </button>
                                 <button wx:else type=""  class="rcc message h-100 w-400 br-100 b-approve ">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400 c-3-1">审核通过</view>
+                                    <view class="fs-30 fw-400 c-3-1">{{t1}}</view>
                                     <view class="w-80"></view>
                                 </button>
 

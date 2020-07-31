@@ -29,12 +29,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
     wx.hideShareMenu({
       complete: (res) => {},
     })
-
-    this.queryInvites();
+    inviteReq.getHeight(function (res) {
+      that.setData({
+          top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+      })
+  })
+  that.queryInvites();
 
 
 

@@ -41,6 +41,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
     that.addInvite(options.pkId,options.fromUser);
         //Top高度
     inviteReq.getHeight(function (res) {

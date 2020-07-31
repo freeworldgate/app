@@ -353,6 +353,9 @@
 .mb-1vw{
   margin-bottom: 1vw
 }
+.mb-4vw{
+  margin-bottom: 4vw
+}
 .mt-1vw{
   margin-top: 1vw
 }
@@ -551,7 +554,7 @@
 .w-500{width: 500rpx;}
 .w-auto{width: auto}
 .w-100p{width: 100%}
-.w-100vw{width: 100vw}
+
 .w-86vw{width: 86vw}
 .w-80vw{width: 80vw}
 .w-70vw{width: 70vw}
@@ -563,7 +566,7 @@
 .h-100vh{height: 100vh}
 .h-100vw{height: 100vw}
 .h-110vw{height: 110vw}
-
+.w-120vw{width: 120vw}
 .w-100vw{width: 100vw}
 .w-29vw{width: 29vw}
 .w-29vw{width: 29vw}
@@ -854,14 +857,14 @@ mw-200{
 
 }
 .b-statu1{
-  background-image: linear-gradient(to right, #ffcc75e7 0%, #e8a600e8 100%);
+  background-image: linear-gradient(to right, #ffcc7583 0%, #e8a60080 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
 .b-statu2{
-  background-image: linear-gradient(to right, #75c3ffe7 0%, #3599dbe8 100%);
+  background-image: linear-gradient(to right, #75c3ff88 0%, #3599db81 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -1114,6 +1117,10 @@ mw-200{
   border-bottom-left-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
 }
+.b-br-100{
+  border-bottom-left-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
+}
 .b-br-40{
   border-bottom-left-radius: 40rpx;
   border-bottom-right-radius: 40rpx;
@@ -1347,14 +1354,38 @@ mw-200{
   right: 10vw;
 }
 
+.customHeader{
+  position: fixed;
+  height: 400rpx;
+  background-image: linear-gradient(to right, #79c9ff4b 0%, #44a4fd5b 100%);
+  width: 140vw;
+  border-bottom-left-radius: 40vw;
+  border-bottom-right-radius: 40vw;
+  left: -20vw;
+  top:0;
 
+
+
+
+}
 
 .customBar{
+  position: fixed;
+  height:32px;
+  width:100vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.customBar1{
   position: fixed;
   height:32px;
   left: 3vw;
 }
 
+.customBack{
+  background-image: linear-gradient(to right, #79c9ff 0%, #44a4fd 100%);
+}
 .bottomBar{
   position: fixed;
   left: 0;
@@ -1674,10 +1705,12 @@ button::after {
   background-position: center;
 }
 .cardback6{
-  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg");
+  /* background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg"); */
+  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/back1000.jpg");
+
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: top;
+  background-position: bottom;
 }
 
 
@@ -2050,6 +2083,15 @@ button::after {
 }
 .bar-back3{
   background-color: rgb(194, 100, 0)
+}
+.userBack{
+  background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%);
+  width: 140vw;
+  border-bottom-left-radius: 40vw;
+  border-bottom-right-radius: 40vw;
+  left: -20vw;
+  top:0;
+  height: 400rpx;
 }
 
 

@@ -28,7 +28,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.init("label");
+
+        //Top高度
+    inviteReq.getHeight(function (res) {
+        that.setData({
+            top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+        })
+    })
+
+
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
+
+    if(that.data.user){that.init("label");}
+    else{}
+    
   },
   queryPks:function (tab) {
     var that = this;
@@ -45,7 +60,12 @@ Page({
     })
     httpClient.send(request.url.userPks, "GET", {});
   },
-
+  onShow:function(){
+    var that = this;
+    var user = wx.getStorageSync('user');
+    if(user && (that.data.pks.length === 0)){that.init("label");}
+    else{}
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -86,7 +106,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
+  login:function(){
+    login.getUser(function(user){})    
+  },
   createPk:function()
   {
     var that = this;

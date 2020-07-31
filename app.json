@@ -1,21 +1,18 @@
 {
   "pages": [
+
     "pages/pk/home/home",
     "pages/pk/userPk/userPk",
     "pages/pk/invite/invite",
-
-
+    
     "pages/pk/pk/pk",
 
-
+    
     "pages/pk/complain/complain",
     "pages/pk/selectApprover/selectApprover",
     "pages/pk/approver/approver",
     "pages/pk/editApproveComment/editApproveComment",
 
-
-    "pages/pk/singlePost/singlePost",
-    "pages/pk/userSinglePost/userSinglePost",
 
     "pages/pk/approverInfos/approverInfos",
     "pages/pk/approvePostList/approvePostList",
@@ -31,7 +28,7 @@
 
 
 
-    "pages/pk/userSinglePk/userSinglePk",
+
     "pages/pk/zone/zone",
 
     "pages/pk/createPk/createPk",
@@ -43,6 +40,9 @@
     "pages/manage/approvePost/approvePost",
     "pages/manage/activePk/activePk",
     "pages/manage/complainPk/complainPk",
+    "pages/manage/pksorts/pksorts",
+
+
 
     "pages/test/page/page",
     "pages/test/template/template",

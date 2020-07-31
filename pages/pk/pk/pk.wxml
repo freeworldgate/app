@@ -145,6 +145,7 @@
 
 
     <!-- <view class="cbs h-100vw " style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%; "> -->
+
     <view class="{{pkMessage?'cbs h-110vw b-pk cardback6':'cbs h-100vw b-pk cardback6'}}" > 
         <view class="" style="height:{{top+32}}px"></view>
 
@@ -923,21 +924,19 @@
     <view hidden="{{!nomore}}" class="rcc h-200 fs-30 fw-400 c-3-1">没有更多...</view>
 
 </view>
-<view class="rcs z2 customBar" style="top:{{top}}px">
+<view class="rcs customBar" style="top:{{top}}px">
 
     <view wx:if="{{fromUser}}" class="rcc h-32px w-32px br-32px bar-back z102" bindtap="relaunch">
         <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
     </view>
-    <view wx:else class="rcc h-32px w-32px br-32px bar-back z102" bindtap="back">
+    <view wx:else class="rcc h-32px w-32px br-32px bar-back" bindtap="back">
         <image class="w-30 h-30" mode="aspectFit" src="/images/left1.png"></image>
     </view>
 
 
     <view class="w-20"></view>
     
-    
-    
-    <button hidden="{{!user}}" open-type="share" class="rcc message0 h-32px w-40vw br-32px bar-back">
+    <button hidden="{{!user}}" open-type="share" class="rcc message h-32px w-40vw br-32px bar-back z102">
         <view class="fs-25 fw-400 c-4">邀请</view>
     </button>
 

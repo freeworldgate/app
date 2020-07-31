@@ -2,7 +2,7 @@
 <view wx:if="{{message}}" class="cbs" style="height:100vh">
         <view class="css">
             <view style="height:{{top}}px"></view>
-            <view class="rcs pl-4vw pr-4vw" style="height:32px">
+            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
                 <view class="rcc">
                     <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
                 </view>
@@ -86,7 +86,7 @@
                 </view>
                 <view class="rcs c-4">
                     <view class="rcc fs-30 fw-400 ">{{date}}</view>
-                    <view class="fs-30 fw-400 ">审核员公告</view>
+               
 
                 </view>
                 
@@ -94,10 +94,10 @@
             </view>
         </view>
         <view class="rcc" style="flex:1">
-            <view class="rcc p-50" bindtap="approverMessage">
-                <image class="w-40 h-40" mode="aspectFit" src="/images/write.png"></image>
-                <view  class="w-10"></view>
-                <view  class="rcc fs-30 fw-400 c-4">编辑公告</view>
+            <view class="ccc p-50" bindtap="approverMessage">
+                <image class="w-200 h-200" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip3.png"></image>
+                <view  class="h-20"></view>
+                <view  class="rcc fs-40 fw-700 c-4">编辑公告</view>
             </view>
 
         </view>

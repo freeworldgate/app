@@ -99,7 +99,11 @@ Page({
 
 
   },
-
+  back:function(){
+      wx.navigateBack({
+        complete: (res) => {},
+      })
+  },
   approverMessage:function(){
     var that = this;
     
