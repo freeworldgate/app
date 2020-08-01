@@ -353,6 +353,9 @@
 .mb-1vw{
   margin-bottom: 1vw
 }
+.mb-2vw{
+  margin-bottom: 2vw
+}
 .mb-4vw{
   margin-bottom: 4vw
 }

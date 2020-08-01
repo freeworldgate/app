@@ -41,6 +41,9 @@
     "pages/manage/activePk/activePk",
     "pages/manage/complainPk/complainPk",
     "pages/manage/pksorts/pksorts",
+    "pages/manage/preAlbums/preAlbums",
+    "pages/manage/homeAlbums/homeAlbums",
+    "pages/manage/preUsers/preUsers",
 
 
 

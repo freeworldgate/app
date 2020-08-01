@@ -29,6 +29,29 @@
                 <view class="rcc fs-30 fw-400">审核榜帖</view>
             </navigator>
         </view>
+    </view>
+
+    <view class="rac pt-30 pb-30 z2">
+
+        <view class="rcc">
+            <navigator url="/pages/manage/preAlbums/preAlbums" class="rcc">
+                <view class="rcc fs-30 fw-400">内置相册</view>
+            </navigator>
+        </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/homeAlbums/homeAlbums" class="rcc">
+                <view class="rcc fs-30 fw-400">主页展示设置</view>
+            </navigator>
+        </view>
+
+        <view class="rcc">
+            <navigator url="/pages/manage/preUsers/preUsers" class="rcc">
+                <view class="rcc fs-30 fw-400">内置用户</view>
+            </navigator>
+        </view>
+
+
+
         <view class="rcc">
             <navigator url="/pages/manage/cashiers/cashiers" class="rcc">
                 <view class="rcc fs-30 fw-400">收款</view>
@@ -40,7 +63,6 @@
             </navigator>
         </view>
     </view>
-
 
 
     

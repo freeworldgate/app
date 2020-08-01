@@ -167,6 +167,20 @@ var url = {
         approvePost:`${host}/pk/approvePost`, 
         querySort:`${host}/pk/querySort`, 
         nextSortPage:`${host}/pk/nextSortPage`, 
+        
+        morePrePks:`${host}/pk/morePrePks`, 
+        queryPrePks:`${host}/pk/queryPrePks`, 
+        preCreatePk:`${host}/pk/preCreatePk`, 
+        queryPreHomePage:`${host}/pk/queryPreHomePage`, 
+        morePreHomePage:`${host}/pk/morePreHomePage`, 
+        
+        removePk:`${host}/pk/removePk`, 
+        addToPreHome:`${host}/pk/addToPreHome`, 
+        removePkFromHomPage:`${host}/pk/removePkFromHomPage`, 
+        setAlbumType:`${host}/pk/setAlbumType`, 
+
+
+        
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

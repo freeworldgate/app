@@ -8,15 +8,8 @@
 
             <view class="css pr-3vw pl-3vw"  >
                             <block wx:for="{{pks}}" wx:for-index="bindex1" wx:for-item="pk" >
-                                <view class="rbc mt-4vw mb-4vw pr-3vw pl-3vw">
-                                    <view class="rcc">
-                                        <view class="rus fs-30 fw-700 c-name">{{pk.approved}}</view>
-                                        <view class="w-30"></view>
-                                        <view class="rus fs-30 fw-700 c-name">{{pk.approving}}</view>
-                                    </view>
-                                    <view class="fs-30 fw-700">111</view>
-                                </view>
-                                <view class="css br-20 b-white pr-3vw pl-3vw">
+             
+                                <view class="css br-20 b-white mt-4vw pr-3vw pl-3vw">
                                     <view class="rbc ">
 
                                         <view class="rcc">
@@ -27,9 +20,17 @@
 
 
 
-                                        <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                            <view class="rcc fs-25 fw-400 c-4">进入相册</view>
-                                            <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                                        <view class="rcc pt-40 pb-40"  >
+                                
+                                            <view class="rcc"  data-pkid="{{pk.pkId}}" data-index="{{bindex1}}" bindtap="addToPreHome">
+                                                <view wx:if="{{pk.priority}}" >
+                                                    <view class="fs-30 fw-400 c-red">修改优先级({{pk.priority}})</view>
+                                                </view>
+                                                <view wx:else class="rcc">
+                                                     <view class="fs-30 fw-400 c-5">添加到主页预览</view>
+                                                </view>
+                                            </view>
+
                                         </view>
                                     </view>
                                     <view class="rss" data-pkid="{{pk.pkId}}" bindtap="viewPk">
@@ -92,9 +93,13 @@
                                     <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
                                     <view class="rbc c-word-7">
                                         <view class="rcc">
-                                            <view class="{{pk.user.userType === 0?'fs-25 fw-400 c-5':'fs-25 fw-400 c-red'}}">{{pk.user.userType === 0?'普通用户':'遗传用户'}}</view>
-                                            <view class="w-20"></view>
-                                            <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name">{{pk.user.userName}}</view>
+                                            <view class="{{pk.user.userType === 0?'fs-25 fw-400 c-3':'fs-25 fw-400 c-red'}}">{{pk.user.userType === 0?'普通用户':'遗传用户'}}</view>
+                                            <view class="w-30"></view>
+                                            <view class="rus fs-25 fw-400 c-name">{{pk.approved}}</view>
+                                            <view class="w-30"></view>
+                                            <view class="rus fs-25 fw-400 c-name">{{pk.approving}}</view>
+                                        
+
                                         </view>
                                         
 
