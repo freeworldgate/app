@@ -42,15 +42,15 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tab, true);
-    httpClient.addHandler("success", function (pks) {
-      that.setData({
-          pks:pks,
-          page:1,
-      })
-      wx.stopPullDownRefresh({
-        complete: (res) => {},
-      })
-    })
+    // httpClient.addHandler("success", function (pks) {
+    //   that.setData({
+    //       pks:pks,
+    //       page:1,
+    //   })
+    //   // wx.stopPullDownRefresh({
+    //   //   complete: (res) => {},
+    //   // })
+    // })
     httpClient.send(request.url.queryInvites, "GET", {});
   },
 

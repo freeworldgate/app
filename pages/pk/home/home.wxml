@@ -1,7 +1,7 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
 <view class="css " style="flex:1" >
 
-    <view hidden="{{pks.length === 0}}" class="absolute userBack" ></view>
+    <view hidden="{{pks.length === 0}}" class="absolute userBack cardback6" style="background-image: url({{imgBack}});"></view>
 
 
     <view style="height:{{top}}px"></view>
@@ -17,6 +17,11 @@
         <view class="rcc">
             <navigator url="/pages/manage/pksorts/pksorts" class="rcc ">
                 <view class="rcc fs-30 fw-400">Pk排名</view>
+            </navigator>
+        </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/backImg/backImg" class="rcc ">
+                <view class="rcc fs-30 fw-400">PK背景图片</view>
             </navigator>
         </view>
         <view class="rcc">

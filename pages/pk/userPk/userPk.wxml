@@ -3,7 +3,7 @@
 <view class="css page">
 
 
-    <view class="absolute userBack" ></view>
+    <view class="absolute userBack cardback6" style="background-image: url({{imgBack}});"></view>
     <!-- 头部 -->
     <!-- <view class="css h-500">
 

@@ -73,6 +73,19 @@ Page({
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
     var fromUserId = wx.getStorageSync('fromUser');
+
+    httpClient.addHandler("error", function (tip) {
+
+      template.createOperateDialog(that).show("提示",tip,function(){
+        wx.reLaunch({
+          url: '/pages/pk/home/home',
+        })
+
+    },function(){});
+
+    })
+
+
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});
     
     that.setData({

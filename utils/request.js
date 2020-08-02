@@ -1,6 +1,6 @@
 // var host = 'http://www.211shopper.com'; 
-// var host = 'http://192.168.137.1:8080'; 
-var host = 'http://192.168.43.67:8080'; 
+var host = 'http://192.168.137.1:8080'; 
+// var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
@@ -178,9 +178,19 @@ var url = {
         addToPreHome:`${host}/pk/addToPreHome`, 
         removePkFromHomPage:`${host}/pk/removePkFromHomPage`, 
         setAlbumType:`${host}/pk/setAlbumType`, 
-
-
         
+        moreBackImgs:`${host}/pk/moreBackImgs`, 
+        queryBackImgs:`${host}/pk/queryBackImgs`, 
+        removeImg:`${host}/pk/removeImg`, 
+        uploadBackImg:`${host}/pk/uploadBackImg`, 
+
+        addPreUser:`${host}/pk/addPreUser`, 
+        morePreUsers:`${host}/pk/morePreUsers`, 
+        queryPreUsers:`${host}/pk/queryPreUsers`, 
+        editUserName:`${host}/pk/editUserName`, 
+        editUserImg:`${host}/pk/editUserImg`, 
+
+
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

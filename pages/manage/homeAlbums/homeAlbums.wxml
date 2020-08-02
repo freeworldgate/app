@@ -2,7 +2,12 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
 <view class="css " style="flex:1" >
 
-  
+    <view class="rac pt-50 pb-50">
+        <view class="{{albumType === 1?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="1">全部相册</view>
+        <view class="{{albumType === 2?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="2">遗传相册</view>
+        <view class="{{albumType === 3?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="3">内置相册</view>
+        <view class="{{albumType === 4?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="4">审核相册</view>
+    </view>
 
     
     <view wx:if="{{pks.length > 0}}" class="css z2" >
@@ -26,7 +31,7 @@
                                             <view class="rcc pt-40 pb-40"  >
                                                 <view class="fs-30 fw-400 c-name">{{pk.pkType}}</view>
                                                 <view class="w-30"></view>
-                                                <view class="fs-30 fw-400 c-red">优先级({{pk.priority}})</view>
+                                                <view class="fs-30 fw-400 c-red"  data-pkid="{{pk.pkId}}" data-index="{{bindex1}}" bindtap="addToPreHome">优先级({{pk.priority}})</view>
                                                 <view class="w-30"></view>
                                                 <view class="fs-30 fw-700 c-5" data-pkid="{{pk.pkId}}" data-index="{{bindex1}}" bindtap="removePk">移除</view>
               

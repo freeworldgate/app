@@ -19,7 +19,7 @@ Page({
    */
   data: {
 
-
+    albumType:1,
 
     pks: [],
 
@@ -38,6 +38,7 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
+  wx.setStorageSync('albumType',1);
   that.queryInvites();
 
 
@@ -50,8 +51,8 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-
-    httpClient.send(request.url.queryPreHomePage, "GET", {  });
+    var albumType = wx.getStorageSync('albumType');
+    httpClient.send(request.url.queryPreHomePage, "GET", {type:albumType  });
 
 
   },
@@ -112,7 +113,7 @@ Page({
    */
   onPullDownRefresh:function (params) {
     var that = this;
-    that.queryInvites("");
+    that.queryInvites("label");
 },
 
   /**
@@ -131,7 +132,8 @@ Page({
             pks:that.data.pks.concat(pagePks)
         })
       })
-      httpClient.send(request.url.morePreHomePage, "GET",{ page:that.data.page});
+      var albumType = wx.getStorageSync('albumType');
+      httpClient.send(request.url.morePreHomePage, "GET",{ page:that.data.page,type:albumType});
     
   },
 
@@ -232,7 +234,8 @@ Page({
     var pkid = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
     var type = res.currentTarget.dataset.type;
-    template.createEditNumberDialog(that).show("设置次数", 20,"", function (value) {
+    if(parseInt(type) === 3)
+    {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function (pk) {
@@ -241,11 +244,61 @@ Page({
           pks: that.data.pks
         })
       })
-      httpClient.send(request.url.setAlbumType, "GET",{pkId:pkid,type:type,value:value});
+      httpClient.send(request.url.setAlbumType, "GET",{pkId:pkid,type:type,value:0});
+    }
+    else
+    {
+      template.createEditNumberDialog(that).show("设置次数", 20,"", function (value) {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function (pk) {
+          that.data.pks.splice(index, 1,pk); 
+          that.setData({
+            pks: that.data.pks
+          })
+        })
+        httpClient.send(request.url.setAlbumType, "GET",{pkId:pkid,type:type,value:value});
+  
+      },function(){});
+  
+    }
 
-  },function(){});
+  },
+  addToPreHome:function(res)
+  {
+
+
+      var that = this;
+      var pkid = res.currentTarget.dataset.pkid;
+      
+      var index = res.currentTarget.dataset.index;
+      template.createEditNumberDialog(that).show("设置优先级", 20,"", function (value) {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function (pk) {
+          that.data.pks.splice(index, 1,pk); 
+          that.setData({
+            pks: that.data.pks
+          })
+
+        })
+        httpClient.send(request.url.addToPreHome, "GET",{pkId:pkid,value:value});
+
+    },function(){});
 
   },
 
+  albumType:function(res)
+  {
+    var that = this;
+    var type = res.currentTarget.dataset.type;
+    wx.setStorageSync('albumType', parseInt(type))
+    that.setData({
+      albumType: parseInt(type)
+    })
+    that.queryInvites("label");
+
+
+  }
 
 })

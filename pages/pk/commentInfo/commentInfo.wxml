@@ -1,11 +1,26 @@
 <!--pages/pk/commentInfo/commentInfo.wxml-->
 <!--pages/pk/messageInfo/messageInfo.wxml-->
-<view class="cas b-48" style="height:100vh">
+<view  class="cbs h-100vh cardback7"  style="background-image: url({{message.imgBack}});">
 
-      
+        <view class="css">
+            <view style="height:{{top}}px"></view>
+            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
+                <view class="rcc">
+                    <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
+                </view>
+                <view class="rcs c-4">
+                    <view class="rcc fs-30 fw-400 c-white">留言</view>
+       
+
+                </view>
+                
+                
+            </view>
+        </view>
+
 
         <view class="css pl-4vw pr-4vw ">
-            <view class="css b-white br-20 pl-4vw pr-4vw ">
+            <view class="css b-post br-20 pl-4vw pr-4vw ">
 
                             <view class="rbs ">
                                 
@@ -15,18 +30,18 @@
 
 
                                 <view class="rcc pb-30 pt-30">
-                                    <view class="rcc fs-25 fw-400 c-3">{{message.date}}</view>
+                                    <view class="rcc fs-25 fw-400 c-3-1">{{message.date}}</view>
                                 </view>
 
 
                                 <view class="rcc pt-30 pb-30">
                                     <view wx:if="{{(user.userId===message.user.userId) && (message.statu.key === 3) }}" class="rcc "  bindtap="approverComment" >
-                                        <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
+                                        <image class="w-30 h-30" mode="aspectFit" src="/images/write2.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-4">{{message.word1}}</view>
+                                        <view  class="rcc fs-25 fw-400 c-white">{{message.word1}}</view>
                                     </view>
 
-                                    <view wx:else class="rcc  fs-25 fw-400 c-4">{{message.word2}}</view>
+                                    <view wx:else class="rcc  fs-25 fw-400 c-white">{{message.word2}}</view>
                                 </view>
                                 
                     
@@ -35,18 +50,19 @@
 
                             <view class="ccc">
 
-                                            <view class="rcc w-140 h-140 br-140 b-white border13">
-                                                <image class="h-120 w-120 br-120" mode="aspectFill" src="{{message.user.imgUrl}}" ></image>
+                                            <view class="rcc w-150 h-150 br-150 b-white">
+                                                <image class="h-140 w-140 br-140" mode="aspectFill" src="{{message.user.imgUrl}}" ></image>
                                             </view>
                                             <view class="h-20"></view>
                                             <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
                                             <view class="h-20"></view>
-                                            <view class="rus  fs-30 fw-700 line-1-center c-word-6 w-300">{{message.user.userName}}</view>
+                                            <view class="rus  fs-30 fw-700 line-1-center c-white w-300">{{message.user.userName}}</view>
                                   
                             </view>
 
                             <view class="css pt-30 pb-30">
-                                <view class="rcc-wrap  fs-30 fw-400 line-5-center c-word-5">{{message.text}}</view>
+                                <view class="rcc-wrap  fs-30 fw-400 line-5-center c-white">{{message.text}}</view>
+                                <!-- <view class="rcc-wrap  fs-30 fw-400 line-5-center c-word-5">{{message.text}}</view> -->
                                 <view class="h-30"></view>
                                 <image class="rcc h-84vw w-84vw br-15" src="{{message.imgUrl}}" mode="aspectFill"></image>
                             </view>

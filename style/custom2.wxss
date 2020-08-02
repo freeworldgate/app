@@ -316,6 +316,7 @@
 .m-20{margin: 20rpx;}
 .m-10{margin: 10rpx;}
 .m-5{margin: 5rpx;}
+.m-1vw{margin:1vw;}
 .mr-5{
   margin-right: 5rpx;
 }
@@ -496,6 +497,15 @@
 .h-10vw{
   height: 10vw;
 }
+.h-14vw{
+  height: 14vw;
+}
+.h-15vw{
+  height: 15vw;
+}
+.h-19vw{
+  height: 19vw;
+}
 .h-20vw{
   height: 20vw;
 }
@@ -616,10 +626,12 @@
 .h-10vw{height: 10vw;}
 .w-12vw{width: 12vw;}
 .w-14vw{width: 14vw;}
+.w-15vw{width: 15vw;}
 .h-12vw{height: 12vw;}
 .w-18vw{
   width: 18vw;
 }
+.w-19vw{width: 19vw;}
 .w-20vw{
   width: 20vw;
 }
@@ -922,6 +934,9 @@ mw-200{
 }
 .b-pk{
   background-image: linear-gradient(to right, #887845 100%, #829465 100%);
+}
+.b-post{
+  background-image: linear-gradient(to right, #a5a5a552 100%, #a2a2a256 100%);
 }
 .b-45{
   background-color: rgba(218, 218, 218, 0.5);
@@ -1709,14 +1724,23 @@ button::after {
 }
 .cardback6{
   /* background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg"); */
-  background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/png/back1000.jpg");
+  background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%);
 
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: bottom;
+  
+  background-position: top;
 }
 
+.cardback7{
+  /* background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg"); */
+  /* background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%); */
 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
+  background-position: center;
+}
 
 
 
