@@ -45,7 +45,7 @@
     "pages/manage/homeAlbums/homeAlbums",
     "pages/manage/preUsers/preUsers",
     "pages/manage/backImg/backImg",
-
+    "pages/manage/appManage/appManage",
 
     "pages/test/page/page",
     "pages/test/template/template",
@@ -83,6 +83,11 @@
       "iconPath": "images/pk.png",  
       "selectedIconPath": "images/pk.png", 
       "text": "邀请"
+    },{
+      "pagePath": "pages/manage/appManage/appManage",
+      "iconPath": "images/pk.png",  
+      "selectedIconPath": "images/pk.png", 
+      "text": "管理"
     }]
   },
   "networkTimeout": {

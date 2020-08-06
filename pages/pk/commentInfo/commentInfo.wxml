@@ -56,7 +56,7 @@
                                             <view class="h-20"></view>
                                             <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
                                             <view class="h-20"></view>
-                                            <view class="rus  fs-30 fw-700 line-1-center c-white w-300">{{message.user.userName}}</view>
+                                            <view class="rus  fs-30 fw-700 line-1-center c-10 w-300">{{message.user.userName}}</view>
                                   
                             </view>
 

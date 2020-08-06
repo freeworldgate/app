@@ -23,7 +23,7 @@
                                         </view>
             </view>
 
-            <view class="css"  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
+            <view class="css"  data-pkid="{{pk.pk.pkId}}" bindtap="approverMessageDetail">
                                                                                 <view class="h-30 b-line"></view>
                                                                                 <view class="h-30"></view>
                                                                                 <view class="rss">

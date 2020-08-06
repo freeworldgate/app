@@ -48,6 +48,9 @@ Page({
 
 
   },
+  back:function(){wx.navigateBack({
+    complete: (res) => {},
+  })},
   approverComment:function () {
     
 

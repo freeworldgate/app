@@ -1,16 +1,31 @@
 <!--pages/pk/selectApprover/selectApprover.wxml-->
-<view class="css" style="min-height:100vh">
+<view  class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
+
+        <view class="css">
+            <view style="height:{{top}}px"></view>
+            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
+                <view class="rcc">
+                    <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
+                </view>
+                <view class="rcs c-4">
+                    <view class="rcc fs-30 fw-400 c-white">{{t1}}</view>
+       
+
+                </view>
+                
+                
+            </view>
+        </view>
 
 
 
 
 
 
-    <view class="cas" style="flex:1">
 
         <view class="css pr-3vw pl-3vw">
     
-                <view class="css br-20 b-white mt-4vw">
+                <view class="css br-20 b-post mt-4vw">
 
                                         <view class="rss pl-4vw pr-4vw pt-50 ">
                                             <view class="ccs">
@@ -22,13 +37,13 @@
                                             <view class="w-4vw"></view>
                                             <view class="css" style="flex:1">
                                                 <view class="rbc-nowrap">
-                                                    <view class="rus  fs-30 fw-700 line-1-start c-word-6 w-200">{{userPost.creator.userName}}</view>
+                                                    <view class="rus  fs-30 fw-700 line-1-start c-10 w-200">{{userPost.creator.userName}}</view>
                                         
-                                                    <view class="rcc fs-25 fw-400 c-4">{{userPost.time}}</view>  
+                                                    <view class="rcc fs-25 fw-400 c-3-1">{{userPost.time}}</view>  
                                                 </view>
 
                                                 <view class="rbc-nowrap ">
-                                                    <view class="rus fs-30 fw-400 line-3-start c-word-5">{{userPost.topic}}</view>
+                                                    <view class="rus fs-30 fw-400 line-3-start c-white">{{userPost.topic}}</view>
                                                     <view></view>
                                                 </view>
 
@@ -59,15 +74,15 @@
                                         </view>
 
                                         <view class="css ">
-                                                                                <view class="h-30"></view>
+                                                                             
                                                                                 <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
-                                                                                            <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">审核留言</view>
+                                                                                            <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
+                                                                                            <view class="rcc fs-25 fw-400 c-white pl-10">{{t2}}</view>
                                                                                           
                                                                                         </view>
                                                                                         <view class="rcc">
-                                                                                            <view class="rcc fs-25 fw-400 c-4"> {{pkComment.date?pkComment.date:""}}</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-3-1"> {{pkComment.date?pkComment.date:""}}</view>
                                                                                             
                                                                                         </view>
 
@@ -83,11 +98,11 @@
                                                                                                     </view>
                                                                                                     <view class="w-4vw"></view>
                                                                                                     <view class="css" style="flex:1" >
-                                                                                                        <view class="rus fs-30 fw-400 line-3-start c-word-6">{{pkComment.text}}</view>
+                                                                                                        <view class="rus fs-30 fw-400 line-3-start c-white">{{pkComment.text}}</view>
                                                                                                     </view>
                                                                                                     <view class="w-4vw"></view>
                                                                                                     <view class="rcc">
-                                                                                                        <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
+                                                                                                        <image class="w-25 h-25" mode="aspectFit" src="/images/right4.png"></image>
                                                                                                     </view>
                                                                                             </view>    
                                                                                     </view>
@@ -95,9 +110,9 @@
                                                                                 <view wx:else class="rcc h-150  pl-4vw pr-4vw">
                                                                     
                                                                                             <view  class="rcc p-30"  bindtap="approverComment">
-                                                                                                <image class="w-35 h-35" mode="aspectFit" src="/images/write.png"></image>
-                                                                                                <view  class="w-10"></view>
-                                                                                                <view  class="rcc fs-25 fw-400 c-4">编辑留言</view>
+                                                                                                <!-- <image class="w-35 h-35" mode="aspectFit" src="/images/write2.png"></image>
+                                                                                                <view  class="w-10"></view> -->
+                                                                                                <view  class="rcc fs-25 fw-400 c-5">编辑留言</view>
                                                                                             </view>
                                                                          
                                                                                 
@@ -141,13 +156,13 @@
                                     <view class="fs-30 fw-400">转发审核群</view>
                                     <view class="w-80"></view>
                                 </button>
-                                <button wx:else type=""  class="rcc message h-100 br-100 b-card ">
+                                <view wx:else type=""  class="rcc h-100 br-100 b-post ">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400 c-3-1">转发审核群</view>
                                     <view class="w-80"></view>
-                                </button>
+                                </view>
 
 
 
@@ -157,7 +172,7 @@
 
         <view></view>
 
-    </view>
+ 
     
 
 

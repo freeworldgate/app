@@ -1,73 +1,16 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
 <view class="css " style="flex:1" >
 
-    <view hidden="{{pks.length === 0}}" class="absolute userBack cardback6" style="background-image: url({{imgBack}});"></view>
+    <view hidden="{{pks.length === 0}}" class="absolute userBack cardback8" style="background-image: url({{imgBack}});">
+        
+    </view>
 
 
     <view style="height:{{top}}px"></view>
     <view style="height:32px"></view>
 
 
-    <view class="rac pt-30 pb-30 z2">
-        <view class="rcc">
-            <navigator url="/pages/manage/complainPk/complainPk" class="rcc ">
-                <view class="rcc fs-30 fw-400">投诉处理</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/pksorts/pksorts" class="rcc ">
-                <view class="rcc fs-30 fw-400">Pk排名</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/backImg/backImg" class="rcc ">
-                <view class="rcc fs-30 fw-400">PK背景图片</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/activePk/activePk" class="rcc ">
-                <view class="rcc fs-30 fw-400">开榜激活</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/approvePost/approvePost" class="rcc">
-                <view class="rcc fs-30 fw-400">审核榜帖</view>
-            </navigator>
-        </view>
-    </view>
 
-    <view class="rac pt-30 pb-30 z2">
-
-        <view class="rcc">
-            <navigator url="/pages/manage/preAlbums/preAlbums" class="rcc">
-                <view class="rcc fs-30 fw-400">内置相册</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/homeAlbums/homeAlbums" class="rcc">
-                <view class="rcc fs-30 fw-400">主页展示设置</view>
-            </navigator>
-        </view>
-
-        <view class="rcc">
-            <navigator url="/pages/manage/preUsers/preUsers" class="rcc">
-                <view class="rcc fs-30 fw-400">内置用户</view>
-            </navigator>
-        </view>
-
-
-
-        <view class="rcc">
-            <navigator url="/pages/manage/cashiers/cashiers" class="rcc">
-                <view class="rcc fs-30 fw-400">收款</view>
-            </navigator>
-        </view>
-        <view class="rcc">
-            <navigator url="/pages/manage/setting/setting" class="rcc">
-                <view class="rcc fs-30 fw-400">设置</view>
-            </navigator>
-        </view>
-    </view>
 
 
     
@@ -186,7 +129,7 @@
             <view class="rcc">
                 <image class="h-300 w-300" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" ></image>
             </view>
-            <view class="fs-30 fw-400 c-3-1">暂无内容</view>
+            <view class="fs-30 fw-400 c-3-1">下拉刷新</view>
         
     </view>
    

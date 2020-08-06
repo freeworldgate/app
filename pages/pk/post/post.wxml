@@ -1,4 +1,4 @@
-<view class="css h-100vh cardback7"  style="background-image: url({{imgBack}});">
+<view class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
 
 
 
@@ -20,8 +20,8 @@
 
   </view>
 
-  <view class="csc" style="flex:1">
-    <!-- <view class="h-50"></view> -->
+  <view class="csc" >
+
     <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-post br-20 ">
     
 
@@ -80,23 +80,36 @@
                                             <view class="rus  fs-40 fw-700 line-1-center c-word-6 w-300">{{post.creator.userName}}</view>
                                             <view class="h-30" ></view>
           </view> -->
-<!-- 
-          <view class="rcc">
-             <view class="rcc w-180 h-60 br-60 border16 b-white " bindtap="{{post.statu.key ===3 ?'goApproving':''}}">
-                <image class="rcc w-30 h-30" mode="aspectFit" src="/images/approve2.png"></image>
-                <view class="w-10"></view>
-                <view class="rcc fs-25 fw-400 c-red">{{post.statu.name}}</view>
-                <image hidden="{{post.statu.key !=3}}" class="rcc w-25 h-25" mode="aspectFit" src="/images/rright.png"></image>
-             </view>
-             
+          <view class="rss pl-1vw pr-1vw pt-50 pb-30">
+                                            <view class="ccs">
+                                                <view class="rcc">                  
+                                                    <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>                
+                                                </view>
+                                            </view>
+
+                                            <view class="w-4vw"></view>
+                                            <view class="css" style="flex:1">
+                                                <view class="rbc-nowrap">
+                                                    <view class="rus  fs-30 fw-700 line-1-start c-10 w-200">{{post.creator.userName}}</view>
+                                        
+                                                    <view class="rcc fs-25 fw-400 c-3-1">{{post.time}}</view>  
+                                                </view>
+
+                                                <view class="rbc-nowrap ">
+                                                    <view class="rus fs-30 fw-400 line-3-start c-white">{{post.topic}}</view>
+                                                    <view></view>
+                                                </view>
+
+                                                        
+                                            </view>
+                                
+        
+          </view>   
 
 
-
-          </view> -->
-
-          <view class="css pt-20 pb-50">
+          <!-- <view class="css pt-20 pb-50">
               <view class="rcc-wrap c-white line-5-center">{{post.topic}}</view>
-          </view>                          
+          </view>                           -->
 
           <view class="css">
                                                 <view class="rbc">
@@ -198,15 +211,16 @@
 
 
       </view>
-      <view class="h-30"></view>
+      <view class="{{post.selfComment?'h-50':'h-100'}}"></view>
 
     </view>
-    <!-- <view class="h-50"></view> -->
+
 
 
   
   </view>
-
+  <view></view>
+  <view class="rcc fs-25 fw-400 c-3-1 p-20">点击图片中心区域可替换文件</view>
 </view>
 
 

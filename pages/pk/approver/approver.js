@@ -51,7 +51,9 @@ Page({
 
   },
 
-
+  back:function(){wx.navigateBack({
+    complete: (res) => {},
+  })},
   
   approverComment:function(){
 
@@ -128,6 +130,11 @@ Page({
     var voiceUrl = res.currentTarget.dataset.voiceurl;
     var speck_time = res.currentTarget.dataset.specktime;
     template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
+  },
+  relaunch:function (params) {
+    wx.reLaunch({
+      url: '/pages/pk/home/home',
+    })
   }
   
 })

@@ -3,7 +3,7 @@
 <view class="css page">
 
 
-    <view class="absolute userBack cardback6" style="background-image: url({{imgBack}});"></view>
+    <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view>
     <!-- 头部 -->
     <!-- <view class="css h-500">
 
@@ -55,15 +55,15 @@
                     </view>
                     <view class="rac pt-20">
                         <view class="ccc ">
-                            <view class="fs-30 fw-700 ">4</view>
+                            <view class="fs-30 fw-700 h-40">{{pkTimes}}</view>
                             <view class="fs-30 fw-400 c-3">我的榜单</view>
                         </view>
                         <view class="ccc p-20">
-                            <view class="fs-30 fw-700 ">4</view>
+                            <view class="fs-30 fw-700 h-40">{{leftPks}}</view>
                             <view class="fs-30 fw-400 c-3">剩余榜单</view>
                         </view>    
                         <view class="ccc p-20">
-                            <view class="fs-30 fw-700 ">4</view>
+                            <view class="fs-30 fw-700 h-40">{{inviteTimes}}</view>
                             <view class="fs-30 fw-400 c-3">我的邀请</view>
                         </view> 
                     </view>

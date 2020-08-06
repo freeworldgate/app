@@ -5,11 +5,12 @@
     <view class="css">
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
-                <view class="rcc">
-                    <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
+                <view class="rcc h-32px w-32px br-32px b-white z102" bindtap="relaunch">
+                    <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
                 </view>
+                <view class="w-20"></view>
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-white">审核榜帖</view>
+                    <view class="rcc fs-30 fw-400 c-white">{{t4}}</view>
        
 
                 </view>
@@ -33,8 +34,8 @@
                                             <view class="w-4vw"></view>
                                             <view class="css" style="flex:1">
                                                 <view class="rbc-nowrap">
-                                                    <view class="rus  fs-30 fw-700 line-1-start c-word-6 w-200">{{userPost.creator.userName}}</view>
-                                        
+                                                    <!-- <view class="rus  fs-30 fw-700 line-1-start c-word-6 w-200">{{userPost.creator.userName}}</view> -->
+                                                    <view class="rus  fs-30 fw-700 line-1-start c-10 w-200">{{userPost.creator.userName}}</view>
                                                     <view class="rcc fs-25 fw-400 c-3-1">{{userPost.time}}</view>  
                                                 </view>
 
@@ -193,27 +194,27 @@
     <view class="rcc">
             <!-- 审核按钮 -->
             <view class="rcc">
-                                <button wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId)}}" type="" bindtap="agree" class="rcc message h-100 br-100 b-white">
+                                <view wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId)}}" type="" bindtap="agree" class="rcc h-100 br-100 b-white">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve3.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400">{{t1}}</view>
                                     <view class="w-80"></view>
-                                </button>
-                                <button wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc message h-100 w-400 br-100 b-approve">
+                                </view>
+                                <view wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc  h-100 w-400 br-100 b-post">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400 c-3-1">{{t2}}</view>
                                     <view class="w-80"></view>
-                                </button>
-                                <button wx:else type=""  class="rcc message h-100 w-400 br-100 b-approve ">
+                                </view>
+                                <view wx:else type=""  class="rcc  h-100 w-400 br-100 b-post ">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400 c-3-1">{{t1}}</view>
                                     <view class="w-80"></view>
-                                </button>
+                                </view>
 
 
 
@@ -221,7 +222,7 @@
 
     </view>
 
-
+    <view></view>
 
     
 

@@ -1432,7 +1432,7 @@ mw-200{
 }
 
 .message{
-  background-color: none;
+  /* background-color: none; */
   line-height: 1;
   margin:0;
 
@@ -1742,7 +1742,15 @@ button::after {
   background-position: center;
 }
 
+.cardback8{
+  /* background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg"); */
+  background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%);
 
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  
+  background-position: top;
+}
 
 
 

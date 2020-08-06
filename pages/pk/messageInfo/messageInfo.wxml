@@ -55,7 +55,7 @@
                                             <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
                                             <view class="h-20"></view>
                                             <!-- <view class="rus  fs-30 fw-700 line-1-center c-word-6 w-300">{{creator.userName}}</view> -->
-                                            <view class="rus  fs-35 fw-700 line-1-center c-white w-300">{{creator.userName}}</view>
+                                            <view class="rus  fs-35 fw-700 line-1-center c-10 w-300">{{creator.userName}}</view>
                             </view>
 
                             <view class="css pt-30 pb-30">
@@ -75,7 +75,7 @@
               <button wx:else class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >{{buttonStr}}</button>
         </view>
 
-        <view></view>
+        <view class="rcc fs-25 fw-400 c-3-1 p-20">{{word3}}</view>
      
 </view>
 <view wx:else class="cbs" style="height:100vh">

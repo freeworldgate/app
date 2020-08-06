@@ -47,7 +47,9 @@ Page({
 
   },
 
-
+  back:function(){wx.navigateBack({
+    complete: (res) => {},
+  })},
 
   approverCommentDetail:function(){
     wx.setStorageSync('comment', this.data.pkComment)

@@ -1,7 +1,7 @@
 <!--pages/pk/invite/invite.wxml-->
 <view class="css" style="flex:1" >
 
-    <view hidden="{{pks.length === 0}}" class="absolute userBack cardback6" style="background-image: url({{imgBack}});"></view>
+    <view hidden="{{pks.length === 0}}" class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view>
 
 
     <view style="height:{{top}}px"></view>

@@ -18,7 +18,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    leftPks:0,
+    pkTimes:0,
+    inviteTimes:0,
     pks: [],
 
   },
