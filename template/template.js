@@ -165,15 +165,40 @@ function createDialog(page) {
     return page.dialog;
   }
   var dialog = new Object();
-  dialog.visible = false;
-  dialog.title = "",
+    dialog.visible = false;
+    dialog.title = "",
     dialog.text = "",
     dialog.show = function (title, text) {
+      var tipBack = wx.getStorageSync('tipBack');
+      var tipImg = wx.getStorageSync('tipImg');
+      var backUrl = tipBack?tipBack:request.tipBack;
+      var imgUrl = tipImg?tipImg:request.tipImg;
+
       page.setData({
+        'dialog.tipBack': backUrl,
+        'dialog.tipImg': imgUrl,
         'dialog.title': title,
         'dialog.text': text,
         'dialog.visible': true,
       })
+
+  
+
+  
+      var httpClient = createHttpClient(page);
+      httpClient.setMode("", false);
+      httpClient.addHandler("success", function (tip) {
+          wx.setStorageSync('tipBack', tip.tipBack);
+          wx.setStorageSync('tipImg', tip.tipImg);
+      })
+      httpClient.send(request.url.updateTipBack , "GET",{});
+
+
+
+
+
+
+
     }
   dialog.hide = function () {
     page.setData({
@@ -220,20 +245,39 @@ function createOperateDialog(page) {
   var operateDialog = new Object();
   operateDialog.visible = false;
   operateDialog.title = "",
-    operateDialog.text = "",
-    operateDialog.statu = 0;
+  operateDialog.text = "",
+  operateDialog.statu = 0;
   operateDialog.confirm = function () { };
   operateDialog.cancel = function () { };
 
   operateDialog.show = function (title, text, confirm, cancel) {
+    var tipBack = wx.getStorageSync('tipBack');
+    var tipImg = wx.getStorageSync('tipImg');
+    var backUrl = tipBack?tipBack:request.tipBack;
+    var imgUrl = tipImg?tipImg:request.tipImg;
+
+
     operateDialog.confirm = confirm;
     operateDialog.cancel = cancel;
-
     page.setData({
+      'operateDialog.tipBack': backUrl,
+      'operateDialog.tipImg': imgUrl,
       'operateDialog.title': title,
       'operateDialog.text': text,
       'operateDialog.visible': true,
     })
+
+    var httpClient = createHttpClient(page);
+    httpClient.setMode("", false);
+    httpClient.addHandler("success", function (tip) {
+        wx.setStorageSync('tipBack', tip.tipBack);
+        wx.setStorageSync('tipImg', tip.tipImg);
+    })
+    httpClient.send(request.url.updateTipBack , "GET",{});
+
+
+
+
   }
   operateDialog.hide = function () {
 

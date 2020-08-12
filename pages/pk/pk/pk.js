@@ -240,7 +240,7 @@ Page({
     
 
     return {
-        title: '邀请打榜',
+        title: '邀请打榜@'+ that.data.pkDetail.topic ,
         desc: "from",
         imageUrl:that.data.creator.imgUrl,
         path: '/pages/pk/pk/pk?pkId=' + that.data.pkId + "&fromUser=" + that.data.user.userId ,

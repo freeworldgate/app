@@ -4,10 +4,10 @@
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
                 <view class="rcc">
-                    <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
+                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
                 </view>
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-white">{{date}}</view>
+                    <view class="rcc fs-30 fw-400 c-4">{{date}}</view>
        
 
                 </view>
@@ -29,17 +29,17 @@
 
 
                                 <view class="rcc pb-30 pt-30">
-                                    <view class="rcc  fs-25 fw-400 c-white">{{message.time}}</view>
+                                    <view class="rcc  fs-25 fw-400 c-3">{{message.time}}</view>
                                 </view>
 
 
                                 <view class="rcc pt-30 pb-30">
                                     <view wx:if="{{user.userId===creator.userId}}" class="rcc "  bindtap="approverMessage" >
-                                        <image class="w-30 h-30" mode="aspectFit" src="/images/write2.png"></image>
+                                        <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-white">{{word1}}</view>
+                                        <view  class="rcc fs-25 fw-400 c-red">{{word1}}</view>
                                     </view>
-                                    <view wx:else class="rcc fs-25 fw-400 c-white">{{word2}}</view>
+                                    <view wx:else class="rcc fs-25 fw-400 c-5">{{word2}}</view>
                                 </view>
                                 
                     
@@ -55,11 +55,11 @@
                                             <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
                                             <view class="h-20"></view>
                                             <!-- <view class="rus  fs-30 fw-700 line-1-center c-word-6 w-300">{{creator.userName}}</view> -->
-                                            <view class="rus  fs-35 fw-700 line-1-center c-10 w-300">{{creator.userName}}</view>
+                                            <view class="rus  fs-35 fw-700 line-1-center c-12 w-300">{{creator.userName}}</view>
                             </view>
 
                             <view class="css pt-30 pb-30">
-                                <view class="rcc-wrap  fs-30 fw-400 line-5-center c-white">{{message.text}}</view>
+                                <view class="rcc-wrap  fs-30 fw-400 line-5-center c-4">{{message.text}}</view>
                                 <!-- <view class="rcc-wrap  fs-30 fw-400 line-5-center c-word-5">{{message.text}}</view> -->
                                 <view class="h-30"></view>
                                 <view class="rcc h-84vw w-84vw br-15" style="background-position: top;background-image: url({{message.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
@@ -75,7 +75,7 @@
               <button wx:else class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >{{buttonStr}}</button>
         </view>
 
-        <view class="rcc fs-25 fw-400 c-3-1 p-20">{{word3}}</view>
+        <view class="rcc fs-25 fw-400 c-4 p-20">{{word3}}</view>
      
 </view>
 <view wx:else class="cbs" style="height:100vh">
@@ -112,10 +112,10 @@
 <view>
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
-        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+        <view class="css b-white br-20" style="background-position: top;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
             </view>
             <view class="css">
@@ -150,10 +150,10 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20" style="background-position: top;background-image: url(https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg);background-repeat: no-repeat;background-size: 100% auto; ">
+        <view class="css b-white br-20" style="background-position: top;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png"></image>
+                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
             </view>
             <view class="css">

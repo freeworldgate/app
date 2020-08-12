@@ -5,6 +5,10 @@ var host = 'http://www.211shopper.com';
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
  
+var tipBack = 'https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg'; 
+var tipImg = 'https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png'; 
+
+
 var appinfo = { 
     appName:'APP1号', 
 }; 
@@ -189,7 +193,7 @@ var url = {
         queryPreUsers:`${host}/pk/queryPreUsers`, 
         editUserName:`${host}/pk/editUserName`, 
         editUserImg:`${host}/pk/editUserImg`, 
-
+        updateTipBack:`${host}/pk/updateTipBack`, 
 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
