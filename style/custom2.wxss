@@ -128,6 +128,9 @@
 .c-10{
   color: rgb(255, 174, 0);
 }
+.c-10-1{
+  color: rgb(251, 255, 0);
+}
 .c-11{
   color: rgb(136, 93, 0);
 }
@@ -703,7 +706,7 @@ mw-200{
   color: rgb(223, 214, 151);
 }
 .c-word-2{
-  color: rgb(202, 169, 134);
+  color: #a5825d;
 }
 .c-word-3{
   color: #ffffff;
@@ -719,6 +722,9 @@ mw-200{
 }
 .c-word-7{
   color: rgb(97, 88, 77);
+}
+.c-word-8{
+  color: rgb(164, 166, 167);
 }
 .b-card{
   background-color: rgba(255, 255, 255, 0.2);
@@ -872,14 +878,21 @@ mw-200{
 
 }
 .b-statu1{
-  background-image: linear-gradient(to right, #ffcc7583 0%, #e8a60080 100%);
+  background-image: linear-gradient(to right, #ffcc7528 0%, #e8a60027 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
   /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
 }
 .b-statu2{
-  background-image: linear-gradient(to right, #75c3ff88 0%, #3599db81 100%);
+  background-image: linear-gradient(to right, #81ff7533 0%, #35db7233 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+.b-message{
+  background-image: linear-gradient(to right, #a5a5a510 100%, #a2a2a20e 100%);
 
   /* background: radial-gradient(#4487c5,#4db3d8); */
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -1002,7 +1015,14 @@ mw-200{
 }
 
 
+.border-bottom-line1{
+  border-bottom: 1px dashed rgb(237, 237, 237); 
 
+}
+.border-top-line1{
+  border-top: 1px dashed rgb(237, 237, 237); 
+
+}
 .border0{
   border: 1px solid rgb(0, 146, 199); 
 }
@@ -1753,7 +1773,15 @@ button::after {
 }
 
 
+.cardback9{
+  /* background-image: url("https://fenghao211.oss-cn-beijing.aliyuncs.com/card/b6.jpg"); */
+  background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%);
 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
+  background-position: center;
+}
 
 
 
