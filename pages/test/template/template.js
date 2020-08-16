@@ -123,42 +123,42 @@ Page({
   dialog12: function () {
     var that = this;
     template.createSelectionDialog(this).setLayout('bottom', 'y')
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); template.createSelectionDialog(that).hide()  })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); template.createSelectionDialog(that).hide() })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC");template.createSelectionDialog(that).hide() }).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); template.createSelectionDialog(that).hide()  })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); template.createSelectionDialog(that).hide() })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC");template.createSelectionDialog(that).hide() }).show();
   },
 
   dialog13: function () {
     template.createSelectionDialog(this).setLayout("top", "x")
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC");}).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC");}).show();
 
   },
 
   dialog14: function () {
     template.createSelectionDialog(this).setLayout("top", "y")
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC"); }).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC"); }).show();
   },
   dialog15: function () {
     template.createSelectionDialog(this).setLayout("left", "x")
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC"); }).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC"); }).show();
   },
   dialog16: function () {
     template.createSelectionDialog(this).setLayout("right", "x")
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC"); }).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC"); }).show();
   },
   dialog17: function () {
     template.createSelectionDialog(this).setLayout("bottom", "x")
-      .addItem('/images/service.png', "选项A", function () { console.log("AAAA"); })
-      .addItem('/images/service.png', "选项B", function () { console.log("BBBB"); })
-      .addItem('/images/service.png', "选项C", function () { console.log("CCCC"); }).show();
+      .addItem('/images/load.gif', "选项A", function () { console.log("AAAA"); })
+      .addItem('/images/load.gif', "选项B", function () { console.log("BBBB"); })
+      .addItem('/images/load.gif', "选项C", function () { console.log("CCCC"); }).show();
   },
   dialog18: function () {
     template.createDownloadImageDialog(this).show("支付宝", "收款码",'https://oss.211shopper.com/mmqrcode1568277243642.png');

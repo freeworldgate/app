@@ -78,7 +78,7 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("", true);
     httpClient.addHandler("noApprove", function (urlPath) {
-      template.createOperateDialog(that).show("审核", "选择审核员...", function () {
+      template.createOperateDialog(that).show(that.data.t3, that.data.t4, function () {
           wx.navigateTo({
             url: urlPath,
           })
@@ -107,7 +107,7 @@ Page({
 
   editSelfComment:function(){
     var that = this;
-    template.createEditTextDialog(that).show("修改主题", "修改主题内容",that.data.post.selfComment, 60, function (text) {
+    template.createEditTextDialog(that).show(that.data.t5, that.data.t6,that.data.post.selfComment, 60, function (text) {
       
               // , urls
               var httpClient = template.createHttpClient(that);
@@ -143,7 +143,7 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("online", function () {
-      template.createOperateDialog(that).show("提示", "修改图片需要重新审核榜帖内容...", function () {
+      template.createOperateDialog(that).show("提示", that.data.t3, function () {
         that.replaceImage(index);
       }, function () {});
     })
@@ -227,7 +227,7 @@ Page({
 
   editText:function () {
     var that = this;
-    template.createEditTextDialog(that).show("修改主题", "修改主题内容",that.data.post.topic, 150, function (text) {
+    template.createEditTextDialog(that).show(that.data.t5, that.data.t6,that.data.post.topic, 150, function (text) {
       
               // , urls
               var httpClient = template.createHttpClient(that);

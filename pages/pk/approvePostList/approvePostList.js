@@ -79,7 +79,9 @@ Page({
   },
 
 
-
+  back:function(){wx.navigateBack({
+    complete: (res) => {},
+  })},
 
 
   

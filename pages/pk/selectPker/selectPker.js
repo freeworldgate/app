@@ -32,6 +32,14 @@ Page({
       wx.hideShareMenu({
         complete: (res) => {},
       })
+      var that = this;
+      inviteReq.getHeight(function (res) {
+        that.setData({
+          top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
+        })
+      })
+
+
       var pkId = options.pkId;
       this.setData({pkId:pkId})
       this.queryPkApprove(pkId);
@@ -118,6 +126,12 @@ Page({
     httpClient.send(request.url.viewActiveGroupCode, "GET",{cashierId:cashierId,pkId:pkId});   
 
   },
+
+
+  back:function(){wx.navigateBack({
+    complete: (res) => {},
+  })},
+
 
   /**
    * 用户点击右上角分享

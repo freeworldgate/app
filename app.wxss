@@ -10,6 +10,7 @@
 @import 'style/padding.wxss';
 @import 'style/font.wxss';
 @import 'style/custom.wxss';
+@import 'style/load.wxss';
 @import 'style/custom2.wxss';
 @import 'style/comp.wxss';
 @import 'style/compstyle1.wxss';

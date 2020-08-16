@@ -62,7 +62,7 @@ Page({
 
   approverComment:function(){
     var that = this;
-    template.createEditImageDialog(that).setDialog("留言", "编辑留言", 1, function () {
+    template.createEditImageDialog(that).setDialog(that.data.t3,that.data.t4, 1, function () {
 
     }, function (text, urls) {
       //上传成功
@@ -115,7 +115,7 @@ Page({
     httpClient.send(request.url.setApprover, "GET",{pkId: that.data.pkId,postId: that.data.postId})
 
     return {
-      title: '审核榜帖' +  "@" + that.data.creator.userName ,
+      title: that.data.t5 +  "@" + that.data.creator.userName ,
       desc: "from" + that.data.userPost.creator.userName + '',
       imageUrl:that.data.userPost.creator.imgUrl,
       path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId + "&fromUser=" + that.data.user.userId ,

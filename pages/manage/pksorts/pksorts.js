@@ -18,7 +18,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    albumType:0,
     pks: [],
 
   },
@@ -115,6 +115,15 @@ Page({
 
   },
   
+  albumType:function(res)
+  {
+    var that = this;
+    var type = res.currentTarget.dataset.type;
+    that.setData({
+      albumType: parseInt(type)
+    })
+
+  },
 
 
 

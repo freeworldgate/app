@@ -113,10 +113,10 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
-    <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
+    <view class="cac pageLoadingDialog" hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
-                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
             </view>
             <view class="rcc"></view>
         </view>
@@ -126,7 +126,7 @@
         <view></view>
         <view class="ccc ">
             <view class="rcc">
-                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
             </view>
             <view class="rcc"></view>
         </view>

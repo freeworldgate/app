@@ -628,8 +628,9 @@
     left: 0px;
 }
 .pageLoadingDialog_image{
-    width: 130rpx;
-    height: 130rpx;
+    width: 530rpx;
+    height: 530rpx;
+    border-radius: 530rpx;
     margin-bottom: 40rpx;
 }
 .labelLoadingDialog{

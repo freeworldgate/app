@@ -1,9 +1,9 @@
 <!--pages/pk/messageInfo/messageInfo.wxml-->
 <view wx:if="{{message}}" class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
-        <view class="css">
+        <view class="css " >
             <view style="height:{{top}}px"></view>
-            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
-                <view class="rcc">
+            <view class="rcs pl-4vw pr-4vw z10" style="height:32px" bindtap="back">
+                <view class="rcc ">
                     <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
                 </view>
                 <view class="rcs c-4">
@@ -178,7 +178,7 @@
     <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
-                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
             </view>
             <view class="rcc"></view>
         </view>
@@ -188,7 +188,7 @@
         <view></view>
         <view class="ccc ">
             <view class="rcc">
-                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/service.png"></image>
+                <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/errorpage.png"></image>
             </view>
             <view class="rcc"></view>
         </view>
