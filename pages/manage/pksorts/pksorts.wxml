@@ -27,9 +27,9 @@
                                         <view class="rcc pt-40 pb-40"  >
                                             <view class="fs-30 fw-400 c-name">{{pk.pkType}}</view>
                                             
-                                            <view hidden="{{pk.pkTypeValue === 1}}" class="w-30"></view>
+                                            <view  class="w-30"></view>
 
-                                            <view hidden="{{pk.pkTypeValue === 1}}" class="rcc"  data-pkid="{{pk.pkId}}" data-index="{{bindex1}}" bindtap="addToPreHome">
+                                            <view  class="rcc"  data-pkid="{{pk.pkId}}" data-index="{{bindex1}}" bindtap="addToPreHome">
 
                                                 <view wx:if="{{pk.priority}}" >
                                                     <view class="fs-30 fw-400 c-red">修改优先级({{pk.priority}})</view>
