@@ -49,9 +49,9 @@
                                         </view>
 
                                     <view class="css">
-                                        <view hidden="{{!pk.approveMessage}}" class="h-30 b-line"></view>
+                                        <view  class="h-30 b-line"></view>
                                         
-                                        <view hidden="{{!pk.approveMessage}}" class="css pt-30 pb-30 br-20 "  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
+                                        <view class="css pt-30 pb-30 br-20 "  data-pkid="{{pk.pkId}}" bindtap="approverMessageDetail">
                                                                                     <!-- <view class="h-30 b-line"></view>
                                                                                     <view class="h-30"></view> -->
                                                                                     <view class="rss">
@@ -106,7 +106,7 @@
                                                                                     
                                                                                     <!-- <view class="h-30 b-line"></view>                                                               -->
                                         </view>
-                                        <view hidden="{{!pk.approveMessage}}" class="h-30 t-line"></view>
+                                        <view class="h-30 t-line"></view>
                                     </view>
 
 
@@ -121,12 +121,12 @@
                                             <view class="rcc"></view>
                                             <view class="rcc"></view>
                                             <view class="rcc pt-40 pb-40">
-                                                <view wx:if="{{pk.groupInfo}}" class="rcc " bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
-                                                    <image hidden="{{pk.groupInfo.mode === 0}}" class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
-                                                    <view hidden="{{pk.groupInfo.mode === 0}}" class="w-10"></view>
+                                                <view  class="rcc " bindtap="{{pk.groupInfo.mode===1?'groupCode':''}}" data-pkid="{{pk.pkId}}">
+                                                    <image class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.iconUrl}}"></image>
+                                                    <view  class="w-10"></view>
                                                     <view class="rus fs-25 fw-400 ">{{pk.groupInfo.name}}</view>
                                                 </view>
-                                                <view wx:else class="rcc fs-25 fw-400 c-3-1">{{pk.time}}</view>
+                                        
                                             </view>
                                         </view>     
                                     </view>

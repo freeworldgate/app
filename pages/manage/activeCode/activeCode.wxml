@@ -1,69 +1,89 @@
-<!--pages/pk/message/message.wxml-->
-<view class="cbs b-msg-back" style="height:100vh;background-position: center;background-image: url({{imgUrl}});background-repeat: no-repeat;background-size: 100% auto; ">
-  <view class="css">
-      <view style="height:{{top}}px"></view>
-      <view class="rcs pl-4vw pr-4vw z10" style="height:32px">
-          <view class="rcc ">
-              <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
-          </view>
-          <view class="rcs">
-              <view class="rcc fs-30 fw-400">{{title}}</view>
 
 
-          </view>
-          
+<view  class="css page">
+
+    <view class="css" >
+        <view class="css">
         
-      </view>
-  </view>
+
+            <view class="css pr-3vw pl-3vw"  >
+                            <block wx:for="{{cashiers}}" wx:for-index="bindex1" wx:for-item="cashier" >
+                                <view class="css br-20 b-white mt-4vw pr-3vw pl-3vw">
+                                    <view class="rbc ">
+
+                                        <view class="rcc">
+                                    
+                                            <view class="rus fs-40 fw-700 c-4">{{cashier.cashierName}}</view>
+                                        </view>
 
 
-    <view class="css">
-        <view wx:if="{{mode === 'show'}}">
+
+
+                                        <view class="rcc pt-30 pb-30"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
+                                            <view class="rcc fs-25 fw-400 c-4">{{cashier.time}}</view>
+                                        </view>
+                                    </view>
+
+                                    <view wx:if="{{!cashier.linkImg}}" class="rac pt-50 pb-50">
+                                        <view class="ccc" url="/pages/manage/groups/groups?cashierId={{cashier.cashierId}}" bindtap="uploadLink" data-type="1" data-cashierid="{{cashier.cashierId}}">
+                                            <image class="w-100 h-100" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/weidian.jpeg"></image>
+                                            <view class="h-10"></view>
+                                            <view class="rcc fs-30 c-4">微店</view>
+                                        </view>
+                                        <view class="ccc" url="/pages/manage/feeCodes/feeCodes?cashierId={{cashier.cashierId}}" bindtap="uploadLink" data-type="2" data-cashierid="{{cashier.cashierId}}">
+                                            <image class="w-100 h-100" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/png/taobao.jpeg"></image>
+                                            <view class="h-10"></view>
+                                            <view class="rcc fs-30 c-4">淘宝</view>
+                                        </view>  
+
+                                    
+                                    
+                                    
+                                    </view>
+                                    <view wx:else class="rbs  pt-30 pb-30">
+                                        <view class="rcc" bindtap="show" data-url="{{cashier.linkImg}}">
+                                          <image class="w-200 h-200" mode="aspectFill" src="{{cashier.linkImg}}"></image>
+                                        </view>
+                                        <view class="cbc">
+                                          <view class="rcc fs-30 fw-700 c-3 pl-30 pr-30">{{cashier.type.name}}</view>
+                                          <view></view>
+                                        </view>
+                                        
+
+                                    </view>
+
+
+                                    <view class="rbc ">
+
+                                        <view class="rcc">
+                                    
+                                             <view class="rcc fs-30 fw-700 c-5 pl-30 pr-30" bindtap="delete" data-cashierid="{{cashier.cashierId}}">删除</view>
+                                        </view>
+
+
+
+
+                                        <view class="rcc pt-30 pb-30"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
+                                            <view class="rcc fs-25 fw-400 c-4">{{cashier.statu.name}}</view>
+                                            <view class="w-20"></view>
+                                            <switch checked="{{cashier.statu.key === 1}}" bindchange="changeStatu" data-cashierid="{{cashier.cashierId}}"></switch>
+                                        </view>
+                                    </view>
+
+
+
+                                </view>
+                            </block>
+            </view>    
+
+
         </view>
-        <view wx:else class="css">
-            <view hidden="{{imgUrl}}" class="ccc">
-                <view class="ccc br-20" >
 
-                            <view class="rcc">
-                            <image class="" style="width:60vw;height:60vw" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" mode="aspectFit"></image>
-                            </view>
-                            <view class="rcc fs-30 fw-700 c-word-1">{{t1}}</view>
-                            <view class="h-50"></view>
-                            <view class="rcc fs-25 fw-400 c-5">{{t2}}</view>
-                </view>
-            </view>
-
-        
-        
-        
+        <view hidden="{{!pkEnd}}" class="rcc p-50">
+                <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
         </view>
 
-
-
-
     </view>
-
-
-
-
-    <view wx:if="{{mode === 'show'}}" class="css pt-100 pb-100">
-            <view class="rac ">
-                <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
-                <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-download c-white message"  bindtap="saveImg" data-url="{{imgUrl}}" >{{buttonStr2}}</button>
-            </view>
-    </view>
-    <view wx:elif="{{mode === 'upload'}}" class="css pt-100 pb-100">
-            <view class="rac">
-                <button hidden="{{!imgUrl}}" class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
-                <view class="rcc fs-30 fw-700 w-320 h-100 br-100 b-download c-white"  bindtap="uploadGroupCode" >{{upload}}</view>
-            </view>
-    </view>
-    <view wx:else></view>
-
-
-
-
-
 
 
 </view>
@@ -71,8 +91,19 @@
 
 
 
-<view>
 
+
+
+
+
+
+
+
+<view class="createPk w-100 h-100 br-100 b-red rcc fs-60 fw-400 c-white" bindtap="createCashier">+</view>
+
+
+
+<view>
 
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
@@ -180,80 +211,7 @@
             <view class="labelLoadingDialog_text">加载失败</view>
         </view>
     </view>
-    <view bindtap="_selectionDialog_hide" class="coverAll" hidden="{{selectionDialog.visible!=true}}"></view>
-    <view class="{{selectionDialog._selectionDialog_layout}}" hidden="{{selectionDialog.visible!=true}}">
-        <view class="css selectionDialog_BT " wx:if="{{selectionDialog.style===1||selectionDialog.style===5}}">
-            <view class="rcc selectionDialog_BT1_title">选项</view>
-            <view style="height:20rpx"></view>
-            <view class="rac">
-                <view bindtap="_selectDialog_choose" class="ccc" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="*idx1">
-                    <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
-                    <view style="height:20rpx"></view>
-                    <view class="selectionDialog_BT1_title">{{item.name}}</view>
-                </view>
-            </view>
-        </view>
-        <view class="css selectionDialog_RL" wx:elif="{{selectionDialog.style===2||selectionDialog.style===3}}">
-            <view class="rcc selectionDialog_RL_title">选项</view>
-            <view bindtap="_selectDialog_choose" class="ccc selectionDialog_RL_item" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="*idx1">
-                <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
-                <view style="height:10rpx"></view>
-                <view class="selectionDialog_RL_title">{{item.name}}</view>
-            </view>
-        </view>
-        <view class="css selectionDialog_BT" wx:else>
-            <view class="rcs selectionDialog_BT2_title">选项</view>
-            <view bindtap="_selectDialog_choose" class="rcs selectionDialog_BT2_item" data-name="{{item.name}}" wx:for="{{selectionDialog.items}}" wx:key="idx1">
-                <image class="selectionDialog_item_image" mode="aspectFit" src="{{item.icon}}"></image>
-                <view style="width:30rpx"></view>
-                <view class="selectionDialog_BT1_title">{{item.name}}</view>
-            </view>
-        </view>
-    </view>
-    <view bindtap="_editImageDialog_closeEdit" catchtouchmove="return" class="rcc coverAll" hidden="{{editImageDialog.visible!=true}}">
-    
 
-        <view catchtap="return" class="css pl-8vw pr-8vw z30 br-20  b-white"  style="width:70vw" >
-                <!-- <view class="rbc-nowrap">
-                    <view class="rcc">
-                        <image class="w-60 h-60 br-10" mode="aspectFit" src="{{user.imgUrl}}"></image>
-                    </view>
-                    <view class="w-20"></view>
-                    <view class="css" style="flex:1">
-                        <view class="rus line-1-start fs-30 fw-400 ">{{user.userName}}</view>
-                    </view>
-                    <view class="w-100"></view>
-                    <view class="ccc p-20 " bindtap="{{(editImageDialog.text && editImageDialog.images[0])?'_editImageDialog_confirm':''}}">
-                        <view  class="{{(editImageDialog.text && editImageDialog.images[0])?'rcc c-5 fs-25 fw-700':'rcc c-3-1 fs-25 fw-700'}}">确定</view>
-                    </view>
-                </view> -->
-                <!-- <view class="rbc">
-                    <view class="fs-30 fw-400 c-3">{{editImageDialog.images.length}} 张</view>
-                     <view class="fs-20 fw-400 c-3">还可输入{{editImageDialog.left}}个字</view>
-                </view> -->
-
-                <view class="rcc pt-50 pb-50 fs-30 fw-700">编辑消息</view>
-                <view class="css  ">
-
-                    
-                    <view class="css ">
-                        <textarea adjustPosition="true" bindinput="_editImageDialog_input" class="t19-1-edit"  style="height:20vw;width:70vw" cursorSpacing="50" fixed="true" maxlength="50" placeholder="{{editImageDialog._default_edit_text}}" value="{{editImageDialog.text}}"></textarea>
-                    </view>
-                    <view class="h-20"></view>
-                    <view class="rcc">
-                        <image class="br-10" mode="aspectFill" src="{{editImageDialog.images[0]}}" style="height:70vw;width:70vw" ></image>
-                    </view>
-
-                </view>
-
-                <view class="ccc pt-50 pb-50" bindtap="{{(editImageDialog.text && editImageDialog.images[0])?'_editImageDialog_confirm':''}}">
-                    <view  class="{{(editImageDialog.text && editImageDialog.images[0])?'rcc c-5 fs-25 fw-700':'rcc c-3-1 fs-25 fw-700'}}">确定</view>
-                </view>
-        </view>
-
-    
-    
-    </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{editTextDialog.visible!=true}}"></view>
     <view catchtouchmove="return" class="css editTextDialog" hidden="{{editTextDialog.visible!=true}}">
         <view class="css editTextDialog_view ">
@@ -320,7 +278,7 @@
 
 
 
-
-
-
 </view>
+
+
+

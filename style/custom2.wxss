@@ -566,6 +566,8 @@
 .w-270{width: 270rpx;}
 .w-280{width: 280rpx;}
 .w-300{width: 300rpx;}
+.w-320{width: 320rpx;}
+.w-350{width: 350rpx;}
 .w-400{width: 400rpx;}
 .w-500{width: 500rpx;}
 .w-auto{width: auto}
@@ -573,6 +575,7 @@
 
 .w-86vw{width: 86vw}
 .w-80vw{width: 80vw}
+.h-80vw{height: 80vw}
 .w-70vw{width: 70vw}
 .w-76vw{width: 76vw}
 .w-78vw{width: 78vw}
@@ -859,6 +862,21 @@ mw-200{
   color: #3bbb03;
 }
 
+.b-contact{
+  background-image: linear-gradient(to right, #ff713d 0%, #ffbd4bc0 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
+
+.b-download{
+  background-image: linear-gradient(to right, #3d9bff 0%, #4be4ffc0 100%);
+
+  /* background: radial-gradient(#4487c5,#4db3d8); */
+  /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
+  /* background: radial-gradient(rgb(0, 162, 255),rgb(255, 238, 0)); */
+}
 .b-upload{
   background-image: linear-gradient(to right, #ff713d 0%, #ffbd4bc0 100%);
 

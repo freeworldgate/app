@@ -1,7 +1,7 @@
 <view class="css b-48" style="min-height:100vh">
 
 
-    <view class="{{pkMessage?'cbs h-110vw b-pk cardback6':'cbs h-100vw b-pk cardback6'}}" style="background-image: url({{imgBack}});"> 
+    <view class="cbs h-110vw b-pk cardback6" style="background-image: url({{imgBack}});"> 
         <view class="" style="height:{{top+32}}px"></view>
 
         <view class="rbs" style="flex:1">
@@ -45,49 +45,49 @@
                 <view class="cas" style="flex:1">
                         <view class="rbc-nowrap ">
                             <view></view>
-                            <view class="rus line-1-start fs-35 fw-700 c-white">{{pkDetail.topic}}</view>
+                            <view class="rus line-1-start fs-35 fw-700 c-white">{{pk.topic}}</view>
                         </view>
                     
                         <view class="rbc-nowrap ">
                             <view></view>
-                            <view class="rus line-2-start fs-25 fw-400 c-white ">{{pkDetail.watchWord}}</view>
+                            <view class="rus line-2-start fs-25 fw-400 c-white ">{{pk.watchWord}}</view>
                         </view>
                 </view>
                 <view class="w-4vw"></view>
                 <view class="ccs">
-                    <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pkDetail.user.imgUrl}}"></image>
+                    <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
                 </view>
             </view>
             <view class="h-30"></view>
             <view class="css h-100">
               
-                    <view hidden="{{!pkMessage}}"  class=" absolute rcc w-100vw">
+                    <view  class=" absolute rcc w-100vw">
                             <view class="css w-92vw b-white br-20">
                                                                     <view class="h-30"></view>
                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                             <view class="rcc">
                                                                                 <image class="w-30 h-30" mode="aspectFit" src="/images/statu1.png"></image>
-                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核公告({{pkDetail.invite.name}})</view>
+                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核公告({{pk.invite.name}})</view>
                                                                                
                                                                             </view>
                                                                             <view class="rcc">
                                                                                 <!-- <view class="rcc fs-25 fw-400 c-3"></view> -->
-                                                                                 <view class="rcc complain fs-25 c-1 pl-30" bindtap="complain" data-approver="{{creator.userId}}"> 投诉</view>
+                                                                                 <view class="rcc complain fs-25 c-1 pl-30" bindtap="complain" data-approver="{{pk.user.userId}}"> 投诉</view>
                                                                             </view>
 
                                                                             
                                                                     </view>
-                                                                    <view  wx:if="{{pkMessage}}" class="css  pl-4vw pr-4vw">
+                                                                    <view class="css  pl-4vw pr-4vw">
 
                                                                         <view class="css" >
-                                                                                <view class="rbs" bindtap="approverMessageDetail" data-approver="{{creator.userId}}">
+                                                                                <view class="rbs" bindtap="approverMessageDetail" data-approver="{{pk.user.userId}}">
                                                                                         
                                                                                         <view class="rcc">
-                                                                                            <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{pkMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                                                                                            <view class="rcc h-150 w-150 br-15" style="background-position: top;background-image: url({{pk.approveMessage.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
                                                                                         </view>
                                                                                         <view class="w-4vw"></view>
                                                                                         <view class="css" style="flex:1" >
-                                                                                            <view class="rus fs-30 fw-400 line-3-start c-word-6">{{pkMessage.text}}</view>
+                                                                                            <view class="rus fs-30 fw-400 line-3-start c-word-6">{{pk.approveMessage.text}}</view>
                                                                                         </view>
                                                                                         <view class="w-4vw"></view>
                                                                                         <view class="rcc">
@@ -96,18 +96,7 @@
                                                                                 </view>    
                                                                         </view>
                                                                     </view>
-                                                                    <view wx:else class="rcc h-150  pl-4vw pr-4vw">
-                                                                            <view wx:if="{{user.userId === creator.userId}}" class="rcc">
-                                                                                <view  class="rcc p-30"  bindtap="approverMessage">
-                                                                                    <image class="w-35 h-35" mode="aspectFit" src="/images/write.png"></image>
-                                                                                    <view  class="w-10"></view>
-                                                                                    <view  class="rcc fs-25 fw-400 c-4">编辑公告</view>
-                                                                                </view>
-                                                                            
-                                                                            </view>
-                                                                            <view wx:else class="rcc"><view  class="rcc fs-30 fw-400 c-word-1">待激活</view></view>
-                                                                    
-                                                                    </view>
+
                                                                     <view class="h-30"></view>
                             </view>
                     </view>
@@ -119,18 +108,9 @@
     </view>
 
 
-    <view hidden="{{!pkMessage}}" class="h-200"></view>
-    <view hidden="{{pkMessage}}" class="h-50"></view>
-    <view  hidden="{{!approving}}" class="rcc pb-50" bindtap="approvingList">
-            <view class="rcc b-approving p-20 br-10">
-                    <view class="rcc fs-25 fw-400 c-white">{{approving.name}}</view>
-                    <view class="w-10"></view>
-                    <view class="rcc fs-25 fw-400 c-white">{{approving.num}}</view>
-                    <view class="w-10"></view>
-                    <image class="rcc w-20 h-20 " mode="aspectFit" src="/images/right4.png"></image>
-            </view>
-    
-    </view>
+    <view class="h-200"></view>
+    <view class="h-50"></view>
+
 
     <!-- <view class="h-50"></view>
     <swiper class="w-100vw h-900" indicator-active-color="#e0e0e0" indicator-color="#d0d0d0" autoplay="{{autoplay}}" interval="3000" >
@@ -791,7 +771,7 @@
 
     <view class="w-20"></view>
     
-    <button hidden="{{!user || !pkDetail}}" open-type="share" class="rcc message h-32px w-40vw br-32px bar-back">
+    <button hidden="{{!user || !pk}}" open-type="share" class="rcc message h-32px w-40vw br-32px bar-back">
         <view class="fs-25 fw-400 c-4">邀请</view>
     </button>
 

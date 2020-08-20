@@ -194,6 +194,9 @@ var url = {
         editUserName:`${host}/pk/editUserName`, 
         editUserImg:`${host}/pk/editUserImg`, 
         updateTipBack:`${host}/pk/updateTipBack`, 
+        uploadCashierLink:`${host}/pk/uploadCashierLink`, 
+        
+        deleteCashier:`${host}/pk/deleteCashier`, 
 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 

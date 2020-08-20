@@ -19,12 +19,12 @@
       </view>
 
   
-      <view class="rbc b-line pt-30 pb-30 br-10 "   >
+      <!-- <view class="rbc b-line pt-30 pb-30 br-10 "   >
           <view class="rcc fs-30 fw-400">消息模式(wechat客服接口)</view>
-          <!-- <view class="rcc fs-30 fw-400">{{isWechatMsgService}}</view> -->
+    
           <switch checked="{{isWechatMsgService === 'true'}}" bindchange="setmode" data-type="isWechatMsgService"></switch>
       </view>
-  
+   -->
   
       <view class="rbc b-line pt-30 pb-30 br-10 "   >
           <view class="rcc fs-30 fw-400">传播模式</view>
@@ -51,10 +51,10 @@
              <view class="rcc fs-30 fw-400">{{approveWaitingTime}}分钟</view>
           </view>
       </view>
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxPksUserCreate" >
-          <view class="rcc fs-30 fw-400">用户最大建榜数量</view>
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxNoActivePks" >
+          <view class="rcc fs-30 fw-400">用户最多未激活榜单数量</view>
           <view class="rcc">
-             <view class="rcc fs-30 fw-400">{{maxPksUserCreate}}个</view>
+             <view class="rcc fs-30 fw-400">{{maxNoActivePks}}个</view>
           </view>
       </view>
 

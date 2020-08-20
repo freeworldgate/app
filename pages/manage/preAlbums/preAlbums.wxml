@@ -443,7 +443,7 @@
          
             
             </view>
-            <view class="css pt-20 pb-20">
+            <!-- <view class="css pt-20 pb-20">
                 <view class="rcs">
                     <view class="rcc"><view class='rcc'><image class="w-30 h-30" mode="aspectFit" src="/images/topic.png"></image></view></view>
                     <view class="w-20"></view>
@@ -459,7 +459,7 @@
    
          
             
-            </view>
+            </view> -->
         
             <view class="h-100"></view>
             <view wx:if="{{editPkDialog.watchWord && editPkDialog.topic}}" class="rcc p-30" bindtap="_editPkDialog_createPk">

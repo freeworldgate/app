@@ -1,5 +1,5 @@
 <!--pages/pk/messageInfo/messageInfo.wxml-->
-<view wx:if="{{message}}" class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
+<view class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
         <view class="css " >
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw z10" style="height:32px" bindtap="back">
@@ -69,16 +69,21 @@
         </view>
 
 
-        <view class="rcc" >
-              <button wx:if="{{mode===true}}" class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">{{buttonStr}}</button>
+        <view class="rac" >
 
-              <button wx:else class="rcc fs-30 fw-700 w-400 h-100 br-100 b-upload c-white message"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >{{buttonStr}}</button>
+
+              <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">{{buttonStr1}}</button>
+
+              <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-download c-white message"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >{{buttonStr2}}</button>
+        
+        
+        
         </view>
 
         <view class="rcc fs-25 fw-400 c-4 p-20">{{word3}}</view>
      
 </view>
-<view wx:else class="cbs" style="height:100vh">
+<!-- <view wx:else class="cbs" style="height:100vh">
         <view class="css">
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px">
@@ -103,7 +108,7 @@
 
         </view>
 
-</view>
+</view> -->
 
 
 

@@ -53,7 +53,7 @@
 
 
         <view class="rcc">
-            <navigator url="/pages/manage/cashiers/cashiers" class="rcc">
+            <navigator url="/pages/manage/activeCode/activeCode" class="rcc">
                 <view class="rcc fs-30 fw-400">收款</view>
             </navigator>
         </view>

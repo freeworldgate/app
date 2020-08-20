@@ -146,6 +146,7 @@ Page({
   {
     var that = this;
     var pkid = res.currentTarget.dataset.pkid;
+    var index =  res.currentTarget.dataset.index;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("approve", function (link) {
@@ -169,9 +170,7 @@ Page({
     httpClient.addHandler("message", function (link) {
 
       template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
-        wx.navigateTo({
-          url: link ,
-        })
+        that.approverMessage(pkid,index);
 
     },function(){});
     })
@@ -199,7 +198,55 @@ Page({
 
 
   },
+  approverMessage:function(pkId,index){
+    var that = this;
+  
+ 
+      
+      template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+        //上传成功
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("message", function (message) {
+          var msg = "pks[" + index + "].approveMessage"
+          that.setData({
+            [msg]: message
+          })
 
+
+
+
+
+  
+        })
+        httpClient.send(request.url.publishApproveMessage, "GET",
+          {
+            pkId: pkId,
+            text: text,
+            imgUrl: urls[0],
+          }
+        );
+  
+      }, function () {
+        //上传失败
+        wx.hideLoading({
+          complete: (res) => {},
+        })
+      }).show();
+
+  
+
+
+
+
+
+
+
+
+  },
 
 
 })

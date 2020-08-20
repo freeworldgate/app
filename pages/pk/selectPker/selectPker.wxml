@@ -1,5 +1,5 @@
 <!--pages/pk/selectPker/selectPker.wxml-->
-<view class="css">
+<view class="css h-100vh b-white">
 
     <view class="css">
             <view style="height:{{top}}px"></view>
@@ -18,13 +18,13 @@
             </view>
     </view>
 
-    <view class="cbs pr-8vw pl-8vw  h-100vh"  >
+    <view class="cbs pr-8vw pl-8vw  " style="flex:1" >
         <view class="css">
             <view class="h-80"></view>
             <view class="rcc fs-40 fw-500 c-10">{{title}}</view>
             <view class="h-80"></view>
             <view class="css">
-                <input bindinput="_editNumberDialog_input" class="createEditActiveNumberDialog_input" maxlength="6" placeholder="{{title}}" type="number"></input>
+                <input bindinput="_editNumberDialog_input" class="createEditActiveNumberDialog_input" maxlength="100" placeholder="{{title}}" ></input>
             </view>
             <view class="h-80"></view>
             <view class="css">
@@ -50,28 +50,28 @@
        
             <view class="ccc">
                 <navigator class="ccc" url="{{link1Url}}" hover-class="none">
-                    <image class="w-100 h-100" mode="aspectFit" src="{{link1Icon}}"></image>
-                    <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">{{link1Name}}</view>
+                    <image class="w-150 h-150" mode="aspectFit" src="{{link1Icon}}"></image>
+                    <view class="h-20"></view>
+                    <view class="rcc fs-35 c-4 fw-700">{{link1Name}}</view>
                 </navigator>
                 
             </view>
             <view hidden="{{!link2Name}}" class="ccc">
                 <navigator class="ccc" url="{{link2Url}}" hover-class="none">
-                    <image class="w-100 h-100" mode="aspectFit" src="{{link2Icon}}"></image>
-                    <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">{{link2Name}}</view>
+                    <image class="w-150 h-150" mode="aspectFit" src="{{link2Icon}}"></image>
+                    <view class="h-20"></view>
+                    <view class="rcc fs-35 c-4 fw-700">{{link2Name}}</view>
                 </navigator>
                 
             </view>
-            <view  hidden="{{!link3Name}}"  class="ccc">
+            <!-- <view  hidden="{{!link3Name}}"  class="ccc">
                 <navigator class="ccc" url="{{link3Url}}" hover-class="none">
                     <image class="w-100 h-100" mode="aspectFit" src="{{link3Icon}}"></image>
                     <view class="h-10"></view>
                     <view class="rcc fs-30 c-4">{{link3Name}}</view>
                 </navigator>
                 
-            </view>
+            </view> -->
       
         </view>
 
@@ -81,13 +81,11 @@
         <view class="css">
             <view class="h-30"></view>
             <view class="css" bindtap="return">
-                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" open-type="{{buttonType}}">{{buttonName}}</button>
+                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message">{{buttonName}}</button>
             </view>
-            <view class="h-50"></view>
+            <view class="h-100"></view>
 
         </view>
-
-        <view class="rcc fs-30 fw-400 c-word-6 p-30">{{activeCode}}</view>
 
     </view>  
 
