@@ -62,6 +62,14 @@ Page({
 
 
   },
+    groupCode:function(res) {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/message/message?pkId=' + pkId + "&type=1",
+    })
+
+  },
   view:function(res){
 
     var url = res.currentTarget.dataset.url;
@@ -85,7 +93,7 @@ Page({
       
 
   })
-    httpClient.send(request.url.hiddenPk, "GET",  {pkId:pk.pk.pkId});
+    httpClient.send(request.url.hiddenPk, "GET",  {pkId:pk.pk.pkId,tipId:that.data.tipId});
 
 
 
@@ -121,7 +129,17 @@ Page({
 
 
   },
+  selectTip:function(res){
+    var that = this;
+    var id = res.currentTarget.dataset.id;
+    that.setData({
+      tipId:id
+    })
 
+
+
+
+  }
 
 
 

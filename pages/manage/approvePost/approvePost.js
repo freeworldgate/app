@@ -46,38 +46,37 @@ Page({
 
     var that = this;
     var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
+    var pk = res.currentTarget.dataset.pk;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
- 
-          that.data.posts.splice(index, 1); 
-          that.setData({
-            posts: that.data.posts
-          })
+
+    httpClient.send(request.url.approvePost, "GET", {pkId:pk.pkId,postId:post.postId});
 
 
+  },
+  viewImg:function(res){
+    var that = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
     })
-    httpClient.send(request.url.approvePost, "GET", {pkId:post.pk.pkId,postId:post.post.postId});
 
+  },
+    groupCode:function(res) {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/message/message?pkId=' + pkId + "&type=1",
+    })
 
   },
   hiddenPost:function (res) {
     var that = this;
     var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
+    var pk = res.currentTarget.dataset.pk;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
-   
-        that.data.posts.splice(index, 1); 
-        that.setData({
-          posts:that.data.posts
-        })
-      
-
-  })
-    httpClient.send(request.url.hiddenPost, "GET", {pkId:post.pk.pkId,postId:post.post.postId});
+    httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId});
 
 
 
@@ -102,7 +101,15 @@ Page({
 
   },
 
+  viewPk:function(res)
+  {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/pk/pk?pkId=' + pkId,
+    })
 
+  },
 
 
 

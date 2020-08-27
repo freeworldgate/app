@@ -31,7 +31,26 @@
             
                     <view class="rcc fs-25 fw-400 c-word">{{approve.name}}</view>
                 </view>
+      
                 <view></view>
+            </view>
+            <view class="cas">
+                <view></view>
+                
+                <view  hidden="{{!approving}}" class="rcs operkey1 h-70 b-card pr-20 pl-30"   bindtap="{{approving.linkMethod}}">
+                    <view class="rcc ">
+                        <image class="rcc w-30 h-30 " mode="aspectFit" src="{{approving.icon}}"></image>
+                    </view>
+                    <view class="w-10"></view>
+         
+                    <view class="rcc fs-25 fw-400 c-word">{{approving.name}}</view>
+                </view>
+                <view  class="rcs h-70"   bindtap="{{approving.linkMethod}}">
+         
+                </view>
+                <view  class="rcs h-70 "   bindtap="{{approving.linkMethod}}">
+   
+                </view>
                 <view></view>
             </view>
 
@@ -66,8 +85,8 @@
                                                                     <view class="h-30"></view>
                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                             <view class="rcc">
-                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/statu1.png"></image>
-                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核公告({{pk.invite.name}})</view>
+                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/laba1.png"></image>
+                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核样例({{pk.invite.name}})</view>
                                                                                
                                                                             </view>
                                                                             <view class="rcc">
@@ -762,7 +781,7 @@
 <view class="rcs customBar" style="top:{{top}}px">
 
     <view wx:if="{{fromUser}}" class="rcc h-32px w-32px br-32px bar-back z20" bindtap="relaunch">
-        <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
+        <image class="w-45 h-45" mode="aspectFit" src="/images/home.png"></image>
     </view>
     <view wx:else class="rcc h-32px w-32px br-32px bar-back z20" bindtap="back">
         <image class="w-30 h-30" mode="aspectFit" src="/images/left1.png"></image>

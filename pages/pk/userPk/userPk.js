@@ -65,7 +65,7 @@ Page({
   onShow:function(){
     var that = this;
     var user = wx.getStorageSync('user');
-    if(user && (that.data.pks.length === 0)){that.init("label");}
+    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("label");}
     else{}
   },
   /**
@@ -142,6 +142,11 @@ Page({
 
 
   },
+
+
+
+
+  
   viewPk:function(res)
   {
     var that = this;
@@ -151,7 +156,7 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("approve", function (link) {
 
-      template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
+      template.createOperateDialog(that).show("激活榜单","激活榜单，审核通过后可以使用",function(){
         wx.navigateTo({
           url: link,
         })
@@ -169,7 +174,7 @@ Page({
     })
     httpClient.addHandler("message", function (link) {
 
-      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
+      template.createOperateDialog(that).show("发布审核样例","制作审核样例，发布审核样例",function(){
         that.approverMessage(pkid,index);
 
     },function(){});
@@ -198,6 +203,37 @@ Page({
 
 
   },
+  deletePk:function(res)
+  {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid; 
+    var index = res.currentTarget.dataset.index;
+
+    template.createOperateDialog(that).show("删除榜单","确定删除?",function(){
+
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+        that.data.pks.splice(index, 1); 
+        that.setData({
+          pks: that.data.pks
+        })
+      })
+
+
+      httpClient.send(request.url.deletePk, "GET",{pkId:pkId});  
+  },function(){});
+
+
+
+
+
+
+
+
+
+  },
+
   approverMessage:function(pkId,index){
     var that = this;
   

@@ -22,7 +22,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasInivte:false
+    hasInivte:false,
+    tt1:'驳回修改'
   },
 
   /**
@@ -135,6 +136,26 @@ Page({
     wx.reLaunch({
       url: '/pages/pk/home/home',
     })
+  },
+  reject:function(res)
+  {
+
+    var post = res.currentTarget.dataset.post;
+    var that = this;
+
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+      
+      // , urls
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.rejectApprovingPost, "GET",{pkId: post.pkId,postId: post.postId,text:text});
+  
+    });
+
+
+
+
+
   }
   
 })

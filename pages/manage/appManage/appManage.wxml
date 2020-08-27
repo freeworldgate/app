@@ -35,7 +35,7 @@
 
         <view class="rcc">
             <navigator url="/pages/manage/preAlbums/preAlbums" class="rcc">
-                <view class="rcc fs-30 fw-400">内置相册</view>
+                <view class="rcc fs-30 fw-400">内置仅邀请相册</view>
             </navigator>
         </view>
         <view class="rcc">
@@ -62,7 +62,28 @@
                 <view class="rcc fs-30 fw-400">设置</view>
             </navigator>
         </view>
+        
+
+
+
+
     </view>
 
+    <view class="rac pt-30 pb-30 z2">
 
+        <view class="rcc">
+            <navigator url="/pages/manage/activeTips/activeTips" class="rcc">
+                <view class="rcc fs-30 fw-400">审核提示</view>
+            </navigator>
+        </view>
+ 
+
+        <view class="rcc">
+            <navigator url="/pages/manage/prePublicAlbums/prePublicAlbums" class="rcc">
+                <view class="rcc fs-30 fw-400">内置公开相册</view>
+            </navigator>
+        </view>
+        <view></view>
+        <view></view>
+    </view>
 </view>

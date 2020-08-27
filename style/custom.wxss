@@ -1001,7 +1001,7 @@
     font-size: 40rpx;
     font-weight: 400;
     border-radius: 100rpx;
-    letter-spacing:5px;
+    /* letter-spacing:5px; */
     /* color: rgb(0, 0, 0); */
   }
 .downloadImageDialog{

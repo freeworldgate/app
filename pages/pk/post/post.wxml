@@ -187,7 +187,7 @@
                                                                                         <view  class="rcc fs-25 fw-400 c-white">{{post.selfCommentTime}}</view> 
                                                                                         
                                                                                 </view>
-                                                                                <view   class="css ">
+                                                                                <view class="css ">
 
                                                                                     <view class="css" >
                                                                                             <view class="rbs">                                                                    
@@ -202,7 +202,7 @@
                                                                                     </view>
                                                                                 </view>
                                                             
-                                                                                <view class="h-50"></view>
+                                                                               
           </view>
 
 
@@ -213,6 +213,12 @@
       </view>
       <view class="{{post.selfComment?'h-50':'h-100'}}"></view>
 
+    </view>
+    <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
+        <view class="h-20"></view>
+        <view class="rus fs-25 fw-400 c-white ">修改建议:{{post.rejectText}}</view>
+        <view class="h-20"></view>
+        <view class="rus fs-25 fw-400 c-3-1 ">修改{{post.rejectTimes}}次</view>
     </view>
 
 
@@ -268,18 +274,17 @@
         <view class="css b-white br-20" style="background-position: top;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-300 h-300" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
             </view>
             <view class="css">
                 <view class="h-200"></view>
-                <view class="h-30"></view>
-                <view class="rcc fs-35 fw-700 tipColor">{{operateDialog.title}}</view>
+                <view class="rcc fs-35 fw-700 c-4">{{operateDialog.title}}</view>
             
-                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{operateDialog.text}}</view>
+                <view class="rcc-wrap fs-30 fw-400 c-3 pl-30 pr-30 line-3-center">{{operateDialog.text}}</view>
                 
-                <view class="rcc pt-50 pb-50">
-                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
+                <view class="rcc pt-50 pb-20">
+                    <view class="rcc fs-30 fw-400 c-5 p-30"  bindtap="operateDialog_confirm" >确定</view>
                 </view>
     
             </view>

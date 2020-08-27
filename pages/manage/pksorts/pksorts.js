@@ -91,15 +91,39 @@ Page({
       that.queryInvites("label");
   },
 
-  addToPreHome:function(res)
+  // addToPreHome:function(res)
+  // {
+
+
+  //     var that = this;
+  //     var pkid = res.currentTarget.dataset.pkid;
+      
+  //     var index = res.currentTarget.dataset.index;
+  //     template.createEditNumberDialog(that).show("设置优先级", 20,"", function (value) {
+  //       var httpClient = template.createHttpClient(that);
+  //       httpClient.setMode("label", true);
+  //       httpClient.addHandler("success", function (pk) {
+  //         that.data.pks.splice(index, 1,pk); 
+  //         that.setData({
+  //           pks: that.data.pks
+  //         })
+
+  //       })
+  //       httpClient.send(request.url.addToPreHome, "GET",{pkId:pkid,value:value});
+
+  //   },function(){});
+
+  // },
+
+  
+  addToNonGeneticHome:function(res)
   {
 
 
       var that = this;
       var pkid = res.currentTarget.dataset.pkid;
-      
       var index = res.currentTarget.dataset.index;
-      template.createEditNumberDialog(that).show("设置优先级", 20,"", function (value) {
+      template.createEditNumberDialog(that).show("设置非遗传主页优先级", 20,"", function (value) {
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
         httpClient.addHandler("success", function (pk) {
@@ -109,12 +133,35 @@ Page({
           })
 
         })
-        httpClient.send(request.url.addToPreHome, "GET",{pkId:pkid,value:value});
+        httpClient.send(request.url.addToNonGeneticHome, "GET",{pkId:pkid,value:value});
 
     },function(){});
 
   },
-  
+
+  addToGeneticHome:function(res)
+  {
+
+
+      var that = this;
+      var pkid = res.currentTarget.dataset.pkid;
+      var index = res.currentTarget.dataset.index;
+      template.createEditNumberDialog(that).show("设置遗传主页优先级", 20,"", function (value) {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function (pk) {
+          that.data.pks.splice(index, 1,pk); 
+          that.setData({
+            pks: that.data.pks
+          })
+
+        })
+        httpClient.send(request.url.addToGeneticHome, "GET",{pkId:pkid,value:value});
+
+    },function(){});
+
+  },
+
   albumType:function(res)
   {
     var that = this;

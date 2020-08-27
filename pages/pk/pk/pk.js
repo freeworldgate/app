@@ -231,9 +231,9 @@ Page({
     
 
     return {
-        title: '邀请打榜@'+ that.data.pkDetail.topic ,
+        title: '邀请打榜@'+ that.data.pk.topic ,
         desc: "from",
-        imageUrl:that.data.creator.imgUrl,
+        imageUrl:that.data.pk.user.imgUrl,
         path: '/pages/pk/pk/pk?pkId=' + that.data.pkId + "&fromUser=" + that.data.user.userId ,
     }
 

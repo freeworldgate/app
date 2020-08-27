@@ -80,25 +80,41 @@ Page({
   {
 
     var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
-   
-      that.data.approvedPosts.splice(index, 1); 
-      that.setData({
-        approvedPosts:that.data.approvedPosts
-      })
-    
-
-    })
-    httpClient.send(request.url.approve, "GET",{pkId: post.pkId,postId: post.postId}
+    // httpClient.addHandler("success", function () {
+    //   var httpClient = template.createHttpClient(that);
+    //   httpClient.setMode("label", true);
+    //   httpClient.send(request.url.queryApprovingPost, "GET",{pkId: that.data.pkId});
+    // })
+    httpClient.send(request.url.doApprove, "GET",{pkId: post.pkId,postId: post.postId}
     );
 
 
 
+  },
+  reject:function(res)
+  {
+
+    var post = res.currentTarget.dataset.post;
+    var that = this;
+
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+      
+      // , urls
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.rejectApprove, "GET",{pkId: post.pkId,postId: post.postId,text:text});
+  
+    });
+
+
+
+
+
   }
+
 
 
 

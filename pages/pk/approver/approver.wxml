@@ -6,7 +6,7 @@
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
                 <view class="rcc h-32px w-32px br-32px b-white z102" bindtap="relaunch">
-                    <image class="w-45 h-45" mode="aspectFit" src="/images/homePage.png"></image>
+                    <image class="w-45 h-45" mode="aspectFit" src="/images/home.png"></image>
                 </view>
                 <view class="w-20"></view>
                 <view class="rcs c-4">
@@ -201,14 +201,14 @@
                                     <view class="fs-30 fw-400">{{t1}}</view>
                                     <view class="w-80"></view>
                                 </view>
-                                <view wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc  h-100 w-400 br-100 b-post">
+                                <view wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc  h-100 br-100 b-post">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
                                     <view class="fs-30 fw-400 c-3-1">{{t2}}</view>
                                     <view class="w-80"></view>
                                 </view>
-                                <view wx:else type=""  class="rcc  h-100 w-400 br-100 b-post ">
+                                <view wx:else type=""  class="rcc  h-100  br-100 b-post ">
                                     <view class="w-80"></view>
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
                                     <view class="w-10"></view>
@@ -219,10 +219,35 @@
 
 
             </view>
+            <!-- <view class="rcc">
+                                <view wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId) && !pk}} " type=""  bindtap="reject" data-post="{{userPost}}"  class="rcc h-100 w-300 br-100 b-white">
+              
+                                    <image class="w-40 h-40" mode="aspectFit" src="/images/modify.png"></image>
+                                    <view class="w-10"></view>
+                                    <view class="fs-30 fw-400">驳回修改</view>
+                 
+                                </view>
+                                <view wx:else type=""  class="rcc  h-100 w-300 br-100 b-post ">
+                         
+                                    <image class="w-40 h-40" mode="aspectFit" src="/images/modify.png"></image>
+                                    <view class="w-10"></view>
+                                    <view class="fs-30 fw-400 c-3-1">驳回修改</view>
+                            
+                                </view>
 
+
+
+            </view> -->
     </view>
 
-    <view></view>
+    <view class="rcc">
+        <view hidden="{{((userPost.statu.key===1) && (user.userId === creator.userId))}}" bindtap="{{user.userId === creator.userId?'reject':''}}" data-post="{{userPost}}"  class="rcc pb-30">
+            <image class="w-30 h-30" mode="aspectFit" src="/images/modify1.png"></image>
+            <view class="w-10"></view>
+            <view class="fs-25 fw-400 c-3-1">{{tt1}}</view> 
+        </view>
+    </view>
+
 
     
 
@@ -424,11 +449,16 @@
                 <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
             </view>
             <view style="height:20rpx"></view>
-            <view class="rac">
-                <view bindtap="_editTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="_editTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            <view class="rbc pt-50 pb-20 t-line">
+                <view></view>
+                <view class="rcc">
+                    <view bindtap="_editTextDialog_close" class="rcc c-3 fs-30 fw-700" hoverClass="c-3-1">取消</view>
+                    <view class="w-100"></view>
+                    <view bindtap="_editTextDialog_confirm" class="rcc c-1 fs-30 fw-700" hoverClass="c-3-1">确定</view>
+                    <view class="w-50"></view>
+                </view>
+
             </view>
-            <view class="t7-5-2" style="height:35rpx"></view>
         </view>
     </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>

@@ -75,7 +75,7 @@
 
                                         <view class="css ">
                                                                              
-                                                                                <view class="rbc pb-30  pl-4vw pr-4vw">
+                                                                                <view hidden="{{!pkComment}}" class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
                                                                                             <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
                                                                                             <view class="rcc fs-25 fw-400 c-white pl-10">{{t2}}</view>

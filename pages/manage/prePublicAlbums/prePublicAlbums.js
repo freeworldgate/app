@@ -58,7 +58,7 @@ Page({
         complete: (res) => {},
       })
     })
-    httpClient.send(request.url.queryPrePks, "GET", {type:1});
+    httpClient.send(request.url.queryPrePks, "GET", {type:2});
   },
   onShow:function(){
     var that = this;
@@ -83,7 +83,7 @@ Page({
             pks:that.data.pks.concat(pagePks)
         })
       })
-      httpClient.send(request.url.morePrePks, "GET",{ userId:user.userId ,page:that.data.page,type:1});
+      httpClient.send(request.url.morePrePks, "GET",{ userId:user.userId ,page:that.data.page,type:2});
     
   },
 
@@ -186,11 +186,19 @@ Page({
       })
 
 
-      httpClient.send(request.url.preCreatePk, "GET",{topic:topic,watchWord:watchWord,isCharge:isCharge,type:1});
+      httpClient.send(request.url.preCreatePk, "GET",{topic:topic,watchWord:watchWord,isCharge:isCharge,type:2});
     });
 
   },
+  viewPk:function(res)
+  {
+    var that = this;
+    var pkid = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/pk/pk?pkId=' + pkid,
+    })
 
+  },
   groupCode:function(res) {
     var that = this;
     var pkId = res.currentTarget.dataset.pkid;

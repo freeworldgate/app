@@ -21,8 +21,8 @@ Page({
    */
   data: 
   {
-    albums: ["https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%289%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%2810%29.jpeg", "https://fenghao211.oss-cn-beijing.aliyuncs.com/img/%20%285%29.jpeg"]
-
+    activeCode:"",
+   
   },
 
   /**
@@ -105,6 +105,17 @@ Page({
 
 
   },
+  activeAgine:function(res)
+  {
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.activeAgine, "GET",{pkId:pkId});   
+
+
+
+  },
   activeGroupCode:function(res) {
     var that = this;
     var cashierId = res.currentTarget.dataset.cashierid;
@@ -132,6 +143,25 @@ Page({
     complete: (res) => {},
   })},
 
+  inputActiveCode:function(res){
+    var that = this;
+    var value = res.detail.value;
+    that.setData({
+      activeCode: value,
+    })
+  },
+
+
+  activePK:function(res)
+  {
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.activeSinglePK, "GET",{pkId:that.data.pkId,activeCode:that.data.activeCode});   
+
+
+
+  },
 
   /**
    * 用户点击右上角分享

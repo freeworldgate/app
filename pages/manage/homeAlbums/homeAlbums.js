@@ -147,6 +147,7 @@ Page({
   {
     var that = this;
     var pkid = res.currentTarget.dataset.pkid;
+    var type = res.currentTarget.dataset.type;
     var index = res.currentTarget.dataset.index;
     template.createOperateDialog(that).show("移除首页","确定移除首页?",function(){
       var httpClient = template.createHttpClient(that);
@@ -157,7 +158,7 @@ Page({
           pks: that.data.pks
         })
       })
-      httpClient.send(request.url.removePkFromHomPage , "GET",{pkId:pkid});
+      httpClient.send(request.url.removePkFromHomPage , "GET",{pkId:pkid,type:type});
 
     },function(){});
   
@@ -270,7 +271,7 @@ Page({
 
       var that = this;
       var pkid = res.currentTarget.dataset.pkid;
-      
+      var type = res.currentTarget.dataset.type;
       var index = res.currentTarget.dataset.index;
       template.createEditNumberDialog(that).show("设置优先级", 20,"", function (value) {
         var httpClient = template.createHttpClient(that);
@@ -282,7 +283,8 @@ Page({
           })
 
         })
-        httpClient.send(request.url.addToPreHome, "GET",{pkId:pkid,value:value});
+        if(type === 1){httpClient.send(request.url.addToGeneticHome, "GET",{pkId:pkid,value:value});}
+        if(type === 2){httpClient.send(request.url.addToNonGeneticHome, "GET",{pkId:pkid,value:value});}
 
     },function(){});
 
@@ -294,6 +296,7 @@ Page({
     var type = res.currentTarget.dataset.type;
     wx.setStorageSync('albumType', parseInt(type))
     that.setData({
+      pks:[],
       albumType: parseInt(type)
     })
     that.queryInvites("label");

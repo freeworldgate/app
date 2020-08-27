@@ -94,6 +94,11 @@ var url = {
         setApprover: `${host}/pk/setApprover`, 
         setApproveInfo: `${host}/pk/setApproveInfo`, 
         queryApprovingPost: `${host}/pk/queryApprovingPost`, 
+        doApprove: `${host}/pk/doApprove`, 
+        rejectApprove: `${host}/pk/rejectApprove`, 
+        rejectApprovingPost: `${host}/pk/rejectApprovingPost`, 
+        
+
         queryApprovedPost: `${host}/pk/queryApprovedPost`, 
         queryMoreApprovingPost: `${host}/pk/queryMoreApprovingPost`, 
         queryMoreApprovedPost: `${host}/pk/queryMoreApprovedPost`, 
@@ -179,7 +184,8 @@ var url = {
         morePreHomePage:`${host}/pk/morePreHomePage`, 
         
         removePk:`${host}/pk/removePk`, 
-        addToPreHome:`${host}/pk/addToPreHome`, 
+        addToGeneticHome:`${host}/pk/addToGeneticHome`, 
+        addToNonGeneticHome:`${host}/pk/addToNonGeneticHome`, 
         removePkFromHomPage:`${host}/pk/removePkFromHomPage`, 
         setAlbumType:`${host}/pk/setAlbumType`, 
         
@@ -197,6 +203,16 @@ var url = {
         uploadCashierLink:`${host}/pk/uploadCashierLink`, 
         
         deleteCashier:`${host}/pk/deleteCashier`, 
+        deletePk:`${host}/pk/deletePk`, 
+        
+        activeSinglePK:`${host}/pk/activeSinglePK`, 
+                
+        activeAgine:`${host}/pk/activeAgine`, 
+
+        addTip:`${host}/pk/addTip`, 
+        removeTip:`${host}/pk/removeTip`, 
+
+        queryTips:`${host}/pk/queryTips`, 
 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 

@@ -47,12 +47,16 @@
 
                 <view class="h-50"></view>
                 <view class="css b-white br-20 p-30"  bindtap="{{user?'':'login'}}">
-
-                    <view class="rcs">
-                         <image class="w-100 h-100 br-100 b-48" mode="aspectFit" src="{{!user?'/images/user.png':user.imgUrl}}"></image>
-                         <view class="w-20"></view>
-                         <view class="rcs max-w-300 fs-40 fw-700 ">{{!user?'登录':user.userName}}</view>
+                    <view class="rbc">
+                        <view class="rcs">
+                            <image class="w-100 h-100 br-100 b-48" mode="aspectFit" src="{{!user?'/images/user.png':user.imgUrl}}"></image>
+                            <view class="w-20"></view>
+                            <view class="rcs max-w-300 fs-40 fw-700 ">{{!user?'登录':user.userName}}</view>
+                        </view>
+                        <view class="rcc fs-25 fw-400 c-word-6">制作公告></view>
                     </view>
+
+
                     <view class="rac pt-20">
                         <view class="ccc ">
                             <view class="fs-30 fw-700 h-40">{{pkTimes}}</view>
@@ -83,16 +87,18 @@
                       
                                     <view class="css br-20 b-white mt-4vw pr-3vw pl-3vw">
                                         <!-- <view class="css"><view class="rcc absolute"> <image class="w-30 h-30" mode="aspectFit" src="/images/statu1.png"></image></view></view> -->
-                                        <view class="rbc " data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
+                                        <view class="rbc ">
                                             <view class="rcc">
                                                 <image class="w-35 h-35" mode="aspectFit" src="{{pk.invite.key===0?'/images/statu3.png':'/images/statu4.png'}}"></image>
                                                 <view class="w-10"></view>
                                                 <view class="{{pk.invite.key===0?'rus fs-25 fw-400 tipColor':'rus fs-25 fw-400 c-red'}} ">{{pk.invite.name}}</view>
+                                                <view class="w-50"></view>
+                                                <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name " bindtap="deletePk" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除榜帖</view>
                                             </view>
 
 
 
-                                            <view class="rcc pt-40 pb-40" >
+                                            <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
                                                 <view class="rcc fs-25 fw-400 c-4">查看榜单</view>
                                                 <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                                             </view>
@@ -159,14 +165,16 @@
                                                                                     
                                                                                     <!-- <view class="h-30 b-line"></view>                                                               -->
                                         </view>
-                                        <view class="h-30 t-line"></view>
+                                        <view class="h-10 t-line"></view>
                                     </view>
 
 
                                         <!-- <view class="rcc fs-30 fw-700 p-100">{{pk.topic}}-{{pk.user.userId}}</view> -->
                                         <view class="rbc c-word-7">
                                             <!-- 仅删除未审核的榜帖 -->
-                                            <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name ">删除榜帖</view>
+                                            <view wx:if="{{pk.pkStatu.key === 0}}" class="rcc fs-20 fw-400 pl-15 pr-15 h-45 br-10  b-statu2 c-word-8">{{pk.pkStatu.name}}</view>
+                                            <view wx:else class="rcc fs-20 fw-400 pl-15 pr-15 h-45 br-10  b-statu1 c-word-8">{{pk.pkStatu.name}}</view>
+                                            
                                             <view hidden="{{!pk.approved}}" class="rus fs-25 fw-400 c-4">{{pk.approved}}</view>
                                             <view hidden="{{!pk.approving}}" class="rus fs-25 fw-400 c-4">{{pk.approving}}</view>
 
@@ -475,7 +483,7 @@
         <view class="css pl-4vw pr-4vw">
             <view class="rbc pt-30 pb-30 b-line">
                 <view class="fs-30 fw-400">建榜</view>
-                <view class='rcc' bindtap="_editPkDialog_hide"><image class="w-40 h-40" mode="aspectFit" src="/images/close.png"></image></view>
+                <view class='rcc' bindtap="_editPkDialog_hide"><image class="w-40 h-40" mode="aspectFit" src="/images/down2.png"></image></view>
             </view>
             <view class="css pt-20 pb-20">
                 <view class="rcs">
