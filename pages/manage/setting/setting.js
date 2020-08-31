@@ -65,12 +65,23 @@ Page({
       });
 
     });
+  },
+  setBoolean:function (res) {
+    var that = this;
+    var type = res.currentTarget.dataset.type;
+    var value = res.currentTarget.dataset.value;
 
+    template.createShortTextDialog(that).show("输入安全口令", 100,"", function (passwd) {
 
-
-
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.send(request.url.systemSetting, "GET",{passwd:passwd,type:type,value:value==='0'?1:0});
+    });
 
   },
+
+
+
   set:function (res) {
     var that = this;
 

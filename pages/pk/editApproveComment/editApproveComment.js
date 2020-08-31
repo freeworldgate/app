@@ -119,10 +119,21 @@ Page({
       desc: "from" + that.data.userPost.creator.userName + '',
       imageUrl:that.data.userPost.creator.imgUrl,
       path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId + "&fromUser=" + that.data.user.userId ,
+      
     }
+    
 
 
   },
+  approvePost:function(){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.setApprover, "GET",{pkId: that.data.pkId,postId: that.data.postId})
 
+
+  
+
+  },
   
 })

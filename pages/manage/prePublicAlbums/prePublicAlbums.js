@@ -207,6 +207,46 @@ Page({
     httpClient.setMode("label", true);
     httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
 
+    // uploadInnerPublicGroupCode
+
+  },
+  uploadGroup:function(res){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+
+        template.uploadImages3("InnerPublicImg", res.tempFilePaths, that,
+        function (urls) {
+            //传输成功
+            console.log("---start---" ,urls);
+            var httpClient = template.createHttpClient(that);
+            httpClient.setMode("label", true);
+            var passwd = wx.getStorageSync('passwd')
+            httpClient.send(request.url.uploadInnerPublicGroupCode, "GET",{pkId:pkId,passwd:passwd,url:urls[0]});
+  
+        },
+        function () {
+            
+            //传输失败
+            wx.hideLoading({
+              complete: (res) => {
+                tip.showContentTip("失败......");
+              },
+            })
+            
+  
+        });
+        
+      },
+    })
+
+
+
+
   },
   approverMessageDetail:function(res){
     var that = this;

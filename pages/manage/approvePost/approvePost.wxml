@@ -10,7 +10,7 @@
                                                 <view class="rcc">
                                                     <image class="w-35 h-35" mode="aspectFit" src="{{pk.invite.key===0?'/images/statu3.png':'/images/statu4.png'}}"></image>
                                                     <view class="w-10"></view>
-                                                    <view class="{{pk.invite.key===0?'rus fs-25 fw-400 tipColor':'rus fs-25 fw-400 c-red'}} ">{{pk.invite.name}}</view>
+                                                    <view class="{{pk.invite.key===0?'rus fs-25 fw-400 tipColor':'rus fs-25 fw-400 c-red'}} ">{{pk.invite.name}} - {{pk.pkType}} - {{pk.charge.name}}</view>
                                                 </view>
 
 
@@ -75,9 +75,13 @@
                                 <view class="rcc fs-25 fw-400  c-word-6 pl-10 pr-10 br-10 b-statu3 absolute">收款码</view>
                             </view>
 
-                            <view class="rcc" bindtap="viewImg" data-url="{{post.approveComment.imgUrl}}">
+                            <view wx:if="{{post.approveComment}}" class="rcc" bindtap="viewImg" data-url="{{post.approveComment.imgUrl}}">
                                 <image class="h-150 w-150 br-20" mode="aspectFill" src="{{post.approveComment.imgUrl}}"></image>
                                 <view class="rcc fs-25 fw-400  c-word-6 pl-10 pr-10 br-10 b-statu3 absolute">截图</view>
+                            </view>
+                            <view wx:else class="rcc b-white br-20" >
+                                <image class="h-150 w-150 br-20" mode="aspectFill" src=""></image>
+                                <view class="rcc fs-25 fw-400  c-word-6 pl-10 pr-10 br-10 b-statu3 absolute">无留言</view>
                             </view>
                         
                 </view>
@@ -174,7 +178,7 @@
             <view class="rac">
 
                 <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload c-white message" bindtap="approvePost" data-post="{{post}}" data-pk="{{pk}}">审核通过</view>
-                <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload-2 c-white message" bindtap="hiddenPost" data-post="{{post}}" data-pk="{{pk}}">标记已处理</view>
+                <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload-2 c-white message" bindtap="hiddenPost" data-post="{{post}}" data-pk="{{pk}}">驳回修改{{post.rejectTimes}}次</view>
 
             </view>
    

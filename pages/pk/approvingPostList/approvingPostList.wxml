@@ -2,7 +2,22 @@
 <!--pages/pk/approverInfos/approverInfos.wxml-->
 <view class="css b-48 h-100vh" >
 
+    <view class="css">
+            <view style="height:{{top}}px"></view>
+            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
+                <view class="rcc h-32px w-32px br-32px b-48 z102" bindtap="relaunch">
+                    <image class="w-45 h-45" mode="aspectFit" src="/images/home.png"></image>
+                </view>
+                <view class="w-20"></view>
+                <view class="rcs c-4">
+                    <view class="rcc fs-30 fw-400 c-white">待审核列表</view>
+       
 
+                </view>
+                
+                
+            </view>
+    </view>
 
 
     <view wx:if="{{post}}" class="css">
@@ -238,7 +253,7 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
-    <view class="cac pageLoadingDialog b-48" hidden="{{pageLoadingDialog.visible!=true}}">
+    <view class="cac pageLoadingDialog b-white" hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
                 <image class="pageLoadingDialog_image" mode="aspectFit" src="/images/load.gif"></image>
@@ -247,7 +262,7 @@
         </view>
         <view></view>
     </view>
-    <view class="cac pageLoadingDialog b-48" hidden="{{pageLoadingDialogError.visible!=true}}">
+    <view class="cac pageLoadingDialog b-white" hidden="{{pageLoadingDialogError.visible!=true}}">
         <view></view>
         <view class="ccc ">
             <view class="rcc">

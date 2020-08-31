@@ -53,7 +53,7 @@
                             <view class="w-20"></view>
                             <view class="rcs max-w-300 fs-40 fw-700 ">{{!user?'登录':user.userName}}</view>
                         </view>
-                        <view class="rcc fs-25 fw-400 c-word-6">制作公告></view>
+                        <view class="rcc fs-25 fw-400 c-word-6">制作样例></view>
                     </view>
 
 

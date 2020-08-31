@@ -1,7 +1,6 @@
 {
 
-  "navigationBarBackgroundColor": "#f8f8f8",
-   "backgroundColor": "#f8f8f8",
+   "navigationStyle": "custom",
    "navigationBarTitleText": "待审核列表"
 
 }

@@ -11,6 +11,22 @@
       <view class="{{feeNumber === '5'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="set" data-type="feeNumber" data-value="5">59.9</view>
   </view>
 
+  <view class="h-30"></view>
+
+  <view class="rcs fs-30 fw-700">转发模式</view>
+  <view class="rbs ">
+      
+      <view class="{{buttonPolicy1 === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="setBoolean" data-type="buttonPolicy1" data-value="{{buttonPolicy1}}" >遗传相册</view>
+      <view class="{{buttonPolicy2 === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="setBoolean" data-type="buttonPolicy2" data-value="{{buttonPolicy2}}"  >内置公开</view>
+      <view class="{{buttonPolicy3 === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="setBoolean" data-type="buttonPolicy3" data-value="{{buttonPolicy3}}"  >内置邀请</view>
+  </view>
+  <view class="h-30"></view>
+  <view class="rbs ">
+      <view class="{{buttonPolicy4 === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="setBoolean" data-type="buttonPolicy4" data-value="{{buttonPolicy4}}"  >VIP用户</view>
+      <view class="{{buttonPolicy5 === '0'?'rcc pt-20 pb-20 br-10 b-1 fs-25 fw-400 m-5':'rcc pt-20 pb-20 br-10 b-white fs-25 fw-400 m-5'}}" style="flex:1" bindtap="setBoolean" data-type="buttonPolicy5" data-value="{{buttonPolicy5}}"  >普通用户</view>
+  </view>
+
+
   <view class="css">
   
       <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="groupMaxMembers" >
@@ -45,12 +61,12 @@
           </view>
       </view>
 
-      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="approveWaitingTime" >
+      <!-- <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="approveWaitingTime" >
           <view class="rcc fs-30 fw-400">榜帖审核等待时间</view>
           <view class="rcc">
              <view class="rcc fs-30 fw-400">{{approveWaitingTime}}分钟</view>
           </view>
-      </view>
+      </view> -->
       <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxNoActivePks" >
           <view class="rcc fs-30 fw-400">用户最多未激活榜单数量</view>
           <view class="rcc">
@@ -63,7 +79,12 @@
              <view class="rcc fs-30 fw-400">{{maxPkModifyTime}}次</view>
           </view>
       </view>
-
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxRejectTimes" >
+          <view class="rcc fs-30 fw-400">Post最大修改次数</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{maxRejectTimes}}次</view>
+          </view>
+      </view>
 
 
       <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="canComplainWaitingTime" >

@@ -216,9 +216,14 @@
     </view>
     <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
         <view class="h-20"></view>
-        <view class="rus fs-25 fw-400 c-white ">修改建议:{{post.rejectText}}</view>
+        <view class="ccc fs-25 fw-400 pl-50 pr-50">
+            <view class="rcc c-3-1">修改建议</view>
+            <view class="h-20"></view>
+            <view class="rcc c-white line-5-center">{{post.rejectText}}</view>
+        </view>
+        
         <view class="h-20"></view>
-        <view class="rus fs-25 fw-400 c-3-1 ">修改{{post.rejectTimes}}次</view>
+        <view class="rcc fs-25 fw-400 c-1 ">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
     </view>
 
 

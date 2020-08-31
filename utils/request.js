@@ -156,8 +156,8 @@ var url = {
         deleteFeeCode:`${host}/pk/deleteFeeCode`, 
         changeFeeCodeStatu:`${host}/pk/changeFeeCodeStatu`, 
         uploadFeeCode:`${host}/pk/uploadFeeCode`, 
-
         
+        uploadInnerPublicGroupCode:`${host}/pk/uploadInnerPublicGroupCode`, 
         replaceCashierGroup:`${host}/pk/replaceCashierGroup`, 
         
         replaceFeeCode:`${host}/pk/replaceFeeCode`, 

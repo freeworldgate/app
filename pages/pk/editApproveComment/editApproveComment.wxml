@@ -149,20 +149,21 @@
         <view class="rcc">
             <!--  -->
             <view class="rcc">
-                                <button wx:if="{{(userPost.statu.key===3) && (user.userId === userPost.creator.userId) && (pkComment)}}" open-type="share" class="rcc message h-100 br-100 b-white">
+                                <view wx:if="{{button.button === 2}}" class="{{button.style}}" >
                                     <view class="w-80"></view>
-                                    <image class="w-40 h-40" mode="aspectFit" src="/images/approve3.png"></image>
+                                    <image class="w-40 h-40" mode="aspectFit" src="{{button.icon}}"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400">转发审核群</view>
-                                    <view class="w-80"></view>
-                                </button>
-                                <view wx:else type=""  class="rcc h-100 br-100 b-post ">
-                                    <view class="w-80"></view>
-                                    <image class="w-40 h-40" mode="aspectFit" src="/images/approve1.png"></image>
-                                    <view class="w-10"></view>
-                                    <view class="fs-30 fw-400 c-3-1">转发审核群</view>
+                                    <view class="fs-30 fw-400">{{button.name}}</view>
                                     <view class="w-80"></view>
                                 </view>
+                                <button wx:else open-type="{{button.type}}" class="{{button.style}}" bindtap="{{button.linkMethod}}">
+                                    <view class="w-80"></view>
+                                    <image class="w-40 h-40" mode="aspectFit" src="{{button.icon}}"></image>
+                                    <view class="w-10"></view>
+                                    <view class="fs-30 fw-400">{{button.name}}</view>
+                                    <view class="w-80"></view>
+                                </button>
+                   
 
 
 
@@ -170,7 +171,10 @@
 
         </view>
 
-        <view></view>
+        <view class="rcc pb-20">
+            <view class="rcc fs-25 fw-400 c-white">{{tip1}}</view>
+            <view class="rcc fs-25 fw-400 c-5 p-10" bindtap="approvePost">{{tip2}}</view>
+        </view>
 
  
     
