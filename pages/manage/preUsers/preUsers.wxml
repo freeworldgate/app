@@ -202,7 +202,7 @@
                      <view class="fs-20 fw-400 c-3">还可输入{{editImageDialog.left}}个字</view>
                 </view> -->
 
-                <view class="rcc pt-50 pb-50 fs-30 fw-700">编辑消息</view>
+                <view class="rcc pt-50 pb-50 fs-30 fw-700">编辑内容</view>
                 <view class="css  ">
 
                     
