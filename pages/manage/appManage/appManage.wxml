@@ -83,6 +83,11 @@
                 <view class="rcc fs-30 fw-400">内置公开相册</view>
             </navigator>
         </view>
+        <view class="rcc">
+            <navigator url="/pages/manage/queryActiveCode/queryActiveCode" class="rcc">
+                <view class="rcc fs-30 fw-400">获取激活码</view>
+            </navigator>
+        </view>
         <view></view>
         <view></view>
     </view>

@@ -1,4 +1,4 @@
-<!--pages/pk/selectPker/selectPker.wxml-->
+<!--pages/manage/queryActiveCode/queryActiveCode.wxml-->
 <view class="css h-100vh b-white">
 
     <view class="css">
@@ -9,7 +9,7 @@
                 </view>
                 
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 ">激活榜单</view>
+                    <view class="rcc fs-30 fw-400 ">获取激活码</view>
        
 
                 </view>
@@ -18,50 +18,47 @@
             </view>
     </view>
 
-    <view wx:if="{{pkActive}}" class="cas pr-8vw pl-8vw" style="flex:1">
+    <view wx:if="{{activeCode}}" class="cas pr-8vw pl-8vw" style="flex:1">
         <view class="ccc">
             <image class="w-200 h-200" mode="aspectFit" src="{{icon1}}"></image>
-            <view class="rcc fs-40 fw-500 c-10">{{approveText}}</view>
+            <view class="rcc fs-40 fw-500 c-10">{{code?code:'无有效激活码'}}</view>
             <view class="rcc">
-                <view class="rcc fs-25 fw-400 c-3">已修改</view>
-                <view class="rcc fs-30 fw-400 c-10 p-10">{{pkActive.rejectTimes}}</view>
-                <view class="rcc fs-25 fw-400 c-3">次</view>
-                <view class="rcc fs-25 fw-400 c-3">,最多修改</view>
-                <view class="rcc fs-30 fw-400 c-10 p-10">{{pkActive.maxModifyTimes}}</view>
-                <view class="rcc fs-25 fw-400 c-3">次</view>
+                <view class="rcc fs-25 fw-400 c-3">激活码</view>
             </view>
         </view>
-        <view class="css p-30">
-            <view hidden="{{!pkActive.tip}}" class="rcc fs-30 fw-400 c-3 p-30">修改建议</view>
-            <view class="rus fs-30 fw-400 c-word-6 line-3-center">{{pkActive.tip}}</view>
-            
-        </view>
         <view class="rcc">
-            <button wx:if="{{pkActive.statu.key === 1}}" class="rcc fs-30 fw-700 w-500 h-100 br-100 b-upload c-white message" bindtap="activeAgine" data-pkid="{{pkActive.pkId}}">重新验证</button> 
-            <button wx:else class="rcc fs-30 fw-700 w-500 h-100 br-100 b-48 c-3 message" >审核中</button> 
+          <view class="rcc fs-30 fw-400 p-20 br-10 b-48" bindtap="copy">复制激活码</view>
+        </view>
+        
+
+
+        <view class="css">
+            <view class="h-30"></view>
+            <view class="css" >
+                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" bindtap="activePK">刷新激活码</button>         
+            
+            </view>
+            <view class="h-100"></view>
+
         </view>
                 
 
     
     </view>
     <view wx:else class="cbs pr-8vw pl-8vw  " style="flex:1" >
+        <view></view>
         <view class="css">
             <view class="h-50"></view>
-            <view class="rcc fs-40 fw-500 c-10">{{title}}</view>
+            <view class="rcc fs-40 fw-500 c-10">输入用户口令</view>
             <view class="h-50"></view>
             <view class="css">
-                <input bindinput="inputActiveCode" class="createEditActiveNumberDialog_input" maxlength="100" placeholder="{{title1}}" ></input>
+                <input bindinput="inputActiveCode" class="createEditActiveNumberDialog_input" maxlength="100" placeholder="输入用户码" ></input>
             </view>
  
         </view>
         <view class="css">
 
             <view class="css">
-                <view class="rus fs-30 fw-700 c-4 line-h80 ">温馨提示:</view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip1}}</view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip2}}</view>
-                <view class="rus line-5-start fs-25 fw-400 line-h50 c-4">{{tip3}}</view>
-
             </view>
             <view class="h-80"></view>
 
@@ -75,7 +72,7 @@
         </view>
 
 
-        <view class="rac">
+        <!-- <view class="rac">
        
             <view class="ccc p-30 b-48 br-20" >
                 <navigator class="ccc" url="{{link1Url}}" hover-class="none">
@@ -93,16 +90,9 @@
                 </navigator>
                 
             </view>
-            <!-- <view  hidden="{{!link3Name}}"  class="ccc">
-                <navigator class="ccc" url="{{link3Url}}" hover-class="none">
-                    <image class="w-100 h-100" mode="aspectFit" src="{{link3Icon}}"></image>
-                    <view class="h-10"></view>
-                    <view class="rcc fs-30 c-4">{{link3Name}}</view>
-                </navigator>
-                
-            </view> -->
+  
       
-        </view>
+        </view> -->
 
 
 
@@ -110,8 +100,8 @@
         <view class="css">
             <view class="h-30"></view>
             <view class="css" >
-                <button wx:if="{{activeCode}}" class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" bindtap="activePK">{{buttonName}}</button>         
-                <button wx:else class="rcc fs-30 fw-700 h-100 br-100 b-48 c-3 message" >{{buttonName}}</button>
+                <button class="rcc fs-30 fw-700 h-100 br-100 b-upload c-white message" bindtap="activePK1">获取激活码</button>         
+            
             </view>
             <view class="h-100"></view>
 
@@ -196,6 +186,8 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
+
+
 
 
 

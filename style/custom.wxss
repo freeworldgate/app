@@ -519,9 +519,10 @@
     /* height: 30%; */
     position: fixed;
     z-index: 31;
-    top: 25%; 
+    top: 35%; 
     /* top:0px; */
     left: 10%;
+
 
     /* padding-right: 70rx;
     padding-left: 70rpx; */

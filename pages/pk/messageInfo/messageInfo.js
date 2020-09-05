@@ -115,7 +115,7 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("success", function () {
       
-      template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
+      template.createEditImageDialog(that).setDialog("编辑审核样例", "编辑样例内容", 1,function(){}, function (text, urls) {
         //上传成功
         wx.hideLoading({
           complete: (res) => {},
@@ -159,12 +159,7 @@ Page({
 
 
   },
-  playVoice:function (res) {
-    var that = this;
-    var voiceUrl = res.currentTarget.dataset.voiceurl;
-    var speck_time = res.currentTarget.dataset.specktime;
-    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
-  }
+
   
 
 

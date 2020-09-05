@@ -738,7 +738,7 @@ mw-200{
 .b-card-2{
   background-color: rgba(223, 223, 223, 0.7);
 }
-
+.b-none{background-color: rgba(255, 255, 255, 0);}
 .b-0{
   background-color: rgb(255, 145, 0)
 }
@@ -1258,6 +1258,15 @@ mw-200{
     -webkit-line-clamp:5;
     -webkit-box-orient:vertical;
     word-break:break-all;
+}
+.line-8-start{
+  word-wrap: break-word;
+  display:-webkit-box;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:8;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
 }
 .line-1-end{
     word-wrap: break-word;

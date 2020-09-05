@@ -7,7 +7,7 @@
                     <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
                 </view>
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-4">{{date}}</view>
+                    <view class="rcc fs-30 fw-400 c-4">审核样例</view>
        
 
                 </view>
@@ -23,53 +23,67 @@
 
                             <view class="rbs ">
                                 
-
+                                <view class="rss pt-30 ">
+                        
+                                    <view class="rcc w-90 h-90 br-20 b-white">
+                                        <image class="h-80 w-80 br-20" mode="aspectFill" src="{{creator.imgUrl}}" ></image>
+                                    </view>
+                                    <view class="w-20"></view>
+                                    <view class="cas">
+                                        <view class="rus  fs-30 fw-400 line-1-start c-12 w-250">{{creator.userName}}</view>
+                                        <view class="rus  fs-25 fw-400 c-3">{{message.time}}</view>
+                                    </view>
+                                    
+                         
+                                </view>
                                         
 
 
 
-                                <view class="rcc pb-30 pt-30">
+                                <!-- <view class="rcc pb-30 pt-30">
                                     <view class="rcc  fs-25 fw-400 c-3">{{message.time}}</view>
-                                </view>
+                                </view> -->
 
 
-                                <view class="rcc pt-30 pb-30">
+                                <view class="css pt-30 pb-30">
                                     <view wx:if="{{user.userId===creator.userId}}" class="rcc "  bindtap="approverMessage" >
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-red">{{word1}}</view>
+                                        <view  class="rcc fs-25 fw-400 c-red">编辑样例</view>
                                     </view>
-                                    <view wx:else class="rcc fs-25 fw-400 c-5">{{word2}}</view>
+                                    <view wx:else class="rcc fs-25 fw-400 c-5">审核样例</view>
                                 </view>
                                 
                     
 
                             </view> 
 
-                            <view class="ccc">
-
-                                            <view class="rcc w-150 h-150 br-150 b-white">
-                                                <image class="h-140 w-140 br-140" mode="aspectFill" src="{{creator.imgUrl}}" ></image>
-                                            </view>
-                                            <view class="h-20"></view>
-                                            <!-- <view class="{{approver.approveMessage?'rcc h-50 br-50 w-120 b-red c-white fs-25 fw-400':'rcc h-50 br-50 w-120 b-48 c-3 fs-25 fw-400'}}">{{approver.approveMessage?'已激活':'未激活'}}</view> -->
-                                            <view class="h-20"></view>
-                                            <!-- <view class="rus  fs-30 fw-700 line-1-center c-word-6 w-300">{{creator.userName}}</view> -->
-                                            <view class="rus  fs-35 fw-700 line-1-center c-12 w-300">{{creator.userName}}</view>
-                            </view>
-
                             <view class="css pt-30 pb-30">
-                                <view class="rcc-wrap  fs-30 fw-400 line-5-center c-4">{{message.text}}</view>
+                                <view class="rcc-wrap  fs-30 fw-400 line-5-start c-4">{{message.text}}</view>
                                 <!-- <view class="rcc-wrap  fs-30 fw-400 line-5-center c-word-5">{{message.text}}</view> -->
                                 <view class="h-30"></view>
                                 <view class="rcc h-84vw w-84vw br-15" style="background-position: top;background-image: url({{message.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
+                            </view>
+
+                            <view class="rac pb-30" >
+
+                                <view class="rcc" style="flex:1">
+                                    <button class="rcc fs-30 fw-400 c-5 message b-none pt-50 pb-50" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">获取图片</button>
+                                </view>
+                                <view class="rcc" style="flex:1">
+                                    <button class="rcc fs-30 fw-400 c-1 message b-none pt-50 pb-50"  bindtap="saveImg" data-url="{{message.imgeUrl}}" >保存到相册</button>
+                                </view>
+                                
+                                
+                            
+                            
                             </view>
          
             </view>
         </view>
 
 
-        <view class="rac" >
+        <!-- <view class="rac" >
 
 
               <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="contact" session-from="2,{{creator.userId}},{{message.mediaId}}">{{buttonStr1}}</button>
@@ -78,7 +92,7 @@
         
         
         
-        </view>
+        </view> -->
 
         <view class="rcc fs-25 fw-400 c-4 p-20">{{word3}}</view>
      
@@ -118,17 +132,18 @@
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
         <view class="css b-white br-20" style="background-position: top;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
+  
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
+                    <image class="w-200 h-200 br-200 b-white" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
             </view>
-            <view class="css">
-                <view class="h-200"></view>
-                <view class="h-30"></view>
-                <view class="rcc fs-35 fw-700 tipColor">{{dialog.title}}</view>
+            <view class="cbs">
+                <view class="h-150"></view>
+                <view></view>
+                <view class="rcc fs-33 fw-700 c-4 pb-50 pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
             
-                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{dialog.text}}</view>
+                <view class="rcc-wrap fs-28 fw-400 c-4 pl-4vw pr-4vw line-3-center">{{dialog.text}}</view>
                 
                 <view class="rcc pt-50 pb-50">
                     <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="dialog_confirm" >知道了</view>
@@ -136,11 +151,10 @@
     
             </view>
 
-
         </view>
-        <view class="rcc p-100">
+        <!-- <view class="rcc p-100">
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="dialog_confirm"></image>
-        </view>
+        </view> -->
     </view>
     <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
         <view class="ccc levelDialog_view">
@@ -155,22 +169,23 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20" style="background-position: top;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
+        <view class="css b-white br-20"  style="background-position: center;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-200 h-200 br-200 b-white" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
             </view>
-            <view class="css">
-                <view class="h-200"></view>
-                <view class="h-30"></view>
-                <view class="rcc fs-35 fw-700 tipColor">{{operateDialog.title}}</view>
+            <view class="cbs">
+                <view class="h-150"></view>
+                <view></view>
+                <view class="rcc fs-33 fw-700 c-4 pb-50 pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
             
-                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{operateDialog.text}}</view>
+                <view class="rcc-wrap fs-28 fw-400 c-4  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
                 
-                <view class="rcc pt-50 pb-50">
+                <view class="rcc pt-50">
                     <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
                 </view>
+                <view class="rcc p-30 fs-25 fw-400 c-3-1 "  bindtap="operateDialog_cancel">知道了</view>
     
             </view>
 
@@ -180,6 +195,7 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
+
     <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
@@ -374,17 +390,6 @@
         </view>
     </view>
 
-    <view hidden='{{playVoiceDialog.visible != true}}' class="rcc voiceDialog"  >
-              <view class="ccc pt-100">
-                    <view class="ccc w-200 h-200 br-200 b-card-2">
-                        <view class="rcc"> <image class="w-80 h-80 " mode="aspectFit" src="/images/voice.png"></image></view>
-                        <view class="rcc fs-40 fw-700 c-3">{{playVoiceDialog.time}}</view>
-                    </view>
-
-                    
-              </view>
-
-    </view>
 
 
 

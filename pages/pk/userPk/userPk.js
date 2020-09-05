@@ -156,25 +156,38 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("approve", function (link) {
 
-      template.createOperateDialog(that).show("激活榜单","激活榜单，审核通过后可以使用",function(){
-        wx.navigateTo({
-          url: link,
-        })
+        template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+          wx.navigateTo({
+            url: link.castV1,
+          })
+
+      },function(){});
+    })
+    
+    httpClient.addHandler("doApprove", function (link) {
+
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+          //发布榜单:
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("label", true);
+          httpClient.send(request.url.publishPk, "GET",{pkId:pkid});  
+
 
     },function(){});
-    })
+  })
+
+
     httpClient.addHandler("group", function (link) {
 
-      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
-        wx.navigateTo({
-          url: link,
-        })
-
-    },function(){});
+        template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+          wx.navigateTo({
+            url: link.castV1,
+          })
+      },function(){});
     })
     httpClient.addHandler("message", function (link) {
 
-      template.createOperateDialog(that).show("发布审核样例","制作审核样例，发布审核样例",function(){
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
         that.approverMessage(pkid,index);
 
     },function(){});

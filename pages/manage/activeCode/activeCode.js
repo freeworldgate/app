@@ -169,6 +169,41 @@ Page({
 
 
   },
+
+  
+  gennerateCodes:function(res){
+    var that = this;
+    var cashierId = res.currentTarget.dataset.cashierid;
+    template.createOperateDialog(that).show("提示","确定用户名下新增100个储备激活码?",function(){
+
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+        that.init("");
+      })
+      httpClient.send(request.url.gennerateCodes, "GET",{cashierId:cashierId});
+
+    },function(){});
+
+
+  },
+  
+  
+  copy:function(res){
+    var that = this;
+    var cashierId = res.currentTarget.dataset.cashierid;
+
+    wx.setClipboardData({
+      data: cashierId,
+    })
+
+
+  },
+
+
+
+
+
   show:function(res){
     var that = this;
     var url = res.currentTarget.dataset.url;

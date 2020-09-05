@@ -21,7 +21,21 @@
   </view>
 
   <view class="csc" >
-
+    <!-- <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="rss mr-3vw ml-3vw  pb-30">
+        <view class="rus fs-25 fw-400 c-3-1">修改建议:</view>
+        <view class="rus fs-25 fw-400 line-5-start c-white " style="flex:1">{{post.rejectText}}</view>
+    </view> -->
+    <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
+        <view class="h-20"></view>
+        <view class="ccc fs-25 fw-400 pl-50 pr-50">
+            <view class="rcc c-5">修改建议</view>
+            <view class="h-10"></view>
+            <view class="rcc c-white line-5-center">{{post.rejectText}}</view>
+        </view>
+        
+        <view class="h-30"></view> 
+    </view>
+    
     <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-post br-20 ">
     
 
@@ -211,19 +225,19 @@
 
 
       </view>
-      <view class="{{post.selfComment?'h-50':'h-100'}}"></view>
+      <view class="{{post.selfComment?'h-50':'h-50'}}"></view>
 
     </view>
     <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
-        <view class="h-20"></view>
+        <!-- <view class="h-20"></view>
         <view class="ccc fs-25 fw-400 pl-50 pr-50">
             <view class="rcc c-3-1">修改建议</view>
             <view class="h-20"></view>
             <view class="rcc c-white line-5-center">{{post.rejectText}}</view>
         </view>
         
-        <view class="h-20"></view>
-        <view class="rcc fs-25 fw-400 c-1 ">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
+        <view class="h-20"></view> -->
+        <view class="rcc fs-25 fw-400 c-1 pt-80">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
     </view>
 
 
@@ -239,17 +253,18 @@
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
         <view class="css b-white br-20" style="background-position: top;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
+  
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
+                    <image class="w-200 h-200 br-200 b-white" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
             </view>
-            <view class="css">
-                <view class="h-200"></view>
-                <view class="h-30"></view>
-                <view class="rcc fs-35 fw-700 tipColor">{{dialog.title}}</view>
+            <view class="cbs">
+                <view class="h-150"></view>
+                <view></view>
+                <view class="rcc fs-33 fw-700 c-4 pb-50 pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
             
-                <view class="rcc-wrap fs-30 fw-400 c-3 p-30 line-3-center">{{dialog.text}}</view>
+                <view class="rcc-wrap fs-28 fw-400 c-4 pl-4vw pr-4vw line-3-center">{{dialog.text}}</view>
                 
                 <view class="rcc pt-50 pb-50">
                     <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="dialog_confirm" >知道了</view>
@@ -257,11 +272,10 @@
     
             </view>
 
-
         </view>
-        <view class="rcc p-100">
+        <!-- <view class="rcc p-100">
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="dialog_confirm"></image>
-        </view>
+        </view> -->
     </view>
     <view class="rcc tipDialog " hidden="{{tipDialog.visible!=true}}">
         <view class="ccc levelDialog_view">
@@ -276,21 +290,23 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20" style="background-position: top;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
+        <view class="css b-white br-20"  style="background-position: center;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% auto; ">
             <view class="rcc">
                 <view class="rcc absolute">
-                    <image class="w-300 h-300" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-200 h-200 br-200 b-white" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
             </view>
-            <view class="css">
-                <view class="h-200"></view>
-                <view class="rcc fs-35 fw-700 c-4">{{operateDialog.title}}</view>
+            <view class="cbs">
+                <view class="h-150"></view>
+                <view></view>
+                <view class="rcc fs-33 fw-700 c-4 pb-50 pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
             
-                <view class="rcc-wrap fs-30 fw-400 c-3 pl-30 pr-30 line-3-center">{{operateDialog.text}}</view>
+                <view class="rcc-wrap fs-28 fw-400 c-4  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
                 
-                <view class="rcc pt-50 pb-20">
-                    <view class="rcc fs-30 fw-400 c-5 p-30"  bindtap="operateDialog_confirm" >确定</view>
+                <view class="rcc pt-50">
+                    <view class="rcc w-300 h-80 br-80 bTipColor fs-30 fw-400 c-white"  bindtap="operateDialog_confirm" >确定</view>
                 </view>
+                <view class="rcc p-30 fs-25 fw-400 c-3-1 "  bindtap="operateDialog_cancel">知道了</view>
     
             </view>
 
@@ -300,6 +316,7 @@
             <image class="w-60 h-60" mode="aspectFit" src="/images/close1.png" bindtap="operateDialog_cancel"></image>
         </view>
     </view>
+
     <view class="cac pageLoadingDialog " hidden="{{pageLoadingDialog.visible!=true}}">
         <view class="ccc ">
             <view class="rcc">
@@ -494,87 +511,7 @@
     </view>
 
 
-    <view bindtap="_uploadFeeDialog_close" catchtouchmove="catchReturn" class="coverAll3" hidden="{{uploadFeeDialog.visible!=true}}"></view>
-    <view catchtouchmove="catchReturn" class="css editDialog-2" hidden="{{uploadFeeDialog.visible!=true}}" style="left:{{uploadFeeDialog.left}}vw">
-        <view class="css pl-4vw pr-4vw z30 b-white br-20">
-            <view class="rbc  pt-30 pb-30 ">
-                <view class="rcs">
-                    <view class="css">
-                        <image class="w-80 h-80 br-10 box6" mode="aspectFill" src="{{user.imgUrl}}"></image>
-                    </view>
-                    <view class="{{uploadFeeDialog.userCode.statu.key===0?'fs-30 fw-700 c-3-1 pl-5 pr-10 pl-10 pr-10':'fs-30 fw-700 pl-5 pr-10 pl-10 pr-10'}}">金额:</view>
-                    <view class="{{uploadFeeDialog.userCode.statu.key===0?'fs-30 fw-700 c-3-1':'fs-30 fw-700 c-1'}}">{{uploadFeeDialog.userCode.feeNum}}元</view>
-                </view>
 
-                <view bindtap="_uploadFeeDialog_apply" class="rcc p-20 box5 br-10 b-white" wx:if="{{uploadFeeDialog.userCode.url&&uploadFeeDialog.userCode.phone}}">
-                    <view class="rcc fs-25 fw-700 c-1 line-h25">下一步</view>
-                    <view class="rcc">
-                        <image class="w-25 h-25" mode="aspectFit" src="/images/right-white.png"></image>
-                    </view>
-                </view>
-                <view class="rcc p-20 box5 br-10 b-white" wx:else>
-                    <view class="rcc fs-25 fw-700 c-3-1 line-h25">下一步</view>
-                    <view class="rcc">
-                        <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
-                    </view>
-                </view>
-            </view>
-            <view class="rac pt-30 pb-30 b-line t-line">
-                <view class="ccc w-250">
-                    <view class="rcc">
-                        <view class="rcc fs-25 fw-400 c-3-2">设置收款码</view>
-                    </view>
-                    <view class="h-30"></view>
-                    <view class="rcc ">
-                        <view class="rcc">
-                            <view class="rcc" wx:if="{{uploadFeeDialog.userCode.url}}">
-                                <view class="rcc">
-                                    <image class="w-200 h-200 br-10" mode="aspectFill" src="{{uploadFeeDialog.userCode.url}}"></image>
-                                </view>
-                            </view>
-                            <view class="ccc w-200 h-200 br-10 b-44 fs-60 fw-700 b-white box2" wx:else>
-                                <view class="rcc p-20">
-                                    <image class="w-30 h-30" mode="aspectFit" src="/images/upload.png"></image>
-                                </view>
-                                <view class="h-30 fs-20 fw-400">上传收款码</view>
-                            </view>
-                            <view bindtap="_uploadFeeDialog_setFeeCode" class="cbc w-240 h-240 z20 absolute">
-                                <view class="rcc z30 fs-20 line-h20 fw-400 c-white h-40 br-10 pl-15 pr-15 b-2" hidden="{{uploadFeeDialog.userCode.statu.key===0}}">{{uploadFeeDialog.userCode.statu.name}}</view>
-                            </view>
-                        </view>
-                    </view>
-                    <!-- <view class="h-50"></view> -->
-                    <!-- <view class="rcc" wx:if="{{uploadFeeDialog.userCode.statu.key===0||uploadFeeDialog.userCode.statu.key===1}}">
-                        <view bindtap="_uploadFeeDialog_setFeeCode" class="rcc fs-25 fw-400 c-5" data-url="{{applyOrderDialog.order.feeCodeUrl}}">上传收款码</view>
-                    </view>
-                    <view class="rcc" wx:else>
-                        <view class="rcc fs-25 fw-400 c-3-1">上传图片</view>
-                    </view> -->
-                </view>
-                <view class="ccc w-250">
-                    <view class="rcc fs-25 fw-400 c-3-2">短信通知</view>
-                    <view class="h-30"></view>
-                    <view class="rcc w-250 h-200">
-                        <view bindtap="_uploadFeeDialog_setPhone" class="css">
-                            <view class="css" wx:if="{{uploadFeeDialog.userCode.phone}}">
-                                <view class="rcc fs-25 fw-400 c-3-1">手机号码</view>
-                                <view class="rcc fw-35 fw-700">{{uploadFeeDialog.userCode.phone}}</view>
-                            </view>
-                            <view class="rcc fs-30 fw-400 c-5" wx:else>添加短信通知</view>
-                        </view>
-                    </view>
-                    <!-- <view class="h-50"></view>
-                    <view bindtap="_uploadFeeDialog_setPhone" class="rcc fs-25 fw-400 c-5">手机号码</view> -->
-                </view>
-            </view>
-            <view class="rbc  pt-30 pb-30 ">
-                <view class="fs-25 fw-400 c-3">上传指定金额收款码...</view>
-                <view wx:if="{{uploadFeeDialog.userCode.statu.key===4}}" class="fs-25 fw-400 c-5" bindtap="_uploadFeeDialog_complain" data-id="{{uploadFeeDialog.userCode.dynamicId}}">投诉榜主</view>
-                <view wx:else class="fs-25 fw-400 c-5" bindtap="_uploadFeeDialog_info">说明</view>
-            </view>
-        </view>
-    </view>
- 
 
 
 

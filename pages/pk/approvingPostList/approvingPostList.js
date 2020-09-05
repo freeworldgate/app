@@ -82,15 +82,16 @@ Page({
 
     var post = res.currentTarget.dataset.post;
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    // httpClient.addHandler("success", function () {
-    //   var httpClient = template.createHttpClient(that);
-    //   httpClient.setMode("label", true);
-    //   httpClient.send(request.url.queryApprovingPost, "GET",{pkId: that.data.pkId});
-    // })
-    httpClient.send(request.url.doApprove, "GET",{pkId: post.pkId,postId: post.postId}
-    );
+
+    template.createOperateDialog(that).show("审核通过", "确定审核通过榜帖?审核通过后，榜帖将变为发布状态...", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.doApprove, "GET",{pkId: post.pkId,postId: post.postId}
+      );
+    }, function () { });
+
+
+
 
 
 
@@ -114,8 +115,12 @@ Page({
 
 
 
+  },
+  back:function(){
+    wx.navigateBack({
+      complete: (res) => {},
+    })
   }
-
 
 
 

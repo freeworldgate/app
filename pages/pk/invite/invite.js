@@ -126,33 +126,17 @@ Page({
     var pkid = res.currentTarget.dataset.pkid;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("approve", function (link) {
 
-      template.createOperateDialog(that).show("激活相册","今日值班榜主激活相册",function(){
-        wx.navigateTo({
-          url: link,
-        })
-
-    },function(){});
-    })
     httpClient.addHandler("group", function (link) {
 
-      template.createOperateDialog(that).show("更新今日审核群","更新今日审核群",function(){
-        wx.navigateTo({
-          url: link,
-        })
+        template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+          wx.navigateTo({
+            url: link.castV1,
+          })
 
-    },function(){});
+      },function(){});
     })
-    httpClient.addHandler("message", function (link) {
 
-      template.createOperateDialog(that).show("发布审核公告","发布审核公告",function(){
-        wx.navigateTo({
-          url: link ,
-        })
-
-    },function(){});
-    })
     httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },

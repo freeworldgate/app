@@ -33,6 +33,8 @@
 
     "pages/pk/createPk/createPk",
 
+
+    "pages/manage/queryActiveCode/queryActiveCode",
     "pages/manage/cashiers/cashiers",
     "pages/manage/activeCode/activeCode",
     "pages/manage/feeCodes/feeCodes",
@@ -50,8 +52,7 @@
     "pages/manage/backImg/backImg",
     "pages/manage/appManage/appManage",
 
-    "pages/test/page/page",
-    "pages/test/template/template",
+
     "pages/user/login/login",
     "pages/user/register/register",
 

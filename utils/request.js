@@ -108,9 +108,9 @@ var url = {
         replaceText: `${host}/pk/replaceText`,      
         complain: `${host}/pk/complain`,     
         createPk: `${host}/pk/createPk`,  
-        
+        publishPk: `${host}/pk/publishPk`,  
         viewPk: `${host}/pk/viewPk`,  
-
+        
         postStatu: `${host}/pk/postStatu`,      
         isPostApproved: `${host}/pk/isPostApproved`,     
         goApproving: `${host}/pk/goApproving`,    
@@ -166,7 +166,9 @@ var url = {
         querySystemSetting:`${host}/pk/querySystemSetting`, 
 
         //管理
-
+        gennerateCodes:`${host}/pk/gennerateCodes`, 
+        queryActiveCode:`${host}/pk/queryActiveCode`, 
+  
         checkPk:`${host}/pk/checkPk`, 
         activePk:`${host}/pk/activePk`, 
         hiddenPk:`${host}/pk/hiddenPk`, 

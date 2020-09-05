@@ -145,8 +145,11 @@ Page({
 
     })
     httpClient.addHandler("uploadImgs", function (post) {
-      
+      template.createOperateDialog(that).show("编辑榜帖","请按照主题和榜主样例要求编辑榜帖...",function(){
         that.uploadImgs();
+
+      },function(){});
+        
 
     })
     httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
@@ -306,33 +309,7 @@ Page({
     // wx.stopPullDownRefresh()
   },
 
-  likeOrDisLike:function(res){
-    var that = this;
-    var index = parseInt(res.currentTarget.dataset.index);
-    var postId = res.currentTarget.dataset.postid;
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("", true);
-    httpClient.addHandler("success",function(){
-    })
-    httpClient.send(request.url.likeOrDisLike, "GET", { pkId: that.data.pkId, postId: postId, isQueryerCollect: that.data.posts[index].queryerCollect });
-    
-    var key = 'posts[' + index + ']' +".queryerCollect"
-    if (that.data.posts[index].queryerCollect){
-      that.setData({
-        [key]: false
-      })
-    }
-    else{
-      that.setData({
-        [key]: true
-      })
-    }
-
-
-
-
-  },
   showImgs:function(res){
     var imgs = res.currentTarget.dataset.imgs;
     var imgUrls = [];
@@ -350,28 +327,6 @@ Page({
 
   },
 
-  share:function(){
-    var that = this;
-
-    var user = wx.getStorageSync("user");
-    var fromUser = wx.getStorageSync("fromUser");
-
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", false);
-    httpClient.addHandler("success", function (shareData) {
-      //数据回来了：
-      template.createShareDialog(that).show(shareData);
-    })
-    httpClient.send(request.url.shareMenu, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUser });
-
-
-
-  },
-  _post_show:function(){
-      // 点击图片
-
-
-  },
   showPost:function(res){
       var that = this;
       var post = res.currentTarget.dataset.post;
@@ -379,167 +334,14 @@ Page({
         url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
       })
 
-      // var httpClient = template.createHttpClient(that);
-      // httpClient.setMode("label", true);
-      // httpClient.addHandler("success", function (singlepost) {
-      //   template.createSinglePostDialog(that).show(singlepost,function(newPost){
-      //     if (that.data.posts[0].postId === newPost.postId) {
-      //       that.data.posts.splice(0, 1, newPost);
-      //     }
-      //     else {
-      //       that.data.posts.splice(0, 0, newPost);
-      //     }
-      //     that.setData({
-      //       posts: that.data.posts
-      //     })
-      //   });
-      // })
-      // httpClient.send(request.url.queryPostById, "GET", { pkId: that.data.pkId, postId:post.postId });
 
 
   },
 
-  userFeeCode:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("code", function (userCode) {
-
-        template.createUploadFeeDialog(that).show(userCode);
-    })
-    httpClient.send(request.url.uploadFeeCode, "GET", {pkId:that.data.pkId});
-
-
-  },
-
-  applyOrder:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createApplyOrderDialog(that).show(order);
-
-    })
-    httpClient.send(request.url.applyOrder, "GET", { pkId: that.data.pkId });
-
-
-  },
-  userFeeOrder:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createSingleOrderDialog(that).show(order);
-    })
-    httpClient.send(request.url.verifyOrder, "GET", { pkId: that.data.pkId});
-    // var that = this;
-    // var httpClient = template.createHttpClient(that);
-    // httpClient.setMode("label", true);
-    // httpClient.addHandler("success", function (order) {
-    //   template.createCashierOrderDialog(that).show(order);
-    //   that.setData({
-    //     'cashierOrderDialog.type': 1,
-    //     'cashierOrderDialog.page': 1,
-    //   })
-    // })
-    // httpClient.send(request.url.feeOrder, "GET", { pkId: that.data.pkId,type:1,page:1});
-  },
-  // 查看打赏订单
-  rewardOrder:function(){
-
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createSingleOrderDialog(that).show(order);
-   
-    })
-    httpClient.send(request.url.rewardOrder, "GET", { pkId: that.data.pkId});
-
-  },
-
-  userPayOrder: function () {
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      that.setData({
-        'payerOrderDialog.type': 1,
-        'payerOrderDialog.page': 1,
-      })
-      template.createPayerOrderDialog(that).show(order);
-
-    })
-    httpClient.send(request.url.payOrder, "GET", { pkId: that.data.pkId, type: 1, page: 1 });
-  },
-
-  createFeeDialog:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createApplyOrderDialog(that).show(order);
-    })
-    httpClient.send(request.url.queryCreateOrder, "GET", { pkId: that.data.pkId, cashierId:"U1" });
-
-  },
-
-  createApproveDialog: function () {
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createApproveOrderDialog(that).show(order);
-      that.setData({
-        'approveOrderDialog.type': 2,
-        'approveOrderDialog.page': 1,
-      })
-    })
-    httpClient.send(request.url.approveUserCode, "GET", { pkId: that.data.pkId, type: 2, page: 1 });
-
-  },
-
-  createPostApproveDialog:function(){
-      var that = this;
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("success", function (post) {
-        template.createPostApproveDialog(that).show(post);
-        that.setData({
-          'postApproveDialog.type': 1,
-          'postApproveDialog.page': 1,
-        })
-      })
-      httpClient.send(request.url.postApprove, "GET", { pkId: that.data.pkId, type: 1, page: 1 });
-  },
-
-  createTaskDialog:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (tasks) {
-      template.createTaskDialog(that).show(tasks);
-      that.setData({
-        'taskDialog.type': 1,
-        'taskDialog.page': 1,
-      })
-    })
-    httpClient.send(request.url.queryTasks, "GET", { pkId: that.data.pkId, type: 1, page: 1});   
-
-  },
-
-  createIntegralDialog:function(){
-    var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (integral) {
-      template.createIntegralDialog(that).show(integral);
-    })
-    httpClient.send(request.url.userIntegral, "GET", { pkId: that.data.pkId });
 
 
 
-  },
+
 
   updateDynamic:function(){
     var that = this;
@@ -598,7 +400,7 @@ Page({
           
         })
         httpClient.addHandler("groupCode", function (postid) {
-          template.createOperateDialog(that).show("打榜群组", "发布群组...", function () {
+          template.createOperateDialog(that).show("更新管理群", "请更新管理群，以方便用户管理...", function () {
 
               that.groupCode();
 
@@ -608,7 +410,7 @@ Page({
         })
 
         httpClient.addHandler("select", function (postid) {
-          template.createOperateDialog(that).show("审核榜帖", "榜帖未选择审核员审核，未上线...", function () {
+          template.createOperateDialog(that).show("榜帖未发布", "您的榜帖暂未审核,审核通过后才可以发布...", function () {
 
               wx.navigateTo({
                 url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + postid ,
@@ -619,7 +421,7 @@ Page({
           
         })
         httpClient.addHandler("publish", function (tip) {
-          template.createOperateDialog(that).show("打榜", "参与打榜...", function () {
+          template.createOperateDialog(that).show("没有找到您的榜帖", "您可以在榜单主题下分享您的生活...", function () {
                 that.publish();
   
           }, function () {});
@@ -634,8 +436,6 @@ Page({
         httpClient.send(request.url.oneTimeTask, "GET", { pkId: that.data.pkId });
         
       },10)
-
-
     }
   },
   onReady:function (params) {

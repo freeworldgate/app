@@ -47,10 +47,15 @@ Page({
     var that = this;
     var post = res.currentTarget.dataset.post;
     var pk = res.currentTarget.dataset.pk;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
+    template.createOperateDialog(that).show("审核通过", "确定审核通过?", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.approvePost, "GET", {pkId:pk.pkId,postId:post.postId});
+    }, function () { });
 
-    httpClient.send(request.url.approvePost, "GET", {pkId:pk.pkId,postId:post.postId});
+
+
+
 
 
   },
@@ -74,15 +79,36 @@ Page({
     var that = this;
     var post = res.currentTarget.dataset.post;
     var pk = res.currentTarget.dataset.pk;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId});
+
+    template.createOperateDialog(that).show("驳回", "确定驳回榜帖吗?", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId,text:'请按照审核样例要求编辑榜帖'});
+    }, function () { });
+
+
+
+  },
+  rejectPost:function (res) {
+    var that = this;
+    var post = res.currentTarget.dataset.post;
+    var pk = res.currentTarget.dataset.pk;
+
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+      
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId,text:text});
+  
+    });
+
+
 
 
 
 
   },
-
+  
 
   
 
