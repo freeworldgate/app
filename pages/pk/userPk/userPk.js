@@ -124,7 +124,7 @@ Page({
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);
             httpClient.addHandler("success", function (pk) {
-              template.createEditPkDialog(that).hide();
+              // template.createEditPkDialog(that).hide();
               that.data.pks.push(pk);
               that.setData({pks: that.data.pks})
             })
@@ -142,10 +142,43 @@ Page({
 
 
   },
+  updatePk:function(res){
+    
+    var that = this;
+    var pkid = res.currentTarget.dataset.pkid;
+    var index =  res.currentTarget.dataset.index;
+    var topic = res.currentTarget.dataset.topic;
+    var watchword =  res.currentTarget.dataset.watchword;
+
+    template.createUpdatePkDialog(that).show(topic,watchword, function (topic,watchWord) {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (pk) {
+        // template.createUpdatePkDialog(that).hide();
+        that.data.pks.splice(index, 1,pk); 
+        that.setData({
+          pks: that.data.pks
+        })
+        
+      })
+
+
+      httpClient.send(request.url.updatePk, "GET",{topic:topic,watchWord:watchWord,pkId:pkid});
+    });
 
 
 
+  },
 
+
+  showPk:function(res){
+    var that = this;
+    var topic = res.currentTarget.dataset.topic;
+    var watchword =  res.currentTarget.dataset.watchword;
+
+    template.createShowPkDialog(that).show(topic,watchword)
+
+  },
   
   viewPk:function(res)
   {
@@ -296,6 +329,64 @@ Page({
 
 
   },
+  buildSample:function(){
+    var that = this;
+    template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作审核样例",function(){
+      wx.chooseImage({
+        count: 9,
+        sizeType: ['compressed', 'original'],
+        sourceType: ['album', 'camera'],
+        success(files) {
+          if(files.tempFilePaths.length != 9){
+            template.createDialog(that).show("选择错误", "请选择9张图片制作样例...");
+            return;
+          }
+
+
+          var imgs = new Array();
+          for(var i=0;i<9;i++)
+          {
+            that.imageInfo(imgs,files.tempFilePaths[i]);
+
+          }
+
+
+          
+  
+        },
+      })
+    
+  },function(){});
+
+
+
+
+  },
+
+  imageInfo:function(imgs,url){
+
+    wx.getImageInfo({
+      src:url,
+      success:function(res){
+        
+        var imgW = res.width;
+        var imgH = res.height;
+        var x = imgW>imgH?(imgW-imgH)/2:0;
+        var y = imgW>imgH?0:(imgH-imgW)/2;
+        var size = imgW>imgH?imgH:imgW;
+        var img = {x:x,y:y,size:size,url:url};
+        imgs.push(img);
+        if(imgs.length === 9){
+          wx.setStorageSync('drawImgs', imgs);
+          wx.navigateTo({
+            url: '/pages/pk/drawImg/drawImg',
+          })
+        }
+
+      }
+    })
+
+  }
 
 
 })

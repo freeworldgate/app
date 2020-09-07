@@ -464,6 +464,7 @@
 .h-140{height:140rpx;}
 .h-150{height:150rpx;}
 .h-160{height:160rpx;}
+.h-170{height:170rpx;}
 .h-180{height:180rpx;}
 .h-190{height:190rpx;}
 .h-200{height:200rpx;}
@@ -814,6 +815,7 @@ mw-200{
 }
 .b-23{
   background-color: rgba(255, 0, 149, 0.7);
+
 }
 .b-24{
   background-color: rgba(255, 238, 0, 0.7);
@@ -1239,7 +1241,16 @@ mw-200{
   word-break:break-all;
   text-align: center;
 }
-
+.line-8-center{
+  word-wrap: break-word;
+  display:-webkit-box;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:8;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  text-align: center;
+}
 .line-5-center{
   word-wrap: break-word;
   display:-webkit-box;
@@ -1451,7 +1462,25 @@ mw-200{
   padding-left: 3vw;
   padding-right: 3vw;
 }
+.drawButton
+{
+  width: 100vw;
+  position: fixed;
+  bottom:200rpx;
+  left: 0;
 
+
+}
+.drawPane
+{
+  position: fixed;
+  height:100vw;
+  width:100vw;
+  top:200rpx;
+  left: 0;
+
+
+}
 .customBar1{
   position: fixed;
   height:32px;

@@ -815,6 +815,8 @@
     left: 0px;
 }
 .editPkDialog{
+    border-top-left-radius: 30rpx;
+    border-top-right-radius: 30rpx;
     width: 100%;
     height: auto;
     position: fixed;

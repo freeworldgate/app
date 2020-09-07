@@ -94,7 +94,7 @@ Page({
     var post = res.currentTarget.dataset.post;
     var pk = res.currentTarget.dataset.pk;
 
-    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 200, function (text) {
       
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);

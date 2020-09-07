@@ -143,7 +143,7 @@ Page({
     var post = res.currentTarget.dataset.post;
     var that = this;
 
-    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 200, function (text) {
       
       // , urls
       var httpClient = template.createHttpClient(that);

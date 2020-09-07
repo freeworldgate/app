@@ -40,13 +40,13 @@
                                             </view>
                                         </view>
                                         <view class="rss" data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                            <view class="rcc">
+                                            <view class="rus">
                                                 <image class="w-150 h-150 br-15" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
                                             </view>
                                             <view class="w-3vw"></view>
                                             <view class="cas" style="flex:1">
                                                 <view class="css"><view class="rus line-1-start fs-35 fw-700">{{pk.topic}}</view></view>
-                                                <view class="css"><view class="rus line-2-start fs-25 fw-400">{{pk.watchWord}}</view></view>
+                                                <view class="css"><view class="rus line-5-start fs-25 fw-400">{{pk.watchWord}}</view></view>
                                             </view>
                                         </view>
 

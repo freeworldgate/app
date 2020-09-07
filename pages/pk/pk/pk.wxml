@@ -61,7 +61,7 @@
 
         <view class="css">
             <view class="rbs pl-8vw pr-8vw">
-                <view class="cas" style="flex:1">
+                <view class="cas" style="flex:1"  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}">
                         <view class="rbc-nowrap ">
                             <view></view>
                             <view class="rus line-1-start fs-35 fw-700 c-white">{{pk.topic}}</view>
@@ -74,7 +74,13 @@
                 </view>
                 <view class="w-4vw"></view>
                 <view class="ccs">
-                    <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
+                        <view class="rus" catchtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}">
+                            <view class="rcc">
+                                <image class="w-150 h-150 br-15" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
+                                <image class="absolute w-150 h-150 br-15 " mode="aspectFill" src="{{pk.userBack}}"></image>
+                            </view>              
+                        </view>
+                    <!-- <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image> -->
                 </view>
             </view>
             <view class="h-30"></view>
@@ -86,7 +92,7 @@
                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                             <view class="rcc">
                                                                                 <image class="w-30 h-30" mode="aspectFit" src="/images/laba1.png"></image>
-                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核样例({{pk.invite.name}})</view>
+                                                                                <view class="rcc fs-25 fw-400 c-3 pl-10">审核样例</view>
                                                                                
                                                                             </view>
                                                                             <view class="rcc">
@@ -569,7 +575,39 @@
         </view>
     </view>
 
+    <view bindtap="_showPkDialog_hide" catchtouchmove="return" class="coverAll-1" hidden="{{showPkDialog.visible!=true}}" ></view>
+    <view class="css b-white editPkDialog" hidden="{{showPkDialog.visible!=true}}">
 
+        <view class="css pl-4vw pr-4vw">
+            <view class="rbc b-line">
+                <view class="rcc">
+                    <image class="w-40 h-40" mode="aspectFit" src="/images/pk.png"></image>
+                    <view class="fs-30 fw-400">榜单内容</view>
+                </view>
+                <view class='rcc' bindtap="_showPkDialog_hide"><image class="w-40 h-40 pt-50 pb-50 " mode="aspectFit" src="/images/down2.png"></image></view>
+            </view>
+            <view class="h-50"></view>
+            <view class="rss">
+                <view class="rus fs-35 fw-400 c-4">主题:</view>
+                <view class="rus fs-35 fw-400  c-word-6" style="flex:1">{{showPkDialog.topic}}</view>
+            </view>
+            <view class="h-50"></view>
+
+            <view class="rss">
+                <view class="rus fs-35 fw-400 c-4">描述:</view>
+                <view class="rus fs-35 fw-400  c-word-6" style="flex:1">{{showPkDialog.watchWord}}</view>
+            </view>
+
+            <view class="h-50"></view>
+
+    
+        
+        </view>
+
+
+
+
+    </view>
 
 
 

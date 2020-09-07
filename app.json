@@ -7,7 +7,7 @@
     
     "pages/pk/pk/pk",
 
-    
+    "pages/pk/drawImg/drawImg",
     "pages/pk/complain/complain",
     "pages/pk/selectApprover/selectApprover",
     "pages/pk/approver/approver",
@@ -25,11 +25,6 @@
     "pages/pk/post/post",
     "pages/pk/selectPker/selectPker",
 
-
-
-
-
-    "pages/pk/zone/zone",
 
     "pages/pk/createPk/createPk",
 
@@ -53,13 +48,11 @@
     "pages/manage/appManage/appManage",
 
 
-    "pages/user/login/login",
-    "pages/user/register/register",
+    "pages/user/login/login"
 
 
 
-    "pages/login/login/login",
-    "pages/login/register/register"
+
 
   ],
   "window": {

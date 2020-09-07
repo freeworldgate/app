@@ -614,6 +614,98 @@ function createEditImageDialog(page) {
 }
 
 
+function createShowPkDialog(page){
+  if (page.showPkDialog) {
+    return page.showPkDialog;
+  }
+  var showPkDialog = new Object();
+
+  
+
+  showPkDialog.show = function(topic,watchWord){
+
+    page.setData({
+      'showPkDialog.topic':topic,
+      'showPkDialog.watchWord':watchWord,
+      'showPkDialog.visible': true,
+    })
+  }
+  showPkDialog.hide = function(){
+    page.setData({
+      'showPkDialog': {},
+    })
+  } 
+
+
+
+  page.showPkDialog = showPkDialog;
+  page._showPkDialog_hide = function () {
+    page.showPkDialog.hide()
+  }
+  return showPkDialog;
+
+
+
+}
+
+
+function createUpdatePkDialog(page){
+  if (page.updatePkDialog) {
+    return page.updatePkDialog;
+  }
+  var updatePkDialog = new Object();
+  updatePkDialog.success = function(topic,watchWord){}
+  
+
+  updatePkDialog.show = function(topic,watchWord,success){
+    updatePkDialog.success = success;
+    page.setData({
+      'updatePkDialog.topic':topic,
+      'updatePkDialog.watchWord':watchWord,
+      'updatePkDialog.visible': true,
+    })
+  }
+  updatePkDialog.hide = function(){
+    page.setData({
+      'updatePkDialog': {},
+    })
+  } 
+  page._updatePkDialog_input_topic = function(res)
+  {
+    var value = res.detail.value;
+    page.setData({
+      'updatePkDialog.topic':value,
+    })
+  }
+  page._updatePkDialog_input_watchword = function(res)
+  {
+    var value = res.detail.value;
+    page.setData({
+      'updatePkDialog.watchWord':value,
+    })
+  }
+
+
+  page._updatePkDialog_createPk = function()
+  {
+    page.setData({
+      'updatePkDialog.visible': false,
+    })
+    updatePkDialog.success(page.data.updatePkDialog.topic,page.data.updatePkDialog.watchWord);
+  }
+
+  page.updatePkDialog = updatePkDialog;
+  page._updatePkDialog_hide = function () {
+    page.updatePkDialog.hide()
+  }
+  return updatePkDialog;
+
+
+
+}
+
+
+
 
 
 function createEditPkDialog(page){
@@ -621,7 +713,7 @@ function createEditPkDialog(page){
     return page.editPkDialog;
   }
   var editPkDialog = new Object();
-  editPkDialog.success = function(topic,watchWord){}
+  editPkDialog.success = function(topic,watchWord,invite){}
   
 
   editPkDialog.show = function(success){
@@ -658,7 +750,9 @@ function createEditPkDialog(page){
 
   page._editPkDialog_createPk = function()
   {
-    
+    page.setData({
+      'editPkDialog.visible': false,
+    })
     editPkDialog.success(page.data.editPkDialog.topic,page.data.editPkDialog.watchWord,page.data.editPkDialog.invite);
   }
 
@@ -1348,7 +1442,7 @@ function pageInit(page) {
 
 
 
-module.exports = { createDialog,createEditPkDialog,uploadImages3, pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createEditPkDialog,uploadImages3,createShowPkDialog, createUpdatePkDialog,pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

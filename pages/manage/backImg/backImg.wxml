@@ -3,14 +3,15 @@
 <view class="css page">
 
     <view class="rac pt-50 pb-50">
-        <view class="{{albumType === 0?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="0">PK</view>
-        <view class="{{albumType === 1?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="1">主页</view>
-        <view class="{{albumType === 2?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="2">用户</view>
-        <view class="{{albumType === 3?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="3">邀请</view>
-        <view class="{{albumType === 4?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="4">榜帖</view>
-        <view class="{{albumType === 5?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="5">公告</view>
-        <view class="{{albumType === 6?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="6">Tip背景</view>
-        <view class="{{albumType === 7?'fs-30 fw-700 c-red':'fs-30 fw-700 c-name'}}" bindtap="albumType" data-type="7">Tip图标</view>
+        <view class="{{albumType === 0?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="0">PK</view>
+        <view class="{{albumType === 1?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="1">主页</view>
+        <view class="{{albumType === 2?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="2">用户</view>
+        <view class="{{albumType === 3?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="3">邀请</view>
+        <view class="{{albumType === 4?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="4">榜帖</view>
+        <view class="{{albumType === 5?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="5">公告</view>
+        <view class="{{albumType === 6?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="6">Tip背景</view>
+        <view class="{{albumType === 7?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="7">Tip图标</view>
+        <view class="{{albumType === 8?'fs-25 fw-700 c-red':'fs-25 fw-700 c-name'}}" bindtap="albumType" data-type="8">头像边框</view>
     </view>
 
     <view wx:if="{{pks.length > 0}}" class="css z2">

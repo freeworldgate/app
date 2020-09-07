@@ -44,14 +44,14 @@
 
                                         </view>
                                     </view>
-                                    <view class="rss" data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                        <view class="rcc">
-                                            <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
+                                    <view class="rss" >
+                                        <view class="rus">
+                                            <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"  bindtap="uploadImg" data-pkid="{{pk.pkId}}"  data-index="{{bindex1}}"></image>
                                         </view>
                                         <view class="w-3vw"></view>
-                                        <view class="cas" style="flex:1">
+                                        <view class="cas" style="flex:1" data-pkid="{{pk.pkId}}" bindtap="viewPk">
                                             <view class="css"><view class="rus line-1-start fs-35 fw-700">{{pk.topic}}</view></view>
-                                            <view class="css"><view class="rus line-2-start fs-25 fw-400">{{pk.watchWord}}</view></view>
+                                            <view class="css"><view class="rus line-5-start fs-25 fw-400">{{pk.watchWord}}</view></view>
                                         </view>
                                     </view>
 

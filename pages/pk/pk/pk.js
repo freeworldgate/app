@@ -690,8 +690,19 @@ Page({
     wx.reLaunch({
       url: '/pages/pk/home/home',
     })
-  }
+  },
+  showPk:function(res){
+    var that = this;
+    var topic = res.currentTarget.dataset.topic;
+    var watchword =  res.currentTarget.dataset.watchword;
 
+    template.createShowPkDialog(that).show(topic,watchword)
+
+
+
+
+
+  },
 
 
 

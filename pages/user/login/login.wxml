@@ -1,5 +1,6 @@
 
-<view class="page">
+<view class="page b-white h-100vh">
+
     <view class="weui-msg">
         <view class="weui-msg__icon-area">
             <icon  wx:if="{{loginStatu === 1}}" type="success" size="93"></icon>
@@ -8,8 +9,9 @@
         <view class="weui-msg__text-area">
             <view wx:if="{{loginStatu === 1}}" class="weui-msg__title">已登录</view>
             <view wx:else class="weui-msg__title">未登录</view>
-            <view class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现</view>
+            <view class="weui-msg__desc">登录后查看更多内容</view>
         </view>
+        <view class="h-200"></view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">
                 <button hidden='{{loginStatu === 1}}' class="weui-btn" type="primary"  bindgetuserinfo="login" open-type="getUserInfo">登录</button>
@@ -18,7 +20,7 @@
         </view>
         <view class="weui-msg__extra-area">
             <view class="weui-footer">
-                <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+                <view class="weui-footer__text">Copyright © 2020-2025 次次科技</view>
             </view>
         </view>
     </view>

@@ -33,7 +33,7 @@
 
         </view>
 
-        <view hidden="{{!pkEnd}}" class="rcc p-50">
+        <view class="rcc p-50">
                 <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
         </view>
 

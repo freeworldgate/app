@@ -33,7 +33,7 @@
         </view>
         <view class="css p-30">
             <view hidden="{{!pkActive.tip}}" class="rcc fs-30 fw-400 c-3 p-30">修改建议</view>
-            <view class="rus fs-30 fw-400 c-word-6 line-3-center">{{pkActive.tip}}</view>
+            <view class="rus fs-30 fw-400 c-word-6 line-8-center">{{pkActive.tip}}</view>
             
         </view>
         <view class="rcc">

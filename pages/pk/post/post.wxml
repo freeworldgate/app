@@ -3,9 +3,9 @@
 
 
   <view class="css">
-            <view style="height:{{top}}px"></view>
+            <view style="height:{{top+32}}px"></view>
 
-            <view class="rbc pl-4vw pr-2vw" style="height:32px" bindtap="back">
+            <!-- <view class="rbc pl-4vw pr-2vw" style="height:32px" bindtap="back">
                 <view class="rcs" style="flex:1">
                     <view class="rcc">
                             <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
@@ -16,7 +16,7 @@
 
 
                 <view style="flex:1"></view>
-            </view>
+            </view> -->
 
   </view>
 
@@ -32,8 +32,8 @@
             <view class="h-10"></view>
             <view class="rcc c-white line-5-center">{{post.rejectText}}</view>
         </view>
+        <view class="h-30"></view>
         
-        <view class="h-30"></view> 
     </view>
     
     <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-post br-20 ">
@@ -94,9 +94,9 @@
                                             <view class="rus  fs-40 fw-700 line-1-center c-word-6 w-300">{{post.creator.userName}}</view>
                                             <view class="h-30" ></view>
           </view> -->
-          <view class="rss pl-1vw pr-1vw pt-50 pb-30">
+          <view class="rss pl-1vw pr-1vw  pb-30">
                                             <view class="ccs">
-                                                <view class="rcc">                  
+                                                <view class="rcc p-10 b-48 br-10">                  
                                                     <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>                
                                                 </view>
                                             </view>
@@ -247,6 +247,18 @@
   <view></view>
   <view class="rcc fs-25 fw-400 c-3-1 p-20">点击图片中心区域可替换文件</view>
 </view>
+
+<view class="rcs customBar z100" style="top:{{top}}px">
+
+    <view class="rcc h-32px " bindtap="back">
+        <image class="w-30 h-30" mode="aspectFit" src="{{post?'/images/back1.png':'/images/back.png'}}"></image>
+        <view class="{{post?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400'}} ">榜帖</view>
+    </view>
+
+
+</view>
+
+
 
 
 <view>
