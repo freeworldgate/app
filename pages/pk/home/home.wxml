@@ -10,7 +10,7 @@
     <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-            <view class="{{pks.length === 0? 'fs-30 fw-400':'fs-30 fw-400 c-white'}}">热门榜区</view>
+            <view class="{{pks.length === 0? 'fs-30 fw-400':'fs-30 fw-400 c-white'}}">热门主题</view>
         </view>
 
     

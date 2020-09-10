@@ -345,36 +345,29 @@ Page({
 
   updateDynamic:function(){
     var that = this;
-    wx.request({
-      url: request.url.queryPkStatu,
-      method:"GET",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      data:{
-        pkId: that.data.pkId,
-        userId:that.data.user.userId,
+    // wx.request({
+    //   url: request.url.queryPkStatu,
+    //   method:"GET",
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   data:{
+    //     pkId: that.data.pkId,
+    //     userId:that.data.user.userId,
 
-      },
+    //   },
       
-      success:function(res){
-          that.setData({ 
-             infos:res.data._4_data,
+    //   success:function(res){
+    //       that.setData({ 
+    //          infos:res.data._4_data,
 
-          })
+    //       })
 
-      }
+    //   }
       
-    })
+    // })
 
-    // if(that.data.isApprove && that.data.posts && that.data.user)
 
-    // var tag = wx.getStorageSync("isApprove");
-    
-    // if(tag === 1){
-    //    wx.removeStorageSync('isApprove');
-    //    that.data.isApprove = true;
-    // }
     that.onTimeTask();
   },
 
@@ -400,7 +393,7 @@ Page({
           
         })
         httpClient.addHandler("groupCode", function (postid) {
-          template.createOperateDialog(that).show("更新管理群", "请更新管理群，以方便用户管理...", function () {
+          template.createOperateDialog(that).show("更新主题群", "请更新主题群，以方便用户交流...", function () {
 
               that.groupCode();
 
@@ -410,7 +403,7 @@ Page({
         })
 
         httpClient.addHandler("select", function (postid) {
-          template.createOperateDialog(that).show("榜帖未发布", "您的榜帖暂未审核,审核通过后才可以发布...", function () {
+          template.createOperateDialog(that).show("图贴未发布", "您的图贴暂未审核,审核通过后才可以发布...", function () {
 
               wx.navigateTo({
                 url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + postid ,
@@ -421,7 +414,7 @@ Page({
           
         })
         httpClient.addHandler("publish", function (tip) {
-          template.createOperateDialog(that).show("没有找到您的榜帖", "您可以在榜单主题下分享您的生活...", function () {
+          template.createOperateDialog(that).show("没有找到您的图贴", "您可以在主题下分享您的图贴...", function () {
                 that.publish();
   
           }, function () {});
@@ -698,12 +691,21 @@ Page({
 
     template.createShowPkDialog(that).show(topic,watchword)
 
-
-
-
-
   },
+  setPkUser:function()
+  {
+    var that = this;
+    if(that.data.pk.pkTypeValue === 3 && that.data.pk.invite.key === 0)
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", "true");
+      httpClient.send(request.url.setPkUser, "GET",{pkId:that.data.pk.pkId});   
+   
+    }
 
+
+
+  }
 
 
 })

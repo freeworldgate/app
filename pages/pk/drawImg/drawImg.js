@@ -18,6 +18,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+
+
+  },
+  onReady:function(){
     var that = this;
     ctx.save()
     ctx.setFillStyle('white');//填充白色
@@ -30,15 +36,10 @@ Page({
     that.setData({
       imgs:drawImgs
     })
-    setTimeout(function(){
-      that.drawImg();
-    },1000)
-
-
-
-  },
-  onReady:function(){
-
+    that.drawImg();
+    // setTimeout(function(){
+      
+    // },1000)
 
   },
   selectImg:function(res){
@@ -58,6 +59,7 @@ Page({
             var imgH = res.height;
             var x = imgW>imgH?(imgW-imgH)/2:0;
             var y = imgW>imgH?0:(imgH-imgW)/2;
+    
             var size = imgW>imgH?imgH:imgW;
             var img = {x:x,y:y,size:size,url:file.tempFilePaths[0]};
             that.data.imgs[index-1] = img;
@@ -126,15 +128,17 @@ Page({
               // var y = imgW>imgH?0:(imgH-imgW)/2;
               // var size = imgW>imgH?imgH:imgW;
 
-              if(i === 0){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*2, vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 1){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5), vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 2){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5+31+1.5), vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 3){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*2, vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 4){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5), vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 5){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5+31+1.5), vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 6){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*2, vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 7){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5),vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 8){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(2+31+1.5+31+1.5), vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
+              if(i === 0){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, 0, 0,vwPx*33, vwPx*33)}
+              if(i === 1){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33+0.5), 0,vwPx*33, vwPx*33)}
+              if(i === 2){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33 + 33 + 1), 0,vwPx*33, vwPx*33)}
+
+              if(i === 3){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, 0, vwPx*(33+0.5),vwPx*33, vwPx*33)}
+              if(i === 4){ctx.drawImage(img.url,0,0,img.size,img.size, vwPx*(33+0.5), vwPx*(33+0.5),vwPx*33, vwPx*33)}
+              if(i === 5){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33 + 33 +1), vwPx*(33+0.5),vwPx*33, vwPx*33)}
+
+              if(i === 6){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, 0, vwPx*(33 + 33 +1),vwPx*33, vwPx*33)}
+              if(i === 7){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33+0.5),vwPx*(33 + 33 +1),vwPx*33, vwPx*33)}
+              if(i === 8){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33 + 33 + 1),vwPx*(33 + 33 +1),vwPx*33, vwPx*33)}
 
           
             
@@ -163,10 +167,10 @@ Page({
 
     wx.canvasToTempFilePath({ //裁剪对参数
       canvasId: "myCanvas",
-      x: vwPx * 2, //画布x轴起点
-      y: vwPx * 2, //画布y轴起点
-      width: vwPx * 96, //画布宽度
-      height:vwPx * 96, //画布高度
+      x: 0, //画布x轴起点
+      y: 0, //画布y轴起点
+      width: vwPx * 100, //画布宽度
+      height:vwPx * 100, //画布高度
       // destWidth: image_width, //输出图片宽度
       // destHeight: image_height, //输出图片高度
       success: function (res) {

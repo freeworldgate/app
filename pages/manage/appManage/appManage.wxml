@@ -88,7 +88,11 @@
                 <view class="rcc fs-30 fw-400">获取激活码</view>
             </navigator>
         </view>
-        <view></view>
+        <view class="rcc">
+            <navigator url="/pages/manage/setPkUser/setPkUser" class="rcc">
+                <view class="rcc fs-30 fw-400">设置PKUser</view>
+            </navigator>
+        </view>
         <view></view>
     </view>
 </view>

@@ -137,9 +137,10 @@ var url = {
  
         allCashiers:`${host}/pk/allCashiers`, 
         nextPageCashiers:`${host}/pk/nextPageCashiers`, 
-
-
-     
+        queryPkCreators:`${host}/pk/queryPkCreators`, 
+        morePkCreators:`${host}/pk/morePkCreators`, 
+        
+        switchBit:`${host}/pk/switchBit`, 
         allCashierGroups:`${host}/pk/allCashierGroups`, 
         nextPageCashierGroups:`${host}/pk/nextPageCashierGroups`, 
         
@@ -216,9 +217,9 @@ var url = {
 
         addTip:`${host}/pk/addTip`, 
         removeTip:`${host}/pk/removeTip`, 
-
+        
         queryTips:`${host}/pk/queryTips`, 
-
+        setPkUser:`${host}/pk/setPkUser`, 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

@@ -40,6 +40,7 @@
     "pages/manage/complainPk/complainPk",
     "pages/manage/pksorts/pksorts",
     "pages/manage/preAlbums/preAlbums",
+    "pages/manage/setPkUser/setPkUser",
     "pages/manage/prePublicAlbums/prePublicAlbums",
     "pages/manage/activeTips/activeTips",
     "pages/manage/homeAlbums/homeAlbums",

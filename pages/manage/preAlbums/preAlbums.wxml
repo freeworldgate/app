@@ -49,7 +49,7 @@
                                     </view>
                                     <view class="rss" data-pkid="{{pk.pkId}}">
                                         <view class="rus">
-                                            <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"  bindtap="uploadImg" data-pkid="{{pk.pkId}}"  data-index="{{bindex1}}"></image>
+                                            <image class="w-150 h-150 br-10" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
                                         </view>
                                         <view class="w-3vw"></view>
                                         <view class="cas" style="flex:1">

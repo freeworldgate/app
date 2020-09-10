@@ -45,7 +45,7 @@
     <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-             <view class="{{imgBack? 'fs-30 fw-400 c-white':'fs-30 fw-400 '}}">我的榜单</view>
+             <view class="{{imgBack? 'fs-30 fw-400 c-white':'fs-30 fw-400 '}}">我的主题</view>
         </view>
 
     
@@ -102,9 +102,9 @@
                                                 <view class="w-10"></view>
                                                 <view class="{{pk.invite.key===0?'rus fs-25 fw-400 tipColor':'rus fs-25 fw-400 c-red'}} ">{{pk.invite.name}}</view>
                                                 <view class="w-50"></view>
-                                                <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name " bindtap="deletePk" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除榜帖</view>
+                                                <view class="rus fs-25 fw-400 max-w-150 line-1-start c-name " bindtap="deletePk" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除主题</view>
                                                 <view hidden="{{pk.pkStatu.key != 0}}" class="w-50"></view>
-                                                <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 max-w-150 line-1-start c-name " bindtap="updatePk" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}">修改榜帖</view>
+                                                <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 max-w-150 line-1-start c-name " bindtap="updatePk" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}">修改主题</view>
                                             </view>
 
 

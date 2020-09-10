@@ -20,7 +20,7 @@ Page({
   data: {
 
     pks: [],
-
+    pkEnd:false
   },
 
   /**
@@ -79,12 +79,11 @@ Page({
 
 
   onShow:function () {
-    var that = this;
-    if(that.data.pks.length === 0){
-      // that.init("");
-      that.init("label");
-    }
 
+    var that = this;
+    var user = wx.getStorageSync('user');
+    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("label");}
+    else{}
     
 
   },

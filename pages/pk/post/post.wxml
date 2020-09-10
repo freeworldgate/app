@@ -129,19 +129,19 @@
                                                 <view class="rbc">
                                                     <view class="rcc">
                                                         <image class="rcc br-10" mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="0">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="0">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="1">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="1">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="2">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="2">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
@@ -150,19 +150,19 @@
                                                 <view class="rbc">
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="3">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="3">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="4">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="4">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="5">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="5">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
@@ -171,19 +171,19 @@
                                                 <view class="rbc">
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="6">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="6">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="7">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="7">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
                                                     <view class="rcc">
                                                         <image class="br-10" mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                        <view class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="8">
+                                                        <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="8">
                                                             <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
                                                         </view>
                                                     </view>
