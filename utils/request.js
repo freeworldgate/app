@@ -1,6 +1,6 @@
 // var host = 'https://www.211shopper.com'; 
-// var host = 'http://192.168.137.1:8080'; 
-var host = 'http://192.168.43.67:8080'; 
+var host = 'http://192.168.137.1:8080'; 
+// var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 

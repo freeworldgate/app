@@ -381,8 +381,8 @@ Page({
         
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("", true);
-        httpClient.addHandler("editApproverMessage", function (tip) {
-          template.createOperateDialog(that).show("提示", "编辑审核公告...", function () {
+        httpClient.addHandler("editApproverMessage", function (result) {
+          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
             // wx.navigateTo({
             //   // url: "/pages/pk/approverInfos/approverInfos?approverUserId=" + that.data.user.userId + "&pkId=" + that.data.pkId,
             //   url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + that.data.user.userId,
@@ -392,8 +392,8 @@ Page({
           }, function () {});
           
         })
-        httpClient.addHandler("groupCode", function (postid) {
-          template.createOperateDialog(that).show("更新主题群", "请更新主题群，以方便用户交流...", function () {
+        httpClient.addHandler("groupCode", function (result) {
+          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
 
               that.groupCode();
 
@@ -402,33 +402,31 @@ Page({
           
         })
 
-        httpClient.addHandler("select", function (postid) {
-          template.createOperateDialog(that).show("图贴未发布", "您的图贴暂未审核,审核通过后才可以发布...", function () {
+        httpClient.addHandler("select", function (result) {
+          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
 
               wx.navigateTo({
-                url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + postid ,
+                url: "/pages/pk/post/post?pkId=" + that.data.pkId + "&postId=" + result.castV1 ,
               })
-
 
           }, function () {});
           
         })
+
         httpClient.addHandler("publish", function (tip) {
-          template.createOperateDialog(that).show("没有找到您的图贴", "您可以在主题下分享您的图贴...", function () {
+          template.createOperateDialog(that).show(result.castV2, result.castV3, function () {
                 that.publish();
   
           }, function () {});
           
         })
-        
-
-
+      
         httpClient.addHandler("no", function (tip) {
           
         })
         httpClient.send(request.url.oneTimeTask, "GET", { pkId: that.data.pkId });
         
-      },10)
+      },1)
     }
   },
   onReady:function (params) {
@@ -702,6 +700,18 @@ Page({
       httpClient.send(request.url.setPkUser, "GET",{pkId:that.data.pk.pkId});   
    
     }
+
+
+
+  },
+  openTopic:function(res){
+      var that = this;
+      var index =  res.currentTarget.dataset.index;
+      var flag = "posts[" + index + "].flag";
+      that.setData({
+        [flag]:!that.data.posts[index].flag
+      })
+
 
 
 

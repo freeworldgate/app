@@ -79,6 +79,13 @@
              <view class="rcc fs-30 fw-400">{{maxPkModifyTime}}次</view>
           </view>
       </view>
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="singlePkPagePosts" >
+          <view class="rcc fs-30 fw-400">单个PK页面的帖子数</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{singlePkPagePosts}}次</view>
+          </view>
+      </view>
+      
       <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="maxRejectTimes" >
           <view class="rcc fs-30 fw-400">Post最大修改次数</view>
           <view class="rcc">
@@ -130,6 +137,52 @@
         
           <switch checked="{{showApproveSys === 'true'}}" bindchange="setmode" data-type="showApproveSys"></switch>
       </view> -->
+
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="pkentityCacheSize" >
+          <view class="rcc fs-30 fw-400">PKEntity缓存数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{pkentityCacheSize}}个</view>
+          </view>
+      </view>
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="postentityCacheSize" >
+          <view class="rcc fs-30 fw-400">POSTEntity缓存数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{postentityCacheSize}}个</view>
+          </view>
+      </view>
+
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="userentityCacheSize" >
+          <view class="rcc fs-30 fw-400">USEREntity缓存数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{userentityCacheSize}}个</view>
+          </view>
+      </view>
+
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="approveMessageentityCacheSize" >
+          <view class="rcc fs-30 fw-400">APPROVEMESSAGEEntity缓存数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{approveMessageentityCacheSize}}个</view>
+          </view>
+      </view>
+
+      <view class="rbc b-line pt-30 pb-30 br-10 " bindtap="setStr" data-type="approveCommententityCacheSize" >
+          <view class="rcc fs-30 fw-400">APPROVECOMMENTEntity缓存数量</view>
+          <view class="rcc">
+             <view class="rcc fs-30 fw-400">{{approveCommententityCacheSize}}个</view>
+          </view>
+      </view>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

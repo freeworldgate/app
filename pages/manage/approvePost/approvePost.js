@@ -83,7 +83,7 @@ Page({
     template.createOperateDialog(that).show("驳回", "确定驳回榜帖吗?", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
-      httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId,text:'请按照审核样例要求编辑榜帖'});
+      httpClient.send(request.url.hiddenPost, "GET", {pkId:pk.pkId,postId:post.postId,text:'请按照图贴样例要求编辑榜帖'});
     }, function () { });
 
 

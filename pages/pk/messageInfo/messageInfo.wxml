@@ -95,7 +95,7 @@
                     <image class="w-30 h-30" src="{{message?'/images/back1.png':'/images/back.png'}}" mode="aspectFit"></image>
                 </view>
                 <view class="rcs c-4">
-                    <view class="{{message?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400 c-4'}}">审核样例</view>
+                    <view class="{{message?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400 c-4'}}">图贴样例</view>
        
 
                 </view>

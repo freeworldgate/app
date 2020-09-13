@@ -47,18 +47,24 @@ Page({
     var that = this;
     var pk = res.currentTarget.dataset.pk;
     var index = res.currentTarget.dataset.index;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
- 
-          that.data.pks.splice(index, 1); 
-          that.setData({
-            pks: that.data.pks
-          })
 
 
-    })
-    httpClient.send(request.url.activePk, "GET", {pkId:pk.pk.pkId});
+    template.createOperateDialog(that).show("激活", "确定激活主题吗?", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+            that.data.pks.splice(index, 1); 
+            that.setData({
+              pks: that.data.pks
+            })
+      })
+      httpClient.send(request.url.activePk, "GET", {pkId:pk.pk.pkId});
+  
+    }, function () { });
+
+
+
+
 
 
   },
@@ -82,18 +88,23 @@ Page({
     var that = this;
     var pk = res.currentTarget.dataset.pk;
     var index = res.currentTarget.dataset.index;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function () {
-   
-        that.data.pks.splice(index, 1); 
-        that.setData({
-          pks:that.data.pks
-        })
-      
+    template.createOperateDialog(that).show("驳回", "确定驳回主题吗?", function () {
 
-  })
-    httpClient.send(request.url.hiddenPk, "GET",  {pkId:pk.pk.pkId,tipId:that.data.tipId});
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+          that.data.pks.splice(index, 1); 
+          that.setData({
+            pks:that.data.pks
+          })
+      })
+      httpClient.send(request.url.hiddenPk, "GET",  {pkId:pk.pk.pkId,tipId:that.data.tipId});
+    }, function () { });
+
+
+
+
+
 
 
 

@@ -584,6 +584,7 @@
 .w-92vw{width: 92vw}
 .h-90vh{height: 90vh}
 .h-100vh{height: 100vh}
+.h-70vw{height: 70vw}
 .h-100vw{height: 100vw}
 .h-110vw{height: 110vw}
 .w-120vw{width: 120vw}
@@ -725,10 +726,13 @@ mw-200{
   color: rgb(80, 121, 153);
 }
 .c-word-7{
-  color: rgb(97, 88, 77);
+  color: rgb(136, 79, 10);
 }
 .c-word-8{
   color: rgb(164, 166, 167);
+}
+.c-word-11{
+  color: rgb(112, 82, 31);
 }
 .b-card{
   background-color: rgba(255, 255, 255, 0.2);
@@ -931,7 +935,12 @@ mw-200{
 .b-comment{
   background-image: linear-gradient(to right, #8bb7e0 2%, #95cfe4 50%);
 }
-
+.b-share{
+  background-image: linear-gradient(to right, #ffa03adb 2%, #ff8d14db 50%);
+}
+.b-post2{
+  background-image: linear-gradient(to right, #9670376d 2%, #6853258c 50%);
+}
 .b-35{
     background: radial-gradient(rgb(251, 255, 235),rgb(235, 255, 245));
   /* background: radial-gradient(rgb(255, 255, 255),rgb(255, 166, 0)); */
@@ -976,10 +985,19 @@ mw-200{
   background-image: linear-gradient(to right, #887845 100%, #829465 100%);
 }
 .b-post{
+  background-image: linear-gradient(to right, #a5a5a52f 100%, #a2a2a228 100%);
+}
+.b-post1{
   background-image: linear-gradient(to right, #a5a5a552 100%, #a2a2a256 100%);
 }
 .bar-approve{
-  background-image: linear-gradient(to bottom, #00000000,#000000cc );
+  background-image: linear-gradient(to bottom, #00000000,#000000e0 );
+}
+/* .bar-approve-share{
+  background-image: linear-gradient(to bottom, #00000000,#00000025,#00000072,#000000e0 );
+} */
+.bar-approve-share{
+  background-image: linear-gradient(to bottom, #f8f8f800,#f8f8f8e7 );
 }
 .b-45{
   background-color: rgba(218, 218, 218, 0.5);
@@ -1288,6 +1306,16 @@ mw-200{
     -webkit-box-orient:vertical;
     text-align: end
 }
+.line-2-center{
+  word-wrap: break-word;
+  display:-webkit-box;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  text-align: center;
+}
 .line-2-start{
     word-wrap: break-word;
     display:-webkit-box;
@@ -1524,11 +1552,18 @@ mw-200{
     top: 0; 
     left: 0;
 }
-
 .message{
-  /* background-color: none; */
+  /* background-color: rgba(255, 255, 255, 0); */
   line-height: 1;
   margin:0;
+  padding: 0;
+
+}
+.message1{
+  background-color: rgba(255, 255, 255, 0);
+  line-height: 1;
+  margin:0;
+  padding: 0;
 
 }
 button::after {
@@ -1862,8 +1897,8 @@ button::after {
 
 
 .complain{
-  border-bottom-left-radius: 40rpx;
-  border-top-left-radius: 40rpx;
+
+  color: #d81e06;
 }
 .operkey{
   border-bottom-right-radius: 70rpx;

@@ -2,7 +2,7 @@
 <view class="css h-100vh b-white">
   <view class="csc h-200">
     <view class="rus p-20 fs-30 fw-400 c-word-6">
-        请根据您的主题为用户制作审核样例...
+        请根据您的主题为用户制作图贴样例...
     
     </view>
   
@@ -10,6 +10,7 @@
 
   <canvas canvas-id="myCanvas" style="width:100vw;height:100vw" />
 
+  <view class="rcc p-30 fs-25 c-4 fw-400">点击图片替换...</view>
 
 
 

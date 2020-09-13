@@ -331,7 +331,7 @@ Page({
   },
   buildSample:function(){
     var that = this;
-    template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作审核样例",function(){
+    template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作图贴样例",function(){
       wx.chooseImage({
         count: 9,
         sizeType: ['compressed', 'original'],

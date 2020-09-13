@@ -18,10 +18,10 @@
                                             <view class="{{pk.pk.invite.key===0?'rus fs-25 fw-400 tipColor':'rus fs-25 fw-400 c-red'}} ">{{pk.pk.invite.name}}-{{pk.pk.charge.name}}</view>
                                         </view>
                                         <view class="rcc pt-20 pb-20">
-                                            <view class="{{pk.switchBit?'rcc  c-1 fs-30 fw-400':'rcc c-5 fs-30 fw-400'}}" bindtap="switchBit" data-pkid="{{pk.pk.pkId}}" data-index="{{bindex1}}">{{pk.switchBit?'已打开':'已锁定'}}</view>
+                                            <view class="{{pk.switchBit?'rcc  c-1 fs-25 fw-400':'rcc c-5 fs-25 fw-400'}}" bindtap="switchBit" data-pkid="{{pk.pk.pkId}}" data-index="{{bindex1}}">{{pk.switchBit?'已打开':'已锁定'}}</view>
                                             <view class="w-50"></view>
-                                            
-                                            <view class="{{pk.switchBit?'rcc  c-red fs-30 fw-400 h-60 p-20 br-60 border10':'rcc  c-blue fs-30 fw-400 h-60 p-20 br-60 border10'}}" bindtap="switchBit" data-pkid="{{pk.pk.pkId}}" data-index="{{bindex1}}">{{pk.switchBit?'关闭':'打开'}}</view>
+
+                                            <view class="{{pk.switchBit?'rcc b-white c-red fs-25 fw-400 h-50 w-100 br-50 border10':'rcc b-white c-blue fs-25 fw-400 h-50 w-100 br-50 border10'}}" bindtap="switchBit" data-pkid="{{pk.pk.pkId}}" data-index="{{bindex1}}">{{pk.switchBit?'关闭':'打开'}}</view>
                                         </view>
 
                                     </view>
