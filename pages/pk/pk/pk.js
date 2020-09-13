@@ -436,7 +436,7 @@ Page({
     var that = this;
 
 
-    this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
+    // this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
 
     var myMessage = wx.getStorageSync('myMessage')
     if(myMessage)
