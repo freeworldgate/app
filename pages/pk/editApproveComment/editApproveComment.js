@@ -22,7 +22,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      
   },
 
   /**
@@ -30,6 +30,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
     inviteReq.getHeight(function (res) {
       that.setData({
         top: res.statusBarHeight + (res.titleBarHeight - 32) / 2

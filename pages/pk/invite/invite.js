@@ -119,6 +119,14 @@ Page({
       url: '/pages/pk/pk/pk?pkId=PK01',
     })
   },
+  viewImg:function(res){
+    var that = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
+    })
+  
+  },
   viewPk:function(res)
   {
     var that = this;

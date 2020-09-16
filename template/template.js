@@ -113,11 +113,13 @@ function createDialog(page) {
     dialog.visible = false;
     dialog.title = "",
     dialog.text = "",
+    dialog.tipBack="",
+    dialog.tipImg="",
     dialog.show = function (title, text) {
       var tipBack = wx.getStorageSync('tipBack');
       var tipImg = wx.getStorageSync('tipImg');
-      var backUrl = tipBack?tipBack:request.tipBack;
-      var imgUrl = tipImg?tipImg:request.tipImg;
+      var backUrl = tipBack?tipBack:"";
+      var imgUrl = tipImg?tipImg:"/images/pk.png";
 
       page.setData({
         'dialog.tipBack': backUrl,
@@ -191,6 +193,8 @@ function createOperateDialog(page) {
   operateDialog.visible = false;
   operateDialog.title = "",
   operateDialog.text = "",
+  operateDialog.tipBack= "",
+  operateDialog.tipImg= "",
   operateDialog.statu = 0;
   operateDialog.confirm = function () { };
   operateDialog.cancel = function () { };
@@ -198,8 +202,8 @@ function createOperateDialog(page) {
   operateDialog.show = function (title, text, confirm, cancel) {
     var tipBack = wx.getStorageSync('tipBack');
     var tipImg = wx.getStorageSync('tipImg');
-    var backUrl = tipBack?tipBack:request.tipBack;
-    var imgUrl = tipImg?tipImg:request.tipImg;
+    var backUrl = tipBack?tipBack:"";
+    var imgUrl = tipImg?tipImg:"/images/pk.png";
 
 
     operateDialog.confirm = confirm;

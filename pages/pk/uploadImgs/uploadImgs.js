@@ -108,8 +108,9 @@ Page({
             wx.setStorageSync("post", post)
             wx.navigateBack({
               complete: (res) => {
+                  // wx.setStorageSync('publish', true);
                   wx.navigateTo({
-                    url: '/pages/pk/post/post?pkId=' + that.data.pkId + "&postId=" + post.postId,
+                    url: '/pages/pk/editApproveComment/editApproveComment?pkId=' + that.data.pkId + "&postId=" + post.postId,
                   })
 
               },

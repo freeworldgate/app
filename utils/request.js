@@ -1,12 +1,12 @@
-var host = 'https://www.211shopper.com'; 
+// var host = 'https://www.211shopper.com'; 
 // var host = 'http://192.168.137.1:8080'; 
-// var host = 'http://192.168.43.67:8080'; 
+var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
  
 var tipBack = 'https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tipBack1.jpg'; 
-var tipImg = 'https://fenghao211.oss-cn-beijing.aliyuncs.com/png/tip5.png'; 
+var tipImg = '/images/pk.png'; 
 
 
 var appinfo = { 

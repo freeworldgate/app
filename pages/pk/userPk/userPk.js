@@ -108,6 +108,14 @@ Page({
   onShareAppMessage: function () {
 
   },
+  viewImg:function(res){
+    var that = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
+    })
+  
+  },
   login:function(){
     login.getUser(function(user){})    
   },
@@ -117,7 +125,7 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("create", function (tip) {
-      template.createOperateDialog(that).show("建榜",tip,function(){
+      template.createOperateDialog(that).show(tip.castV2,tip.castV3,function(){
 
 
           template.createEditPkDialog(that).show(function (topic,watchWord,invite) {
@@ -295,8 +303,9 @@ Page({
         httpClient.addHandler("message", function (message) {
           var msg = "pks[" + index + "].approveMessage"
           that.setData({
-            [msg]: message
+            '[msg]': message
           })
+          that.init("");
 
 
 

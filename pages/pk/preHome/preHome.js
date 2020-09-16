@@ -147,23 +147,23 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  // onReachBottom: function () {
-  //   var that = this;
+  onReachBottom: function () {
+    var that = this;
 
-  //     if(that.data.pkEnd){return;}
-  //     var user = wx.getStorageSync('user');
-  //     var fromUser = wx.getStorageSync('fromUser')
-  //     var httpClient = template.createHttpClient(that);
-  //     httpClient.setMode("label", false);
-  //     httpClient.addHandler("success", function (pagePks) {
-  //       that.setData({
-  //           page:that.data.page + 1,
-  //           pks:that.data.pks.concat(pagePks)
-  //       })
-  //     })
-  //     httpClient.send(request.url.nextHomePage, "GET",{ userId:user.userId,fromUser:fromUser ,page:that.data.page});
+      if(that.data.pkEnd){return;}
+      var user = wx.getStorageSync('user');
+      var fromUser = wx.getStorageSync('fromUser')
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", false);
+      httpClient.addHandler("success", function (pagePks) {
+        that.setData({
+            page:that.data.page + 1,
+            pks:that.data.pks.concat(pagePks)
+        })
+      })
+      httpClient.send(request.url.nextHomePage, "GET",{ userId:user.userId,fromUser:fromUser ,page:that.data.page});
     
-  // },
+  },
 
   /**
    * 用户点击右上角分享

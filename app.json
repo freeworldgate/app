@@ -2,9 +2,11 @@
   "pages": [
 
     "pages/pk/home/home",
+    "pages/pk/preHome/preHome",
     "pages/pk/userPk/userPk",
     "pages/pk/invite/invite",
     
+
     "pages/pk/pk/pk",
 
     "pages/pk/drawImg/drawImg",
@@ -29,24 +31,7 @@
     "pages/pk/createPk/createPk",
 
 
-    "pages/manage/queryActiveCode/queryActiveCode",
-    "pages/manage/cashiers/cashiers",
-    "pages/manage/activeCode/activeCode",
-    "pages/manage/feeCodes/feeCodes",
-    "pages/manage/groups/groups",
-    "pages/manage/setting/setting",
-    "pages/manage/approvePost/approvePost",
-    "pages/manage/activePk/activePk",
-    "pages/manage/complainPk/complainPk",
-    "pages/manage/pksorts/pksorts",
-    "pages/manage/preAlbums/preAlbums",
-    "pages/manage/setPkUser/setPkUser",
-    "pages/manage/prePublicAlbums/prePublicAlbums",
-    "pages/manage/activeTips/activeTips",
-    "pages/manage/homeAlbums/homeAlbums",
-    "pages/manage/preUsers/preUsers",
-    "pages/manage/backImg/backImg",
-    "pages/manage/appManage/appManage",
+
 
 
     "pages/user/login/login"
@@ -81,11 +66,6 @@
       "iconPath": "images/invite1.png",  
       "selectedIconPath": "images/invite2.png", 
       "text": "邀请"
-    },{
-      "pagePath": "pages/manage/appManage/appManage",
-      "iconPath": "images/pk.png",  
-      "selectedIconPath": "images/pk.png", 
-      "text": "管理"
     }]
   },
   "networkTimeout": {

@@ -281,7 +281,7 @@
 
     <view class="h-250"></view>
     <!-- <view class="h-50"></view> -->
-
+    <view hidden="{{user.userId != pk.user.userId}}" class="rcc fs-25 c-word-6 fw-400 ">有效投诉:{{pk.complainTimes}}个</view>
 
 
 
@@ -307,7 +307,7 @@
     </view>
     <view class="h-30"></view>
     
-    
+     
     <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
         <view class="h-30"></view>
         <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-white br-20  ">
@@ -479,23 +479,46 @@
     </view> -->
 
 </view>
-<view hidden="{{!user || !pk}}" class="css bottomBar1 bar-approve-share">
-            <view class="h-100"></view>
-            <view class="rcc">
-                <view class="rcc b-share w-400 h-100 br-100">
-                    <button  open-type="share" class="rcc message1 w-400 h-100 br-100 ">
-                        <view class="rcc ">
-                            <image class="rcc w-40 h-40 " mode="aspectFit" src="/images/invite.png"></image>
+
+<view class="css ">
+    <view wx:if="{{publish}}" class="css bottomBar1 bar-approve-share">
+        <view class="css ">
+                    <view class="h-100"></view>
+                    <view class="rcc">
+                        <view class="rcc b-publish w-400 h-100 br-100">
+                            <button  bindtap="{{post.linkMethod}}" class="rcc message1 w-400 h-100 br-100 ">
+                                <view class="rcc ">
+                                    <image class="rcc w-40 h-40 " mode="aspectFit" src="/images/post.png"></image>
+                                </view>
+                                <view class="w-20"></view>
+                                <view class="rcc fs-30 fw-400 c-white ">发布图贴</view>
+                            </button>
                         </view>
-                        <view class="w-20"></view>
-                        <view class="rcc fs-30 fw-400 c-white ">邀请</view>
-                    </button>
-                </view>
-            </view>
-            <view class="h-30"></view>
-
-
+                    </view>
+                    <view class="h-30"></view>
+        </view>
+    </view>
+    <view wx:else class="css">
+        <view hidden="{{!user || !pk}}" class="css bottomBar1 bar-approve-share">
+                    <view class="h-100"></view>
+                    <view class="rcc">
+                        <view class="rcc b-share w-400 h-100 br-100">
+                            <button  open-type="share" class="rcc message1 w-400 h-100 br-100 ">
+                                <view class="rcc ">
+                                    <image class="rcc w-40 h-40 " mode="aspectFit" src="/images/invite.png"></image>
+                                </view>
+                                <view class="w-20"></view>
+                                <view class="rcc fs-30 fw-400 c-white ">邀请</view>
+                            </button>
+                        </view>
+                    </view>
+                    <view class="h-30"></view>
+        </view>
+    </view>
 </view>
+
+
+
 
 
 <!-- <view hidden="{{!user || !pk}}" class="createPk w-120 h-120 br-120 b-red ccc fs-60 fw-400 c-white z3">

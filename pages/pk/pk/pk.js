@@ -145,7 +145,7 @@ Page({
 
     })
     httpClient.addHandler("uploadImgs", function (post) {
-      template.createOperateDialog(that).show("编辑榜帖","请按照主题和榜主样例要求编辑榜帖...",function(){
+      template.createOperateDialog(that).show("编辑图贴","请按照主题和样例要求编辑图贴...",function(){
         that.uploadImgs();
 
       },function(){});
@@ -435,7 +435,9 @@ Page({
   onShow:function(){
     var that = this;
 
-
+    // var publish = wx.getStorageSync('publish')
+    // if(publish){that.setData({publish:true})}
+    // wx.removeStorageSync('publish')
     // this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
 
     var myMessage = wx.getStorageSync('myMessage')
@@ -493,22 +495,21 @@ Page({
 
   complain:function (res) {
     var that = this;  
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("complain", function (tipStr) {
 
-      template.createOperateDialog(that).show("提示", tipStr, function () {
+    template.createOperateDialog(that).show("提示", "只有一次投诉机会...", function () {
+      template.createEditTextDialog(that).show("投诉", "编辑投诉信息","", 60, function (text) {
         var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);  
-        httpClient.send(request.url.confirmComplain, "GET",{pkId: that.data.pkId});
-
-      }, function () {});
-
-
-    })
+        httpClient.setMode("label", true);
+        httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text});
     
+      });
+    }, function () {});
 
-    httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId});
+
+
+
+
+
 
 },
 

@@ -37,10 +37,7 @@ Page({
       imgs:drawImgs
     })
     that.drawImg();
-    // setTimeout(function(){
-      
-    // },1000)
-
+  
   },
   selectImg:function(res){
     var that = this;
@@ -63,7 +60,14 @@ Page({
             var size = imgW>imgH?imgH:imgW;
             var img = {x:x,y:y,size:size,url:file.tempFilePaths[0]};
             that.data.imgs[index-1] = img;
+            that.setData({
+              imgs:that.data.imgs
+            })
 
+            ctx.save()
+            ctx.setFillStyle('white');//填充白色
+            ctx.fillRect(0,0,vwPx * 100,vwPx * 100);//画出矩形白色背景
+            ctx.restore()
             that.drawImg( );
           }
       })
@@ -74,40 +78,6 @@ Page({
     })
   },
 
-  drawImg:function(img,index){
-    var that = this;
-    
-    var i = index - 1; 
-          wx.getImageInfo({
-            src: img,
-            success:function(res){
-              var imgW = res.width;
-              var imgH = res.height;
-              var x = imgW>imgH?(imgW-imgH)/2:0;
-              var y = imgW>imgH?0:(imgH-imgW)/2;
-              var size = imgW>imgH?imgH:imgW;
-
-              if(i === 0){ctx.drawImage(img,x,y,size,size, vwPx*2, vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 1){ctx.drawImage(img,x,y,size,size, vwPx*(2+31+1.5), vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 2){ctx.drawImage(img,x,y,size,size, vwPx*(2+31+1.5+31+1.5), vwPx*2,vwPx*31, vwPx*31)}
-              if(i === 3){ctx.drawImage(img,x,y,size,size, vwPx*2, vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 4){ctx.drawImage(img,x,y,size,size, vwPx*(2+31+1.5), vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 5){ctx.drawImage(img,x,y,size,size, vwPx*(2+31+1.5+31+1.5), vwPx*(2+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 6){ctx.drawImage(img,x,y,size,size, vwPx*2, vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 7){ctx.drawImage(img,x,y,size,size, vwPx*(2+31+1.5),vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
-              if(i === 8){ctx.drawImage(img,x,y,size,size,  vwPx*(2+31+1.5+31+1.5), vwPx*(2+31+1.5+31+1.5),vwPx*31, vwPx*31)}
-              ctx.draw();
-              ctx.save();
-          
-            }
-          }); 
-
-   
-
-          
-
-
-    },
 
 
 
