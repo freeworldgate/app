@@ -5,42 +5,7 @@
 
     <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view>
     <!-- 头部 -->
-    <!-- <view class="css h-500">
 
-        <view class="absolute userBack" ></view>
-        <view class="cas z2 h-500">
-            <view class="h-32px"></view>
-            <view class="css pr-3vw pl-3vw">
-
-                <view></view>
-                <view class="css b-white br-20 p-30"  bindtap="{{user?'':'login'}}">
-
-                    <view class="rcs">
-                         <image class="w-100 h-100 br-100 b-48" mode="aspectFit" src="{{!user?'/images/user.png':user.imgUrl}}"></image>
-                         <view class="w-20"></view>
-                         <view class="rcs max-w-300 fs-40 fw-700 ">{{!user?'登录':user.userName}}</view>
-                    </view>
-                    <view class="rac pt-20">
-                        <view class="ccc ">
-                            <view class="fs-30 fw-700 ">4</view>
-                            <view class="fs-30 fw-400 c-3">我的榜单</view>
-                        </view>
-                        <view class="ccc p-20">
-                            <view class="fs-30 fw-700 ">4</view>
-                            <view class="fs-30 fw-400 c-3">剩余榜单</view>
-                        </view>    
-                        <view class="ccc p-20">
-                            <view class="fs-30 fw-700 ">4</view>
-                            <view class="fs-30 fw-400 c-3">我的邀请</view>
-                        </view> 
-                    </view>
-                
-                </view>
-            
-            
-            </view>
-        </view>
-    </view> -->
     <view style="height:{{top}}px"></view>
     <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
@@ -199,7 +164,7 @@
 
 
                                               <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" bindtap="viewPk">
-                                                  <view class="rcc fs-25 fw-400 c-4">查看榜单</view>
+                                                  <view class="rcc fs-25 fw-400 c-4">查看主题</view>
                                                   <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                                               </view>
                                         </view>
@@ -268,19 +233,16 @@
 
 </view>
 
-
+<!-- 
 
 <view class="rcs customBar1 z7" style="top:{{top}}px">
 
-    <!-- <view class="rcc h-32px ">
-        <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-        <view class="fs-30 fw-400">我的榜单</view>
-    </view> -->
 
 
 
 
-</view>
+
+</view> -->
 
 
 

@@ -133,7 +133,7 @@ Page({
             httpClient.setMode("label", true);
             httpClient.addHandler("success", function (pk) {
               // template.createEditPkDialog(that).hide();
-              that.data.pks.push(pk);
+              that.data.pks.unshift(pk);
               that.setData({pks: that.data.pks})
             })
     
@@ -208,7 +208,7 @@ Page({
     httpClient.addHandler("doApprove", function (link) {
 
       template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
-          //发布榜单:
+          //发布主题:
           var httpClient = template.createHttpClient(that);
           httpClient.setMode("label", true);
           httpClient.send(request.url.publishPk, "GET",{pkId:pkid});  
@@ -263,7 +263,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid; 
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("删除榜单","确定删除?",function(){
+    template.createOperateDialog(that).show("删主题","确定删除?",function(){
 
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
@@ -303,7 +303,7 @@ Page({
         httpClient.addHandler("message", function (message) {
           var msg = "pks[" + index + "].approveMessage"
           that.setData({
-            '[msg]': message
+            ['msg']: message
           })
           that.init("");
 

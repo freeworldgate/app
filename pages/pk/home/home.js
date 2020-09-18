@@ -56,6 +56,35 @@ Page({
 
 
   },
+  viewImg:function(res){
+    var that = this;
+    var url = res.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: [url],
+    })
+  
+  },
+
+
+  setPkUser:function(res)
+  {
+    
+    var that = this;
+    var pk = res.currentTarget.dataset.pk;
+    if(pk.pkTypeValue === 3 && pk.invite.key === 0)
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", "true");
+      httpClient.send(request.url.setPkUser, "GET",{pkId:pk.pkId});   
+   
+    }
+
+
+
+  },
+
+
+
 
   addPost: function () {
 

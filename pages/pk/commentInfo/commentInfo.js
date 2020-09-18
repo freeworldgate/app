@@ -48,6 +48,23 @@ Page({
 
 
   },
+
+  viewImg:function(res)
+  {
+
+    var url = res.currentTarget.dataset.url;
+    var user = res.currentTarget.dataset.user;
+    var commentor = res.currentTarget.dataset.commentor;
+    var creator = res.currentTarget.dataset.creator;
+    if(user.userId === creator.userId || user.userId === commentor.userId)
+    {
+      wx.previewImage({
+        urls: [url],
+      })
+    }
+
+
+  },
   back:function(){wx.navigateBack({
     complete: (res) => {},
   })},

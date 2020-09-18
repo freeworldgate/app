@@ -4,27 +4,10 @@
 
   <view class="css">
             <view style="height:{{top+32}}px"></view>
-
-            <!-- <view class="rbc pl-4vw pr-2vw" style="height:32px" bindtap="back">
-                <view class="rcs" style="flex:1">
-                    <view class="rcc">
-                            <image class="w-30 h-30" src="/images/back1.png" mode="aspectFit"></image>
-                    </view>
-                    <view class="w-10"></view>
-                    <view class="rcc fs-30 fw-400 c-white">榜帖</view>
-                </view>
-
-
-                <view style="flex:1"></view>
-            </view> -->
-
   </view>
 
   <view class="csc" >
-    <!-- <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="rss mr-3vw ml-3vw  pb-30">
-        <view class="rus fs-25 fw-400 c-3-1">修改建议:</view>
-        <view class="rus fs-25 fw-400 line-5-start c-white " style="flex:1">{{post.rejectText}}</view>
-    </view> -->
+
     <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
         <view class="h-20"></view>
         <view class="ccc fs-25 fw-400 pl-50 pr-50">
@@ -35,8 +18,169 @@
         <view class="h-30"></view>
         
     </view>
-    
-    <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-post br-20 ">
+
+
+    <view class="css pl-3vw pr-3vw ">
+            <view class="css b-white br-20 pl-2-5vw pr-2-5vw ">
+
+                            <view class="rbs ">
+                                
+                                <view class="rss pt-30 ">
+                        
+                                    <view class="rcc w-100 h-100 br-20 b-48">
+                                        <image class="h-90 w-90 br-20" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>
+                                    </view>
+                                    <view class="w-20"></view>
+                                    <view class="cas">
+                                        <view class="rus  fs-30 fw-400 line-1-start c-12 w-250">{{post.creator.userName}}</view>
+                                        <view class="rus  fs-25 fw-400 c-3">{{post.time}}</view>
+                                    </view>
+                                    
+                         
+                                </view>
+                                        
+
+
+
+
+
+                                <view class="css pt-30 pb-30">
+                                    <view class="rcc " bindtap="editText">
+                                        <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
+                                        <view  class="w-10"></view>
+                                        <view  class="rcc fs-25 fw-400 c-red">修改标题</view>
+                                    </view>
+                                   
+                                </view>
+                                
+                    
+
+                            </view> 
+
+                            <view class="css pt-30 pb-30">
+                                <view class="rcc-wrap  fs-30 fw-400 line-5-start c-4">{{post.topic}}</view>
+                                <view class="h-30"></view>
+                                <view class="css">
+                                                                        <view class="rbc">
+                                                                            <view class="rcc">
+                                                                                <image class="rcc br-10" mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="0">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="1">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="2">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                        </view>
+                                                                        <view style="height:1vw"></view>
+                                                                        <view class="rbc">
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="3">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="4">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="5">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                        </view>
+                                                                        <view style="height:1vw"></view>
+                                                                        <view class="rbc">
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="6">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="7">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view class="rcc">
+                                                                                <image class="br-10" mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                <view hidden="{{post.statu.key === 1}}" class="rcc absolute h-100 w-100 br-100 b-44-1" bindtap="replace" data-index="8">
+                                                                                    <image class="rcc w-50 h-50" mode="aspectFit" src="/images/replace.png"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                        </view>
+                                </view>           
+                            </view>
+
+                            <view wx:if="{{post.statu.key ===3}}" class="rcc pb-50 pt-20" >
+
+
+                                <view class="rcc" style="flex:1">
+                                   
+                                    <view class="rcc w-350 h-90 br-90 border10 b-white"  bindtap="goApproving">
+                                        <image class="w-35 h-35" src="/images/appro.png" mode="aspectFit"></image>
+                                        <view class="fs-30 fw-400 c-1 ">去审核</view>
+                                    </view>
+                           
+                                </view>
+                                
+                                
+                            
+                            
+                            </view>
+                            <view wx:else class="css">
+                                <view hidden="{{!post.selfComment}}" class="css">
+                                                                                                        <view class="h-30"></view>
+                                                                                                        <view class="rbc pb-10 ">
+                                                                                                                <view class="rcc">
+                                                                                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/comments.png"></image>
+                                                                                                                    <view class="rcc fs-25 fw-400 c-4 pl-10">留言</view>
+                                                                                                                
+                                                                                                                </view>
+                                                                                                                <view  class="rcc fs-25 fw-400 c-3">{{post.selfCommentTime}}</view> 
+                                                                                                                
+                                                                                                        </view>
+                                                                                                        <view class="css ">
+
+                                                                                                            <view class="css" >
+                                                                                                                    <view class="rbs">                                                                    
+
+                                                                                                                            <view class=""></view>
+                                                                                                                            <view class="css" style="flex:1" >
+                                                                                                                                <view class="rus fs-30 fw-400 line-3-start c-word-6">{{post.selfComment}}</view>
+                                                                                                                            </view>
+                                                                                                                            <view class=""></view>
+
+                                                                                                                    </view>    
+                                                                                                            </view>
+                                                                                                        </view>
+                                                                                                        <view class="h-50"></view>
+                                                                                    
+                                                                                                    
+                                </view>
+                                <view hidden="{{post.selfComment}}" class="h-50"></view>
+                            </view>
+
+            </view>
+    </view>
+
+
+
+    <!-- <view class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw b-post br-20 ">
     
 
       <view class="css " >
@@ -73,10 +217,6 @@
                                                 <image hidden="{{post.statu.key !=3}}" class="rcc w-20 h-20" mode="aspectFit" src="/images/right5.png"></image>
                                             </view>                     
 
-                                            <!-- <view class="rcc">
-                                        
-                                                <view class="rcc fs-30 fw-400 c-3-1">{{post.time}}</view>
-                                            </view> -->
 
 
 
@@ -84,16 +224,6 @@
 
           </view> 
 
-          <!-- <view class="ccc">
-
-                                            <view class="rcc w-200 h-200 br-200 b-white border13">
-                                                <image class="h-180 w-180 br-180" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>
-                                            </view>
-                                            <view class="h-20"></view>
-                                            <view class="h-20"></view>
-                                            <view class="rus  fs-40 fw-700 line-1-center c-word-6 w-300">{{post.creator.userName}}</view>
-                                            <view class="h-30" ></view>
-          </view> -->
           <view class="rss pl-1vw pr-1vw  pb-30">
                                             <view class="ccs">
                                                 <view class="rcc p-10 b-48 br-10">                  
@@ -121,9 +251,7 @@
           </view>   
 
 
-          <!-- <view class="css pt-20 pb-50">
-              <view class="rcc-wrap c-white line-5-center">{{post.topic}}</view>
-          </view>                           -->
+ 
 
           <view class="css">
                                                 <view class="rbc">
@@ -227,16 +355,11 @@
       </view>
       <view class="{{post.selfComment?'h-50':'h-50'}}"></view>
 
-    </view>
+    </view> -->
+
+
+    
     <view hidden="{{post.statu.key === 1 || post.rejectTimes===0}}" class="css mr-3vw ml-3vw pl-2-5vw pr-2-5vw ">
-        <!-- <view class="h-20"></view>
-        <view class="ccc fs-25 fw-400 pl-50 pr-50">
-            <view class="rcc c-3-1">修改建议</view>
-            <view class="h-20"></view>
-            <view class="rcc c-white line-5-center">{{post.rejectText}}</view>
-        </view>
-        
-        <view class="h-20"></view> -->
         <view class="rcc fs-25 fw-400 c-1 pt-80">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
     </view>
 
@@ -245,14 +368,14 @@
   
   </view>
   <view></view>
-  <view class="rcc fs-25 fw-400 c-3-1 p-20">点击图片中心区域可替换文件</view>
+  <view class="rcc fs-25 fw-400 c-3-1 p-20"></view>
 </view>
 
 <view class="rcs customBar z100" style="top:{{top}}px">
 
     <view class="rcc h-32px " bindtap="back">
         <image class="w-30 h-30" mode="aspectFit" src="{{post?'/images/back1.png':'/images/back.png'}}"></image>
-        <view class="{{post?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400'}} ">榜帖</view>
+        <view class="{{post?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400'}} ">我的图贴</view>
     </view>
 
 

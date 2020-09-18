@@ -21,9 +21,131 @@
 
 
 
+        <view class="css pl-3vw pr-3vw ">
+                <view class="css b-white br-20 pl-2-5vw pr-2-5vw ">
+
+                                <view class="rbs ">
+                                    
+                                    <view class="rss pt-30 ">
+                            
+                                        <view class="rcc w-100 h-100 br-20 b-48">
+                                            <image class="h-90 w-90 br-20" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>
+                                        </view>
+                                        <view class="w-20"></view>
+                                        <view class="cas">
+                                            <view class="rus  fs-30 fw-400 line-1-start c-12 w-250">{{post.creator.userName}}</view>
+                                            <view class="rus  fs-25 fw-400 c-3">{{post.time}}</view>
+                                        </view>
+                                        
+                            
+                                    </view>
+                                            
 
 
-        <view class="css pr-3vw pl-3vw">
+
+
+
+                                    <view class="css pt-30 pb-30">
+                                        <view class="rcc " bindtap="approverComment">
+                                            <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
+                                            <view  class="w-10"></view>
+                                            <view  class="rcc fs-25 fw-400 c-red">编辑留言</view>
+                                        </view>
+                                    
+                                    </view>
+                                    
+                        
+
+                                </view> 
+
+                                <view class="css pt-30 pb-30">
+                                    <view class="rcc-wrap  fs-30 fw-400 line-5-start c-4">{{post.topic}}</view>
+                                    <view class="h-30"></view>
+                                    <view class="css">
+                                                                            <view class="rbc">
+                                                                                <view class="rcc">
+                                                                                    <image class="rcc br-10" mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view style="height:1vw"></view>
+                                                                            <view class="rbc">
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                            </view>
+                                                                            <view style="height:1vw"></view>
+                                                                            <view class="rbc">
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                                <view class="rcc">
+                                                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                                                </view>
+                                                                            </view>
+                                    </view>           
+                                </view>
+
+                                <view class="css ">
+                                                                             
+                                                                                <view hidden="{{!pkComment}}" class="rbc pb-30 b-line ">
+                                                                                        <view class="rcc">
+                                                                                            <image class="w-30 h-30" mode="aspectFit" src="/images/comments.png"></image>
+                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">{{t2}}</view>
+                                                                                          
+                                                                                        </view>
+                                                                                        <view class="rcc">
+                                                                                            <view class="rcc fs-25 fw-400 c-3"> {{pkComment.date?pkComment.date:""}}</view>
+                                                                                            
+                                                                                        </view>
+
+                                                                                        
+                                                                                </view>
+                                                                                <view hidden="{{!pkComment}}" class="css pt-30 pb-30">
+
+                                                                                    <view class="css" >
+                                                                                            <view class="rbs" bindtap="approverCommentDetail" data-approver="{{creator.userId}}">
+                                                                                                    
+
+                                                                                                    <view class="css" style="flex:1" >
+                                                                                                        <view class="rus fs-30 fw-400 line-2-start c-word-6">{{pkComment.text}}</view>
+                                                                                                    </view>
+                                                                                                    <view class="w-4vw"></view>
+                                                                                                    <view class="rcc">
+                                                                                                        <view hidden="{{!pkComment.imgUrl}}" class="rcc h-120 w-120 br-15"  style="background-position: top;background-image: url({{pkComment.imgUrl}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
+
+                                                                                                       
+                                                                                                    </view>
+                                                                                                    <view class="w-4vw"></view>
+                                                                                                    <view class="rcc">
+                                                                                                        <image class="w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
+                                                                                                    </view>
+                                                                                            </view>    
+                                                                                    </view>
+
+                                                                                </view>
+                                                                       
+                                                                                <view class="h-30"></view>
+                                </view>
+
+                </view>
+        </view>
+
+        <!-- <view class="css pr-3vw pl-3vw">
     
                 <view class="css br-20 b-post mt-4vw">
 
@@ -110,8 +232,7 @@
                                                                                 <view wx:else class="rcc h-150  pl-4vw pr-4vw">
                                                                     
                                                                                             <view  class="rcc p-30"  bindtap="approverComment">
-                                                                                                <!-- <image class="w-35 h-35" mode="aspectFit" src="/images/write2.png"></image>
-                                                                                                <view  class="w-10"></view> -->
+                                                                                              
                                                                                                 <view  class="rcc fs-25 fw-400 c-5">编辑留言</view>
                                                                                             </view>
                                                                          
@@ -119,31 +240,11 @@
                                                                                 </view>
                                                                                 <view class="h-30"></view>
                                         </view>
-                                        <!-- <view class="css p-30 t-line">
-                    
-                                                <view class="css" >
-                                                            <view class="rbs" bindtap="approverComment">
-                        
-                                                                <view class="rcc">
-                                                                    <image class="rcc h-130 w-130 br-15" mode="aspectFill" src="{{userPost.approveComment.imgUrl}}" ></image>
-                                                                </view>
-                                                                <view class="w-4vw"></view>
-                                                                <view class="css" style="flex:1" >
-                                                                    <view class="rus fs-30 fw-400 line-3-start c-word-6">{{userPost.approveComment.text}}</view>
-                                                                </view>
-                                                                <view class="w-4vw"></view>
-                                                                <view class="rcc">
-                                                                    <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
-                                                                </view>
-                                                            </view>
-                                                        
-                                                </view>
-                                            
-                                        </view> -->
+                                 
                                 
                 </view>
 
-        </view> 
+        </view>  -->
 
 
         <view class="rcc">
@@ -393,11 +494,16 @@
                 <view class="t19-6" style="padding-right:50rpx">{{editTextDialog.text.length}}/{{editTextDialog.maxLength}}</view>
             </view>
             <view style="height:20rpx"></view>
-            <view class="rac">
-                <view bindtap="_editTextDialog_close" class="rcc shortTextDialog_cancel" hoverClass="dialog_cancel_hoverClass">取消</view>
-                <view bindtap="_editTextDialog_confirm" class="rcc shortTextDialog_confirm" hoverClass="dialog_confirm_hoverClass">确定</view>
+            <view class="rbc pt-50 pb-20 t-line">
+                <view></view>
+                <view class="rcc">
+                    <view bindtap="_editTextDialog_close" class="rcc c-3 fs-30 fw-700" hoverClass="c-3-1">取消</view>
+                    <view class="w-100"></view>
+                    <view bindtap="_editTextDialog_confirm" class="rcc c-1 fs-30 fw-700" hoverClass="c-3-1">确定</view>
+                    <view class="w-50"></view>
+                </view>
+
             </view>
-            <view class="t7-5-2" style="height:35rpx"></view>
         </view>
     </view>
     <view bindtap="" catchtouchmove="return" class="coverAll" hidden="{{shortTextDialog.visible!=true}}"></view>

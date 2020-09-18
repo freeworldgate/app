@@ -2,18 +2,6 @@
 <view class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
         <view class="css " >
             <view style="height:{{top+32}}px"></view>
-            <!-- <view class="rcs pl-4vw pr-4vw z10" style="height:32px" bindtap="back">
-                <view class="rcc ">
-                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
-                </view>
-                <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-4">审核样例</view>
-       
-
-                </view>
-                
-                
-            </view> -->
         </view>
 
       
@@ -25,8 +13,8 @@
                                 
                                 <view class="rss pt-30 ">
                         
-                                    <view class="rcc w-90 h-90 br-20 b-48">
-                                        <image class="h-80 w-80 br-20" mode="aspectFill" src="{{creator.imgUrl}}" ></image>
+                                    <view class="rcc w-100 h-100 br-20 b-48">
+                                        <image class="h-90 w-90 br-20" mode="aspectFill" src="{{creator.imgUrl}}" ></image>
                                     </view>
                                     <view class="w-20"></view>
                                     <view class="cas">

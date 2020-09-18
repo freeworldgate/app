@@ -53,15 +53,15 @@ Page({
 
   },
   onReady:function (params) {
-    var that = this;
-    setTimeout(() => {
-      if(!that.data.verfiy)
-      {
-        this.isPostApproved();
-      }
+    // var that = this;
+    // setTimeout(() => {
+    //   if(!that.data.verfiy)
+    //   {
+    //     this.isPostApproved();
+    //   }
 
 
-    }, 1000);
+    // }, 1000);
 
 
 

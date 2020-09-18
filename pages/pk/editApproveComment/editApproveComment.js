@@ -65,31 +65,54 @@ Page({
 
   approverComment:function(){
     var that = this;
-    template.createEditImageDialog(that).setDialog(that.data.t3,that.data.t4, 1, function () {
+    if(that.data.commentStyle === 1)
+    {
+      template.createEditImageDialog(that).setDialog(that.data.t3,that.data.t4, 1, function () {
 
-    }, function (text, urls) {
-      //上传成功
-
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("label", true);
-      httpClient.addHandler("message", function (approveComment) {
-     
-          that.setData({pkComment:approveComment})
-
-
-      })
-      httpClient.send(request.url.setComment, "GET",
+      }, function (text, urls) {
+        //上传成功
+  
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("message", function (approveComment) {
+            that.setData({pkComment:approveComment})
+        })
+        httpClient.send(request.url.setComment, "GET",
         {
-          pkId: that.data.pkId,
-          text: text,
-          imgUrl: urls[0],
+            pkId: that.data.pkId,
+            text: text,
+            imgUrl: urls[0],
         }
-      );
+        );
+  
+      }, function () {
+        //上传失败
+  
+      }).show();
+    }
+    else
+    {
+      template.createEditTextDialog(that).show("留言", "编辑留言","", 120, function (text) {
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("message", function (approveComment) {
+            that.setData({pkComment:approveComment})
+        })
+        httpClient.send(request.url.setComment, "GET",
+        {
+            pkId: that.data.pkId,
+            text: text,
+            imgUrl: "",
+        }
+        );
 
-    }, function () {
-      //上传失败
 
-    }).show();
+
+      });
+
+
+    }
+
 
 
 
@@ -119,9 +142,9 @@ Page({
 
     return {
       title: that.data.t5 +  "@" + that.data.creator.userName ,
-      desc: "from" + that.data.userPost.creator.userName + '',
-      imageUrl:that.data.userPost.creator.imgUrl,
-      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.userPost.postId + "&fromUser=" + that.data.user.userId ,
+      desc: "from" + that.data.post.creator.userName + '',
+      imageUrl:that.data.post.creator.imgUrl,
+      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.post.postId + "&fromUser=" + that.data.user.userId ,
       
     }
     

@@ -696,6 +696,7 @@ function createUpdatePkDialog(page){
       'updatePkDialog.visible': false,
     })
     updatePkDialog.success(page.data.updatePkDialog.topic,page.data.updatePkDialog.watchWord);
+
   }
 
   page.updatePkDialog = updatePkDialog;
@@ -723,6 +724,8 @@ function createEditPkDialog(page){
   editPkDialog.show = function(success){
     editPkDialog.success = success;
     page.setData({
+      'editPkDialog.topic':"",
+      'editPkDialog.watchWord':"",
       'editPkDialog.visible': true,
       'editPkDialog.invite': true,
     })
@@ -758,6 +761,7 @@ function createEditPkDialog(page){
       'editPkDialog.visible': false,
     })
     editPkDialog.success(page.data.editPkDialog.topic,page.data.editPkDialog.watchWord,page.data.editPkDialog.invite);
+
   }
 
   page.editPkDialog = editPkDialog;

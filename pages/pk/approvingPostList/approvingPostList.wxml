@@ -6,7 +6,7 @@
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
                 <view class="rcc h-32px w-32px br-32px z102" bindtap="relaunch">
-                    <image class="w-45 h-45" mode="aspectFit" src="/images/back.png"></image>
+                    <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
                 </view>
                 <view class="w-20"></view>
                 <view class="rcs c-4">
@@ -18,7 +18,7 @@
                 
             </view>
     </view>
-
+   <view class="{{post.approveComment?'h-50':'h-100'}}"></view>
 
     <view wx:if="{{post}}" class="css">
         <view class="css">
@@ -95,7 +95,7 @@
                                                                                             <view class="rbs" bindtap="approverCommentDetail" data-comment="{{post.approveComment}}">
                                                                                                     
                                                                                                     <view class="rcc">
-                                                                                                        <image class="h-150 w-150 br-15" mode="aspectFill" src="{{post.approveComment.imgUrl}}"></image>
+                                                                                                        <image hidden="{{!post.approveComment.imgUrl}}" class="h-150 w-150 br-15" mode="aspectFill" src="{{post.approveComment.imgUrl}}"></image>
                                                                                                     </view>
                                                                                                     <view class="w-4vw"></view>
                                                                                                     <view class="css" style="flex:1" >
@@ -159,7 +159,7 @@
 
 
 
-
+ 
 
 
 
