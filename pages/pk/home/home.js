@@ -66,22 +66,7 @@ Page({
   },
 
 
-  setPkUser:function(res)
-  {
-    
-    var that = this;
-    var pk = res.currentTarget.dataset.pk;
-    if(pk.pkTypeValue === 3 && pk.invite.key === 0)
-    {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", "true");
-      httpClient.send(request.url.setPkUser, "GET",{pkId:pk.pkId});   
-   
-    }
 
-
-
-  },
 
 
 
@@ -91,15 +76,9 @@ Page({
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
-    httpClient.addHandler("pay", function () {
-      template.createOperateDialog(that).show("购买榜帖", "购买榜帖", function () {
-        wx.navigateTo({
-          url: '/pages/pk/cashiers/cashiers?pkId=' + that.data.pkId,
-        })
-      }, function () { });
-    });
+
     httpClient.addHandler("publishPost", function () {
-      template.createOperateDialog(that).show("发布榜帖", "将要消耗您一个榜帖", function () {
+      template.createOperateDialog(that).show("发布图册", "将要消耗您一个图册", function () {
         that.publishPost();
       }, function () { });
     });
@@ -112,8 +91,8 @@ Page({
   publishPost: function () {
     var that = this;
 
-    template.createEditImageDialog(that).setDialog("编辑榜帖", "编辑你想说的话", 9, function () {
-      // 发布榜帖
+    template.createEditImageDialog(that).setDialog("编辑图册", "编辑你想说的话", 9, function () {
+      // 发布图册
 
 
 
@@ -225,7 +204,16 @@ Page({
 
     },function(){});
     })
+    
+    httpClient.addHandler("unlock", function (link) {
 
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
+
+    },function(){});
+    })
     httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },

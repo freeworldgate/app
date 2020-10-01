@@ -22,7 +22,7 @@
 
     <view class="css pr-3vw pl-3vw">
     
-                <view class="css br-20 b-post">
+                <view class="css br-20 b-white">
 
                                         <view class="rss pl-4vw pr-4vw pt-50 ">
                                             <view class="ccs">
@@ -40,7 +40,7 @@
                                                 </view>
 
                                                 <view class="rbc-nowrap ">
-                                                    <view class="rus fs-30 fw-400 line-3-start c-white">{{userPost.topic}}</view>
+                                                    <view class="rus fs-30 fw-400 line-3-start c-4">{{userPost.topic}}</view>
                                                     <view></view>
                                                 </view>
 
@@ -74,12 +74,12 @@
                                                                               
                                                                                     <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                             <view class="rcc">
-                                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/comment.png"></image>
-                                                                                                <view class="rcc fs-25 fw-400 c-white pl-10">{{t3}}</view>
+                                                                                                <image class="w-30 h-30" mode="aspectFit" src="/images/comments.png"></image>
+                                                                                                <view class="rcc fs-25 fw-400 c-4 pl-10">{{t3}}</view>
                                                                                             
                                                                                             </view>
                                                                                             <view class="rcc">
-                                                                                                <view class="rcc fs-25 fw-400 c-white">{{pkComment.date?pkComment.date:""}}</view>
+                                                                                                <view class="rcc fs-25 fw-400 c-3">{{pkComment.date?pkComment.date:""}}</view>
                                                                                                 
                                                                                             </view>
 
@@ -90,16 +90,16 @@
                                                                                         <view class="css" >
                                                                                                 <view class="rbs" bindtap="approverCommentDetail" data-approver="{{creator.userId}}">
                                                                                                         
-                                                                                                        <view class="rcc">
+                                                                                                        <view hidden="{{!pkComment.imgUrl}}" class="rcc">
                                                                                                             <image class="h-150 w-150 br-15" mode="aspectFill" src="{{pkComment.imgUrl}}"></image>
                                                                                                         </view>
-                                                                                                        <view class="w-4vw"></view>
+                                                                                                        <view hidden="{{!pkComment.imgUrl}}" class="w-4vw"></view>
                                                                                                         <view class="css" style="flex:1" >
-                                                                                                            <view class="rus fs-30 fw-400 line-3-start c-white">{{pkComment.text}}</view>
+                                                                                                            <view class="rus fs-30 fw-400 line-3-start c-word-6">{{pkComment.text}}</view>
                                                                                                         </view>
                                                                                                         <view class="w-4vw"></view>
                                                                                                         <view class="rcc">
-                                                                                                            <image class="w-25 h-25" mode="aspectFit" src="/images/right4.png"></image>
+                                                                                                            <image class="w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
                                                                                                         </view>
                                                                                                 </view>    
                                                                                         </view>
@@ -193,7 +193,7 @@
 
     
     <view class="rcc">
-            <!-- 审核按钮 -->
+      
             <view class="rcc">
                                 <view wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId)}}" type="" bindtap="agree" class="rcc h-100 w-400 br-100 b-white">
                                   

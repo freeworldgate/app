@@ -5,7 +5,6 @@ var http = require('./http.js');
 
 
 
-//查询联谊下的订单
 var queryUserInviteOrder = (inviteId, userId, success, fail) => {
   wx.showLoading({
     title: '请求中...',
@@ -42,7 +41,7 @@ var queryUserInviteAlbum = (inviteId, userId, success, fail) => {
 }
 
 
-  //上传用户相册信息
+
 var uploadUserInviteAlbum = (userId, inviteId, text, urls, successCallBack, failCallBack) =>{
   var httpClient = http.createSubmit(request.url.uploadUserInviteAlbum, "POST");
     httpClient.setParam("inviteId", inviteId);

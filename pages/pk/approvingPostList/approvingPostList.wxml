@@ -10,7 +10,7 @@
                 </view>
                 <view class="w-20"></view>
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400">待审核列表</view>
+                    <view class="rcc fs-30 fw-400">待发布列表</view>
        
 
                 </view>
@@ -79,7 +79,7 @@
                                                                                 <view class="rbc pb-30  pl-4vw pr-4vw">
                                                                                         <view class="rcc">
                                                                                             <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">审核留言</view>
+                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">发布留言</view>
                                                                                           
                                                                                         </view>
                                                                                         <view class="rcc">
@@ -97,7 +97,7 @@
                                                                                                     <view class="rcc">
                                                                                                         <image hidden="{{!post.approveComment.imgUrl}}" class="h-150 w-150 br-15" mode="aspectFill" src="{{post.approveComment.imgUrl}}"></image>
                                                                                                     </view>
-                                                                                                    <view class="w-4vw"></view>
+                                                                                                    <view  hidden="{{!post.approveComment.imgUrl}}" class="w-4vw"></view>
                                                                                                     <view class="css" style="flex:1" >
                                                                                                         <view class="rus fs-30 fw-400 line-3-start c-word-6">{{post.approveComment.text}}</view>
                                                                                                     </view>
@@ -152,7 +152,7 @@
         <view class="rcc">
             <image class="h-300 w-300" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" ></image>
         </view>
-        <view class="fs-30 fw-400 c-3-1">没有找到需要审核的榜帖</view>
+        <view class="fs-30 fw-400 c-3-1">没有找到需发布的图册</view>
     
     </view>
 
@@ -177,7 +177,7 @@
                 <view class="h-50"></view>
          
                 <view class="rac ">
-                        <button class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload c-white message" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">审核通过</button>
+                        <button class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload c-white message" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">发布图册</button>
                         <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload-2 c-white message" bindtap="reject" data-post="{{post}}" data-index="{{bindex}}">驳回修改{{post.rejectTimes}}次</view>
                 </view>
    

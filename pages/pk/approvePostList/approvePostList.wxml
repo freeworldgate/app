@@ -1,19 +1,7 @@
 <!--pages/pk/approverInfos/approverInfos.wxml-->
 <view class="css b-48" >
 
-    <!-- 头部 -->
-    <!-- <view class="css  ">
-        <view style="height:{{top}}px"></view>
-        <view class="rcs" style="height:32px;padding-left:4vw">
-                <view class="rcc">
-                    <image class="w-30 h-30" src="/images/back.png" mode="aspectFit"></image>
-                </view>
-                <view class="w-20"></view>
 
-                <view class="fs-30 fw-400">审核记录</view>
-
-        </view>
-    </view> -->
     <view class="css">
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
@@ -144,7 +132,7 @@
         <view class="rcc">
             <image class="h-300 w-300" mode="aspectFit" src="https://fenghao211.oss-cn-beijing.aliyuncs.com/imgback/empty1.png" ></image>
         </view>
-        <view class="fs-30 fw-400 c-3-1">暂无榜帖</view>
+        <view class="fs-30 fw-400 c-3-1">暂无图册</view>
     
     </view>
 

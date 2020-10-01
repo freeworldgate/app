@@ -40,14 +40,18 @@ Page({
         pkId:options.pkId,
         postId:options.postId,
     })
-
-    this.queryPost(this.data.pkId,this.data.postId);
+    var that = this;
+    this.queryPost("page",this.data.pkId,this.data.postId);
 
   },
-  queryPost:function(pkId,postId){
+  fresh:function(){
+
+    this.queryPost("label",this.data.pkId,this.data.postId);
+  },
+  queryPost:function(tag,pkId,postId){
     var that = this;
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", true);
+    httpClient.setMode(tag, true);
     httpClient.send(request.url.queryPostById, "GET", { pkId: pkId, postId:postId});
 
 
@@ -72,7 +76,20 @@ Page({
 
   },
 
+  importPost:function(res){
+    var that = this;
+    var postId =  res.currentTarget.dataset.postid;
+    var pkId =  res.currentTarget.dataset.pkid;
+    var style =  res.currentTarget.dataset.style;
+    var post =  res.currentTarget.dataset.post;
+    wx.setStorageSync('importPost', post);
+    
+    
+    wx.navigateTo({
+      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style,
+    })
 
+  },
   isPostApproved:function () {
     var that = this;
     var httpClient = template.createHttpClient(that);
@@ -105,6 +122,15 @@ Page({
 
   },
 
+  showImg:function(res){
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+
+    wx.previewImage({
+      current:post.postImages[index].imgUrl,
+      urls: [post.postImages[0].imgUrl,post.postImages[1].imgUrl,post.postImages[2].imgUrl,post.postImages[3].imgUrl,post.postImages[4].imgUrl,post.postImages[5].imgUrl,post.postImages[6].imgUrl,post.postImages[7].imgUrl,post.postImages[8].imgUrl],
+    })
+  },
   editSelfComment:function(){
     var that = this;
     template.createEditTextDialog(that).show(that.data.t5, that.data.t6,that.data.post.selfComment, 60, function (text) {
@@ -180,11 +206,11 @@ Page({
             // , urls
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);
-            httpClient.addHandler("success", function (post) {
+            httpClient.addHandler("success", function (imgUrl) {
               tip.showTip("上传成功......");
-  
+              var postImg = "post.postImages["+index+"].imgUrl";
               that.setData({
-                post:post
+                [postImg]:urls[0]
               })
               // that.isPostApproved();
             })
@@ -258,6 +284,23 @@ Page({
 
 
   },
+
+  freshPost:function(res){
+    var that = this;
+
+
+    that.data.post.postImages.sort(function(){
+                   return Math.random()-0.5;
+            });
+
+    that.data.post.style = Math.floor(Math.random() * (6) + 1);
+
+    that.setData({
+      post: that.data.post
+    })
+
+  },
+ 
 
 
 })

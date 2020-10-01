@@ -115,7 +115,7 @@ Page({
     httpClient.setMode("label", true);
     httpClient.addHandler("success", function () {
       
-      template.createEditImageDialog(that).setDialog("编辑图贴样例", "编辑样例内容", 1,function(){}, function (text, urls) {
+      template.createEditImageDialog(that).setDialog("编辑图册封面", "编辑样例内容", 1,function(){}, function (text, urls) {
         //上传成功
         wx.hideLoading({
           complete: (res) => {},

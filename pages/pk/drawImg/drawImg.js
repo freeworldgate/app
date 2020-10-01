@@ -103,7 +103,7 @@ Page({
               if(i === 2){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33 + 33 + 1), 0,vwPx*33, vwPx*33)}
 
               if(i === 3){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, 0, vwPx*(33+0.5),vwPx*33, vwPx*33)}
-              if(i === 4){ctx.drawImage(img.url,0,0,img.size,img.size, vwPx*(33+0.5), vwPx*(33+0.5),vwPx*33, vwPx*33)}
+              if(i === 4){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33+0.5), vwPx*(33+0.5),vwPx*33, vwPx*33)}
               if(i === 5){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, vwPx*(33 + 33 +1), vwPx*(33+0.5),vwPx*33, vwPx*33)}
 
               if(i === 6){ctx.drawImage(img.url,img.x,img.y,img.size,img.size, 0, vwPx*(33 + 33 +1),vwPx*33, vwPx*33)}

@@ -815,6 +815,16 @@
     left: 0px;
 }
 .editPkDialog{
+    border-radius: 30rpx;
+    width: 90vw;
+    height: auto;
+    position: fixed;
+    z-index: 4;
+    top: 30vh; 
+    /* top:0px; */
+    left: 5vw;
+}
+.editPkDialog1{
     border-top-left-radius: 30rpx;
     border-top-right-radius: 30rpx;
     width: 100%;
@@ -826,11 +836,12 @@
     left: 0px;
 }
 .editPkDialog_topic{
+    text-align: center;
     background-color: rgb(250, 250, 250);
     padding: 20rpx;
-    border-radius: 5rpx;
-    font-size: 30rpx;
-    font-weight: 400;
+    border-radius: 20rpx;
+    font-size: 35rpx;
+    font-weight: 700;
   }
 
 .editDialog-1{

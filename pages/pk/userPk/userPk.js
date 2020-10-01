@@ -150,6 +150,48 @@ Page({
 
 
   },
+
+  updatePkPage:function(res)
+  {
+    var that = this;
+    var pkid = res.currentTarget.dataset.pkid;
+    var index =  res.currentTarget.dataset.index;
+
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album'],
+      success(res) {
+        // var files = new Array();
+        // files.concat(res.tempFilePaths);
+        var files = res.tempFilePaths;
+        template.uploadImages3("PK-Back", files,that, function(urls){
+
+          var httpClient = template.createHttpClient(that);
+          httpClient.setMode("label", true);
+          httpClient.addHandler("success", function (pk) {
+            // template.createUpdatePkDialog(that).hide();
+            that.data.pks.splice(index, 1,pk); 
+            that.setData({
+              pks: that.data.pks
+            })
+            
+          })
+    
+    
+          httpClient.send(request.url.updatePkPage, "GET",{imgUrl:urls[0],pkId:pkid});
+        }, function(){});
+
+
+      },
+    })
+
+
+
+
+  },
+
+
   updatePk:function(res){
     
     var that = this;
@@ -257,6 +299,20 @@ Page({
 
 
   },
+
+  setUser:function(res){
+    var userId = res.currentTarget.dataset.user;
+
+    var user = wx.getStorageSync('user');
+    user.userId = userId;
+    wx.setStorageSync('user', user);
+    wx.reLaunch({
+      url: '/pages/pk/home/home',
+    })
+
+  },
+
+
   deletePk:function(res)
   {
     var that = this;
@@ -287,11 +343,24 @@ Page({
 
 
   },
+  setPkCode:function()
+  {
+    var that = this;
+    template.createEditNumberDialog(that).show("输入Code", 20,"", function (value) {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.setPkCode, "GET",{value:value});
+    })
 
+
+
+
+  }
+
+  ,
   approverMessage:function(pkId,index){
     var that = this;
-  
- 
+
       
       template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
         //上传成功
@@ -303,7 +372,7 @@ Page({
         httpClient.addHandler("message", function (message) {
           var msg = "pks[" + index + "].approveMessage"
           that.setData({
-            ['msg']: message
+            [msg]: message
           })
           that.init("");
 
@@ -340,7 +409,7 @@ Page({
   },
   buildSample:function(){
     var that = this;
-    template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作图贴样例",function(){
+    template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作图册封面",function(){
       wx.chooseImage({
         count: 9,
         sizeType: ['compressed', 'original'],

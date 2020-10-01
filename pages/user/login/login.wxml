@@ -3,14 +3,18 @@
 
     <view class="weui-msg">
         <view class="weui-msg__icon-area">
-            <icon  wx:if="{{loginStatu === 1}}" type="success" size="93"></icon>
-            <icon wx:else type="info" size="93"></icon>
+      
         </view>
-        <view class="weui-msg__text-area">
+        <!-- <view class="weui-msg__text-area">
             <view wx:if="{{loginStatu === 1}}" class="weui-msg__title">已登录</view>
             <view wx:else class="weui-msg__title">未登录</view>
-            <view class="weui-msg__desc">登录后查看更多内容</view>
-        </view>
+            <view class="weui-msg__desc">登录主题相册，您可以创建自己的相册...</view>
+        </view> -->
+
+
+
+
+        
         <view class="h-200"></view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">

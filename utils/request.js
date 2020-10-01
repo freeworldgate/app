@@ -1,6 +1,6 @@
-var host = 'https://www.211shopper.com'; 
+// var host = 'https://www.211shopper.com'; 
 // var host = 'http://192.168.137.1:8080'; 
-// var host = 'http://192.168.43.67:8080'; 
+var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
@@ -110,7 +110,10 @@ var url = {
         createPk: `${host}/pk/createPk`,  
         updatePk: `${host}/pk/updatePk`, 
         
+        importPost: `${host}/pk/importPost`, 
 
+
+        setPkCode: `${host}/pk/setPkCode`, 
         publishPk: `${host}/pk/publishPk`,  
         viewPk: `${host}/pk/viewPk`,  
         
@@ -127,7 +130,8 @@ var url = {
         approve: `${host}/pk/approve`, 
         setComment: `${host}/pk/setComment`, 
         querySort: `${host}/pk/querySort`, 
- 
+        checkUserPost: `${host}/pk/checkUserPost`, 
+        
         queryMoreSort: `${host}/pk/queryMoreSort`, 
          
         updateTime: `${host}/pk/updateTime`, 
@@ -144,6 +148,7 @@ var url = {
         allCashierGroups:`${host}/pk/allCashierGroups`, 
         nextPageCashierGroups:`${host}/pk/nextPageCashierGroups`, 
         
+        activeThisPk:`${host}/pk/activeThisPk`, 
         createCashier:`${host}/pk/createCashier`, 
         
         changeCahierStatu:`${host}/pk/changeCahierStatu`, 
@@ -199,6 +204,9 @@ var url = {
         queryBackImgs:`${host}/pk/queryBackImgs`, 
         removeImg:`${host}/pk/removeImg`, 
         uploadBackImg:`${host}/pk/uploadBackImg`, 
+        
+        updatePkPage:`${host}/pk/updatePkPage`, 
+
 
         addPreUser:`${host}/pk/addPreUser`, 
         morePreUsers:`${host}/pk/morePreUsers`, 
@@ -219,7 +227,6 @@ var url = {
         removeTip:`${host}/pk/removeTip`, 
         
         queryTips:`${host}/pk/queryTips`, 
-        setPkUser:`${host}/pk/setPkUser`, 
 
         oneTimeTask:`${host}/pk/oneTimeTask`, 
         // 登录地址，用于建立会话 

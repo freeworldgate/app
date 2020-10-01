@@ -47,13 +47,13 @@
     <view class="css">
         <view wx:if="{{mode === 'show'}}" class="css pt-100 pb-100">
                 <view class="rac ">
-                    <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
+                    <button hidden="{{!session}}" class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
                     <button class="rcc fs-30 fw-700 w-320 h-100 br-100 b-download c-white message"  bindtap="saveImg" data-url="{{imgUrl}}" >{{buttonStr2}}</button>
                 </view>
         </view>
         <view wx:elif="{{mode === 'upload'}}" class="css pt-100 pb-100">
                 <view class="rac">
-                    <button hidden="{{!imgUrl}}" class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
+                    <button hidden="{{!session}}" class="rcc fs-30 fw-700 w-320 h-100 br-100 b-contact c-white message" open-type="{{mediaId?'contact':''}}" session-from="1,{{creator.userId}},{{mediaId}}">{{buttonStr1}}</button>
                     <view class="rcc fs-30 fw-700 w-320 h-100 br-100 b-download c-white"  bindtap="uploadGroupCode" >{{upload}}</view>
                 </view>
         </view>

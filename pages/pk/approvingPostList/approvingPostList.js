@@ -83,7 +83,7 @@ Page({
     var post = res.currentTarget.dataset.post;
     var that = this;
 
-    template.createOperateDialog(that).show("审核通过", "确定审核通过榜帖?审核通过后，榜帖将变为发布状态...", function () {
+    template.createOperateDialog(that).show("确认发布", "确定发布图册?发布后，图册将变为发布状态...", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.send(request.url.doApprove, "GET",{pkId: post.pkId,postId: post.postId}
@@ -102,7 +102,7 @@ Page({
     var post = res.currentTarget.dataset.post;
     var that = this;
 
-    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 50, function (text) {
+    template.createEditTextDialog(that).show("驳回修改", "编辑修改建议","", 20, function (text) {
       
       // , urls
       var httpClient = template.createHttpClient(that);

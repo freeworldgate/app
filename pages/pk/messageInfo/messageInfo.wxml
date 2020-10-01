@@ -37,9 +37,9 @@
                                     <view wx:if="{{user.userId===creator.userId}}" class="rcc "  bindtap="approverMessage" >
                                         <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image>
                                         <view  class="w-10"></view>
-                                        <view  class="rcc fs-25 fw-400 c-red">编辑样例</view>
+                                        <view  class="rcc fs-25 fw-400 c-red">编辑图册</view>
                                     </view>
-                                    <view wx:else class="rcc fs-25 fw-400 c-5">审核样例</view>
+                                    <view wx:else class="rcc fs-25 fw-400 c-5">图册封面</view>
                                 </view>
                                 
                     
@@ -47,8 +47,8 @@
                             </view> 
 
                             <view class="css pt-30 pb-30">
-                                <view class="rcc-wrap  fs-30 fw-400 line-5-start c-4">{{message.text}}</view>
-                                <view class="h-30"></view>
+                                <!-- <view class="rcc-wrap  fs-30 fw-400 line-5-start c-4">{{message.text}}</view> -->
+                                <!-- <view class="h-30"></view> -->
                                 <view class="rcc h-84vw w-84vw" style="background-position: top;background-image: url({{message.imgeUrl}});background-repeat: no-repeat;background-size: 100% auto; "></view>
                             </view>
 
@@ -83,7 +83,7 @@
                     <image class="w-30 h-30" src="{{message?'/images/back1.png':'/images/back.png'}}" mode="aspectFit"></image>
                 </view>
                 <view class="rcs c-4">
-                    <view class="{{message?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400 c-4'}}">图贴样例</view>
+                    <view class="{{message?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400 c-4'}}">图册封面</view>
        
 
                 </view>

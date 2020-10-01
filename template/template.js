@@ -231,6 +231,8 @@ function createOperateDialog(page) {
   operateDialog.hide = function () {
 
     page.setData({
+      'operateDialog.title': "",
+      'operateDialog.text': "",
       'operateDialog.visible': false,
     })
     page.operateDialog = undefined;

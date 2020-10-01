@@ -5,13 +5,14 @@
     "pages/pk/preHome/preHome",
     "pages/pk/userPk/userPk",
     "pages/pk/invite/invite",
-    
+    "pages/pk/prepost/prepost",
 
     "pages/pk/pk/pk",
-
+    "pages/pk/prepk/prepk",
     "pages/pk/drawImg/drawImg",
+    "pages/pk/drawPost/drawPost",
 
-    "pages/pk/selectApprover/selectApprover",
+
     "pages/pk/approver/approver",
     "pages/pk/editApproveComment/editApproveComment",
 

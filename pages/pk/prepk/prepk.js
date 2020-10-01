@@ -33,6 +33,7 @@ Page({
     isApprove:true,
     factualInfos:[],
 
+    hasInivte:false
   },
 
   /**
@@ -40,10 +41,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.hideShareMenu({
-      complete: (res) => {},
-    })
-    that.addInvite(options.pkId);
+
+    that.addInvite(options.pkId,options.fromUser);
         //Top高度
     inviteReq.getHeight(function (res) {
         that.setData({
@@ -85,10 +84,10 @@ Page({
     })
   },
 
-  addInvite:function(pkId){
+  addInvite:function(pkId,fromUser){
       var that = this;
       var user = wx.getStorageSync('user');
-      if(user)
+      if(user && fromUser && (!that.data.hasInivte) )
       {
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("", true);
@@ -114,19 +113,20 @@ Page({
 
     })
   },
-  
-  checkUserPost:function(){
+  publish:function(){
     var that = this;
   
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("createPost", function () {that.createPost();})
-    httpClient.addHandler("pay", function (tip1) {
-      //支付购买激活
-      template.createOperateDialog(that).show(tip1.castV2,tip1.castV3,function(){
-        // that.uploadImgs();
+    httpClient.addHandler("needPay", function () {
+      template.createOperateDialog(that).show("发布帖子","购买帖子",function(){
+          wx.navigateTo({
+            url: '/pages/pk/cashiers/cashiers?pkId=' + that.data.pkId,
+          })
 
       },function(){});
+
     })
     httpClient.addHandler("userPost", function (post) {
       template.createSinglePostDialog(that).show(post, function (newPost) {
@@ -142,27 +142,14 @@ Page({
       });
 
     })
-    httpClient.addHandler("uploadImgs", function (tip) {
-      template.createOperateDialog(that).show(tip.castV2,tip.castV3,function(){
+    httpClient.addHandler("uploadImgs", function (post) {
+      template.createOperateDialog(that).show("编辑图册","请按照主题和样例要求编辑图册...",function(){
         that.uploadImgs();
 
       },function(){});
         
 
     })
-    
-    httpClient.send(request.url.checkUserPost, "GET",{pkId: that.data.pkId,});
-  },
-
-
-
-  publish:function(){
-    var that = this;
-  
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-
-    
     httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
   },
 
@@ -312,14 +299,19 @@ Page({
   },
 
 
-  showImg:function(res){
-    var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
-
+  showImgs:function(res){
+    var imgs = res.currentTarget.dataset.imgs;
+    var imgUrls = [];
+    for(var i=0;i<imgs.length;i++){
+      var singleImgUrl = imgs[i].imgUrl;
+      imgUrls.push(singleImgUrl);
+    }
     wx.previewImage({
-      current:post.postImages[index].imgUrl,
-      urls: [post.postImages[0].imgUrl,post.postImages[1].imgUrl,post.postImages[2].imgUrl,post.postImages[3].imgUrl,post.postImages[4].imgUrl,post.postImages[5].imgUrl,post.postImages[6].imgUrl,post.postImages[7].imgUrl,post.postImages[8].imgUrl],
+      urls: imgUrls,
     })
+
+
+
 
 
   },
@@ -449,7 +441,7 @@ Page({
     var user = wx.getStorageSync('user');
     if(user){
       this.setData({user:user})
-      that.addInvite(that.data.pkId);
+      that.addInvite(that.data.pkId,that.data.fromUser);
 
     }
 
@@ -522,7 +514,17 @@ Page({
     httpClient.send(request.url.queryTaskOrder, "GET", { orderId: task.orderId });
   },
 
+  setUser:function(res){
+    var userId = res.currentTarget.dataset.user;
 
+    var user = wx.getStorageSync('user');
+    user.userId = userId;
+    wx.setStorageSync('user', user);
+    wx.reLaunch({
+      url: '/pages/pk/home/home',
+    })
+
+  },
 
   approverMessage:function(){
     var that = this;
@@ -629,7 +631,7 @@ Page({
     var post = res.currentTarget.dataset.post;
 
 
-    template.createEditTextDialog(that).show("评论", "编辑评论","", 60, function (text) {
+    template.createEditTextDialog(that).show("胡评", "编辑胡评","", 60, function (text) {
       
               // , urls
               var httpClient = template.createHttpClient(that);
@@ -675,35 +677,7 @@ Page({
     template.createShowPkDialog(that).show(topic,watchword)
 
   },
-
-  importPost:function(res){
-    var that = this;
-    var postId =  res.currentTarget.dataset.postid;
-    var pkId =  res.currentTarget.dataset.pkid;
-    var style =  res.currentTarget.dataset.style;
-    var post =  res.currentTarget.dataset.post;
-    wx.setStorageSync('importPost', post);
-    wx.navigateTo({
-      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style ,
-    })
-
-  },
-
-  freshPost:function(res){
-    var that = this;
-    var index =  res.currentTarget.dataset.index;
-    var post =  res.currentTarget.dataset.post;
-    post.postImages.sort(function(){
-                   return Math.random()-0.5;
-            });
-
-    post.style = Math.floor(Math.random() * (6) + 1);
-    var upost = "posts[" + index + "]";
-    that.setData({
-      [upost]:post
-    })
-
-  },
+ 
   openTopic:function(res){
       var that = this;
       var index =  res.currentTarget.dataset.index;
@@ -715,8 +689,7 @@ Page({
 
 
 
-  },
-  
+  }
 
 
 })
