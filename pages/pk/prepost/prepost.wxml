@@ -310,7 +310,7 @@
 
                         </view>
                         <view wx:else class="css">
-                            <view class="csc">
+                            <view class="rbs">
                             
                                 <view class="rcc">
                                     <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:30vw;width:30vw"  bindtap="showImg" data-index="0" data-post="{{post}}"></image>
@@ -336,7 +336,7 @@
 
             
 
-                            <view class="csc">
+                            <view class="rbs">
                             
                                 <view class="rcc">
                                     <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:30vw;width:30vw" bindtap="showImg" data-index="3" data-post="{{post}}"></image>
@@ -361,7 +361,7 @@
                             </view>
 
                 
-                            <view class="csc">
+                            <view class="rbs">
                             
                                 <view class="rcc">
                                     <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:30vw;width:30vw" bindtap="showImg" data-index="6" data-post="{{post}}"></image>
@@ -395,10 +395,10 @@
   
             <view class="cbs"style="flex:1">
                 <view></view>
-                <view class="rus fs-30 fw-400 line-2-start c-4" >{{post.topic}}</view>
+                <view class="rus fs-30 fw-400 line-3-start c-4" >{{post.topic}}</view>
                 <view class="rcs">
-                    <view class="rcc pr-30" bindtap="importPost" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
-                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/mypic.png"></image>
+                    <view class="rcc pr-30" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
                     </view>
                     <view class="w-30"></view>
                     <view class="rcc pr-30"  bindtap="editText" >
@@ -407,8 +407,15 @@
                     <view class="w-30"></view>
                     <view class="rcc pr-30" bindtap="freshPost" >
                         <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/fresh.png"></image>
-                       
+                    </view> 
+                    <view class="w-30"></view>
+                    <view class="rcc" >
+                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/heart2.png"></image>
+                        <view class="w-10"></view>
+                        <view class="c-4 fs-25 fw-400 pb-10">{{post.scan}}</view>      
                     </view>  
+
+
                 </view>
 
 
@@ -417,7 +424,7 @@
 
             <view class="w-50"></view>
             <view class="rcc pt-30 pb-30">
-                <image class="rcc" mode="aspectFill" src="{{post.wxCode?post.wxCode:'/images/app.png'}}" style="height:20vw;width:20vw"></image>
+                <image class="rcc" mode="aspectFill" src="{{post.wxCode}}" style="height:20vw;width:20vw"></image>
                 <view class="rcc absolute" style="height:8vw;width:8vw;border-radius: 8vw;" >
                     <image style="height:8vw;width:8vw;border-radius: 8vw;" mode="aspectFit" src="{{post.creator.imgUrl}}"></image>
                 </view>
@@ -435,7 +442,25 @@
     
     </view>
 
-    <view></view>
+    <view class="rbc pl-2-5vw pr-2-5vw">
+        <view></view>
+        <view wx:if="{{post.statu.key ===3}}" class="rcc w-300 h-80 b-white br-80" bindtap="goApproving">
+            
+            <view class="rcc">
+                <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/appro.png"></image>
+            </view>
+            <view class="w-20"></view>
+            <view class="rcc fs-28 fw-400 c-4">去发布</view>
+            
+        </view>
+        <view wx:else class="ccc">
+            <!-- <view class="rcc w-120 h-120 br-120 b-white">
+                <image class="rcc w-60 h-60 " mode="aspectFit" src="/images/heart1.png"></image>
+            </view>
+            <view class="rcc fs-35 fw-700 c-white pt-20">222</view> -->
+        </view>
+        <view></view>
+    </view>
 
     <view  class="rcc ">
           <view hidden="{{post.statu.key !=3}}" class="rcc fs-25 fw-400 c-1 pb-20">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
@@ -459,22 +484,9 @@
                          
 </view> -->
     
-<view hidden="{{post.statu.key !=3}}" class="rcc rightBar b-post1" bindtap="goApproving">
-      <view class="rcc pb-30 pl-30">发布图片按钮</view>
-
-          <!-- <view class="rcc" >
-                                        
-                                          <view class="rcc w-300 h-80 br-80 b-post1"  >
-                                              <image class="w-30 h-30" src="/images/approve4.png" mode="aspectFit"></image>
-                                              <view class="fs-30 fw-400 c-white ">发布</view>
-                                          </view>
-                                
-          </view>
-                                       -->
-                                      
-                                  
-                                  
-</view>
+<!-- <view hidden="{{post.statu.key !=3}}" class="rcc rightBar b-post1" bindtap="goApproving">
+      <view class="rcc pb-30 pl-30">发布图片按钮</view>                         
+</view> -->
     
 
 

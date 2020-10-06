@@ -1,5 +1,5 @@
 <!--pages/pk/drawImg/drawImg.wxml-->
-<view class="css h-100vh b-48" style="background-position: center;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%;">
+<view class="css  b-48" style="min-height:100vh;background-position: center;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%;">
 
     <view class="css">
             <view style="height:{{top}}px"></view>
@@ -24,23 +24,133 @@
             <canvas canvas-id="myCanvas" style="width:97vw;height:155vw" ></canvas>
         </view>
         
-
-        <view class="rac">
-        
-            <view class="rcc p-30 fs-30 fw-400 c-5" bindtap="save">导出到相册</view>
-            
-        
-        </view>
-
         
     </view>
     <view wx:else style="flex:1" class="rcc">
             <view class="rcc w-200 h-120 fs-30 fw-400 b-white c-4 br-20">导出中...</view>
-    
     </view>
+    
+    <!-- <view hidden="{{statu != 1}}"  class="ccc">
+        <view class="h-30"></view>
+        <view class="rcc w-300 h-80 br-80 b-publish" bindtap="save">                
+            <view class="rcc fs-25 fw-400 c-white ">导出画报</view>
+        </view>
+        <view class="h-300"></view>
+    </view> -->
+
+
+
+
+    <!-- <view hidden="{{statu != 1}}" class="csc pl-2vw pr-2vw" style="flex:1">
+        <view class="rss">
+            <view class="css">
+                <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:75vw">
+                    <view class="css" style="display:inline-block" wx:for="{{tips}}" wx:for-index="bindex" wx:for-item="tip" wx:key="postkey">
+                        <view class="rss" bindtap="selectPng" data-png="{{tip.backPng}}">
+                            
+                            <view class="rcc ">
+                                <image mode="aspectFill" src="{{tip.img}}" class="br-20" style="height:160rpx;width:120rpx" ></image>
+                                <view class="rcc absolute" >
+                                    <image class="rcc br-20" style="height:160rpx;width:120rpx" mode="aspectFill" src="{{tip.backPng}}"></image>
+                                </view>
+                            </view>
+
+
+
+                            <view  style="width:1.5vw"></view>
+                                
+                        </view>
+                    </view>
+                </scroll-view>   
+            </view>
+            <view class="" style="width:5vw" ></view>
+            <view class="ccs">
+                <view class="ccc br-20 b-publish" style="height:160rpx;width:16vw" bindtap="save">
+                        <view class="fs-23 fw-400 c-white">导</view>
+                     
+                        <view class="fs-23 fw-400 c-white">出</view>
+                        
+                        <view class="fs-23 fw-400 c-white">画</view>
+                    
+                        <view class="fs-23 fw-400 c-white">报</view>
+                </view>
+            </view>
+
+            
+   
+        </view>
+
+    
+    </view> -->
+
+
+
+
 
 </view>
 
+<view hidden="{{statu != 1}}" class="css bottomBar11 z3">
+    <view class="csc pl-2vw pr-2vw" style="flex:1">
+        <view class="rss">
+            <view class="css">
+                <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:80vw">
+                    <view class="css" style="display:inline-block" wx:for="{{tips}}" wx:for-index="bindex" wx:for-item="tip" wx:key="postkey">
+                        <view class="rss" bindtap="selectPng" data-png="{{tip.backPng}}">
+                            
+                            <view class="rcc ">
+                                <image mode="aspectFill" src="{{tip.img}}" class="br-20" style="height:20vw;width:15vw" ></image>
+                                <view class="rcc absolute" >
+                                    <image class="rcc br-20" style="height:20vw;width:15vw" mode="aspectFill" src="{{tip.backPng}}"></image>
+                                </view>
+                            </view>
+
+
+
+                            <view  style="width:1vw"></view>
+                                
+                        </view>
+                    </view>
+                </scroll-view>   
+            </view>
+            <view class="" style="width:2vw" ></view>
+     
+            <view class="ccc br-20 b-publish" style="flex:1;height:20vw" bindtap="save">
+                        <view class="fs-30 fw-700 c-white">导</view>
+                     
+                        <view class="fs-30 fw-700 c-white">出</view>
+<!--                         
+                        <view class="fs-23 fw-400 c-white">画</view>
+                    
+                        <view class="fs-23 fw-400 c-white">报</view>            -->
+            </view>
+         
+
+            
+   
+        </view>
+    </view>
+        <!-- <view class="css pl-2vw pr-2vw">
+                <scroll-view class="rss" scrollX="true" style="white-space:nowrap;width:96vw">
+                    <view class="css" style="display:inline-block" wx:for="{{tips}}" wx:for-index="bindex" wx:for-item="tip" wx:key="postkey">
+                        <view class="rss" bindtap="selectPng" data-png="{{tip.backPng}}">
+                            
+                            <view class="rcc ">
+                                <image mode="aspectFill" src="{{tip.img}}" class="br-20" style="height:160rpx;width:120rpx" ></image>
+                                <view class="rcc absolute" >
+                                    <image class="rcc br-20" style="height:160rpx;width:120rpx" mode="aspectFill" src="{{tip.backPng}}"></image>
+                                </view>
+                            </view>
+
+
+
+                            <view  style="width:1.5vw"></view>
+                                
+                        </view>
+                    </view>
+                </scroll-view>   
+
+        </view> -->
+</view>
 
 <view>
 

@@ -52,7 +52,8 @@ Page({
     httpClient.setMode("label", false);
     var user = wx.getStorageSync('user');
     var fromUser = wx.getStorageSync('fromUser')
-    httpClient.send(request.url.queryHomePage, "GET", { userId:user.userId,fromUser:fromUser });
+    var pkId = wx.getStorageSync('pkId')
+    httpClient.send(request.url.queryHomePage, "GET", { userId:user.userId,fromUser:fromUser,pkId:pkId });
 
 
   },

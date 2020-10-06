@@ -28,7 +28,7 @@ Page({
    */
   data: {
     interval:0,
-
+    eyeStatu:true,
     pkId:"PK01",
     isApprove:true,
     factualInfos:[],
@@ -114,19 +114,55 @@ Page({
 
     })
   },
-  
+  createPay:function(payInfo)
+  {
+
+    wx.requestPayment({
+      timeStamp: payInfo.timeStamp,//记住，这边的timeStamp一定要是字符串类型的，不然会报错
+      nonceStr: payInfo.nonceStr,
+      package: payInfo.package,
+      signType: 'MD5',
+      paySign: payInfo.paySign,
+      success: function (event) {
+
+       
+      },
+      fail: function (error) {
+       
+      },
+       
+
+       
+    });
+
+  },
+
+
+
   checkUserPost:function(){
     var that = this;
   
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("createPost", function () {that.createPost();})
-    httpClient.addHandler("pay", function (tip1) {
+    httpClient.addHandler("pay", function (pay) {
       //支付购买激活
-      template.createOperateDialog(that).show(tip1.castV2,tip1.castV3,function(){
-        // that.uploadImgs();
+      template.createPayDialog(that).show(pay,function(single){
+          that.createPay(single);
+      },function(all){
+        that.createPay(all);
+      });
 
-      },function(){});
+
+
+
+      // template.createOperateDialog(that).show(tip1.castV2,tip1.castV3,function(){
+      //   // that.uploadImgs();
+      // },function(){});
+
+
+
+
     })
     httpClient.addHandler("userPost", function (post) {
       template.createSinglePostDialog(that).show(post, function (newPost) {
@@ -247,7 +283,7 @@ Page({
     return {
         title: '邀请@'+ that.data.pk.topic ,
         desc: "from",
-        imageUrl:that.data.pk.approveMessage.imgeUrl,
+        imageUrl:that.data.pk.backUrl,
         path: '/pages/pk/pk/pk?pkId=' + that.data.pkId + "&fromUser=" + that.data.user.userId ,
     }
 
@@ -292,6 +328,7 @@ Page({
     },function(){});
     })
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});  
+
   },
 
   refreshPage: function () {
@@ -311,6 +348,7 @@ Page({
     // wx.stopPullDownRefresh()
   },
 
+  
 
   showImg:function(res){
     var post = res.currentTarget.dataset.post;
@@ -498,14 +536,27 @@ Page({
     
       });
     }, function () {});
+  },
+  openCpostText:function()
+  {
+    var that = this;
+    var ctag = that.data.cpost.tag;
+    that.setData({
+      'cpost.tag':!ctag
+    })
+  },
+  openText:function(res)
+  {
+    var that = this;
+    var index = res.currentTarget.dataset.index;
+    var tag = 'posts['+index+'].tag';
+    var ctag = that.data.posts[index].tag;
+    that.setData({
+      [tag]:!ctag
+    })
+  },
 
 
-
-
-
-
-
-},
 
 
 
@@ -622,6 +673,40 @@ Page({
 
 
   },
+  
+
+  editCpostSelfComment:function(res){
+    var that = this;
+    var post = res.currentTarget.dataset.post;
+
+
+    template.createEditTextDialog(that).show("评论", "编辑评论","", 60, function (text) {
+      
+              // , urls
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (cpost) {
+      
+                that.setData({
+                  cpost:cpost
+                })
+    
+              })
+              httpClient.send(request.url.editSelfComment, "GET",
+                {
+                  pkId: that.data.pkId,
+                  postId: post.postId,
+                  text:text
+                }
+              );    
+
+
+
+    });
+
+
+
+  },
 
   editSelfComment:function(res){
     var that = this;
@@ -704,6 +789,19 @@ Page({
     })
 
   },
+  freshCpost:function(res){
+    var that = this;
+    var post =  res.currentTarget.dataset.post;
+    post.postImages.sort(function(){
+                   return Math.random()-0.5;
+            });
+    post.style = Math.floor(Math.random() * (6) + 1);
+
+    that.setData({
+      cpost:post
+    })
+
+  },
   openTopic:function(res){
       var that = this;
       var index =  res.currentTarget.dataset.index;
@@ -716,7 +814,14 @@ Page({
 
 
   },
-  
+  changeEyeStatu:function(){
+    var that = this;
+    that.setData({
+      eyeStatu:!that.data.eyeStatu
+    })
+
+
+  }
 
 
 })

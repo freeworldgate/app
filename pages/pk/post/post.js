@@ -27,7 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
     var that = this;
     inviteReq.getHeight(function (res) {
       that.setData({
@@ -40,6 +42,7 @@ Page({
         pkId:options.pkId,
         postId:options.postId,
     })
+    wx.setStorageSync('pkId', options.pkId)
 
     this.queryPost(this.data.pkId,this.data.postId);
 
@@ -47,8 +50,8 @@ Page({
   queryPost:function(pkId,postId){
     var that = this;
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", true);
-    httpClient.send(request.url.queryPostById, "GET", { pkId: pkId, postId:postId});
+    httpClient.setMode("page", false);
+    httpClient.send(request.url.queryPostByPostId, "GET", { pkId: pkId, postId:postId});
 
 
   },
@@ -72,34 +75,50 @@ Page({
 
   },
 
-
-  isPostApproved:function () {
+  freshPost:function(res){
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("", true);
-    httpClient.addHandler("noApprove", function (urlPath) {
-      template.createOperateDialog(that).show(that.data.t3, that.data.t4, function () {
-          wx.navigateTo({
-            url: urlPath,
-          })
-          that.setData({verfiy:true})
-    }, function () {});
+
+
+    that.data.post.postImages.sort(function(){
+                   return Math.random()-0.5;
+            });
+
+    that.data.post.style = Math.floor(Math.random() * (6) + 1);
+
+    that.setData({
+      post: that.data.post
     })
-    httpClient.send(request.url.isPostApproved, "GET", { pkId: that.data.pkId, postId: that.data.postId});
+
+  },
+  importPost:function(res){
+    var that = this;
+    var postId =  res.currentTarget.dataset.postid;
+    var pkId =  res.currentTarget.dataset.pkid;
+    var style =  res.currentTarget.dataset.style;
+    var post =  res.currentTarget.dataset.post;
+    wx.setStorageSync('importPost', post);
+    
+    
+    wx.navigateTo({
+      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style,
+    })
+
   },
 
-  goApproving:function () {
+
+  goPk:function (res) {
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("noApprove", function (urlPath) {
-          wx.navigateTo({
-            url: urlPath,
-          })
-          that.setData({verfiy:true})
+    var pkid = res.currentTarget.dataset.pkid;
+    var fromUser = res.currentTarget.dataset.fromuser;
+    
+    login.getUser(function(user)
+    {
+
+      wx.navigateTo({
+        url: '/pages/pk/pk/pk?pkId='+pkid + '&fromUser=' + fromUser,
+      })
 
     })
-    httpClient.send(request.url.goApproving, "GET", { pkId: that.data.pkId, postId: that.data.postId});
 
 
 

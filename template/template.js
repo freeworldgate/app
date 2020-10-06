@@ -254,6 +254,64 @@ function createOperateDialog(page) {
   page.operateDialog = operateDialog;
   return operateDialog;
 }
+
+
+function createPayDialog(page) {
+  if (page.payDialog) {
+    return page.payDialog;
+  }
+  var payDialog = new Object();
+  payDialog.visible = false;
+  payDialog.single = function () { };
+  payDialog.all = function () { };
+
+  payDialog.show = function (pay, single, all) {
+
+    payDialog.pay = pay;
+    payDialog.single = single;
+    payDialog.all = all;
+    page.setData({
+      'payDialog.visible': true,
+    })
+
+  }
+  payDialog.hide = function () {
+
+    page.setData({
+      'payDialog.visible': false,
+    })
+    page.payDialog = undefined;
+  }
+
+  page.payDialog_single = function () {
+    payDialog.hide();
+    payDialog.single(payDialog.pay.single);
+  };
+  page.payDialog_all = function () {
+    payDialog.hide();
+    payDialog.all(payDialog.pay.all);
+  };
+  page.payDialog_cancel = function () {
+    payDialog.hide();
+  };
+
+  page.payDialog = payDialog;
+  return payDialog;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //2秒钟信息显示框
 function showTip(text) {
   wx.showToast({
@@ -1452,7 +1510,7 @@ function pageInit(page) {
 
 
 
-module.exports = { createDialog,createEditPkDialog,uploadImages3,createShowPkDialog, createUpdatePkDialog,pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createEditPkDialog,uploadImages3,createPayDialog,createShowPkDialog, createUpdatePkDialog,pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

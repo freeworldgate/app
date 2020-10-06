@@ -27,7 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
     var that = this;
     inviteReq.getHeight(function (res) {
       that.setData({
@@ -75,7 +77,21 @@ Page({
 
 
   },
+  freshPost:function(res){
+    var that = this;
 
+
+    that.data.post.postImages.sort(function(){
+                   return Math.random()-0.5;
+            });
+
+    that.data.post.style = Math.floor(Math.random() * (6) + 1);
+
+    that.setData({
+      post: that.data.post
+    })
+
+  },
   importPost:function(res){
     var that = this;
     var postId =  res.currentTarget.dataset.postid;
@@ -285,21 +301,7 @@ Page({
 
   },
 
-  freshPost:function(res){
-    var that = this;
 
-
-    that.data.post.postImages.sort(function(){
-                   return Math.random()-0.5;
-            });
-
-    that.data.post.style = Math.floor(Math.random() * (6) + 1);
-
-    that.setData({
-      post: that.data.post
-    })
-
-  },
  
 
 

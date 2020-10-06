@@ -30,6 +30,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu({
+      complete: (res) => {},
+    })
+    
     var that = this;
     inviteReq.getHeight(function (res) {
       that.setData({
@@ -42,12 +46,13 @@ Page({
     that.data.pkId = options.pkId;
     that.data.postId = options.postId;
     that.data.fromUser = options.fromUser;
+    wx.setStorageSync('pkId', options.pkId)
     wx.setStorageSync('fromUser', options.fromUser)
     var httpClient = template.createHttpClient(that);
     var user = wx.getStorageSync('user');
     httpClient.setMode("page", false);
     // httpClient.send(request.url.queryApproveInfo, "GET", { pkId: this.data.pkId  });
-    httpClient.send(request.url.queryApproveInfo3, "GET", { pkId: that.data.pkId ,postId:that.data.postId,userId:user.userId,fromUser:that.data.fromUser  });
+    httpClient.send(request.url.queryApproveInfo3, "GET", { pkId: that.data.pkId ,postId:that.data.postId,userId:user.userId  });
 
 
   },

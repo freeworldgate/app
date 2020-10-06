@@ -134,7 +134,8 @@
   color: rgb(251, 255, 0);
 }
 .c-11{
-  color: rgb(136, 93, 0);
+  color: #885d00;
+  
 }
 .c-12{
   color: #ea9518;
@@ -1016,7 +1017,9 @@ mw-200{
 .b-post1{
   background-image: linear-gradient(to right, #a5a5a552 100%, #a2a2a256 100%);
 }
-
+.b-post3{
+  background-image: linear-gradient(to right, #a5a5a5d5 100%, #a2a2a2d7 100%);
+}
 .bar-approve{
   background-image: linear-gradient(to bottom, #00000000,#000000e0 );
 }
@@ -1553,7 +1556,13 @@ mw-200{
   bottom: -20vw;
   left: -20vw;
 }
-
+.customBar2{
+  position: fixed;
+  width:100vw;
+  left: 0;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
 
 .customBar{
   position: fixed;
@@ -1587,8 +1596,16 @@ mw-200{
   left: 3vw;
 }
 
-.customBack{
+/* .customBack{
   background-image: linear-gradient(to right, #79c9ff 0%, #44a4fd 100%);
+} */
+.bottomBar11{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  /* background-color: rgb(255, 255, 255); */
 }
 .bottomBar{
   position: fixed;

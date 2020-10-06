@@ -54,15 +54,17 @@ Page({
 
     
     that.queryPost("page",that.data.pkId,that.data.postId);
+    // that.queryTips();
     wx.removeStorageSync('importPost')
   },
   queryPost:function(tag,pkId,postId){
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tag, false);
-    httpClient.addHandler("success", function (topic) {
+    httpClient.addHandler("success", function (imp) {
 
-        that.setData({"post.pkTopic":topic})
+        that.setData({"post.pkTopic":imp.topic})
+        that.setData({"tips":imp.tips})
         that.drawWxCode();
         that.drawUserImg();
         that.drawImg();
@@ -70,7 +72,12 @@ Page({
     httpClient.send(request.url.importPost, "GET", { pkId: pkId, postId:postId});
   },
 
-
+  queryTips:function(){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("", false);
+    httpClient.send(request.url.queryAllTips, "GET", { });
+  },
 
   drawWxCode:function(){
     var that = this;
@@ -125,7 +132,7 @@ Page({
     var temp = "";
     var row = [];
     context.setFontSize(3.8 * vwPx)
-    context.setFillStyle("#9c9c9c")
+    context.setFillStyle("#6f6f6f")
     for (var a = 0; a < chr.length; a++) {
      if (context.measureText(temp).width < 60*vwPx) {
       temp += chr[a];
@@ -176,7 +183,7 @@ Page({
     var row = [];
     context.setFontSize(4.3 * vwPx);
     context.font = 'normal bold '+ 4.3 * vwPx +'px sans-serif';
-    context.setFillStyle("#3f3f3f")
+    context.setFillStyle("#885d00")
     for (var a = 0; a < chr.length; a++) {
      if (context.measureText(temp).width < 60*vwPx) {
       temp += chr[a];
@@ -189,8 +196,7 @@ Page({
     
 
     context.fillText(temp, 2*vwPx, 136 * vwPx, 60*vwPx);
-  
-  
+    context.fillText(temp, 2*vwPx-0.3, 136 * vwPx-0.3, 60*vwPx);
 
 
 
@@ -325,11 +331,7 @@ Page({
 
 
   getDrawPsion:function(index,style){
-      // if(style===2){style=3}
-      // else if(style===3){style=5}
-      // else if(style===4){style=2}
-      // else if(style===5){style=4}
-      // else{}
+
 
 
 
@@ -443,6 +445,12 @@ Page({
 
     that.drawTopic();
     that.drawPkTopic();
+    if(that.data.png){
+      ctx.drawImage(that.data.png.url,0,0,that.data.png.imgW,that.data.png.imgH, 2*vwPx, 2*vwPx,93*vwPx ,124*vwPx);
+    }
+    
+
+
 
     ctx.draw()
     ctx.save();
@@ -454,7 +462,34 @@ Page({
 
 
   },
+  selectPng:function(res){
+    var png = res.currentTarget.dataset.png;
+    var that = this;
+    wx.getImageInfo({
+      src:png,
+      success:function(res){
+        var imgW = res.width;
+        var imgH = res.height;
+        that.data.png = {url:res.path,imgW:imgW,imgH:imgH}
+        that.refresh();
 
+
+        // ctx.drawImage(res.path,0,0,imgW,imgH, 2*vwPx, 2*vwPx,90*vwPx ,120*vwPx);
+        // ctx.draw()
+        // ctx.save();
+
+      }
+  })
+
+
+
+
+
+
+
+
+
+  },
   back:function(){
     wx.navigateBack({
       complete: (res) => {},

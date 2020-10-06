@@ -252,16 +252,16 @@
             <view class="rcc">
                                 <view wx:if="{{button.button === 2}}" class="{{button.style}}" >
                           
-                                    <image class="w-40 h-40" mode="aspectFit" src="{{button.icon}}"></image>
+                                    <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400">{{button.name}}</view>
+                                    <view class="fs-28 fw-400">{{button.name}}</view>
                            
                                 </view>
                                 <button wx:else open-type="{{button.type}}" class="{{button.style}}" bindtap="{{button.linkMethod}}">
                                    
-                                    <image class="w-40 h-40" mode="aspectFit" src="{{button.icon}}"></image>
+                                    <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-30 fw-400">{{button.name}}</view>
+                                    <view class="fs-28 fw-400">{{button.name}}</view>
                                  
                                 </button>
                    
