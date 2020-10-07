@@ -78,8 +78,12 @@
 .c-blue{
   color: #13227a;
 }
+.c-tipColor{
+  color: #9db8bb;
+}
 .bTipColor{
-  background-color: #009dc1;
+  background-color: #e40067c7;
+  /* background-color: #009dc1; */
 }
 .tipColor{
   color:  #009dc1;
