@@ -20,8 +20,8 @@
 
 
     <view wx:if="{{statu === 1}}">
-        <view class="rcc" style="margin:1.5vw">
-            <canvas canvas-id="myCanvas" style="width:97vw;height:155vw" ></canvas>
+        <view class="rcc" style="margin:1vw">
+            <canvas canvas-id="myCanvas" style="width:98vw;height:159vw" ></canvas>
         </view>
         
         

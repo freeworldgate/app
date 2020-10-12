@@ -128,7 +128,15 @@ Page({
 
 
   },
+  showImg:function(res){
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
 
+    wx.previewImage({
+      current:post.postImages[index].imgUrl,
+      urls: [post.postImages[0].imgUrl,post.postImages[1].imgUrl,post.postImages[2].imgUrl,post.postImages[3].imgUrl,post.postImages[4].imgUrl,post.postImages[5].imgUrl,post.postImages[6].imgUrl,post.postImages[7].imgUrl,post.postImages[8].imgUrl],
+    })
+  },
   editSelfComment:function(){
     var that = this;
     template.createEditTextDialog(that).show(that.data.t5, that.data.t6,that.data.post.selfComment, 60, function (text) {

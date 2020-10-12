@@ -280,8 +280,8 @@ Page({
       canvasId: "myCanvas",
       x: 0, //画布x轴起点
       y: 0, //画布y轴起点
-      width: vwPx * 97, //画布宽度
-      height:vwPx * 155, //画布高度
+      width: vwPx * 98, //画布宽度
+      height:vwPx * 159, //画布高度
       // destWidth: image_width, //输出图片宽度
       // destHeight: image_height, //输出图片高度
       success: function (res) {
@@ -345,64 +345,65 @@ Page({
 
       if(style === 1 || style ===2)
       {
-          if(index === 0){return style===1?{x:0,y:0,width:62,height:62}:{x:0,y:0,width:31,height:31};}
-          if(index === 1){return style===1?{x:62,y:0,width:31,height:31}:{x:31,y:0,width:62,height:62};}
-          if(index === 2){return style===1?{x:62,y:31,width:31,height:31}:{x:0,y:31,width:31,height:31};}
-          if(index === 3){return {x:0,y:62,width:31,height:31};}
-          if(index === 4){return {x:31,y:62,width:31,height:31};}
-          if(index === 5){return {x:62,y:62,width:31,height:31};}
-          if(index === 6){return {x:0,y:93,width:31,height:31};}
-          if(index === 7){return {x:31,y:93,width:31,height:31};}
-          if(index === 8){return {x:62,y:93,width:31,height:31};}
+          if(index === 0){return style===1?{x:0,y:0,width:62.5,height:62.5}:{x:0,y:0,width:31,height:31};}
+          if(index === 1){return style===1?{x:63,y:0,width:31,height:31}:{x:31.5,y:0,width:62.5,height:62.5};}
+          if(index === 2){return style===1?{x:63,y:31.5,width:31,height:31}:{x:0,y:31.5,width:31,height:31};}
+
+          if(index === 3){return {x:0,y:63,width:31,height:31};}
+          if(index === 4){return {x:31.5,y:63,width:31,height:31};}
+          if(index === 5){return {x:63,y:63,width:31,height:31};}
+          if(index === 6){return {x:0,y:94.5,width:31,height:31};}
+          if(index === 7){return {x:31.5,y:94.5,width:31,height:31};}
+          if(index === 8){return {x:63,y:94.5,width:31,height:31};}
 
       }
       else if(style===3||style===4)
       {
         if(index === 0){return {x:0,y:0,width:31,height:31};}
-        if(index === 1){return {x:31,y:0,width:31,height:31};}
-        if(index === 2){return {x:62,y:0,width:31,height:31};}
+        if(index === 1){return {x:31.5,y:0,width:31,height:31};}
+        if(index === 2){return {x:63,y:0,width:31,height:31};}
 
 
-          if(index === 3){return style===3?{x:0,y:31,width:62,height:62}:{x:0,y:31,width:31,height:31};}
-          if(index === 4){return style===3?{x:62,y:31,width:31,height:31}:{x:31,y:31,width:62,height:62};}
-          if(index === 5){return style===3?{x:62,y:62,width:31,height:31}:{x:0,y:62,width:31,height:31};}
+          if(index === 3){return style===3?{x:0,y:31.5,width:62.5,height:62.5}:{x:0,y:31.5,width:31,height:31};}
+          if(index === 4){return style===3?{x:63,y:31.5,width:31,height:31}:{x:31.5,y:31.5,width:62.5,height:62.5};}
+          if(index === 5){return style===3?{x:63,y:63,width:31,height:31}:{x:0,y:63,width:31,height:31};}
           
 
 
-          if(index === 6){return {x:0,y:93,width:31,height:31};}
-          if(index === 7){return {x:31,y:93,width:31,height:31};}
-          if(index === 8){return {x:62,y:93,width:31,height:31};}
+          if(index === 6){return {x:0,y:94.5,width:31,height:31};}
+          if(index === 7){return {x:31.5,y:94.5,width:31,height:31};}
+          if(index === 8){return {x:63,y:94.5,width:31,height:31};}
 
 
       }
       else if(style===5||style===6)
       {
           if(index === 0){return {x:0,y:0,width:31,height:31};}
-          if(index === 1){return {x:31,y:0,width:31,height:31};}
-          if(index === 2){return {x:62,y:0,width:31,height:31};}
+          if(index === 1){return {x:31.5,y:0,width:31,height:31};}
+          if(index === 2){return {x:63,y:0,width:31,height:31};}
 
-          if(index === 3){return {x:0,y:31,width:31,height:31};}
-          if(index === 4){return {x:31,y:31,width:31,height:31};}
-          if(index === 5){return {x:62,y:31,width:31,height:31};}
+          if(index === 3){return {x:0,y:31.5,width:31,height:31};}
+          if(index === 4){return {x:31.5,y:31.5,width:31,height:31};}
+          if(index === 5){return {x:63,y:31.5,width:31,height:31};}
 
-          if(index === 6){return style===5?{x:0,y:62,width:62,height:62}:{x:0,y:62,width:31,height:31};}
-          if(index === 7){return style===5?{x:62,y:62,width:31,height:31}:{x:31,y:62,width:62,height:62};}
-          if(index === 8){return style===5?{x:62,y:93,width:31,height:31}:{x:0,y:93,width:31,height:31};}
+          if(index === 6){return style===5?{x:0,y:63,width:62.5,height:62.5}:{x:0,y:63,width:31,height:31};}
+          if(index === 7){return style===5?{x:63,y:63,width:31,height:31}:{x:31.5,y:63,width:62.5,height:62.5};}
+          if(index === 8){return style===5?{x:63,y:94.5,width:31,height:31}:{x:0,y:94.5,width:31,height:31};}
 
       }
       else
       {
         if(index === 0){return {x:0,y:0,width:31,height:31};}
-        if(index === 1){return {x:31,y:0,width:31,height:31};}
-        if(index === 2){return {x:62,y:0,width:31,height:31};}
+        if(index === 1){return {x:31.5,y:0,width:31,height:31};}
+        if(index === 2){return {x:63,y:0,width:31,height:31};}
 
-        if(index === 3){return {x:0,y:31,width:31,height:31};}
-        if(index === 4){return {x:31,y:31,width:31,height:31};}
-        if(index === 5){return {x:62,y:31,width:31,height:31};}
+        if(index === 3){return {x:0,y:31.5,width:31,height:31};}
+        if(index === 4){return {x:31.5,y:31.5,width:31,height:31};}
+        if(index === 5){return {x:63,y:31.5,width:31,height:31};}
 
-        if(index === 6){return {x:0,y:62,width:31,height:31};}
-        if(index === 7){return {x:31,y:62,width:31,height:31};}
-        if(index === 8){return {x:62,y:62,width:31,height:31};}
+        if(index === 6){return {x:0,y:63,width:31,height:31};}
+        if(index === 7){return {x:31.5,y:63,width:31,height:31};}
+        if(index === 8){return {x:63,y:63,width:31,height:31};}
 
 
 
@@ -432,7 +433,7 @@ Page({
     // ctx.fillRect(0,0,vwPx * 97,vwPx * 155);//画出矩形白色背景
     // ctx.restore()
 
-    that.roundRect(ctx,0,0,vwPx * 97,vwPx * 155,3*vwPx);
+    that.roundRect(ctx,0,0,vwPx * 98,vwPx * 159,2*vwPx);
 
 
 
@@ -442,12 +443,14 @@ Page({
       var imgData = that.data.imgs[index];
       ctx.save(); // 先保存状态 已便于画完圆再用
       // ctx.beginPath(); //开始绘制
-      //先画个圆
-      ctx.arc(imgData.x + imgData.size/2, imgData.y + imgData.size/2,imgData.size/2, 0, Math.PI * 2, false);
+      // //先画个圆
+      // ctx.arc((imgData.lx + 2 + imgData.lwidth/2)*vwPx, (imgData.ly + 2 + imgData.lheight/2)*vwPx  ,imgData.lwidth/2 * 1.3 * vwPx, 0, Math.PI * 2,false);
       // ctx.clip();//画了圆 再剪切 原始画布中剪切任意形状和尺寸。一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内
+      that.roundRect(ctx,(imgData.lx + 2)*vwPx, (imgData.ly + 2)*vwPx  ,imgData.lwidth * vwPx,imgData.lheight * vwPx,1.5*vwPx);
+      
       ctx.drawImage(imgData.url,imgData.x,imgData.y,imgData.size,imgData.size, (imgData.lx + 2)*vwPx, (imgData.ly+2)*vwPx,(imgData.lwidth)*vwPx , (imgData.lheight)*vwPx);
       ctx.restore(); //恢复之前保存的绘图上下文 恢复之前保存的绘图上下午即状态 可以继续绘制
-      ctx.draw();
+      // ctx.draw();
     }
     ctx.drawImage(that.data.wxcode.url,that.data.wxcode.x,that.data.wxcode.y,that.data.wxcode.size,that.data.wxcode.size, (that.data.wxcode.lx)*vwPx, (that.data.wxcode.ly)*vwPx,(that.data.wxcode.lwidth)*vwPx , (that.data.wxcode.lheight)*vwPx);
 
@@ -549,10 +552,10 @@ Page({
     
     // 这里是使用 fill 还是 stroke都可以，二选一即可，但是需要与上面对应
     ctx.fill()
-    ctx.stroke()
+    // ctx.stroke()
     ctx.closePath()
     // 剪切
-    // ctx.clip()
+    ctx.clip()
    }
 
 
