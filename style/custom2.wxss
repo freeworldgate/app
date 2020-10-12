@@ -16,7 +16,9 @@
 .fs-60{font-size: 60rpx;}
 .fs-100{font-size: 100rpx;}
 
-
+.ff-name{
+  font-family: SimHei;
+}
 
 .italic{
   font-style: italic;
@@ -79,7 +81,8 @@
   color: #13227a;
 }
 .c-tipColor{
-  color: #9db8bb;
+  /* color: #9db8bb; */
+  color: #2b5458;
 }
 .bTipColor{
   background-color: #e40067c7;
@@ -526,6 +529,7 @@
 .br-30vw{
   border-radius: 30vw;
 }
+.h-3vw{height: 3vw;}
 .h-5vw{height: 5vw;}
 .h-35vw{
   height: 35vw;
@@ -902,7 +906,8 @@ mw-200{
 }
 .b-pk-back{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
-  background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425));
+  background: radial-gradient(rgba(242, 238, 238, 0.262),rgba(41, 41, 41, 0.234));
+  /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
 .b-download{
   background-image: linear-gradient(to right, #3d9bff 0%, #4be4ffc0 100%);
@@ -964,10 +969,12 @@ mw-200{
   background-image: linear-gradient(to right, #8bb7e0 , #95cfe4 );
 }
 .b-share{
-  background-image: linear-gradient(to bottom, #ff9e37e9 , #ff7b00e9 );
+  background-image: linear-gradient(to right, #ff7c40f1 , #f86926f0 );
+  /* background-image: linear-gradient(to bottom, #ff9e37e9 , #ff7b00e9 ); */
+
 }
 .b-publish{
-  background-image: linear-gradient(to bottom, #3bd1ffe7 , #00d0ffe7 );
+  background-image: linear-gradient(to bottom, #3bd1ffea , #00d0ffe8 );
 }
 .b-post2{
   background-image: linear-gradient(to right, #9670376d, #6853258c);
@@ -1433,6 +1440,9 @@ mw-200{
 }
 .box6{
  	box-shadow: 0px 0px 5px 1px #e9e9e9;
+}
+.box7{
+  box-shadow: 0px 0px 3px 1px #f4f4f44d;
 }
 .z0{
   z-index: 0;
@@ -2354,16 +2364,24 @@ button::after {
   background-color: rgb(194, 100, 0)
 }
 .userBack{
+  position: fixed;
   background-image: linear-gradient(to right, #79c9ff6c 0%, #44a4fd6c 100%);
-  width: 140vw;
-  border-bottom-left-radius: 40vw;
-  border-bottom-right-radius: 40vw;
-  left: -20vw;
+  width: 100vw;
+  left: 0;
   top:0;
-  height: 400rpx;
+  height: 100vw;
+
 }
 
+.userBack1{
+  position: fixed;
+  background-image: linear-gradient(to top, #ffffff , #ffffff00);
+  width: 100vw;
+  left: 0;
+  top:0;
+  height: 100vw;
 
+}
 
 
 

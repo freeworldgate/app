@@ -1,16 +1,15 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
 <view class="css b-white"  style="min-height:100vh" >
 
-    <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});">
-        
-    </view>
+    <!-- <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view> -->
 
 
     <view style="height:{{top}}px"></view>
     <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-            <view class="{{pks.length === 0? 'fs-30 fw-400':'fs-30 fw-400 c-white'}}">热门主题</view>
+            <view class="fs-30 fw-400">热门主题</view>
+            <!-- <view class="{{pks.length === 0? 'fs-30 fw-400':'fs-30 fw-400 c-white'}}">热门主题</view> -->
         </view>
 
     
@@ -22,14 +21,14 @@
 
     
     <view wx:if="{{pks.length > 0}}" class="css z2" >
-            <view class="css ">
+            <view class="css">
             
 
                 <view class="css pr-3vw pl-3vw"  >
                                 <block wx:for="{{pks}}" wx:for-index="bindex1" wx:for-item="pk" >
                                 
                   
-                                    <view class="css">
+                                    <view class="css ">
                                             <view class="css br-20"  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;">
                                                 <view class="css br-20 b-pk-back pr-3vw pl-3vw" >
                                                             <view class="rbc ">
@@ -43,7 +42,7 @@
 
                                                                 <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
                                                                     <view class="rcc fs-25 fw-400 c-white">查看主题</view>
-                                                                    <image class="w-30 h-30" mode="aspectFit" src="/images/right4.png"></image>
+                                                                    <image class="w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
                                                                 </view>
                                                             </view>
 
@@ -83,7 +82,7 @@
                                                         
                                                 </view>
                                             </view>
-                                            <view class="h-5vw"></view>
+                                            <view class="h-3vw"></view>
                                     </view>
 
 
@@ -112,7 +111,8 @@
 
 
 </view>
-
+<view class="userBack z0" style="background-position: center;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view class="userBack1 z0" ></view>
 
 
 <!-- <view  hidden="{{pks.length === 0}}"  class="customHeader"></view> -->

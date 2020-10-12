@@ -44,6 +44,7 @@
     word-break:break-all;
 }
 .f1-5{
+
   padding: 20rpx;
   background-color: rgba(245, 221, 187, 0.171);
   /* background-color: rgba(218, 177, 119, 0.171); */

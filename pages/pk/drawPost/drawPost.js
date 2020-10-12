@@ -65,11 +65,20 @@ Page({
 
         that.setData({"post.pkTopic":imp.topic})
         that.setData({"tips":imp.tips})
-        that.drawWxCode();
-        that.drawUserImg();
-        that.drawImg();
+
+        if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
+            that.refresh(); 
+        }
+
+
+
+
+
     })
     httpClient.send(request.url.importPost, "GET", { pkId: pkId, postId:postId});
+    that.drawWxCode();
+    that.drawUserImg();
+    that.drawImg();
   },
 
   queryTips:function(){
@@ -92,9 +101,9 @@ Page({
           var size = imgW>imgH?imgH:imgW;
           var imgData = {x:x,y:y,size:size,url:res.path,lx:75,ly:130,lwidth:20,lheight:20};
           that.data.wxcode = imgData;
-          if(that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
+          if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
             that.refresh(); 
-          }
+        }
 
         }
     })
@@ -114,11 +123,9 @@ Page({
           var size = imgW>imgH?imgH:imgW;
           var imgData = {x:x,y:y,size:size,url:res.path,lx:81,ly:136,lwidth:8,lheight:8};
           that.data.userImg = imgData;
-          if(that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
-
+          if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
             that.refresh(); 
           }
-
         }
     })
 
@@ -182,7 +189,7 @@ Page({
     var temp = "";
     var row = [];
     context.setFontSize(4.3 * vwPx);
-    context.font = 'normal bold '+ 4.3 * vwPx +'px sans-serif';
+    // context.font = 'normal bold '+ 4.3 * vwPx +'px sans-serif';
     context.setFillStyle("#885d00")
     for (var a = 0; a < chr.length; a++) {
      if (context.measureText(temp).width < 60*vwPx) {
@@ -196,7 +203,7 @@ Page({
     
 
     context.fillText(temp, 2*vwPx, 136 * vwPx, 60*vwPx);
-    context.fillText(temp, 2*vwPx-0.3, 136 * vwPx-0.3, 60*vwPx);
+    context.fillText(temp, 2*vwPx-0.4, 136 * vwPx-0.4, 60*vwPx);
 
 
 
@@ -245,8 +252,7 @@ Page({
             var size = imgW>imgH?imgH:imgW;
             var imgData = {x:x,y:y,size:size,url:res.path,lx:drawData.x,ly:drawData.y,lwidth:drawData.width,lheight:drawData.height};
             that.data.imgs[index] = imgData;
-            if(that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
-
+            if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
               that.refresh(); 
             }
              
@@ -421,15 +427,27 @@ Page({
     var that = this;
     
     
-    ctx.save()
-    ctx.setFillStyle('white');//填充白色
-    ctx.fillRect(0,0,vwPx * 97,vwPx * 155);//画出矩形白色背景
-    ctx.restore()
+    // ctx.save()
+    // ctx.setFillStyle('white');//填充白色
+    // ctx.fillRect(0,0,vwPx * 97,vwPx * 155);//画出矩形白色背景
+    // ctx.restore()
+
+    that.roundRect(ctx,0,0,vwPx * 97,vwPx * 155,3*vwPx);
+
+
+
 
     for(var index=0;index<that.data.imgs.length;index++)
     {
       var imgData = that.data.imgs[index];
+      ctx.save(); // 先保存状态 已便于画完圆再用
+      // ctx.beginPath(); //开始绘制
+      //先画个圆
+      ctx.arc(imgData.x + imgData.size/2, imgData.y + imgData.size/2,imgData.size/2, 0, Math.PI * 2, false);
+      // ctx.clip();//画了圆 再剪切 原始画布中剪切任意形状和尺寸。一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内
       ctx.drawImage(imgData.url,imgData.x,imgData.y,imgData.size,imgData.size, (imgData.lx + 2)*vwPx, (imgData.ly+2)*vwPx,(imgData.lwidth)*vwPx , (imgData.lheight)*vwPx);
+      ctx.restore(); //恢复之前保存的绘图上下文 恢复之前保存的绘图上下午即状态 可以继续绘制
+      ctx.draw();
     }
     ctx.drawImage(that.data.wxcode.url,that.data.wxcode.x,that.data.wxcode.y,that.data.wxcode.size,that.data.wxcode.size, (that.data.wxcode.lx)*vwPx, (that.data.wxcode.ly)*vwPx,(that.data.wxcode.lwidth)*vwPx , (that.data.wxcode.lheight)*vwPx);
 
@@ -494,6 +512,52 @@ Page({
     wx.navigateBack({
       complete: (res) => {},
     })
-  }
+  },
+
+  roundRect:function(ctx, x, y, w, h, r) {
+    // 开始绘制
+    ctx.beginPath()
+    // 因为边缘描边存在锯齿，最好指定使用 transparent 填充
+    // 这里是使用 fill 还是 stroke都可以，二选一即可
+    ctx.setFillStyle('white')
+    // ctx.setStrokeStyle('transparent')
+    // 左上角
+    ctx.arc(x + r, y + r, r, Math.PI, Math.PI * 1.5)
+    
+    // border-top
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.lineTo(x + w, y + r)
+    // 右上角
+    ctx.arc(x + w - r, y + r, r, Math.PI * 1.5, Math.PI * 2)
+    
+    // border-right
+    ctx.lineTo(x + w, y + h - r)
+    ctx.lineTo(x + w - r, y + h)
+    // 右下角
+    ctx.arc(x + w - r, y + h - r, r, 0, Math.PI * 0.5)
+    
+    // border-bottom
+    ctx.lineTo(x + r, y + h)
+    ctx.lineTo(x, y + h - r)
+    // 左下角
+    ctx.arc(x + r, y + h - r, r, Math.PI * 0.5, Math.PI)
+    
+    // border-left
+    ctx.lineTo(x, y + r)
+    ctx.lineTo(x + r, y)
+    
+    // 这里是使用 fill 还是 stroke都可以，二选一即可，但是需要与上面对应
+    ctx.fill()
+    ctx.stroke()
+    ctx.closePath()
+    // 剪切
+    // ctx.clip()
+   }
+
+
+
+
+
 
 })

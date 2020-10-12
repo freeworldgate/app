@@ -66,7 +66,20 @@ Page({
     var that = this;
     var user = wx.getStorageSync('user');
     if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("label");}
-    else{}
+    else
+    {
+      var update = wx.getStorageSync('update');
+      wx.removeStorageSync('update')
+      if(update)
+      {
+        that.init("");
+      }
+  
+    }
+
+
+
+
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -254,7 +267,7 @@ Page({
           var httpClient = template.createHttpClient(that);
           httpClient.setMode("label", true);
           httpClient.send(request.url.publishPk, "GET",{pkId:pkid});  
-
+          wx.setStorageSync('update', true);
 
     },function(){});
   })

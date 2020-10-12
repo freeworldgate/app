@@ -254,7 +254,7 @@
                           
                                     <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
                                     <view class="w-10"></view>
-                                    <view class="fs-28 fw-400">{{button.name}}</view>
+                                    <view class="fs-28 fw-400 c-4">{{button.name}}</view>
                            
                                 </view>
                                 <button wx:else open-type="{{button.type}}" class="{{button.style}}" bindtap="{{button.linkMethod}}">

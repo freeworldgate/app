@@ -52,21 +52,21 @@
 
                                         <view class="css pl-2-5vw pr-2-5vw pt-30 pb-30">
                                                 <view class="rbc">
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="0" data-post="{{userPost}}" src="{{userPost.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="1" data-post="{{userPost}}" src="{{userPost.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="2" data-post="{{userPost}}" src="{{userPost.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
                                                 </view>
                                                 <view style="height:1vw"></view>
                                                 <view class="rbc">
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="3" data-post="{{userPost}}" src="{{userPost.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="4" data-post="{{userPost}}" src="{{userPost.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="5" data-post="{{userPost}}" src="{{userPost.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
                                                 </view>
                                                 <view style="height:1vw"></view>
                                                 <view class="rbc">
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{userPost.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="6" data-post="{{userPost}}" src="{{userPost.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="7" data-post="{{userPost}}" src="{{userPost.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
+                                                    <image class="br-10" mode="aspectFill" bindtap="showImg" data-index="8" data-post="{{userPost}}" src="{{userPost.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
                                                 </view>
                                         </view>
                                         <view class="css pt-30 pb-30">
@@ -117,25 +117,25 @@
     <view class="rcc">
       
             <view class="rcc">
-                                <view wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId)}}" type="" bindtap="agree" class="rcc h-80 w-800 br-80 b-white">
+                                <view wx:if="{{(userPost.statu.key===3) && (user.userId === creator.userId)}}" type="" bindtap="agree" class="rcc h-80 w-300 br-80 b-white">
                                   
-                                    <image class="w-40 h-40" mode="aspectFit" src="/images/appro.png"></image>
-                                    <view class="w-10"></view>
-                                    <view class="fs-25 fw-400 c-3">{{t1}}</view>
+                                    <!-- <image class="w-40 h-40" mode="aspectFit" src="/images/appro.png"></image>
+                                    <view class="w-10"></view> -->
+                                    <view class="fs-25 fw-400 c-1">{{t1}}</view>
                                   
                                 </view>
-                                <view wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc h-80 w-800 br-80 b-white">
-                                  
+                                <view wx:elif="{{(userPost.statu.key===3) && (user.userId != creator.userId)}}" type="" class="rcc h-80 w-300 br-80 b-white">
+<!--                                   
                                     <image class="w-40 h-40" mode="aspectFit" src="/images/appro.png"></image>
-                                    <view class="w-10"></view>
+                                    <view class="w-10"></view> -->
                                     <view class="fs-25 fw-400 c-3">{{t2}}</view>
                              
                                 </view>
-                                <view wx:else type=""  class="rcc h-80 w-800 br-80 b-white">
+                                <view wx:else type=""  class="rcc h-80 w-300 br-80 b-white">
                                    
-                                    <image class="w-40 h-40" mode="aspectFit" src="/images/appro1.png"></image>
-                                    <view class="w-10"></view>
-                                    <view class="fs-25 fw-400 c-3-1">{{t1}}</view>
+                                    <!-- <image class="w-40 h-40" mode="aspectFit" src="/images/appro1.png"></image>
+                                    <view class="w-10"></view> -->
+                                    <view class="fs-25 fw-400 c-3">{{t1}}</view>
                                   
                                 </view>
 
