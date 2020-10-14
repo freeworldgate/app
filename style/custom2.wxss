@@ -19,6 +19,11 @@
 .ff-name{
   font-family: SimHei;
 }
+.ff-topic{
+ 
+ 
+  font-family: Bitstream Vera Serif Bold;
+}
 
 .italic{
   font-style: italic;
@@ -1042,7 +1047,7 @@ mw-200{
 } */
 .bar-approve-share{
   /* background-image: linear-gradient(to bottom, #f8f8f800,#f8f8f8e7 ); */
-  background-image: linear-gradient(to bottom, #f8f8f800,#68686870,#000000a4 );
+  background-image: linear-gradient(to bottom, #f8f8f800,#383838ab );
   /* background-image: linear-gradient(to bottom, #48484800,#292929a1 ); */
 }
 .pk-head{
@@ -1532,6 +1537,17 @@ mw-200{
   left: 0;
   top: 0;
 }
+.customBack1{
+  position: fixed;
+  background-image: linear-gradient(to top,#ffffff00, #e9dddd7a );
+  width: 100vw;
+  left: 0;
+  top:0;
+  height: 150vw;
+
+}
+
+
 .customHeader{
   position: fixed;
   height: 400rpx;

@@ -138,7 +138,7 @@
 
 
 </view>
-<view class="userBack z0" style="background-position: center;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
 <view class="userBack1 z0" ></view>
 <!-- <view class="rcs customBar z7" style="top:{{top}}px">
 

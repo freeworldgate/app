@@ -432,7 +432,7 @@ Page({
     // ctx.setFillStyle('white');//填充白色
     // ctx.fillRect(0,0,vwPx * 97,vwPx * 155);//画出矩形白色背景
     // ctx.restore()
-
+    that.setData({statu:1})
     that.roundRect(ctx,0,0,vwPx * 98,vwPx * 159,2*vwPx);
 
 
@@ -467,7 +467,7 @@ Page({
     that.drawTopic();
     that.drawPkTopic();
     if(that.data.png){
-      ctx.drawImage(that.data.png.url,0,0,that.data.png.imgW,that.data.png.imgH, 2*vwPx, 2*vwPx,93*vwPx ,124*vwPx);
+      ctx.drawImage(that.data.png.url,0,0,that.data.png.imgW,that.data.png.imgH, 2*vwPx, 2*vwPx,94*vwPx ,125.5*vwPx);
     }
     
 
@@ -478,7 +478,7 @@ Page({
 
 
 
-    that.setData({statu:1})
+   
 
 
 

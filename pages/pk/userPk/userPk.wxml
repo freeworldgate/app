@@ -161,7 +161,7 @@
     </view>
 
 </view>
-<view class="userBack z0" style="background-position: center;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
 <view class="userBack1 z0" ></view>
 <!-- 
 
@@ -451,7 +451,7 @@
                         <view class="rcs">
                           <view class="fs-25 fw-400">内容</view>
                         </view>
-                        <view class="fs-25 fw-400">最多120字</view>
+                        <view class="fs-25 fw-400">最多100字</view>
                 </view>
 
                 <view class="h-20"></view>
@@ -460,7 +460,7 @@
                     <view class="h-30"></view>
                     <view class="css " >
 
-                            <textarea adjustPosition="true" bindinput="_editPkDialog_input_watchword" class="fs-35 fw-400 b-48 "  style="height:20vw;width:76vw;text-align: center;" cursorSpacing="50" fixed="true" maxlength="120" placeholder="内容" value="{{editPkDialog.watchWord}}"></textarea>
+                            <textarea adjustPosition="true" bindinput="_editPkDialog_input_watchword" class="fs-35 fw-400 b-48 "  style="height:20vw;width:76vw;text-align: center;" cursorSpacing="50" fixed="true" maxlength="100" placeholder="内容" value="{{editPkDialog.watchWord}}"></textarea>
 
                     </view>
                     <view class="h-30"></view>
@@ -515,7 +515,7 @@
                         <view class="rcs">
                           <view class="fs-25 fw-400">内容</view>
                         </view>
-                        <view class="fs-25 fw-400">最多120字</view>
+                        <view class="fs-25 fw-400">最多100字</view>
                 </view>
 
                 <view class="h-20"></view>
@@ -524,7 +524,7 @@
                     <view class="h-30"></view>
                     <view class="css " >
 
-                            <textarea adjustPosition="true" bindinput="_updatePkDialog_input_watchword" class="fs-35 fw-400 b-48 "  style="height:20vw;width:76vw;text-align: center;" cursorSpacing="50" fixed="true" maxlength="120" placeholder="内容" value="{{updatePkDialog.watchWord}}"></textarea>
+                            <textarea adjustPosition="true" bindinput="_updatePkDialog_input_watchword" class="fs-35 fw-400 b-48 "  style="height:20vw;width:76vw;text-align: center;" cursorSpacing="50" fixed="true" maxlength="100" placeholder="内容" value="{{updatePkDialog.watchWord}}"></textarea>
 
                     </view>
                     <view class="h-30"></view>
