@@ -100,8 +100,8 @@
                         <view class="cbs"  style="flex:1">
                             
                             <view class="rcs">
-                                <!-- <image class="rcc w-30 h-30  pb-30 pt-10" mode="aspectFit" src="/images/cpost.png"></image>
-                                <view class="w-10"></view> -->
+                                <image class="rcc w-30 h-30  pb-30 pt-10" mode="aspectFit" src="/images/cpost.png"></image>
+                                <view class="w-10"></view>
                                 <view class="fs-30 fw-400 c-3 pb-30 pt-10">首页图册</view>
                                 <view class="w-60"></view>
                                 <view class="rcc" bindtap="importPost" data-pkid="{{cpost.pkId}}" data-postid="{{cpost.postId}}" data-style="{{cpost.style}}" data-post="{{cpost}}">
@@ -1141,7 +1141,7 @@
     </view>
 
     <view class="coverAll " hidden="{{payDialog.visible!=true}}"  bindtap="payDialog_cancel"></view>
-    <view class="css dialogTip " hidden="{{payDialog.visible!=true}}">
+    <view class="css paymentTip " hidden="{{payDialog.visible!=true}}">
         <view class="css b-white br-20 pl-30 pr-30"  >
             <view class="h-50"></view>
             <view class="rbc" bindtap="payDialog_single">

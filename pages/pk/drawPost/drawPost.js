@@ -65,10 +65,11 @@ Page({
 
         that.setData({"post.pkTopic":imp.topic})
         that.setData({"tips":imp.tips})
+        console.log("请求返回:",imp.topic,imp.tips);
+        if(that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
+          that.refresh(); 
+      }
 
-        if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
-            that.refresh(); 
-        }
 
 
 
@@ -101,6 +102,7 @@ Page({
           var size = imgW>imgH?imgH:imgW;
           var imgData = {x:x,y:y,size:size,url:res.path,lx:75,ly:130,lwidth:20,lheight:20};
           that.data.wxcode = imgData;
+          console.log("ErCode:",res.path);
           if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
             that.refresh(); 
         }
@@ -123,6 +125,7 @@ Page({
           var size = imgW>imgH?imgH:imgW;
           var imgData = {x:x,y:y,size:size,url:res.path,lx:81,ly:136,lwidth:8,lheight:8};
           that.data.userImg = imgData;
+          console.log("userImg:",res.path);
           if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
             that.refresh(); 
           }
@@ -252,6 +255,7 @@ Page({
             var size = imgW>imgH?imgH:imgW;
             var imgData = {x:x,y:y,size:size,url:res.path,lx:drawData.x,ly:drawData.y,lwidth:drawData.width,lheight:drawData.height};
             that.data.imgs[index] = imgData;
+            console.log("Imgs:",index,res.path);
             if(that.data.tips&&that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
               that.refresh(); 
             }

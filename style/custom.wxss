@@ -528,6 +528,20 @@
     /* padding-right: 70rx;
     padding-left: 70rpx; */
 }
+.paymentTip{
+    width: 80vw;
+
+    /* height: 30%; */
+    position: fixed;
+    z-index: 31;
+    top: 30%; 
+    /* top:0px; */
+    left: 10%;
+
+
+    /* padding-right: 70rx;
+    padding-left: 70rpx; */
+}
 .dialog{
     width: 80%;
     /* height: 30%; */
