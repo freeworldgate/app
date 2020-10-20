@@ -413,21 +413,21 @@
                     <view class="rcc" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
                         
                         <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
-                        <view class="w-40"></view>
+                        <view class="w-50"></view>
                     </view>
-                    <view class="w-30"></view>
-                    <view class="rcc"  bindtap="editText" >
-                      
-                        <image class="rcc w-40 h-40   pb-10" mode="aspectFit" src="/images/write3.png"></image>
-                        <view class="w-40"></view>
-                    </view>
-                    <view class="w-30"></view>
-                    <view class="rcc" bindtap="freshPost" >
                     
+                    <view class="rcc"  bindtap="editText" >
+                        <view class="w-50"></view>
+                        <image class="rcc w-40 h-40   pb-10" mode="aspectFit" src="/images/write3.png"></image>
+                        <view class="w-50"></view>
+                    </view>
+                    
+                    <view class="rcc" bindtap="freshPost" >
+                        <view class="w-50"></view>
                         <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/fresh.png"></image>
-                        <view class="w-40"></view>
+                        <view class="w-50"></view>
                     </view> 
-                    <view class="w-30"></view>
+                    <!-- <view class="w-30"></view> -->
                     <!-- <view class="rcc" >
                         <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/heart2.png"></image>
                         <view class="w-10"></view>

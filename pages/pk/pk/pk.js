@@ -13,12 +13,13 @@ var template = require('./../../../template/template.js')
 
 
 
-
-
-
-
-
-
+const width = wx.getSystemInfoSync().windowWidth;
+const vwPx = width/100;
+const r_width = 2*vwPx;
+const l_width = 2*vwPx;
+const img_width = 10*vwPx;
+const small_size = (100*vwPx - r_width - l_width*2 - img_width - 1*vwPx)/3;
+const large_size = small_size * 2 + 0.5 *vwPx
 
 
 Page({
@@ -32,6 +33,14 @@ Page({
     pkId:"PK01",
     isApprove:true,
     factualInfos:[],
+    vwPx:vwPx,
+    r_width:r_width,
+    l_width:l_width,
+    img_width:img_width,
+    small_size:small_size,
+    large_size:large_size
+
+
 
   },
 

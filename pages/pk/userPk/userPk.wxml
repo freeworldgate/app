@@ -10,7 +10,7 @@
     <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-             <view class="fs-30 fw-400">我的主题</view>
+            <view class="{{imgBack?'fs-30 fw-400 c-white':'fs-30 fw-400 c-4'}} ">我的主题</view>
         </view>
 
     
@@ -82,7 +82,7 @@
                 <block wx:for="{{pks}}" wx:for-index="bindex" wx:for-item="pk" >
 
                       <view class="css">
-                            <view class="css br-20 box7"  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;">
+                            <view class="css br-20 "  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;">
                                 <view class="css br-20  b-pk-back pr-3vw pl-3vw" >
                                             <view class="rbc ">
                                                 <view class="rcc">
@@ -104,9 +104,9 @@
                                             </view>
 
                                             <view class="css pl-8vw pr-8vw pt-20 pb-50 " data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk" >
-                                                    <view class="css"><view class="rus line-2-center fs-35 fw-700 c-white"   >{{pk.topic}}</view></view>
+                                                    <view class="css"><view class="rus line-2-center fs-35 fw-700 c-white f-shadow"   >{{pk.topic}}</view></view>
                                                     <view class="h-50"></view>
-                                                    <view class="css"><view class="rus line-3-center fs-28 fw-400 c-white">{{pk.watchWord}}</view></view>
+                                                    <view class="css"><view class="rus line-3-center fs-28 fw-400 c-white f-shadow2">{{pk.watchWord}}</view></view>
                                             </view>
 
 
@@ -161,8 +161,8 @@
     </view>
 
 </view>
-<view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
-<view class="userBack1 z0" ></view>
+<view  hidden="{{!user}}" class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view  hidden="{{!user}}" class="userBack1 z0" ></view>
 <!-- 
 
 <view class="rcs customBar1 z7" style="top:{{top}}px">
