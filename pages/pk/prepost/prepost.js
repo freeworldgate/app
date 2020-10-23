@@ -235,7 +235,7 @@ Page({
                 pkId: that.data.pkId,
                 postId: that.data.postId,
                 imgUrl: urls[0],
-                index:index
+                imgId: that.data.post.postImages[index].imageId
               }
             );
   

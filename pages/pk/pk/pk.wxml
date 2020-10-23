@@ -4,29 +4,31 @@
         <image class="z2" style="height:100vw;width:100vw" mode="aspectFill" src="{{pk.backUrl}}"></image>
     </view>
     <view class="css absolute b-pk z4" style="height:100vw;width:100vw"></view>
- -->
+    -->
 
 
     <view class="cbs z4" > 
-        <view class="css">
-            <view class="" style="height:{{top+32}}px"></view>
+        <!-- <view class="css absolute z2">
+            <view style="height:80vw;width:100vw; background-position: top;background-image: url({{topImg}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
+        </view> -->
 
-        
+        <view class="css">
+            <view class="" style="height:40vw"></view>
         </view>
 
-        <view class="csc " >
+        <view class="csc z4" >
             
            
             <view class="css pl-2vw pr-2vw">
                 <!-- <view class="css br-20 box7 op-1" style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;"> -->
                 <view class="css" >    
                     <view class="css pl-8vw pr-8vw" >
-                        <view class="h-50"></view>
+                        <!-- <view class="h-50"></view> -->
                         <!-- <view class="rcc"  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="rus line-2-center fs-40 fw-700 c-word-6 f-shadow1">{{pk.topic}}</view></view> -->
-                        <view class="rcc"  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="rus line-2-center fs-35 fw-700 c-white f-shadow">{{pk.topic}}</view></view>
+                        <view class="rcc"  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="{{imgBack?'rus line-2-center fs-38 fw-700 c-white f-shadow':'rus line-2-center fs-38 fw-700 c-word-6 f-shadow3'}}">{{pk.topic}}</view></view>
                         <view class="h-30"></view>
                         <!-- <view class="rcc "  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="rus line-3-center fs-30 fw-400 c-word-6 ">{{pk.watchWord}}</view></view>  -->
-                        <view class="rcc "  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="rus line-3-center fs-30 fw-400 c-white f-shadow2 ">{{pk.watchWord}}</view></view> 
+                        <view class="rcc "  bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}"> <view class="{{imgBack?'rus line-3-center fs-33 fw-400 c-white f-shadow2':'rus line-3-center fs-33 fw-400 c-word-6 f-shadow3'}} ">{{pk.watchWord}}</view></view> 
                         <view class="h-50"></view>
 
                     </view>
@@ -101,8 +103,13 @@
             <view class="h-20"></view>
         </view>  
     </view>
-    <view class="css pl-3vw pr-3vw">
-        <view class="h-30 t-line2 z2"></view>
+
+
+
+
+    <!-- //分割标题 -->
+    <view hidden="{{!cpost}}" class="css z2">
+        <view style="height:20vw;width:100vw; background-position: center;background-image: url({{creatorImg}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
     </view>
     
 
@@ -130,7 +137,9 @@
                                     </view>     
                         
                                 </view>
-                                <view class="rcc fs-25 fw-300 c-3">{{cpost.time}}</view>
+                                <view class="rcc b-48 box9" style="height:45rpx;width:80rpx;border-radius: 10rpx;" >
+                                    <view class="rcc fs-20 fw-400 c-4">顶置</view>
+                                </view>  
                             </view>
 
 
@@ -460,7 +469,9 @@
         
     </view>
 
-
+    <view hidden="{{!posts || posts.length<2}}" class="css z2">
+        <view style="height:20vw;width:100vw; background-position: center;background-image: url({{otherImg}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
+    </view>
 
     <view class="css z2" >
         <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
@@ -765,7 +776,7 @@
             </view>
         </view>
         <view class="css h-300">
-            <view hidden="{{!nomore}}" class="rcc h-100 fs-30 fw-400 c-white">没有更多...</view>
+            <view hidden="{{!nomore}}" class="rcc h-100 fs-30 fw-400 c-3">没有更多...</view>
         </view>
     </view> 
 
@@ -781,9 +792,9 @@
 
 <view class="userFeet1 z0" style="background-position: bottom;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%;"></view>
 <view class="userFeet z0" ></view>
-<!-- <view class="css userBack3 z1"  style="height:80vw;width:100vw">
-    <image style="height:80vw;width:100vw" mode="aspectFill" src="{{pk.backUrl}}"></image>
-</view> -->
+<view class="css userBack3 z5"  style="pointer-events: none;height:80vw;width:100vw;background-position: top;background-image: url({{topImg}});background-repeat: no-repeat;background-size: 100% auto;" >
+    <!-- <image style="height:80vw;width:100vw" mode="aspectFill" src="{{topImg}}"></image> -->
+</view>
 <!-- <view class="userBack2 z1" style="height:80vw;width:100vw" ></view> -->
 
 <view class="rcs customBar z100" style="top:{{top}}px;">

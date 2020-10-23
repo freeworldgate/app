@@ -4,15 +4,15 @@
     <!-- <view hidden="{{pks.length === 0}}" class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view> -->
 
 
-    <view style="height:{{top}}px"></view>
-    <view class="rcs pr-3vw pl-3vw" style="height:32px">
+    <view style="height:{{top +32}}px"></view>
+    <!-- <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-            <view class="fs-30 fw-400 c-white">邀请</view>
+            <view class="{{imgBack?'fs-30 fw-400 c-white':'fs-30 fw-400 '}}">邀请</view>
         </view>
 
     
-    </view>
+    </view> -->
 
     <view class="h-50"></view>
 
@@ -34,7 +34,7 @@
                                                                 <view class="rcc" bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}">
                                                                     <image class="w-60 h-60 br-60" mode="aspectFill" src="{{pk.user.imgUrl}}" ></image>
                                                                     <view class="w-10"></view>
-                                                                    <view class="rus fs-25 fw-700 max-w-150 line-1-start c-white f-shadow" >{{pk.user.userName}}</view>
+                                                                    <view class="rus fs-25 fw-400 max-w-150 line-1-start c-white f-shadow" >{{pk.user.userName}}</view>
                                                                 </view>
 
 
@@ -138,8 +138,20 @@
 
 
 </view>
-<view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
-<view class="userBack1 z0" ></view>
+<view class="css customBar b-white z2">
+  <view class="rcs " style="height:{{top}}px"></view>
+  <view class="rcs" style="height:32px">
+
+      <view class="rcc h-32px ">
+          <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
+          <view class="fs-30 fw-400">邀请</view>
+      </view>
+
+  </view>
+
+</view>
+<!-- <view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view class="userBack1 z0" ></view> -->
 <!-- <view class="rcs customBar z7" style="top:{{top}}px">
 
     <view class="rcc h-32px ">

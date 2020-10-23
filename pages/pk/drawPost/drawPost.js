@@ -27,7 +27,8 @@ Page({
    */
   data: {
     statu:0,
-    imgs:[]
+    imgs:[],
+    imgBack:""
   },
 
   /**
@@ -45,7 +46,7 @@ Page({
 
     var post = wx.getStorageSync('importPost');
     that.setData({
-      imgBack:options.imgBack,
+        imgBack:options.imgBack,
         pkId:options.pkId,
         postId:options.postId,
         style:parseInt(options.style),
@@ -62,9 +63,13 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tag, false);
     httpClient.addHandler("success", function (imp) {
-
+        if(!that.data.imgBack){
+          that.setData({
+            imgBack:imp.imgBack
+          });
+        }
         that.setData({"post.pkTopic":imp.topic})
-        that.setData({"tips":imp.tips})
+        that.setData({tips:imp.tips})
         console.log("请求返回:",imp.topic,imp.tips);
         if(that.data.imgs[0]&&that.data.imgs[1]&&that.data.imgs[2]&&that.data.imgs[3]&&that.data.imgs[4]&&that.data.imgs[5]&&that.data.imgs[6]&&that.data.imgs[7]&&that.data.imgs[8]&& that.data.wxcode && that.data.userImg){
           that.refresh(); 

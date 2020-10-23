@@ -1,20 +1,20 @@
 <!--pages/pk/userPk/userPk.wxml-->
 
-<view class="css b-white" style="min-height:100vh">
+<view class="css b-48" style="min-height:100vh">
 
 
     <!-- <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view> -->
     <!-- 头部 -->
 
-    <view style="height:{{top}}px"></view>
-    <view class="rcs pr-3vw pl-3vw" style="height:32px">
+    <view style="height:{{top+32}}px"></view>
+    <!-- <view class="rcs pr-3vw pl-3vw" style="height:32px">
         <view class="rcc h-32px z7">
             <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
             <view class="{{imgBack?'fs-30 fw-400 c-white':'fs-30 fw-400 c-4'}} ">我的主题</view>
         </view>
 
     
-    </view>
+    </view> -->
 
 
     <view class="css pr-3vw pl-3vw z2 " >
@@ -93,6 +93,8 @@
                                                         <view hidden="{{pk.pkStatu.key != 0}}" class="w-50"></view>
                                                         <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 c-white " bindtap="updatePk" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}">修改主题</view>
                                                         <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-white " bindtap="updatePkPage" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >更新封面</view>
+                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="w-50"></view>
+                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-white " bindtap="pushHot" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >推上热门</view>
                                                 </view>
 
 
@@ -161,8 +163,20 @@
     </view>
 
 </view>
-<view  hidden="{{!user}}" class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
-<view  hidden="{{!user}}" class="userBack1 z0" ></view>
+<view class="css customBar b-48 z7">
+  <view class="rcs " style="height:{{top}}px"></view>
+  <view class="rcs " style="height:32px">
+
+      <view class="rcc h-32px ">
+          <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
+          <view class="fs-30 fw-400">我的主题</view>
+      </view>
+
+  </view>
+
+</view>
+<!-- <view  hidden="{{!user}}" class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view>
+<view  hidden="{{!user}}" class="userBack1 z0" ></view> -->
 <!-- 
 
 <view class="rcs customBar1 z7" style="top:{{top}}px">

@@ -169,6 +169,34 @@ Page({
 
 
 
-  }
-  
+  },
+  freshPost:function(res){
+    var that = this;
+
+
+    that.data.post.postImages.sort(function(){
+                   return Math.random()-0.5;
+            });
+
+    that.data.post.style = Math.floor(Math.random() * (6) + 1);
+
+    that.setData({
+      post: that.data.post
+    })
+
+  },
+  importPost:function(res){
+    var that = this;
+    var postId =  res.currentTarget.dataset.postid;
+    var pkId =  res.currentTarget.dataset.pkid;
+    var style =  res.currentTarget.dataset.style;
+    var post =  res.currentTarget.dataset.post;
+    wx.setStorageSync('importPost', post);
+    
+    
+    wx.navigateTo({
+      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style,
+    })
+
+  },
 })
