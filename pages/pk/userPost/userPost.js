@@ -67,7 +67,66 @@ Page({
     
   },
 
+  openText:function(res)
+  {
+    var that = this;
+    var index = res.currentTarget.dataset.index;
+    var tag = 'posts['+index+'].tag';
+    var ctag = that.data.posts[index].tag;
+    that.setData({
+      [tag]:!ctag
+    })
+  },
 
+
+
+  editText:function (res) {
+    var that = this;
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+    template.createEditTextDialog(that).show("编辑","编辑内容",post.topic, 120, function (text) {
+      
+              // , urls
+              var httpClient = template.createHttpClient(that);
+              httpClient.setMode("label", true);
+              httpClient.addHandler("success", function (cpost) {
+      
+    
+                var key = "posts[" + index + "].topic"
+                that.setData({
+                  [key]:text
+                })
+    
+              })
+              httpClient.send(request.url.replaceText, "GET",
+                {
+                  pkId: post.pkId,
+                  postId: post.postId,
+                  text:text
+                }
+              );    
+
+
+
+    });
+
+
+
+
+
+
+  },
+  showImg:function(res){
+    var post = res.currentTarget.dataset.post;
+    var index = res.currentTarget.dataset.index;
+
+    wx.previewImage({
+      current:post.postImages[index].imgUrl,
+      urls: [post.postImages[0].imgUrl,post.postImages[1].imgUrl,post.postImages[2].imgUrl,post.postImages[3].imgUrl,post.postImages[4].imgUrl,post.postImages[5].imgUrl,post.postImages[6].imgUrl,post.postImages[7].imgUrl,post.postImages[8].imgUrl],
+    })
+
+
+  },
 
 
   onShow:function () {

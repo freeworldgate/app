@@ -83,50 +83,50 @@
 
                       <view class="css">
                             <view class="css br-20 "  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;">
-                                <view class="css br-20  b-pk-back pr-3vw pl-3vw" >
+                                <view class="css br-20   b-pk-back-hot pr-3vw pl-3vw" >
                                             <view class="rbc ">
                                                 <view class="rcc">
                                                         <view wx:if="{{pk.pkStatu.key === 0}}" class="rcc fs-20 fw-400 pl-15 pr-15 h-45 br-10  b-statu2 c-word-8">{{pk.pkStatu.name}}</view>
                                                         <view wx:else class="rcc fs-20 fw-400 pl-15 pr-15 h-45 br-10  b-statu1 c-word-8">{{pk.pkStatu.name}}</view>
                                                         <view class="w-50"></view>
-                                                        <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 c-white " bindtap="deletePk" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除主题</view>
+                                                        <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 c-4 " bindtap="deletePk" data-pkid="{{pk.pkId}}" data-index="{{bindex}}">删除主题</view>
                                                         <view hidden="{{pk.pkStatu.key != 0}}" class="w-50"></view>
-                                                        <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 c-white " bindtap="updatePk" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}">修改主题</view>
-                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-white " bindtap="updatePkPage" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >更新封面</view>
+                                                        <view hidden="{{pk.pkStatu.key != 0}}" class="rus fs-25 fw-400 c-4 " bindtap="updatePk" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}">修改主题</view>
+                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-4 " bindtap="updatePkPage" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >更新封面</view>
                                                         <view hidden="{{pk.pkStatu.key === 0}}" class="w-50"></view>
-                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-white " bindtap="pushHot" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >推上热门</view>
+                                                        <view hidden="{{pk.pkStatu.key === 0}}" class="rus fs-25 fw-400 c-4 " bindtap="pushHot" data-index="{{bindex}}" data-pkid="{{pk.pkId}}" >推上热门</view>
                                                 </view>
 
 
 
                                                 <view class="rcc pt-40 pb-40"  data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
-                                                    <view class="rcc fs-25 fw-400 c-white">查看主题</view>
-                                                    <image class="w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
+                                                    <view class="rcc fs-25 fw-400 c-4">查看主题</view>
+                                                    <image class="w-20 h-20" mode="aspectFit" src="/images/more.png"></image>
                                                 </view>
                                             </view>
 
                                             <view class="css pl-8vw pr-8vw pt-20 pb-50 " data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk" >
-                                                    <view class="css"><view class="rus line-2-center fs-35 fw-700 c-white f-shadow"   >{{pk.topic}}</view></view>
+                                                    <view class="css"><view class="rus line-1-center fs-35 fw-700 c-word-6 f-shadow3"   >{{pk.topic}}</view></view>
                                                     <view class="h-50"></view>
-                                                    <view class="css"><view class="rus line-3-center fs-28 fw-400 c-white f-shadow2">{{pk.watchWord}}</view></view>
+                                                    <view class="css h-90"><view class="rus line-2-center fs-28 fw-400 c-word-6 f-shadow3">{{pk.watchWord}}</view></view>
                                             </view>
 
 
-                                            <view class="rbc c-word-7 ">
+                                            <view class="rbc c-word-7 t-line">
 
                                                     <view class="rcc">
                                                     <view class="rcc w-30 h-30"><view class="rcc "><image class="w-30 h-30" mode="aspectFit" src="/images/appro.png"></image></view></view>
-                                                    <view class="rcc fs-23 fw-400 c-white">{{pk.approved}}</view>
+                                                    <view class="rcc fs-23 fw-400 c-4">{{pk.approved}}</view>
                                                     </view>
                                                     <view class="rcc">
                                                     <view class="rcc w-30 h-30"><view class="rcc "><image class="w-30 h-30" mode="aspectFit" src="/images/waiting2.png"></image></view></view>
-                                                    <view class="rcc fs-23 fw-400 c-white">{{pk.approving}}</view>
+                                                    <view class="rcc fs-23 fw-400 c-4">{{pk.approving}}</view>
                                                     </view>
 
 
                                                     <view class="rcc"></view>
                                                     <view class="rcc"></view>
-                                                    <view class="rcc pt-40 pb-40">
+                                                    <view class="rcc pt-30 pb-30">
                                                         <view  class="rcc " bindtap="{{pk.groupInfo.linkMethod}}" data-pkid="{{pk.pkId}}">
                                                             <image class="w-30 h-30" mode="aspectFit" src="{{pk.groupInfo.icon}}"></image>
                                                             <view  class="w-10"></view>
@@ -204,10 +204,10 @@
 
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
+                     <image class="w-300 h-300" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
                 
                 <view class="css">
@@ -242,7 +242,7 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <!-- <view class="rcc">
                 <view class="rcc absolute ">
                     <image class="w-600 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
@@ -250,12 +250,13 @@
             </view> -->
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-300 h-300" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
                     <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="h-40"></view>
                 </view>
 
                 <view></view>

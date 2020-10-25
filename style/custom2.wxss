@@ -578,6 +578,7 @@
 .w-40{width: 40rpx;}
 .w-45{width: 45rpx;}
 .w-50{width: 50rpx;}
+.w-55{width: 55rpx;}
 .w-60{width: 60rpx;}
 .w-70{width: 70rpx;}
 .w-80{width: 80rpx;}
@@ -936,7 +937,7 @@ mw-200{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
   /* background: radial-gradient(rgba(245, 236, 236, 0.262),rgba(41, 41, 41, 0.234)); */
   /* background-image: linear-gradient(to bottom, #00000036,#ffffff00,#ffffff00,#0000001a,#00000036); */
-  background-image: linear-gradient( to bottom,#ffffffaf,#ffffffc4,#ffffffdc,#ffffffe8);
+  background-image: linear-gradient( to bottom,#ffffffc4,#ffffffc4,#ffffffdc,#ffffffe8);
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
 .b-pk-back{
@@ -1060,6 +1061,9 @@ mw-200{
 .b-pk{
   /* background-image: linear-gradient(to right, #887845 100%, #829465 100%); */
   background-image: linear-gradient(to bottom, #00000044, #ffffff);
+}
+.b-edit{
+  background-color: rgba(212, 0, 255, 0.178);
 }
 .b-export{
   background-color: rgba(255, 102, 0, 0.178);
@@ -1472,6 +1476,9 @@ mw-200{
 }
 .l-line{
    border-left: 0.2px solid rgba(99, 99, 99, 0.432); 
+}
+.l-line1{
+  border-left: 0.4px solid rgba(99, 99, 99, 0.432); 
 }
 .r-line{
    border-right: 0.2px solid rgba(99, 99, 99, 0.432); 

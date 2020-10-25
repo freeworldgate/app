@@ -913,10 +913,10 @@
 
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
+                     <image class="w-300 h-300" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
                 
                 <view class="css">
@@ -951,7 +951,7 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <!-- <view class="rcc">
                 <view class="rcc absolute ">
                     <image class="w-600 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
@@ -959,7 +959,7 @@
             </view> -->
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-300 h-300" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>

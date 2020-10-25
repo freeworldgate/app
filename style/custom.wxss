@@ -520,9 +520,9 @@
     /* height: 30%; */
     position: fixed;
     z-index: 31;
-    top: 15%; 
+    top: 22vh; 
     /* top:0px; */
-    left: 10%;
+    left: 10vw;
 
 
     /* padding-right: 70rx;

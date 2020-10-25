@@ -137,11 +137,45 @@ Page({
   onReady: function () {
 
   },
-
+  onHide:function(){
+    // var that = this;
+    // clearInterval(that.data.clock);
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    // var that = this;
+    // var i = setInterval(function() {
+    //   for(var i=0;i<that.data.pks.length;i++)
+    //   {
+    //     that.data.pks[i].imgs.sort(function(){
+    //       return Math.random()-0.5;
+    //     });
+
+        
+    //     var imgs = "pks[" + i + "].imgs";
+    //     that.setData({
+    //       [imgs]:that.data.pks[i].imgs
+    //     })
+
+
+
+
+
+
+
+
+    //   }  
+      
+
+
+
+
+    // }, 1000)
+    // that.data.clock = i;
+
 
   },
 

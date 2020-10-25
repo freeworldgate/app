@@ -25,13 +25,38 @@
             
 
                 <view class="css pr-3vw pl-3vw"  >
-                                <block wx:for="{{pks}}" wx:for-index="bindex1" wx:for-item="pk" >
+                                <block wx:for="{{pks}}" wx:for-index="bindex1" wx:for-item="pk" wx:key="pkkey">
                                 
                   
                                     <view class="css ">
-                                            <view class="css br-20 "  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 105% auto;">
+                                            <view class="css br-20 "  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
                                                 <view class="css br-20 b-pk-back-hot pr-3vw pl-3vw box8" >
-                                                            <view class="rbc ">
+                                                            <view class="rss pt-10">
+                                                                        <view class="rss pt-20 " style="flex:1" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk">
+                                                                            <image class="rcc w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
+                                                                            <view class="w-10"></view>
+                                                                            <view class="css" style="flex:1">
+                                                                                <view class="rus line-1-start fs-33 fw-650 c-word-6 f-shadow3 "   >{{pk.topic}}</view>
+                                                                            </view>
+                                                                            
+                                                                        
+                                                                        </view>
+                                                                        <view class="w-20"></view>
+                                                                        <view class="rcc pt-20 "  data-pkid="{{pk.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
+
+                                                                                <view class="h-30 w-10 l-line1"></view>
+                                                                                <view class="w-20"></view>
+                                                                                <view class="rcc-nowrap fs-25 fw-300 c-4">进入主题</view>
+                                                                                <image class="rcc w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
+                                                                        </view>   
+                                                            </view>
+                                                            <view class="h-10"></view>
+                                                            <view class="rss" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk">
+                                                                <view class="w-50"></view>
+                                                                <view class="css h-100" style="flex:1"><view class="rus line-2-start fs-28 fw-400 c-word-6 f-shadow3">{{pk.watchWord}}</view></view>
+                                                                <!-- <view class="w-10"></view> -->
+                                                            </view>
+                                                            <!-- <view class="rbc ">
                                                                 <view class="rcc" bindtap="showPk" data-topic="{{pk.topic}}" data-watchWord="{{pk.watchWord}}">
                                                                     <image class="w-60 h-60 br-60" mode="aspectFill" src="{{pk.user.imgUrl}}" ></image>
                                                                     <view class="w-10"></view>
@@ -44,44 +69,32 @@
                                                                     <view class="rcc fs-25 fw-400 c-white f-shadow">查看主题</view>
                                                                     <image class="w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
                                                                 </view>
-                                                            </view>
-                                                            <view class="csc h-25vw">
-                                                            
+                                                            </view> -->
+                                                            <view class="cas h-35vw">
+                                                                <view></view>
                                                                 <scroll-view class="rss " scrollX="true" style="white-space:nowrap;width:88vw">
                                                                     <view class="css" style="display:inline-block" wx:for="{{pk.imgs}}" wx:for-index="bindex" wx:for-item="img" wx:key="postkey">
                                                                         <view class="rss">
                                                                             <view class="rcc" >
-                                                                                <image class="br-10" style="height:21vw;width:21vw; border-radius:10rpx" mode="aspectFill" src="{{img}}"></image>
+                                                                                <image class="br-10" style="height:21.5vw;width:21.5vw; border-radius:10rpx" mode="aspectFill" src="{{img}}"></image>
                                                                             </view>
-                                                                            <view  style="width:1vw"></view>
+                                                                            <view  style="width:0.5vw"></view>
                                                                     
                                                                         </view>
                                                                     </view>
                                                                 </scroll-view>
-                                                            </view>
-
-                                                            <!-- <view class="rbc h-25vw">
-                                                                <view  wx:for="{{pk.imgs}}" wx:for-index="bindex" wx:for-item="img" wx:key="imgKey">
                                                                 
-                                                                     <image class="w-21vw h-21vw br-20" mode="aspectFill" src="{{img}}"></image>
-                                                                </view>
-                                                                 
-                                                        
-                                                            
-                                                            
-                                                            </view> -->
-
-
+                                                            </view>
                                                             <view class="css">
                                                             
-                                                                <view class="css pt-10 pb-20 b-line" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk" >
+                                                                <!-- <view class="css pt-10 pb-20 b-line" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk" >
                                                                         <view class="css pr-8vw"><view class="rus line-1-start fs-35 fw-610 c-4-1 "   >{{pk.topic}}</view></view>
                                                                         <view class="h-10"></view>
                                                                         <view class="css"><view class="rus line-2-start fs-28 fw-350 c-4">{{pk.watchWord}}</view></view>
-                                                                </view>                                                            
+                                                                </view>                                                             -->
                                                             
-                                                                <view class="rbc c-word-7 ">
-
+                                                                <view class="rbc c-word-7 t-line">
+                                                                        <view class="rcc"><image class="w-60 h-60 br-60" mode="aspectFill" src="{{pk.user.imgUrl}}" ></image></view>
                                                                         <view class="rcc">
                                                                             <view class="rcc w-30 h-30"><view class="rcc "><image class="w-30 h-30" mode="aspectFit" src="/images/appro.png"></image></view></view>
                                                                             <view class="rcc fs-23 fw-400 c-4">{{pk.approved}}</view>
@@ -170,10 +183,10 @@
 
     <view class="coverAll" hidden="{{dialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{dialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{dialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{dialog.tipImg}}"></image>
+                     <image class="w-300 h-300" mode="aspectFit" src="{{dialog.tipImg}}"></image>
                 </view>
                 
                 <view class="css">
@@ -208,7 +221,7 @@
     </view>
     <view class="coverAll" hidden="{{operateDialog.visible!=true}}"  catchtouchmove="return"></view>
     <view class="css dialogTip" hidden="{{operateDialog.visible!=true}}">
-        <view class="css b-white br-20"  style="height:110vw;background-position: center;background-image: url({{operateDialog.tipBack}});background-repeat: no-repeat;background-size: 100% 100%; ">
+        <view class="css b-white br-20"   >
             <!-- <view class="rcc">
                 <view class="rcc absolute ">
                     <image class="w-600 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
@@ -216,7 +229,7 @@
             </view> -->
             <view class="cbs" style="flex:1">
                 <view class="rcc">
-                    <image class="w-400 h-400" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
+                    <image class="w-300 h-300" mode="aspectFit" src="{{operateDialog.tipImg}}"></image>
                 </view>
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
