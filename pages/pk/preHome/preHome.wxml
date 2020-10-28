@@ -161,7 +161,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -203,7 +203,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

@@ -5,6 +5,7 @@
     "pages/pk/preHome/preHome",
     "pages/pk/userPk/userPk",
     "pages/pk/userPost/userPost",
+    "pages/pk/userPublishPost/userPublishPost",
     "pages/pk/invite/invite",
     "pages/pk/prepost/prepost",
 
@@ -24,7 +25,7 @@
     "pages/pk/uploadImgs/uploadImgs",
  
     "pages/pk/message/message",
-    "pages/pk/commentInfo/commentInfo",
+
     "pages/pk/post/post",
     "pages/pk/selectPker/selectPker",
 

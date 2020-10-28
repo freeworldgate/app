@@ -33,13 +33,13 @@
                                 
                                 </view>
                                 <view class="w-30"></view>
-                                <navigator class="rcc pt-15 pb-25" url="/pages/pk/pk/pk?pkId={{post.pkId}}" hover-class="none">
+                                <view class="rcc pt-15 pb-25" data-pkid="{{post.pkId}}" data-index="{{bindex}}" bindtap="viewPk">
 
                                         <view class="h-30 w-10 l-line"></view>
                                         <view class="w-30"></view>
                                         <view class="rcc-nowrap fs-25 fw-300 c-4">进入主题</view>
                                         <image class="rcc w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
-                                </navigator>   
+                                </view>   
                     </view>
 
 
@@ -299,9 +299,12 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc b-edit box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
+                                    <!-- <view class="rcc b-edit box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
-                                    </view> 
+                                    </view>  -->
+                                    <view class="rcc">
+                                        <image  class="box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
+                                    </view>
                                     <view class="w-80"></view>
                                     <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
@@ -316,14 +319,8 @@
                         
                                 </view>
 
-                                <view wx:if="{{post.statu.key === 3}}" class="rcc">
-                                    <view class="rcc h-60 w-150 b-goappro br-20" bindtap="goApproving" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}">
-                                        <view class="rcc fs-23 fw-300 c-white">去审核</view>
-                                        <image class="rcc w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
-                                    </view>
-                                
-                                </view>
-                                <view wx:else class="rcc fs-25 fw-300 c-3">{{post.time}}</view>
+                             
+                                <view class="rcc fs-25 fw-300 c-3">{{post.time}}</view>
                             </view>
 
 
@@ -400,10 +397,15 @@
   <view class="rcs " style="height:{{top}}px"></view>
   <view class="rcs " style="height:32px">
 
-      <view class="rcc h-32px ">
-          <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-          <view class="fs-30 fw-400">我的图册</view>
-      </view>
+    <view class="rcc h-32px " bindtap="back">
+        <image class="w-30 h-30" mode="aspectFit" src="{{post?'/images/back1.png':'/images/back.png'}}"></image>
+        <view class="rcc fs-30 fw-400">用户记录</view>
+    </view>
+
+      <!-- <view class="rcc h-32px ">
+          <image class="h-32px w-32px" mode="aspectFit" src="/images/back.png"></image>
+          <view class="fs-30 fw-400">用户图册</view>
+      </view> -->
 
   </view>
 

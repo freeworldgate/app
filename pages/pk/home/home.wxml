@@ -1,5 +1,5 @@
 <!--pages/pk/singlePk/singlePk.wxml-->
-<view class="css b-48"  style="min-height:100vh" >
+<view class="css b-white"  style="min-height:100vh" >
 
     <!-- <view class="absolute userBack cardback8" style="background-image: url({{imgBack}});"></view> -->
 
@@ -70,15 +70,15 @@
                                                                     <image class="w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
                                                                 </view>
                                                             </view> -->
-                                                            <view class="cas h-35vw">
+                                                            <view class="cas">
                                                                 <view></view>
                                                                 <scroll-view class="rss " scrollX="true" style="white-space:nowrap;width:88vw">
                                                                     <view class="css" style="display:inline-block" wx:for="{{pk.imgs}}" wx:for-index="bindex" wx:for-item="img" wx:key="postkey">
                                                                         <view class="rss">
-                                                                            <view class="rcc" >
-                                                                                <image class="br-10" style="height:21.5vw;width:21.5vw; border-radius:10rpx" mode="aspectFill" src="{{img}}"></image>
+                                                                            <view class="rcc" bindtap="showImg" data-index="{{bindex}}" data-imgs="{{pk.imgs}}">
+                                                                                <image class="br-10" style="height:28.5vw;width:28.5vw; border-radius:20rpx" mode="aspectFill" src="{{img}}"></image>
                                                                             </view>
-                                                                            <view  style="width:0.5vw"></view>
+                                                                            <view  style="width:1vw"></view>
                                                                     
                                                                         </view>
                                                                     </view>
@@ -94,7 +94,9 @@
                                                                 </view>                                                             -->
                                                             
                                                                 <view class="rbc c-word-7 t-line">
-                                                                        <view class="rcc"><image class="w-60 h-60 br-60" mode="aspectFill" src="{{pk.user.imgUrl}}" ></image></view>
+                                                                        <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{pk.user.userId}}">
+                                                                            <image class="w-60 h-60 br-60" mode="aspectFill" src="{{pk.user.imgUrl}}" ></image>
+                                                                        </navigator>
                                                                         <view class="rcc">
                                                                             <view class="rcc w-30 h-30"><view class="rcc "><image class="w-30 h-30" mode="aspectFit" src="/images/appro.png"></image></view></view>
                                                                             <view class="rcc fs-23 fw-400 c-4">{{pk.approved}}</view>
@@ -149,7 +151,7 @@
 
 
 </view>
-<view class="css customBar b-48 z2">
+<view class="css customBar b-white z2">
   <view class="rcs " style="height:{{top}}px"></view>
   <view class="rcs " style="height:32px">
 
@@ -192,7 +194,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -234,7 +236,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

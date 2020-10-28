@@ -162,9 +162,9 @@
 
                                     <view class="rss pl-4vw pr-4vw pt-50 ">
                                         <view class="ccs">
-                                            <view class="rcc">                  
+                                            <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{userPost.creator.userId}}">              
                                                 <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{userPost.creator.imgUrl}}" ></image>                
-                                            </view>
+                                            </navigator>
                                         </view>
 
                                         <view class="w-4vw"></view>
@@ -507,7 +507,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -549,7 +549,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

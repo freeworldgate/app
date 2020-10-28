@@ -35,15 +35,15 @@ Page({
       that.setData({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
-  })
-    that.init("label");
-  },
-  queryInvites:function (tab) {
-    var that = this;
+    })
+    var targetId = options.userId;
+    that.setData({
+      targetId:targetId
+    })
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode(tab, true);
- 
-    httpClient.send(request.url.userPosts, "GET", {});
+    httpClient.setMode("page", true);
+    httpClient.send(request.url.userPublishPosts, "GET", {targetId:targetId});
+
   },
 
   /**
@@ -63,7 +63,7 @@ Page({
             posts:that.data.posts.concat(posts)
         })
       })
-      httpClient.send(request.url.nextUserPosts, "GET",{ userId:user.userId ,page:that.data.page});
+      httpClient.send(request.url.nextUserPublishPosts, "GET",{ targetId:that.data.targetId ,page:that.data.page});
     
   },
 
@@ -80,42 +80,6 @@ Page({
 
 
 
-  editText:function (res) {
-    var that = this;
-    var post = res.currentTarget.dataset.post;
-    var index = res.currentTarget.dataset.index;
-    template.createEditTextDialog(that).show("编辑","编辑内容",post.topic, 120, function (text) {
-      
-              // , urls
-              var httpClient = template.createHttpClient(that);
-              httpClient.setMode("label", true);
-              httpClient.addHandler("success", function (cpost) {
-      
-    
-                var key = "posts[" + index + "].topic"
-                that.setData({
-                  [key]:text
-                })
-    
-              })
-              httpClient.send(request.url.replaceText, "GET",
-                {
-                  pkId: post.pkId,
-                  postId: post.postId,
-                  text:text
-                }
-              );    
-
-
-
-    });
-
-
-
-
-
-
-  },
   showImg:function(res){
     var post = res.currentTarget.dataset.post;
     var index = res.currentTarget.dataset.index;
@@ -131,30 +95,26 @@ Page({
 
   onShow:function () {
 
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("label");}
-    else{}
+    // var that = this;
+    // var user = wx.getStorageSync('user');
+    // if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("label");}
+    // else{}
     
 
   },
 
-  init:function (tab) {
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user){
-      that.setData({user:user})
-    }
-    if(user && (that.data.posts.length === 0))
-    {
-      that.queryInvites(tab);
-    }
-  },
+
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryInvites("label");
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.userPublishPosts, "GET", {targetId:that.data.targetId});
   },
-
+  back:function(){
+    wx.navigateBack({
+      complete: (res) => {},
+    })
+  },
   /**
    * 用户点击右上角分享
    */
@@ -178,6 +138,7 @@ Page({
     })
   
   },
+
   viewPk:function(res)
   {
     var that = this;
@@ -187,14 +148,23 @@ Page({
 
     httpClient.addHandler("group", function (link) {
 
-        template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
-          wx.navigateTo({
-            url: link.castV1,
-          })
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
 
-      },function(){});
+    },function(){});
     })
+    
+    httpClient.addHandler("unlock", function (link) {
 
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
+
+    },function(){});
+    })
     httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },

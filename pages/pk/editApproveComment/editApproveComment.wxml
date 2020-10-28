@@ -28,13 +28,13 @@
                                     
                                     <view class="rss pt-30 ">
                             
-                                        <view class="rcc w-100 h-100 br-20 b-48">
+                                        <view class="rcc ">
                                             <image class="h-90 w-90 br-20" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>
                                         </view>
                                         <view class="w-20"></view>
                                         <view class="cas">
                                             <view class="rus  fs-30 fw-400 line-1-start c-12 w-250">{{post.creator.userName}}</view>
-                                            <!-- <view class="rus  fs-25 fw-400 c-3">{{post.time}}</view> -->
+                                            <view class="rus  fs-25 fw-400 c-3">{{post.time}}</view>
                                         </view>
                                         
                             
@@ -42,25 +42,53 @@
                                             
 
 
+                                    <view class="rcc">
+                                        <view class="h-60 w-30 l-line"></view>
+
+              
+
+
+                                        <view class="rcc">
+                                                            <view wx:if="{{button.button === 2}}" class="{{button.style}}" >
+                                                    
+                                                                <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-23 fw-300 c-4">{{button.name}}</view>
+                                                    
+                                                            </view>
+                                                            <button wx:else open-type="{{button.type}}" class="{{button.style}}" bindtap="{{button.linkMethod}}">
+                                                            
+                                                                <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
+                                                                <view class="w-10"></view>
+                                                                <view class="fs-23 fw-300">{{button.name}}</view>
+                                                            
+                                                            </button>
+                                            
 
 
 
-                                    <view class="css pt-30 pb-30">
+                                        </view>
+                                  
+                                    </view>
+
+
+                                    <!-- <view class="css pt-30 pb-30"> -->
                                         <!-- <view class="rcc " bindtap="approverComment"> -->
-                                        <view class="rcc " bindtap="">
+                                        <!-- <view class="rcc " bindtap=""> -->
+
                                             <!-- <image class="w-30 h-30" mode="aspectFit" src="/images/write.png"></image> -->
                                             <!-- <view  class="w-10"></view> -->
-                                            <view  class="rcc fs-25 fw-400 c-3">{{post.time}}</view>
-                                        </view>
+                                            <!-- <view  class="rcc fs-25 fw-400 c-3">{{post.time}}</view> -->
+                                        <!-- </view> -->
                                     
-                                    </view>
+                                    <!-- </view> -->
                                     
                         
 
                                 </view> 
 
                                 <view class="css pt-30 pb-30">
-                                    <view class="rcc-wrap  fs-30 fw-400 line-2-start c-4">{{post.topic}}</view>
+                                    <view class="rcc-wrap  fs-30 fw-400 line-3-start c-4">{{post.topic}}</view>
                                     <view class="h-30"></view>
                                     <view class="css ">
                                         <view wx:if="{{post.style===1||post.style===2}}" class="css">
@@ -343,7 +371,7 @@
                                     </view>            -->
                                 </view>
 
-                                <view class="css ">
+                                <!-- <view class="css ">
                                                                              
                                                                                 <view hidden="{{!pkComment}}" class="rbc pb-30 b-line ">
                                                                                         <view class="rcc">
@@ -383,7 +411,7 @@
                                                                                 </view>
                                                                        
                                                                                 <view class="h-30"></view>
-                                </view>
+                                </view> -->
 
                 </view>
         </view>
@@ -490,8 +518,7 @@
         </view>  -->
 
 
-        <view class="rcc pt-30 pb-30">
-            <!--  -->
+        <!-- <view class="rcc pt-30 pb-30">
             <view class="rcc">
                                 <view wx:if="{{button.button === 2}}" class="{{button.style}}" >
                           
@@ -512,8 +539,7 @@
 
 
             </view>
-
-        </view>
+        </view> -->
 
         <view class="rcc pb-20">
             <view class="rcc fs-25 fw-400 c-white">{{tip1}}</view>
@@ -549,7 +575,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -591,7 +617,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

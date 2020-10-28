@@ -121,8 +121,10 @@ Page({
     httpClient.send(request.url.isPostApproved, "GET", { pkId: that.data.pkId, postId: that.data.postId});
   },
 
-  goApproving:function () {
+  goApproving:function (res) {
     var that = this;
+    var pkId =  res.currentTarget.dataset.pkid;
+    var postId =  res.currentTarget.dataset.postid;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("label", true);
     httpClient.addHandler("noApprove", function (urlPath) {
@@ -132,7 +134,7 @@ Page({
           that.setData({verfiy:true})
 
     })
-    httpClient.send(request.url.goApproving, "GET", { pkId: that.data.pkId, postId: that.data.postId});
+    httpClient.send(request.url.goApproving, "GET", { pkId: pkId, postId: postId});
 
 
 

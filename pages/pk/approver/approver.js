@@ -87,17 +87,17 @@ Page({
     })
 
   },
-  addInvite:function(pkId){
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user && (!that.data.hasInivte) )
-    {
-      var httpClient = template.createHttpClient(that);
-      httpClient.setMode("", true);
-      httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId, userId: user.userId});
-    }
+//   addInvite:function(pkId){
+//     var that = this;
+//     var user = wx.getStorageSync('user');
+//     if(user && (!that.data.hasInivte) )
+//     {
+//       var httpClient = template.createHttpClient(that);
+//       httpClient.setMode("", true);
+//       httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId, userId: user.userId});
+//     }
   
-},
+// },
 
   agree:function(){
     var that = this;
@@ -134,17 +134,41 @@ Page({
 
 
   },
+  viewPk:function(res)
+  {
+    var that = this;
+    var pkid = res.currentTarget.dataset.pkid;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+
+    httpClient.addHandler("group", function (link) {
+
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
+
+    },function(){});
+    })
+    
+    httpClient.addHandler("unlock", function (link) {
+
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
+
+    },function(){});
+    })
+    httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
+
+  },
   onShow:function () {
     var that = this;
-    that.addInvite(that.data.pkId ,that.data.fromUser );
+    // that.addInvite(that.data.pkId ,that.data.fromUser );
   },
 
-  playVoice:function (res) {
-    var that = this;
-    var voiceUrl = res.currentTarget.dataset.voiceurl;
-    var speck_time = res.currentTarget.dataset.specktime;
-    template.createPlayVoiceDialog(that).play(voiceUrl,speck_time);
-  },
+
   relaunch:function (params) {
     wx.reLaunch({
       url: '/pages/pk/home/home',

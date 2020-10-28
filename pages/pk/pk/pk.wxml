@@ -39,7 +39,7 @@
             <view class="css pl-8vw pr-8vw">
                 <view class="{{group?'rbc':'rac'}} ">
                                                                                                     <view  hidden="{{!approve}}"  class="ccc "  bindtap="{{approve.linkMethod}}">
-                                                                                                                                                                            <view class="rcc h-80 w-80 b-white br-80 box8">
+                                                                                                                                                                            <view class="rcc">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{approve.icon}}"></image>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -47,7 +47,7 @@
                                                                                                     </view>
 
                                                                                                     <view hidden="{{!post}}" class="ccc " bindtap="{{post.linkMethod}}">
-                                                                                                                                                                            <view class="rcc h-80 w-80 b-white br-80 box8">
+                                                                                                                                                                            <view class="rcc">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{post.icon}}"></image>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -55,7 +55,7 @@
                                                                                                     </view>
                                                                                         
                                                                                                     <view hidden="{{!group}}" class="ccc "   bindtap="{{group.linkMethod}}">
-                                                                                                                                                                            <view class="rcc h-80 w-80 b-white br-80 box8">
+                                                                                                                                                                            <view class="rcc">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{group.icon}}"></image>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -63,7 +63,7 @@
                                                                                                     </view>
 
                                                                                                     <view  hidden="{{!approving}}" class="ccc "   bindtap="{{approving.linkMethod}}">
-                                                                                                                                                                            <view class="rcc h-80 w-80 b-white br-80 box8">
+                                                                                                                                                                            <view class="rcc">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{approving.icon}}"></image>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -71,7 +71,7 @@
 
                                                                                                     </view>
                                                                                                     <view hidden="{{!complain}}" class="ccc" bindtap="{{complain.linkMethod}}" data-approver="{{pk.user.userId}}">
-                                                                                                        <view class="rcc h-80 w-80 b-white br-80 box8">
+                                                                                                        <view class="rcc">
                                                                                                             <image class="h-40 w-40" mode="aspectFit" src="{{complain.icon}}" ></image> 
                                                                                                         </view>
                                                                                                         <view class="h-20"></view>
@@ -123,9 +123,9 @@
                         <view class="cbs"  style="flex:1">
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc">
+                                   <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{cpost.creator.userId}}">
                                         <image  class="box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" mode="aspectFill" src="{{cpost.creator.imgUrl}}"></image>
-                                    </view>
+                                    </navigator>
                                     <view class="w-80"></view>
 
                                     <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost"  data-style="{{cpost.style}}" data-pkid="{{cpost.pkId}}" data-postid="{{cpost.postId}}"  data-post="{{cpost}}">
@@ -481,9 +481,9 @@
                     <view class="cbs"  style="flex:1">
                         <view class="rbc pt-10 pb-10">
                             <view class="rus">
-                                <view class="rcc">
+                                <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}">
                                     <image  class="box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
-                                </view>
+                                </navigator>
                                 <view class="w-80"></view>
 
                                 <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
@@ -792,7 +792,7 @@
 
 <view class="userFeet1 z0" style="background-position: bottom;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% 100%;"></view>
 <view class="userFeet z0" ></view>
-<view class="css userBack3 z5"  style="pointer-events: none;height:80vw;width:100vw;background-position: top;background-image: url({{topImg}});background-repeat: no-repeat;background-size: 100% auto;" >
+<view class="css userBack3 z5"  style="pointer-events: none;height:60vw;width:100vw;background-position: top;background-image: url({{topImg}});background-repeat: no-repeat;background-size: 100% auto;" >
     <!-- <image style="height:80vw;width:100vw" mode="aspectFill" src="{{topImg}}"></image> -->
 </view>
 <!-- <view class="userBack2 z1" style="height:80vw;width:100vw" ></view> -->
@@ -922,7 +922,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -964,7 +964,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

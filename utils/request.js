@@ -111,6 +111,10 @@ var url = {
         updatePk: `${host}/pk/updatePk`, 
         
         importPost: `${host}/pk/importPost`, 
+        
+        userPublishPosts: `${host}/pk/userPublishPosts`, 
+        nextUserPublishPosts: `${host}/pk/nextUserPublishPosts`, 
+        
 
 
         setPkCode: `${host}/pk/setPkCode`, 

@@ -4,8 +4,8 @@
 
     <view class="css">
             <view style="height:{{top}}px"></view>
-            <view class="rcs pl-4vw pr-4vw" style="height:32px" bindtap="back">
-                <view class="rcc h-32px w-32px br-32px b-48 z102" bindtap="relaunch">
+            <view class="rcs pl-4vw pr-4vw" style="height:32px">
+                <view class="rcc h-32px w-32px br-32px b-white z102" bindtap="relaunch">
                     <image class="w-45 h-45" mode="aspectFit" src="/images/home.png"></image>
                 </view>
                 <view class="w-20"></view>
@@ -33,13 +33,13 @@
                                 
                                 </view>
                                 <view class="w-30"></view>
-                                <navigator class="rcc" url="/pages/pk/pk/pk?pkId={{pkId}}" hover-class="none">
+                                <view class="rcc" data-pkid="{{post.pkId}}"  bindtap="viewPk">
 
                                         <view class="h-30 w-10 l-line"></view>
                                         <view class="w-30"></view>
                                         <view class="rcc-nowrap fs-25 fw-300 c-4">进入主题</view>
                                         <image class="rcc w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
-                                </navigator>   
+                                </view>   
                     </view>
                     <view class="css">
                         <view class="css ">
@@ -297,9 +297,9 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc">
+                                    <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}"> 
                                         <image  class="box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
-                                    </view>
+                                    </navigator>
                                     <view class="w-80"></view>
 
                                     <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
@@ -702,7 +702,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -744,7 +744,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

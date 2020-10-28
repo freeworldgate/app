@@ -1,6 +1,6 @@
 <!--pages/pk/approvingPostList/approvingPostList.wxml-->
 <!--pages/pk/approverInfos/approverInfos.wxml-->
-<view class="css b-48 h-100vh" >
+<view class="cbs b-48" style="min-height:100vh" >
 
     <view class="css">
             <view style="height:{{top}}px"></view>
@@ -8,7 +8,6 @@
                 <view class="rcc h-32px w-32px br-32px z102" bindtap="relaunch">
                     <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
                 </view>
-                <view class="w-20"></view>
                 <view class="rcs c-4">
                     <view class="rcc fs-30 fw-400">待发布列表</view>
        
@@ -18,21 +17,21 @@
                 
             </view>
     </view>
-   <view class="{{post.approveComment?'h-50':'h-100'}}"></view>
+
 
     <view wx:if="{{post}}" class="css">
         <view class="css">
             
 
-            <view class="css pr-3vw pl-3vw"  >
+            <view class="css "   >
              
-                                <view class="css br-20 b-white mt-4vw">
+                                <view class="css br-20 b-white" style="padding:2.5vw;margin:2vw">
 
-                                    <view class="rss pl-4vw pr-4vw pt-50 ">
+                                    <view class="rss pl-4vw pr-4vw">
                                         <view class="ccs">
-                                            <view class="rcc">                  
+                                            <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}">                  
                                                 <image class="h-10vw w-10vw br-10" mode="aspectFill" src="{{post.creator.imgUrl}}" ></image>                
-                                            </view>
+                                            </navigator>
                                         </view>
 
                                         <view class="w-4vw"></view>
@@ -54,87 +53,294 @@
       
                                     </view>
 
-                                    <view class="css pl-2-5vw pr-2-5vw pt-30 pb-30">
-                                                <view class="rbc">
-                                                    <image class="br-10 " mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                </view>
-                                                <view style="height:1vw"></view>
-                                                <view class="rbc">
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                </view>
-                                                <view style="height:1vw"></view>
-                                                <view class="rbc">
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                    <image class="br-10" mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:29vw;width:29vw"></image>
-                                                </view>
-                                    </view>
+                                    <view class="css pt-30 pb-30">
+                                                    <view wx:if="{{post.style===1||post.style===2}}" class="css">
+                                                        <view wx:if="{{post.style===1}}" class="rss">
+                                                    
+                                                            <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx" bindtap="showImg" data-index="0" data-post="{{post}}"></image>
+                                                                      
+                                                            </view>
+                                                            <view style="width:0.5vw"></view>
+                                                        
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="1" data-post="{{post}}"></image>
+                                                                   
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="2" data-post="{{post}}"></image>
+                                                                        
+                                                                    </view>
+                                                            </view>
 
-                                    <view hidden="{{!post.approveComment}}" class="css ">
-                                                                                <view class="h-30"></view>
-                                                                                <view class="rbc pb-30  pl-4vw pr-4vw">
-                                                                                        <view class="rcc">
-                                                                                            <image class="w-30 h-30" mode="aspectFit" src="/images/point.png"></image>
-                                                                                            <view class="rcc fs-25 fw-400 c-4 pl-10">发布留言</view>
-                                                                                          
-                                                                                        </view>
-                                                                                        <view class="rcc">
-                                                                                            <view class="rcc fs-25 fw-400 c-4"> {{post.approveComment.date}}</view>
-                                                                                            
-                                                                                        </view>
-
-                                                                                        
-                                                                                </view>
-                                                                                <view   class="css  pl-4vw pr-4vw">
-
-                                                                                    <view class="css" >
-                                                                                            <view class="rbs" bindtap="approverCommentDetail" data-comment="{{post.approveComment}}">
-                                                                                                    
-                                                                                                    <view class="rcc">
-                                                                                                        <image hidden="{{!post.approveComment.imgUrl}}" class="h-150 w-150 br-15" mode="aspectFill" src="{{post.approveComment.imgUrl}}"></image>
-                                                                                                    </view>
-                                                                                                    <view  hidden="{{!post.approveComment.imgUrl}}" class="w-4vw"></view>
-                                                                                                    <view class="css" style="flex:1" >
-                                                                                                        <view class="rus fs-30 fw-400 line-3-start c-word-6">{{post.approveComment.text}}</view>
-                                                                                                    </view>
-                                                                                                    <view class="w-4vw"></view>
-                                                                                                    <view class="rcc">
-                                                                                                        <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
-                                                                                                    </view>
-                                                                                            </view>    
-                                                                                    </view>
-                                                                                </view>
+                                                        </view>
+                                                        <view wx:else class="rcc">
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="0" data-post="{{post}}"></image>
+                                                                      
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="2" data-post="{{post}}"></image>
+                                                                   
+                                                                    </view>
+                                                            </view>
+                                                            <view style="width:0.5vw"></view>
+                                                            <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx"  bindtap="showImg" data-index="1" data-post="{{post}}"></image>
+                                                                      
+                                                            </view>
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="3" data-post="{{post}}"></image>
+                                                                   
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="4" data-post="{{post}}"></image>
+                                                                   
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="5" data-post="{{post}}"></image>
+                                                                
+                                                                </view>
                                                             
-                                                                                <view class="h-30"></view>
-                                    </view>
-                         
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="6" data-post="{{post}}"></image>
+                                                               
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="7" data-post="{{post}}"></image>
+                                                                
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="8" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                            
+                                                        </view>
+                                                
+                                                    </view>
+                                                    <view wx:elif="{{post.style===3||post.style===4}}" class="css">
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="0" data-post="{{post}}"></image>
+                                                               
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="1" data-post="{{post}}"></image>
+                                                                
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="2" data-post="{{post}}"></image>
+                                                               
+                                                                </view>
+                                                            
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view wx:if="{{post.style===3}}" class="rss">
+                                                    
+                                                            <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx"  bindtap="showImg" data-index="3" data-post="{{post}}"></image>
+                                                              
+                                                            </view>
+                                                            <view style="width:0.5vw"></view>
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="4" data-post="{{post}}"></image>
+                                                               
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="5" data-post="{{post}}"></image>
+                                                               
+                                                                    </view>
+                                                            </view>
 
-                                    <!-- <view class="css p-30 t-line">
-                          
-                                            <view class="css" >
-                                    
-                                                        <view class="rbs" bindtap="approverComment" data-comment="{{userPost.approveComment}}">
-                    
-                                                            <view class="rcc">
-                                                                <image class="rcc h-130 w-130 br-15" mode="aspectFill" src="{{userPost.approveComment.imgUrl}}" ></image>
+                                                        </view>
+                                                        <view wx:else class="rss">
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="3" data-post="{{post}}"></image>
+                                                                
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="5" data-post="{{post}}"></image>
+                                                                 
+                                                                    </view>
                                                             </view>
-                                                            <view class="w-4vw"></view>
-                                                            <view class="css" style="flex:1" >
-                                                                <view class="rus fs-30 fw-400 line-3-start c-word-6">{{userPost.approveComment.text}}</view>
-                                                            </view>
-                                                            <view class="w-4vw"></view>
+                                                            <view style="width:0.5vw"></view>
                                                             <view class="rcc">
-                                                                <image class="w-25 h-25" mode="aspectFit" src="/images/right3.png"></image>
+                                                                        <image mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx" bindtap="showImg" data-index="4" data-post="{{post}}"></image>
+                                                                
+                                                            </view>
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="6" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="7" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="8" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                            
+                                                        </view>
+                                                    
+                                                        
+
+                                                    </view>
+                                                    <view wx:elif="{{post.style===5||post.style===6}}" class="css">
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="0" data-post="{{post}}"></image>
+                                                          
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="1" data-post="{{post}}"></image>
+                                                            
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="2" data-post="{{post}}"></image>
+                                                                
+                                                                </view>
+                                                            
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view class="rbc">
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="3" data-post="{{post}}"></image>
+                                                           
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="4" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                                <view class="rcc">
+                                                                    <image mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="5" data-post="{{post}}"></image>
+                                                              
+                                                                </view>
+                                                            
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                                        <view wx:if="{{post.style===5}}" class="rss">
+                                                    
+                                                            <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx" bindtap="showImg" data-index="6" data-post="{{post}}" ></image>
+                                                                
+                                                            </view>
+                                                            <view style="width:0.5vw"></view>
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="7" data-post="{{post}}"></image>
+                                                                
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="8" data-post="{{post}}"></image>
+                                                                   
+                                                                    </view>
+                                                            </view>
+
+                                                        </view>
+                                                        <view wx:else class="rss">
+                                                            <view class="ccc">
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="6" data-post="{{post}}"></image>
+                                                               
+                                                                    </view>
+                                                                    <view style="height:0.5vw"></view>
+                                                                    <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="8" data-post="{{post}}"></image>
+                                                              
+                                                                    </view>
+                                                            </view>
+                                                            <view style="width:0.5vw"></view>
+                                                            <view class="rcc">
+                                                                        <image mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:60.5vw;width:60.5vw; border-radius:10rpx" bindtap="showImg" data-index="7" data-post="{{post}}"></image>
+                                                            
                                                             </view>
                                                         </view>
                                                     
-                                            </view>
-                       
-                                    </view> -->
+
+                                                    
+                                                        
+
+                                                    </view>
+                                                    <view wx:else class="css">
+                                                        <view class="rbc">
+                                                        
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[0].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx"  bindtap="showImg" data-index="0" data-post="{{post}}"></image>
+                                                            
+                                                            </view>
+                                                
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[1].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="1" data-post="{{post}}"></image>
+                                                         
+                                                            </view>
+                                                
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[2].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="2" data-post="{{post}}"></image>
+                                                    
+                                                            </view>
+                                                        </view>
+
+                                                        <view style="height:0.5vw"></view>
+
+                                                        <view class="rbc">
+                                                        
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[3].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="3" data-post="{{post}}"></image>
+                                                     
+                                                            </view>
+                                                    
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[4].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="4" data-post="{{post}}"></image>
+                                                    
+                                                            </view>
+                                                
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[5].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="5" data-post="{{post}}"></image>
+                                                       
+                                                            </view>
+                                                        </view>
+                                                        <view style="height:0.5vw"></view>
+                                            
+                                                        <view class="rbc">
+                                                        
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[6].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="6" data-post="{{post}}"></image>
+                                                         
+                                                            </view>
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[7].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="7" data-post="{{post}}"></image>
+                                                          
+                                                            </view>
+                                                            <view class="rcc">
+                                                                <image mode="aspectFill" src="{{post.postImages[8].imgUrl}}" style="height:30vw;width:30vw; border-radius:10rpx" bindtap="showImg" data-index="8" data-post="{{post}}"></image>
+                                                           
+                                                            </view>
+                                                        </view>
+                                                    
+                                                    
+                                                    
+                                                    </view>
+                                    </view>
+
                 
                                 </view>
           
@@ -143,9 +349,7 @@
 
         </view>
 
-        <!-- <view hidden="{{!approvedEnd}}" class="rcc p-50">
-                <view class="fs-30 fw-400 c-3-1 ">没有更多</view>
-        </view> -->
+
 
     </view>
     <view wx:else class="ccc pt-100 pb-100">
@@ -160,29 +364,29 @@
 
 
  
-
-
-
-
-
-
-
-
-
-
-
-</view>
-
-<view hidden="{{!post}}" class="css bottomBar1">
-                <view class="h-50"></view>
-         
-                <view class="rac ">
-                        <button class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload c-white message" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">发布图册</button>
-                        <view class="rcc fs-30 fw-700 w-300 h-90 br-100 b-upload-2 c-white message" bindtap="reject" data-post="{{post}}" data-index="{{bindex}}">驳回修改{{post.rejectTimes}}次</view>
-                </view>
+    <view hidden="{{!post}}" class="css">
+            
+            
+                    <view class="rac ">
+                            <button class="rcc fs-30 fw-700 w-300 h-90 br-100 c-5 message b-white" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">发布图册</button>
+                            <view class="rcc fs-30 fw-700 w-300 h-90 br-100 c-10 message b-white" bindtap="reject" data-post="{{post}}" data-index="{{bindex}}">驳回修改{{post.rejectTimes}}次</view>
+                    </view>
+    
    
-                <view class="h-100"></view>
+    </view>
+
+
+    <view></view>
+
+
+
+
+
+
+
 </view>
+
+
 
 
 
@@ -199,7 +403,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -241,7 +445,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

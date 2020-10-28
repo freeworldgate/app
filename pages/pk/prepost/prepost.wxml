@@ -402,9 +402,50 @@
         </view>
 
 
+        <view class="css ">
+                        <view class="cbs">
+                            <view class="rbc-nowrap pt-20 pb-20">
+                                <view class="css" style="flex:1">
+                                    <view class="rus fs-30 fw-400 line-3-start" >{{post.topic}}</view>
+                                </view>
+                                
+                                <view class="w-30"></view>
+                            </view>
+                            <view class="rbc pt-10 pb-10">
+                                <view class="rus">
+                                    <view class="rcc b-edit box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
+                                    </view> 
+                                    <view class="w-80"></view>
+
+                                    <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
+                                    </view>     
+                                    <view class="w-80"></view>
+                                    <view class="rcc b-fresh box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/fresh.png"></image>
+                                    </view>     
+                        
+                                </view>
+                                <view wx:if="{{post.statu.key === 3}}" class="rcc">
+                                    <view class="rcc h-60 w-150 b-goappro br-20" bindtap="goApproving" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}">
+                                        <view class="rcc fs-23 fw-300 c-white">去审核</view>
+                                        <image class="rcc w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
+                                    </view>
+                                
+                                </view>
+                                <view wx:else class="rcc fs-25 fw-300 c-3">{{post.time}}</view>                            </view>
 
 
-          <view class="rbs">
+
+
+
+                            
+                            <view></view>
+                        </view>
+        </view>  
+
+        <!-- <view class="rbs">
   
             <view class="cbs"style="flex:1">
                 <view></view>
@@ -427,12 +468,7 @@
                         <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/fresh.png"></image>
                         <view class="w-50"></view>
                     </view> 
-                    <!-- <view class="w-30"></view> -->
-                    <!-- <view class="rcc" >
-                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/heart2.png"></image>
-                        <view class="w-10"></view>
-                        <view class="c-4 fs-25 fw-400 pb-10">{{post.scan}}</view>      
-                    </view>   -->
+                  
 
 
                 </view>
@@ -449,7 +485,7 @@
                 </view>
             </view>
           
-          </view>
+        </view> -->
 
 
 
@@ -460,8 +496,8 @@
 
     
     </view>
-
-    <view class="rbc pl-2-5vw pr-2-5vw">
+    <view></view>
+    <!-- <view class="rbc pl-2-5vw pr-2-5vw">
         <view></view>
         <view wx:if="{{post.statu.key ===3}}" class="rcc w-300 h-80 b-white br-80" bindtap="goApproving">
             
@@ -473,13 +509,10 @@
             
         </view>
         <view wx:else class="ccc">
-            <!-- <view class="rcc w-120 h-120 br-120 b-white">
-                <image class="rcc w-60 h-60 " mode="aspectFit" src="/images/heart1.png"></image>
-            </view>
-            <view class="rcc fs-35 fw-700 c-white pt-20">222</view> -->
+        
         </view>
         <view></view>
-    </view>
+    </view> -->
 
     <view  class="rcc ">
           <view hidden="{{post.statu.key !=3}}" class="rcc fs-25 fw-400 c-1 pb-20">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
@@ -523,7 +556,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{dialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{dialog.text}}</view> <view class="h-40"></view>
                 </view>
                 <view></view>
                 <view></view>
@@ -565,7 +598,7 @@
                 <view class="css">
                     <view class="rcc fs-40 fw-700 c-tipColor pl-4vw pr-4vw line-3-center">{{operateDialog.title}}</view>
                     <view class="h-20"></view>
-                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view>
+                    <view class="rcc-wrap fs-28 fw-400 c-3  pl-4vw pr-4vw  line-3-center">{{operateDialog.text}}</view> <view class="h-40"></view>
                 </view>
 
                 <view></view>

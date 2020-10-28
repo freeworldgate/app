@@ -477,60 +477,19 @@ Page({
     
   },
   onShow:function(){
-    var that = this;
-
-    // var publish = wx.getStorageSync('publish')
-    // if(publish){that.setData({publish:true})}
-    // wx.removeStorageSync('publish')
-    // this.data.interval = setInterval(function () {that.updateDynamic()}, 1000)
-
-    var myMessage = wx.getStorageSync('myMessage')
-    if(myMessage)
-    {
-      wx.removeStorageSync('myMessage')
-
-      that.setData({
-        pkMessage:myMessage
-      })
-
-
-    }
-
-    var user = wx.getStorageSync('user');
-    if(user){
-      this.setData({user:user})
-      that.addInvite(that.data.pkId);
-
-    }
-
-
-    // wx.setStorageSync("action", "userPost")
-    // var action = wx.getStorageSync('action');
-    // if(action==="userPost"){
-    //       var post = wx.getStorageSync('post');
-
-    //       wx.removeStorageSync('action')
-    //       wx.removeStorageSync('post')
-    //       // that.data.posts.splice(0,0,post);
-    //       // that.setData({
-    //       //   posts: that.data.posts
-    //       // })
-    //       template.createSinglePostDialog(that).show(post, function (newPost) {
-    //         if(that.data.posts[0].postId === newPost.postId){
-    //           that.data.posts.splice(0, 1, newPost);
-    //         }
-    //         else{
-    //           that.data.posts.splice(0, 0, newPost);
-    //         }
-    //         that.setData({
-    //           posts: that.data.posts
-    //         })
-    //       });
-
-
-
-
-    // }
+    // var that = this;
+    // var httpClient = template.createHttpClient(that);
+    // httpClient.setMode("label", false);
+    // var user = wx.getStorageSync("user");
+    // var fromUserId = wx.getStorageSync('fromUser');
+    // httpClient.addHandler("error", function (tip) {
+    //   template.createOperateDialog(that).show("提示",tip,function(){
+    //     wx.reLaunch({
+    //       url: '/pages/pk/home/home',
+    //     })
+    // },function(){});
+    // })
+    // httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});  
 
   },
   onHide:function(){
