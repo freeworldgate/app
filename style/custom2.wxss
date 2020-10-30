@@ -763,7 +763,7 @@ mw-200{
   color: white;
 }
 .c-word-1{
-  color: rgb(223, 214, 151);
+  color: rgb(168, 160, 98);
 }
 .c-word-2{
   color: #a5825d;
