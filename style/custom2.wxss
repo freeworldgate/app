@@ -385,6 +385,10 @@
 .mr-10px{
   margin-right: 10px;
 }
+.mb-80{
+  margin-bottom: 80rpx;
+}
+
 .mb-1vw{
   margin-bottom: 1vw
 }
@@ -471,6 +475,7 @@
 .s-80{width: 80rpx;height: 80rpx;}
 
 /* 高度 宽度 */
+.h-2{height: 2rpx;}
 .h-5{height: 5rpx;}
 .h-10{height: 10rpx;}
 .h-15{height: 15rpx;}
@@ -937,7 +942,8 @@ mw-200{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
   /* background: radial-gradient(rgba(245, 236, 236, 0.262),rgba(41, 41, 41, 0.234)); */
   /* background-image: linear-gradient(to bottom, #00000036,#ffffff00,#ffffff00,#0000001a,#00000036); */
-  background-image: linear-gradient( to bottom,#ffffffe0,#ffffffe0,#ffffffe0,#ffffffe0);
+  background-color: #ffffffe7;
+  /* background-image: linear-gradient( to bottom,#ffffffe0,#ffffffe0,#ffffffe0,#ffffffe0); */
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
 .b-pk-back{
@@ -1062,25 +1068,30 @@ mw-200{
   /* background-image: linear-gradient(to right, #887845 100%, #829465 100%); */
   background-image: linear-gradient(to bottom, #00000044, #ffffff);
 }
-.b-edit{
-  background-color: rgba(212, 0, 255, 0.178);
-}
+
 .b-goappro1{
   background-color: rgb(0, 204, 231);
 
 }
 .b-goappro{
   background-color: rgb(255, 115, 0);
+}
 
+.b-edit{
+  /* background-color: rgba(212, 0, 255, 0.2); */
+  background-color: rgba(236, 236, 236, 0.25);
 }
 .b-export{
-  background-color: rgba(255, 102, 0, 0.178);
+  /* background-color: rgba(255, 102, 0, 0.2); */
+  background-color: rgba(236, 236, 236, 0.25);
 }
 .b-fresh{
-  background-color: rgba(0, 217, 255, 0.178);
+  /* background-color: rgba(0, 217, 255, 0.2); */
+  background-color: rgba(236, 236, 236, 0.25);
 }
 .b-top{
-  background-color: rgba(247, 0, 255, 0.178);
+  /* background-color: rgba(247, 0, 255, 0.2); */
+  background-color: rgba(236, 236, 236, 0.25);
 }
 .b-post{
   background-image: linear-gradient(to right, #a5a5a52f 100%, #a2a2a228 100%);
@@ -1127,7 +1138,7 @@ mw-200{
   background-color: rgba(207, 207, 207, 0.853);
 }
 .b-48{
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
 }
 .b-48-1{
   /* background-color: #fefaf6; */
@@ -1155,6 +1166,9 @@ mw-200{
 }
 .b-50{
   background-color: rgb(255, 249, 249);
+}
+.b-100{
+  background-color: #3f3f3fd8;
 }
 .b-invitor{
   background-color: rgba(240, 240, 240, 0.1);
@@ -1236,6 +1250,9 @@ mw-200{
 }
 .border12{
       border: 0.2rpx solid #949494d0; 
+}
+.border12{
+  border: 0.1rpx solid #202020d0; 
 }
 .border13{
   border: 3px solid rgb(0, 106, 167); 

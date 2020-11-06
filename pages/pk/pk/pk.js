@@ -10,6 +10,7 @@ var inviteReq = require('./../../../utils/invite.js')
 var userInvite = require('./../../../utils/userInvite.js')
 var upload = require('./../../../utils/uploadFile.js')
 var template = require('./../../../template/template.js')
+var amapFile = require('./../../../utils/amap-wx.js')
 
 
 
@@ -55,7 +56,7 @@ Page({
     wx.hideShareMenu({
       complete: (res) => {},
     })
-    that.addInvite(options.pkId);
+    
         //Top高度
     inviteReq.getHeight(function (res) {
         that.setData({
@@ -71,19 +72,18 @@ Page({
         fromUser:fromUser,
       })
     }
-
-    var pkId = options.pkId;    
+    var pkId = options.pkId;   
+    if(options.lock === "1")
+    {
+        that.unlock(pkId);
+    }
     this.setData({
       pkId:pkId
     })
     wx.setStorageSync("pkId", pkId);
-
-    
-
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
-    var fromUserId = wx.getStorageSync('fromUser');
     httpClient.addHandler("error", function (tip) {
       template.createOperateDialog(that).show("提示",tip,function(){
         wx.reLaunch({
@@ -91,21 +91,28 @@ Page({
         })
     },function(){});
     })
-    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});
+    httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});
     that.setData({
       user:user,
     })
   },
-
+  unlock:function(pkId){
+    var that = this;
+    var user = wx.getStorageSync('user');
+    if(user)
+    {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.send(request.url.unlock, "GET", { pkId: pkId, userId: user.userId});
+    }
+  },
   addInvite:function(pkId){
-      var that = this;
-      var user = wx.getStorageSync('user');
-      if(user)
-      {
+        var that = this;
+ 
         var httpClient = template.createHttpClient(that);
-        httpClient.setMode("", true);
+        httpClient.setMode("label", true);
         httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId, userId: user.userId});
-      }
+
     
   },
   approvingList:function (params) {
@@ -148,8 +155,44 @@ Page({
     });
 
   },
+  addGapFunc(gap){
+    var that = this;
+    if(gap === 1){that.setData({greateStatu:!that.data.greateStatu})}
+    if(gap === 2){that.setData({dislikeStatu:!that.data.dislikeStatu})}
+    if(gap === 3){that.setData({inviteStatu:!that.data.inviteStatu})}
+
+    if(that.data.user.userId === that.data.pk.user.userId)
+    {
+      top.showContentTip("创建用户不支持操作");
+      return;
+    }
+    else
+    {
+
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("", true);    
+        httpClient.send(request.url.addGap, "GET",{pkId: that.data.pkId,gap:gap});
+    }
+
+  },
+  addGap:function(res){
+    var that = this;
+    var gap = parseInt(res.currentTarget.dataset.gap);
+
+    login.getUser(function(user){
+      that.addGapFunc(gap);
+    })
 
 
+
+
+
+
+
+
+
+    
+  },
 
   checkUserPost:function(){
     var that = this;
@@ -478,18 +521,26 @@ Page({
   },
   onShow:function(){
     // var that = this;
-    // var httpClient = template.createHttpClient(that);
-    // httpClient.setMode("label", false);
-    // var user = wx.getStorageSync("user");
-    // var fromUserId = wx.getStorageSync('fromUser');
-    // httpClient.addHandler("error", function (tip) {
-    //   template.createOperateDialog(that).show("提示",tip,function(){
-    //     wx.reLaunch({
-    //       url: '/pages/pk/home/home',
-    //     })
-    // },function(){});
-    // })
-    // httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId, fromUser: fromUserId});  
+    // setTimeout(function(){
+    //     var user = wx.getStorageSync("user");
+    //     if(user && !that.data.inviteTag)
+    //     {
+    //       var httpClient = template.createHttpClient(that);
+    //       httpClient.setMode("", false);
+    //       httpClient.addHandler("invite", function (pkId) {
+    //         that.setData({inviteTag:true});
+    //         template.createOperateDialog(that).show("邀请发布图册", "根据主题参与...", function () {
+        
+    //           that.publish();
+             
+    
+    //         }, function () {});
+    //       })
+    //       httpClient.send(request.url.queryInvite, "GET", { pkId: that.data.pkId, userId: user.userId});  
+    //     }
+    // },4000)
+
+    
 
   },
   onHide:function(){
@@ -503,6 +554,13 @@ Page({
       template.createEditTextDialog(that).show("投诉", "编辑投诉信息","", 60, function (text) {
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
+        httpClient.addHandler("success", function () {
+          
+            that.setData({
+              complainStatu:true
+            })
+
+        })
         httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text});
     
       });
@@ -544,7 +602,21 @@ Page({
     httpClient.send(request.url.queryTaskOrder, "GET", { orderId: task.orderId });
   },
 
+  topPost:function(res){
+    var that = this;
+    var post = res.currentTarget.dataset.post;
+    var pkId = res.currentTarget.dataset.pkid;
 
+    template.createOperateDialog(that).show("顶置图册", "确定将该图册设置为首页?...", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.send(request.url.topPost, "GET", { postId: post.postId,pkId:pkId });
+    }, function () {});
+
+
+
+
+  },
 
   approverMessage:function(){
     var that = this;
@@ -792,7 +864,149 @@ Page({
     })
 
 
-  }
+  },
+  setLocation:function(){
+    var that = this;
+      template.createOperateDialog(that).show("添加/更新主题位置", "添加当前位置到主题，以便附近用户可看到主题...", function () {
+
+      that.setNetLocation();
+    }, function () {});
+  },
+
+  setNetLocation: function () {
+    let that = this;
+    wx.getSetting({
+      success: (res) => {
+        console.log(JSON.stringify(res))
+        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
+        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
+        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+          wx.showModal({
+            title: '请求授权当前位置',
+            content: '需要获取您的地理位置，请确认授权',
+            success: function (res) {
+              if (res.cancel) {
+                wx.showToast({
+                  title: '拒绝授权',
+                  icon: 'none',
+                  duration: 1000
+                })
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      //再次授权，调用wx.getLocation的API
+                      that.getLocation();
+                    } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 1000
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+        else {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+      }
+    })
+  },
+  // 获取定位当前位置的经纬度
+  getLocation: function () {
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        let speed = res.speed
+        let accuracy = res.accuracy;
+        that.getLocal(latitude, longitude)
+      },
+      fail: function (res) {
+        console.log('fail' + JSON.stringify(res))
+      }
+    })
+  },
+  // 获取当前地理位置
+  getLocal: function (latitude, longitude) {
+    let that = this;
+    var myAmapFun = new amapFile.AMapWX({key:'528540a597af4bb3937965f09078dba4'});
+    myAmapFun.getRegeo({
+      success: function(data){
+        var cityCode = data[0].regeocodeData.addressComponent.citycode;
+        var cityName = data[0].regeocodeData.addressComponent.city;
+        var desc = data[0].desc;
+        var name = data[0].name;
+        var latitude = data[0].latitude;
+        var longitude = data[0].longitude;
+
+        var msg = name+"&&TAG&&"+desc+"&&TAG&&"+cityName+"&&TAG&&"+cityCode+"&&TAG&&"+latitude+"&&TAG&&"+longitude;
+
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("label", true);
+        httpClient.addHandler("success", function (location) {
+
+          // var loc = "pk.location";
+          that.setData({
+            "pk.location":location
+          })
+
+        })
+        httpClient.send(request.url.setLocation, "GET",
+          {
+            pkId: that.data.pkId,
+            name:name,
+            desc:desc,
+            city:cityName,
+            cityCode:cityCode,
+            latitude:latitude,
+            longitude:longitude
+          }
+        );    
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //成功回调
+        that.setData({
+          address:data[0].desc
+        })
+        console.log("地址:",latitude,longitude,data);
+      },
+      fail: function(info){
+        //失败回调
+        tip.showContentTip("获取位置失败...");
+      }
+    })
+
+
+
+  },
 })

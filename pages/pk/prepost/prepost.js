@@ -271,7 +271,7 @@ Page({
 
   editText:function () {
     var that = this;
-    template.createEditTextDialog(that).show(that.data.t5, that.data.t6,that.data.post.topic, 120, function (text) {
+    template.createEditTextDialog(that).show("修改内容", "编辑",that.data.post.topic, 120, function (text) {
       
               // , urls
               var httpClient = template.createHttpClient(that);

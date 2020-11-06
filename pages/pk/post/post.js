@@ -38,8 +38,8 @@ Page({
     })
 
 
-    const postId = decodeURIComponent(query.scene);
-
+    // var postId = decodeURIComponent(query.scene);
+    var postId = query.postId;
     this.queryPost(postId);
 
   },
@@ -52,7 +52,7 @@ Page({
         post:post,
         imgBack:post.imgBack,
       })
-      wx.setStorageSync('pkId', post.pkId)
+      // wx.setStorageSync('pkId', post.pkId)
 
     });
 
@@ -110,24 +110,54 @@ Page({
 
   },
 
-
-  goPk:function (res) {
+  
+  goPk:function(res)
+  {
     var that = this;
     var pkid = res.currentTarget.dataset.pkid;
-    var fromUser = res.currentTarget.dataset.fromuser;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+
+    // httpClient.addHandler("group", function (link) {
+
+    //   template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+    //     wx.navigateTo({
+    //       url: link.castV1,
+    //     })
+
+    // },function(){});
+    // })
     
-    login.getUser(function(user)
-    {
+    httpClient.addHandler("unlock", function (link) {
 
-      wx.navigateTo({
-        url: '/pages/pk/pk/pk?pkId='+pkid + '&fromUser=' + fromUser,
-      })
+      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
+        wx.navigateTo({
+          url: link.castV1,
+        })
 
+    },function(){});
     })
-
-
+    httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
 
   },
+
+  // goPk:function (res) {
+  //   var that = this;
+  //   var pkid = res.currentTarget.dataset.pkid;
+  //   var fromUser = res.currentTarget.dataset.fromuser;
+    
+  //   login.getUser(function(user)
+  //   {
+
+  //     wx.navigateTo({
+  //       url: '/pages/pk/pk/pk?pkId='+pkid + '&fromUser=' + fromUser,
+  //     })
+
+  //   })
+
+
+
+  // },
   showImg:function(res){
     var post = res.currentTarget.dataset.post;
     var index = res.currentTarget.dataset.index;

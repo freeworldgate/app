@@ -19,7 +19,7 @@
     "pages/pk/editApproveComment/editApproveComment",
 
 
-    "pages/pk/approverInfos/approverInfos",
+
     "pages/pk/approvePostList/approvePostList",
     "pages/pk/approvingPostList/approvingPostList",
     "pages/pk/uploadImgs/uploadImgs",
@@ -28,7 +28,7 @@
 
     "pages/pk/post/post",
     "pages/pk/selectPker/selectPker",
-
+    "pages/pk/userHome/userHome",
 
 
 
@@ -60,19 +60,19 @@
       "text": "首页"
     },{
       "pagePath": "pages/pk/userPk/userPk",
-      "iconPath": "images/user1.png",  
-      "selectedIconPath": "images/user2.png", 
-      "text": "我的主题"
-    },{
-      "pagePath": "pages/pk/userPost/userPost",
       "iconPath": "images/userpost1.png",  
       "selectedIconPath": "images/userpost2.png", 
-      "text": "我的图册"
+      "text": "主题"
     },{
-      "pagePath": "pages/pk/invite/invite",
+      "pagePath": "pages/pk/userPost/userPost",
       "iconPath": "images/invite1.png",  
       "selectedIconPath": "images/invite2.png", 
-      "text": "邀请"
+      "text": "图册"
+    },{
+      "pagePath": "pages/pk/userHome/userHome",
+      "iconPath": "images/user1.png",  
+      "selectedIconPath": "images/user2.png", 
+      "text": "我"
     }]
   },
   "networkTimeout": {
@@ -81,6 +81,10 @@
     "connectSocket": 60000,
     "uploadFile": 120000
   },
-
+  "permission":{
+    "scope.userLocation":{
+      "desc":"你的位置将用于小程序使用"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

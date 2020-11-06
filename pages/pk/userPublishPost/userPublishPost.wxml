@@ -299,21 +299,17 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <!-- <view class="rcc b-edit box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
-                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
-                                    </view>  -->
+                                   
                                     <view class="rcc">
-                                        <image  class="box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
+                                        <image  class=" border10 h-70 w-70 br-70"  mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
                                     </view>
                                     <view class="w-80"></view>
-                                    <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                                    <view class="rcc b-export h-70 w-70 br-70" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
                                     </view>  
-                                    <!-- <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
-                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/mypic.png"></image>
-                                    </view>      -->
+                                 
                                     <view class="w-80"></view>
-                                    <view class="rcc b-fresh box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
+                                    <view class="rcc b-fresh  h-70 w-70 br-70"  bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/fresh.png"></image>
                                     </view>     
                         

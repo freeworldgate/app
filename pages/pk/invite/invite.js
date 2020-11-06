@@ -36,7 +36,7 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
-    that.init("label");
+    that.init("page");
   },
   queryInvites:function (tab) {
     var that = this;

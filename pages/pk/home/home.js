@@ -38,7 +38,7 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
-  that.queryInvites();
+  that.queryInvites("page");
 
 
 
@@ -46,10 +46,10 @@ Page({
 
 
   },
-  queryInvites:function () {
+  queryInvites:function (tab) {
     var that = this;
     var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", false);
+    httpClient.setMode(tab, false);
     var user = wx.getStorageSync('user');
     var fromUser = wx.getStorageSync('fromUser')
     var pkId = wx.getStorageSync('pkId')
@@ -184,7 +184,7 @@ Page({
    */
   onPullDownRefresh:function (params) {
     var that = this;
-    that.queryInvites("");
+    that.queryInvites("label");
 },
 
   /**

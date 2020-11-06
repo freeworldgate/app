@@ -50,6 +50,7 @@ Page({
     wx.setStorageSync('fromUser', options.fromUser)
     var httpClient = template.createHttpClient(that);
     var user = wx.getStorageSync('user');
+    that.setData({user:user})
     httpClient.setMode("page", false);
     // httpClient.send(request.url.queryApproveInfo, "GET", { pkId: this.data.pkId  });
     httpClient.send(request.url.queryApproveInfo3, "GET", { pkId: that.data.pkId ,postId:that.data.postId,userId:user.userId  });
@@ -165,7 +166,8 @@ Page({
   },
   onShow:function () {
     var that = this;
-    // that.addInvite(that.data.pkId ,that.data.fromUser );
+    var user = wx.getStorageSync('user');
+    that.setData({user:user})
   },
 
 

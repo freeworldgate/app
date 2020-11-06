@@ -5,13 +5,6 @@
 
 
     <view style="height:{{top+32}}px"></view>
-    <!-- <view class="rcs pr-3vw pl-3vw" style="height:32px">
-        <view class="rcc h-32px z7">
-            <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
-            <view class="{{imgBack?'fs-30 fw-400 c-white':'fs-30 fw-400 '}}">我的图册</view>
-        </view>
-    
-    </view> -->
 
 
     <view class="h-30"></view>
@@ -19,8 +12,9 @@
 
     
     <view wx:if="{{posts.length > 0}}" class="css z2" >
+
             <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
-                <view class="css br-20 b-white" style="padding:2.5vw;margin-left:2vw;margin-right:2vw;margin-top:3vw;">
+                <view class="css br-20 b-white" style="padding:3vw;margin-left:3vw;margin-right:3vw;margin-top:3vw;">
 
                     <view class="rss ">
                                 <view class="rss pt-15 pb-25" style="flex:1">
@@ -41,10 +35,20 @@
                                         <image class="rcc w-25 h-25" mode="aspectFit" src="/images/more.png"></image>
                                 </navigator>   
                     </view>
+                    <scroll-view class="rss " scrollX="true" style="white-space:nowrap;width:88vw">
+                        <view class="css" style="display:inline-block" wx:for="{{post.postImages}}" wx:for-index="bindex" wx:for-item="img" wx:key="postkey">
+                            <view class="rss">
+                                <view class="rcc" bindtap="showImg" data-index="{{bindex}}" data-post="{{post}}">
+                                    <image class="br-10" style="height:28.5vw;width:28.5vw; border-radius:20rpx" mode="aspectFill" src="{{img.imgUrl}}"></image>
+                                </view>
+                                <view  style="width:1vw"></view>
+                                                                    
+                            </view>
+                        </view>
+                    </scroll-view>
 
-
-                    <view class="css">
-                        <view class="css ">
+                    <!--<view class="css">
+                         <view class="css ">
                             <view wx:if="{{post.style===1||post.style===2}}" class="css">
                                 <view wx:if="{{post.style===1}}" class="rss">
                             
@@ -284,9 +288,9 @@
                                 <view style="height:0.5vw"></view>
                             
                             
-                            </view>
+                            </view> 
                         </view>
-                    </view>
+                    </view>-->
                   
                     <view class="css ">
                         <view class="cbs"  style="flex:1">
@@ -299,20 +303,20 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc b-edit box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
+                                    <view class="rcc b-edit  h-70 w-70 br-70" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
                                     </view> 
                                     <view class="w-80"></view>
-                                    <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                                    <view class="rcc b-export h-70 w-70 br-70" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
                                     </view>  
                                     <!-- <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/mypic.png"></image>
                                     </view>      -->
                                     <view class="w-80"></view>
-                                    <view class="rcc b-fresh box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
-                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/fresh.png"></image>
-                                    </view>     
+                                    <navigator class="rcc b-fresh h-70 w-70 br-70" hover-class="none" url="/pages/pk/prepost/prepost?pkId={{post.pkId}}&postId={{post.postId}}">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/pic1.png"></image>
+                                    </navigator>     
                         
                                 </view>
 
@@ -350,7 +354,7 @@
             </view>
 
     </view>
-    <view wx:else class="ccc z2"  style="padding-top:30vh" >
+    <view wx:else class="ccc z2"  style="padding-top:15vh" >
         <view class="rcc">
             <image class="h-300 w-300" mode="aspectFit" src="/images/empty.png" ></image>
         </view>
@@ -396,7 +400,7 @@
 <!-- <view class="userBack z0" style="background-position: top;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"></view> -->
 <!-- <view class="userBack3 z0" ></view> -->
 <!-- <view class="userFeet z0" ></view> -->
-<view class="css customBar b-48 z7">
+<view class="css customBar b-48 z7 ">
   <view class="rcs " style="height:{{top}}px"></view>
   <view class="rcs " style="height:32px">
 

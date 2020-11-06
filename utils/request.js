@@ -1,6 +1,6 @@
-// var host = 'https://www.211shopper.com'; 
+var host = 'https://www.211shopper.com'; 
 // var host = 'http://192.168.137.1:8080'; 
-var host = 'http://192.168.43.67:8080'; 
+// var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
 var uploadUrl = 'https://oss.211shopper.com'; 
@@ -75,6 +75,9 @@ var url = {
         
         nextHomePage: `${host}/pk/nextHomePage`, 
         queryInvites: `${host}/pk/queryInvites`, 
+        queryInvite: `${host}/pk/queryInvite`, 
+        
+        unlock: `${host}/pk/unlock`, 
         nextInvitePage: `${host}/pk/nextInvitePage`, 
         addUserInvite: `${host}/pk/addUserInvite`, 
         
@@ -115,7 +118,7 @@ var url = {
         userPublishPosts: `${host}/pk/userPublishPosts`, 
         nextUserPublishPosts: `${host}/pk/nextUserPublishPosts`, 
         
-
+        setLocation: `${host}/pk/setLocation`,
 
         setPkCode: `${host}/pk/setPkCode`, 
         publishPk: `${host}/pk/publishPk`,  
@@ -210,6 +213,7 @@ var url = {
         
         updatePkPage:`${host}/pk/updatePkPage`, 
         
+        addGap:`${host}/pk/addGap`, 
         queryPostByPostId:`${host}/pk/queryPostByPostId`, 
         addPreUser:`${host}/pk/addPreUser`, 
         morePreUsers:`${host}/pk/morePreUsers`, 
@@ -224,7 +228,9 @@ var url = {
         userPosts:`${host}/pk/userPosts`, 
         nextUserPosts:`${host}/pk/nextUserPosts`,       
         activeSinglePK:`${host}/pk/activeSinglePK`, 
-                
+        topPost:`${host}/pk/topPost`, 
+        
+
         activeAgine:`${host}/pk/activeAgine`, 
 
         addTip:`${host}/pk/addTip`, 

@@ -368,7 +368,7 @@
             
             
                     <view class="rac ">
-                            <button class="rcc fs-30 fw-700 w-300 h-90 br-100 c-5 message b-white" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">发布图册</button>
+                            <button class="rcc fs-30 fw-700 w-300 h-90 br-100 c-5 message b-white" bindtap="approve" data-post="{{post}}" data-index="{{bindex}}">审核通过</button>
                             <view class="rcc fs-30 fw-700 w-300 h-90 br-100 c-10 message b-white" bindtap="reject" data-post="{{post}}" data-index="{{bindex}}">驳回修改{{post.rejectTimes}}次</view>
                     </view>
     

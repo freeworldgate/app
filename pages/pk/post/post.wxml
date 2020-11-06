@@ -11,7 +11,7 @@
 
 
 
-      <view class="css b-white" style="padding:2.5vw;margin:2vw">
+      <view class="css b-white br-20" style="padding:2.5vw;margin:2vw">
   
 
 
@@ -261,18 +261,22 @@
                         </view>
         </view>
        
-        <view class="rbs">
+        <view class="rbs pb-20">
   
-            <view class="cbs"style="flex:1">
+            <view class="cbs "style="flex:1">
                 <view></view>
-                <view class="rus fs-30 fw-400 line-3-start c-4" >{{post.topic}}</view>
+                <view class="rus fs-30 fw-400 line-3-start c-4 pt-30 pb-30" >{{post.topic}}</view>
                 <view class="rcs">
-                    <view class="rcc pr-30" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
-                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
+                    <navigator class="rcc h-70 w-70 br-70" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}">
+                                    <image  class=" h-70 w-70 br-70 border10" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
+                    </navigator>
+                    <view class="w-80"></view>
+                    <view class="rcc h-70 w-70 br-70 b-export" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                        <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
                     </view>
-                    <view class="w-30"></view>
-                    <view class="rcc pr-30" bindtap="freshPost" >
-                        <image class="rcc w-40 h-40 pb-10" mode="aspectFit" src="/images/fresh.png"></image>
+                    <view class="w-80"></view>
+                    <view class="rcc h-70 w-70 br-70 b-fresh" bindtap="freshPost" >
+                        <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/fresh.png"></image>
                     </view>  
                     <!-- <view class="w-30"></view>
                     <view class="rcc" >
@@ -289,12 +293,15 @@
 
 
             <view class="w-50"></view>
-            <view class="rcc pt-30 pb-30">
-                <image class="rcc" mode="aspectFill" src="{{post.wxCode}}" style="height:20vw;width:20vw"></image>
-                <view class="rcc absolute" style="height:8vw;width:8vw;border-radius: 8vw;" >
-                    <image style="height:8vw;width:8vw;border-radius: 8vw;" mode="aspectFit" src="{{post.creator.imgUrl}}"></image>
+            <view class="ccs">
+                <view class="rcc pt-30 pb-30">
+                    <image class="rcc" mode="aspectFill" src="{{post.wxCode}}" style="height:20vw;width:20vw"></image>
+                    <view class="rcc absolute" style="height:8vw;width:8vw;border-radius: 8vw;" >
+                        <image style="height:8vw;width:8vw;border-radius: 8vw;" mode="aspectFit" src="{{post.creator.imgUrl}}"></image>
+                    </view>
                 </view>
             </view>
+
           
         </view>
 
@@ -308,7 +315,7 @@
     
     </view>
     <view class="rcc">
-        <view class="rcc w-300 h-80 b-white br-80" bindtap="goPk" data-pkid="{{pkId}}" data-fromuser="{{post.creator.userId}}">
+        <view class="rcc w-300 h-80 b-white br-80" bindtap="goPk" data-pkid="{{post.pkId}}" data-fromuser="{{post.creator.userId}}">
                 
                 <view class="rcc">
                     <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/pk.png"></image>

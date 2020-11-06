@@ -19,6 +19,7 @@ Page({
    */
   data: {
     leftPks:0,
+    unlock:0,
     pkTimes:0,
     inviteTimes:0,
     pks: [],
@@ -43,7 +44,7 @@ Page({
       complete: (res) => {},
     })
 
-    if(that.data.user){that.init("label");}
+    if(that.data.user){that.init("page");}
     else{}
     
   },
@@ -65,7 +66,7 @@ Page({
   onShow:function(){
     var that = this;
     var user = wx.getStorageSync('user');
-    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("label");}
+    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("page");}
     else
     {
       var update = wx.getStorageSync('update');
@@ -313,17 +314,6 @@ Page({
 
   },
 
-  setUser:function(res){
-    var userId = res.currentTarget.dataset.user;
-
-    var user = wx.getStorageSync('user');
-    user.userId = userId;
-    wx.setStorageSync('user', user);
-    wx.reLaunch({
-      url: '/pages/pk/home/home',
-    })
-
-  },
 
 
   deletePk:function(res)
