@@ -1,4 +1,4 @@
-var host = 'https://www.211shopper.com'; 
+ var host = 'https://www.211shopper.com'; 
 // var host = 'http://192.168.137.1:8080'; 
 // var host = 'http://192.168.43.67:8080'; 
 
@@ -229,8 +229,15 @@ var url = {
         nextUserPosts:`${host}/pk/nextUserPosts`,       
         activeSinglePK:`${host}/pk/activeSinglePK`, 
         topPost:`${host}/pk/topPost`, 
+        queryUserPublishPks:`${host}/pk/queryUserPublishPks`, 
+        nextUserPublishPks:`${host}/pk/nextUserPublishPks`, 
+        addComment:`${host}/pk/addComment`, 
+        queryComments:`${host}/pk/queryComments`, 
+        nextCommentPage:`${host}/pk/nextCommentPage`, 
         
+        showInfo:`${host}/pk/showInfo`, 
 
+        
         activeAgine:`${host}/pk/activeAgine`, 
 
         addTip:`${host}/pk/addTip`, 

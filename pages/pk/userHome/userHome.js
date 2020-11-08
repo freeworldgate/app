@@ -39,7 +39,7 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
-    that.init("page");
+    that.init("label");
   },
   queryInvites:function (tab) {
     var that = this;
@@ -143,15 +143,15 @@ Page({
   },
 
 
-  onShow:function () {
+  // onShow:function () {
 
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("label");}
-    else{}
+  //   var that = this;
+  //   var user = wx.getStorageSync('user');
+  //   if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("page");}
+  //   else{}
     
 
-  },
+  // },
 
   init:function (tab) {
     var that = this;

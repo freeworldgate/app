@@ -6,6 +6,9 @@
     "pages/pk/userPk/userPk",
     "pages/pk/userPost/userPost",
     "pages/pk/userPublishPost/userPublishPost",
+    "pages/pk/userPublishPk/userPublishPk",
+    "pages/pk/comments/comments",
+    "pages/pk/showInfo/showInfo",
     "pages/pk/invite/invite",
     "pages/pk/prepost/prepost",
 

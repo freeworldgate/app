@@ -10,7 +10,7 @@ var inviteReq = require('./../../../utils/invite.js')
 var userInvite = require('./../../../utils/userInvite.js')
 var upload = require('./../../../utils/uploadFile.js')
 var template = require('./../../../template/template.js')
-
+var amapFile = require('./../../../utils/amap-wx.js')
 
 Page({
 
@@ -63,25 +63,7 @@ Page({
     // })
     httpClient.send(request.url.userPks, "GET", {});
   },
-  onShow:function(){
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("page");}
-    else
-    {
-      var update = wx.getStorageSync('update');
-      wx.removeStorageSync('update')
-      if(update)
-      {
-        that.init("");
-      }
-  
-    }
 
-
-
-
-  },
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -106,15 +88,46 @@ Page({
 
 
 
+
+  onShow:function () {
+    var that = this;
+
+    var user = wx.getStorageSync('user');
+    if(user && !that.data.pageTag){
+      that.setData({user:user});
+      that.queryPks("page");
+    }
+
+  },
+
   init:function (tab) {
     var that = this;
-    that.queryPks(tab);
- 
+    var user = wx.getStorageSync('user');
+    if(user){
+      that.setData({user:user})
+    }
+    if(user &&  !that.data.pageTag)
+    {
+      that.queryPks(tab);
+    }
   },
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryPks("label");
+      
+      var that = this;
+      if(that.data.pageTag){that.queryPks("label");}else{that.queryPks("page");}
+      
   },
+
+
+
+
+
+
+
+
+
+
 
   /**
    * 用户点击右上角分享
@@ -295,10 +308,12 @@ Page({
   groupCode:function(res) {
     var that = this;
     var pkId = res.currentTarget.dataset.pkid;
-
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
+    wx.navigateTo({
+      url: '/pages/pk/message/message?pkId='+pkId,
+    })
+    // var httpClient = template.createHttpClient(that);
+    // httpClient.setMode("label", true);
+    // httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
 
   },
   approverMessageDetail:function(res){
@@ -467,7 +482,146 @@ Page({
       }
     })
 
-  }
+  },
+
+
+  setLocation:function(res){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid; 
+    var index = res.currentTarget.dataset.index;
+
+    template.createOperateDialog(that).show("添加/更新主题位置", "添加当前位置到主题，以便附近用户可看到主题...", function () {
+      tip.showContentTip("定位中...")
+      that.setNetLocation(pkId,index);
+    }, function () {});
+  },
+
+  setNetLocation: function (pkId,index) {
+    let that = this;
+    wx.getSetting({
+      success: (res) => {
+        console.log(JSON.stringify(res))
+        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
+        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
+        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+          wx.showModal({
+            title: '请求授权当前位置',
+            content: '需要获取您的地理位置，请确认授权',
+            success: function (res) {
+              if (res.cancel) {
+                wx.showToast({
+                  title: '拒绝授权',
+                  icon: 'none',
+                  duration: 1000
+                })
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      //再次授权，调用wx.getLocation的API
+                      that.getLocation(pkId,index);
+                    } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 1000
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {
+          //调用wx.getLocation的API
+          that.getLocation(pkId,index);
+        }
+        else {
+          //调用wx.getLocation的API
+          that.getLocation(pkId,index);
+        }
+      }
+    })
+  },
+  // 获取定位当前位置的经纬度
+  getLocation: function (pkId,index) {
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        let speed = res.speed
+        let accuracy = res.accuracy;
+        tip.showContentTip("定位中...")
+        that.getLocal(latitude, longitude,pkId,index)
+      },
+      fail: function (res) {
+        console.log('fail' + JSON.stringify(res))
+      }
+    })
+  },
+  // 获取当前地理位置
+  getLocal: function (latitude, longitude,pkId,index) {
+    let that = this;
+    var myAmapFun = new amapFile.AMapWX({key:'528540a597af4bb3937965f09078dba4'});
+    myAmapFun.getRegeo({
+      success: function(data){
+        var cityCode = data[0].regeocodeData.addressComponent.citycode;
+        var cityName = data[0].regeocodeData.addressComponent.city;
+        var desc = data[0].desc;
+        var name = data[0].name;
+        var latitude = data[0].latitude;
+        var longitude = data[0].longitude;
+
+        var msg = name+"&&TAG&&"+desc+"&&TAG&&"+cityName+"&&TAG&&"+cityCode+"&&TAG&&"+latitude+"&&TAG&&"+longitude;
+
+        var httpClient = template.createHttpClient(that);
+        httpClient.setMode("", true);
+        httpClient.addHandler("success", function (location) {
+          tip.showContentTip("更新主题位置...") 
+          var msg = "pks[" + index + "].location"
+          that.setData({
+            [msg]: location
+          })
+         
+
+  
+        })
+        httpClient.send(request.url.setLocation, "GET",
+          {
+            pkId:pkId,
+            name:name,
+            desc:desc,
+            city:cityName,
+            cityCode:cityCode,
+            latitude:latitude,
+            longitude:longitude
+          }
+        );    
+
+
+        //成功回调
+        that.setData({
+          address:data[0].desc
+        })
+        console.log("地址:",latitude,longitude,data);
+      },
+      fail: function(info){
+        //失败回调
+        tip.showContentTip("获取位置失败...");
+      }
+    })
+
+
+
+  },
 
 
 })

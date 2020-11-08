@@ -868,7 +868,7 @@ Page({
   setLocation:function(){
     var that = this;
       template.createOperateDialog(that).show("添加/更新主题位置", "添加当前位置到主题，以便附近用户可看到主题...", function () {
-
+      tip.showContentTip("定位中...") 
       that.setNetLocation();
     }, function () {});
   },
@@ -936,6 +936,7 @@ Page({
         let longitude = res.longitude
         let speed = res.speed
         let accuracy = res.accuracy;
+        tip.showContentTip("定位中...") 
         that.getLocal(latitude, longitude)
       },
       fail: function (res) {
@@ -959,10 +960,11 @@ Page({
         var msg = name+"&&TAG&&"+desc+"&&TAG&&"+cityName+"&&TAG&&"+cityCode+"&&TAG&&"+latitude+"&&TAG&&"+longitude;
 
         var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
+        httpClient.setMode("", true);
         httpClient.addHandler("success", function (location) {
 
-          // var loc = "pk.location";
+          tip.showContentTip("更新主题位置...") 
+  
           that.setData({
             "pk.location":location
           })

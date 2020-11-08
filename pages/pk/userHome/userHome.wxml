@@ -10,8 +10,8 @@
 
     <view class="css pr-3vw pl-3vw z2 " >
 
-                <view class="h-50"></view>
-                <view class="css br-20 p-30 b-white"  bindtap="{{user?'':'login'}}" >
+               
+                <view class="css br-20 b-white p-50"  bindtap="{{user?'':'login'}}" >
                     <view class="rbc">
                         <view class="rcs" bindlongtap="{{user?'setPkCode':''}}">
                             <image class="w-100 h-100 br-100 b-48" mode="aspectFit" src="{{!user?'/images/user.png':user.imgUrl}}"></image>
@@ -22,27 +22,31 @@
                         <!-- <view bindtap="buildSample"  hover-class="" class="rcc fs-25 fw-400 c-word-6">制作封面></view> -->
                     </view>
 
+                    <view class="h-60"></view>
 
-                    <view class="rac pt-20">
-                        <view class="ccc ">
-                            <view class="fs-30 fw-700 h-40">{{pkTimes}}</view>
-                            <view class="fs-30 fw-400 c-3">我的主题</view>
+
+                    <view class="rac">
+                    
+                        <view class="ccc">
+                            <view class="rcc">
+                                <image class="w-50 h-50" mode="aspectFit" src="/images/topic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-40 fw-700 c-word-6">353</view>
+                            </view>
+                            <view class="fs-30 fw-700 c-4 p-20">我的主题</view>
                         </view>
-                        <view class="ccc p-20" hover-class="none">
-                            <view class="fs-30 fw-700 h-40">{{leftPks}}</view>
-                            <view class="fs-30 fw-400 c-3">我的图册</view>
-                        </view>   
-
-                        <view class="ccc p-20" hover-class="none">
-                            <view class="fs-30 fw-700 h-40">{{unlock}}</view>
-                            <view class="fs-30 fw-400 c-3">已解锁</view>
-                        </view>   
-
-
-                        <view class="ccc p-20" hover-class="none">
-                            <view class="fs-30 fw-700 h-40">{{inviteTimes}}</view>
-                            <view class="fs-30 fw-400 c-3">收藏</view>
-                        </view> 
+                        <view class="w-1px h-80 b-48"></view>
+                        <view class="ccc">
+                            <view class="rcc">
+                                <image class="w-50 h-50" mode="aspectFit" src="/images/pic.png"></image>
+                                <view class="w-10"></view>
+                                <view class="fs-40 fw-700 c-word-6">34</view>
+                            </view>
+                            <view class="fs-30 fw-700 c-4 p-20">我的图册</view>
+                        </view>
+                    
+                    
+                    
                     </view>
                 
                 </view>
@@ -97,7 +101,7 @@
 
                 <view class="h-50"></view>
                 <view class="css br-20 p-30 b-white"  >
-                    <view class="rbc pt-30 pb-30 b-line">
+                    <!-- <view class="rbc pt-30 pb-30 b-line">
                         <view class="rcc">
                             <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
                             <view class="w-20"></view>
@@ -120,7 +124,7 @@
                             <view class="w-10"></view>
                             <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                         </view> 
-                    </view>
+                    </view> -->
                     <view class="rbc pt-30 pb-30 b-line">
                         <view class="rcc">
                             <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
@@ -155,7 +159,7 @@
 
 
 
-    <view style="flex:1" class="cas">
+    <view style="flex:1" class="csc">
 
       <view class="rus-wrap mr-4vw ml-4vw z2">
               <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="ozm2e4r6IgyVMlA6goFt7AbB3wVw"><view class="{{user.userId==='ozm2e4r6IgyVMlA6goFt7AbB3wVw'?'c-1':'c-3'}}">local</view></view>
@@ -166,15 +170,7 @@
               <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U5"><view class="{{user.userId==='U5'?'c-1':'c-3'}}">U5</view></view>
               <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U6"><view class="{{user.userId==='U6'?'c-1':'c-3'}}">U6</view></view>
               <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U7"><view class="{{user.userId==='U7'?'c-1':'c-3'}}">U7</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U8"><view class="{{user.userId==='U8'?'c-1':'c-3'}}">U8</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U9"><view class="{{user.userId==='U9'?'c-1':'c-3'}}">U9</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U10"><view class="{{user.userId==='U10'?'c-1':'c-3'}}">U10</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U11"><view class="{{user.userId==='U11'?'c-1':'c-3'}}">U11</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U12"><view class="{{user.userId==='U12'?'c-1':'c-3'}}">U12</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U13"><view class="{{user.userId==='U13'?'c-1':'c-3'}}">U13</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U14"><view class="{{user.userId==='U14'?'c-1':'c-3'}}">U14</view></view>
-              <view class="rcc pt-10 m-10 pb-10 pl-20 pr-20  br-10 b-white fs-25 fw-400 c-3"  bindtap="setUser" data-user="U15"><view class="{{user.userId==='U15'?'c-1':'c-3'}}">U15</view></view>
-    
+ 
       </view>    
     
     

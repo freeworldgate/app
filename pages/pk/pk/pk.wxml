@@ -43,8 +43,8 @@
         <view class="css" style="padding:2vw" >
 
             <view class="css">
-                            <view hidden="{{!pk}}" class="css br-20 "  style="background-position: center;background-image: url({{pk.backUrl}});background-repeat: repeat-y;background-size: 105% auto;">
-                                <view class="css br-20 z2 b-white pr-3vw pl-3vw box8" >
+                            <view hidden="{{!pk}}" class="css br-20 "  style="background-position: top;background-image: url({{pk.backUrl}});background-repeat: repeat-y;background-size: 105% auto;">
+                                <view class="css br-20 z2 pr-3vw pl-3vw  b-pk-back-hot" >
                                             <view class="rbc c-word-7">
                                                     <view  class="rcc">
                                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/complain.png"></image>
@@ -81,10 +81,15 @@
                                             </view>
 
                                             <view class="css">
-                                                <view class="rss " data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk">
-                                                    <image class="rcc w-130 h-130 br-20" mode="aspectFit" src="{{pk.user.imgUrl}}"></image>
+                                                <view class="rss " >
+                                                    <navigator class="rcc" hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{pk.user.userId}}">
+                                                        <view class="rcc w-130 h-130 br-20" style="background-position: top;background-image: url({{pk.backUrl}});background-repeat: repeat-y;background-size: 105% auto;">
+                                                        </view>
+                                                    </navigator>
+                                                    
+
                                                     <view class="w-20"></view>
-                                                    <view class="cas" style="flex:1">
+                                                    <view class="cas" style="flex:1" data-topic="{{pk.topic}}" data-watchword="{{pk.watchWord}}" bindtap="showPk">
                                                         <view class="css"><view class="rus line-1-start fs-35 fw-700 c-4"   >{{pk.topic}}</view></view>
                                                         <view class="css "><view class="rus line-2-start fs-28 fw-400 c-4">{{pk.watchWord}}</view></view>
                                                     </view>
@@ -96,18 +101,18 @@
                                      
                                             <view class="css pt-50 pb-50">
                                                 <view class="rbc ">
-                                                                                                                                                                        <view  hidden="{{!approve}}"  class="ccc "  bindtap="{{approve.linkMethod}}">
+                                                                                                                                                                        <navigator hover-class="none" class="ccc "   url="/pages/pk/comments/comments?id={{pk.pkId}}&type=0">
                                                                                                                                                                             <view class="rcc w-90 h-90 br-90 b-white box8">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{approve.icon}}"></image>
                                                                                                                                                                                 <view class="absolute pb-70 pl-60 rcc">
-                                                                                                                                                                                    <view class="rcc pl-15 pr-15 br-30 h-30 b-0 c-white fs-20 fw-400">{{pk.comment>999?'999+':pk.comment}}</view>
+                                                                                                                                                                                    <view hidden="{{pk.comment === 0}}" class="rcc pl-15 pr-15 br-30 h-30 b-red c-white fs-20 fw-400">{{pk.comment>999?'999+':pk.comment}}</view>
                                                                                                                                                                                 </view>
                                                                                                                                                                                 
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
                                                                                                                                                                             <view class="rcc fs-25 fw-400 c-4">{{approve.name}}</view>
                                                                                                                                                                             
-                                                                                                                                                                        </view>
+                                                                                                                                                                        </navigator>
 
 
                                                                                                                                                             
@@ -124,7 +129,7 @@
                                                                                                                                                                             <view class="rcc w-90 h-90 br-90 b-white box8">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{approving.icon}}"></image>
                                                                                                                                                                                 <view class="absolute pb-70 pl-60 rcc">
-                                                                                                                                                                                    <view class="rcc pl-15 pr-15 br-30 h-30 b-0 c-white fs-20 fw-400">{{pk.greate>999?'999+':pk.greate}}</view>
+                                                                                                                                                                                    <view hidden="{{pk.greate === 0}}" class="rcc pl-15 pr-15 br-30 h-30 b-red c-white fs-20 fw-400">{{pk.greate>999?'999+':pk.greate}}</view>
                                                                                                                                                                                 </view>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -136,7 +141,7 @@
                                                                                                                                                                             <view class="rcc w-90 h-90 br-90 b-white box8">
                                                                                                                                                                                 <image class="rcc w-40 h-40 " mode="aspectFit" src="{{post.icon}}"></image>
                                                                                                                                                                                 <view class="absolute pb-70 pl-60 rcc">
-                                                                                                                                                                                    <view class="rcc pl-15 pr-15 br-30 h-30 b-0 c-white fs-20 fw-400">{{pk.approved>999?'999+':pk.greate}}</view>
+                                                                                                                                                                                    <view hidden="{{pk.approved === 0}}" class="rcc pl-15 pr-15 br-30 h-30 b-red c-white fs-20 fw-400">{{pk.approved>999?'999+':pk.approved}}</view>
                                                                                                                                                                                 </view>
                                                                                                                                                                             </view>
                                                                                                                                                                             <view class="h-20"></view>
@@ -163,7 +168,7 @@
                                                         <view class="w-30"></view>
                                                         <view class="rcc">
                                                             <view wx:if="{{user.userId === pk.user.userId}}" class="rcc pt-30 pb-30" bindtap="approvingList">
-                                                                <image class="rcc w-40 h-40 "  mode="aspectFit" src="/images/waiting3.png"></image>
+                                                                <image class="rcc w-30 h-30 "  mode="aspectFit" src="/images/waiting3.png"></image>
                                                                 <view class="w-5"></view>
                                                                 <view  class="rcc fs-25 fw-300 c-3">发布中({{pk.approving}})</view>  
 

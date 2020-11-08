@@ -14,7 +14,27 @@
     </view> -->
 
 
-    <view class="h-30"></view>
+    <view class="css z2 " style="margin-left:2vw;margin-right:2vw;">
+
+                <view class="h-50"></view>
+                <navigator hover-class="none" class="css br-20 p-30 b-white" url="/pages/pk/userPublishPk/userPublishPk?userId={{targetUser.userId}}" >
+                    <view class="rbc pt-10 pb-10 ">
+                        <view class="rcc">
+                            <image class="w-70 h-70 br-70" mode="aspectFill" src="{{targetUser.imgUrl}}"></image>
+                            <view class="w-20"></view>
+                            <view class="rcc fs-30 fw-400 c-4">他/她的主题</view>
+                        </view> 
+                        <view class="rcc">
+                            <view class="rcc fs-30 fw-400 c-4">{{activePks}}个</view>
+                            <view class="w-10"></view>
+                            <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                        </view> 
+                    </view>
+             
+                </navigator>
+            
+            
+    </view>
 
 
     
@@ -395,7 +415,7 @@
 
     <view class="rcc h-32px " bindtap="back">
         <image class="w-30 h-30" mode="aspectFit" src="{{post?'/images/back1.png':'/images/back.png'}}"></image>
-        <view class="rcc fs-30 fw-400">用户记录</view>
+        <view class="rcc fs-30 fw-400">他的图册</view>
     </view>
 
       <!-- <view class="rcc h-32px ">

@@ -144,12 +144,16 @@ Page({
 
 
   onShow:function () {
-
     var that = this;
+    // var that = this;
+    // 
+    // if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("label");}
+    // else{}
     var user = wx.getStorageSync('user');
-    if(user && (that.data.posts.length === 0) && !that.data.pkEnd ){that.init("label");}
-    else{}
-    
+    if(user && !that.data.pageTag){
+      that.setData({user:user});
+      that.queryInvites("page");
+    }
 
   },
 
@@ -159,14 +163,17 @@ Page({
     if(user){
       that.setData({user:user})
     }
-    if(user && (that.data.posts.length === 0))
+    if(user &&  !that.data.pageTag)
     {
       that.queryInvites(tab);
     }
   },
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryInvites("label");
+      
+      var that = this;
+      if(that.data.pageTag){that.queryInvites("label");}else{that.queryInvites("page");}
+      
   },
 
   /**
