@@ -232,19 +232,6 @@
     </view>
 
 
-
-
-    <!-- //分割标题 -->
-    <!-- <view hidden="{{!cpost}}" class="css z2">
-        <view style="height:20vw;width:100vw; background-position: center;background-image: url({{creatorImg}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
-    </view> -->
-    <!-- <view hidden="{{!cpost}}" class="rcs z2"  style="padding:2vw">
-     
-        <view class="h-35 w-10 b-100"></view>
-        <view class="w-10"></view>
-        <view class="fs-35 fw-700 c-4">首页图册</view>
-    </view> -->
-
     <!-- 榜主图册 -->
     <view hidden="{{!cpost}}" class="css z2 ">
        
@@ -601,16 +588,6 @@
         
     </view>
 
-    <!-- <view hidden="{{!posts || posts.length<2}}" class="rcs z2"  style="padding:2vw">
-
-        <view class="h-35 w-10 b-100"></view>
-        <view class="w-10"></view>
-        <view class="fs-35 fw-700 c-4">图册集</view>
-    </view> -->
-
-    <!-- <view hidden="{{!posts || posts.length<2}}" class="css z2">
-        <view style="height:20vw;width:100vw; background-position: center;background-image: url({{otherImg}});background-repeat: no-repeat;background-size: 100% auto;" ></view>
-    </view> -->
 
     <view class="css z2" >
         <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
@@ -924,9 +901,7 @@
 
 
 
-    
-     <!-- <view class="cbs h-52vw b-pk cardback6" style="background-position: bottom;background-image: url({{imgBack}});background-repeat: no-repeat;background-size: 100% auto;"> 
-     </view>  -->
+
 
 
     

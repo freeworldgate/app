@@ -77,11 +77,11 @@
                             <view class="rcc fs-30 fw-400 c-4">评论</view>
                         </view> 
                        
-                        <view class="ccc">
+                        <!-- <view class="ccc">
                             <view class="rcc w-60 h-60"><view class="rcc "><image class="w-40 h-40" mode="aspectFit" src="/images/collection.png"></image></view></view>
                       
                             <view class="rcc fs-30 fw-400 c-4">收藏</view>
-                        </view>                                                                             
+                        </view>                                                                              -->
                                                                   
                         <view class="ccc">
                             <view class="rcc w-60 h-60"><view class="rcc "><image class="w-40 h-40" mode="aspectFit" src="/images/complain.png"></image></view></view>
@@ -125,6 +125,18 @@
                             <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
                         </view> 
                     </view> -->
+                    <view class="rbc pt-30 pb-30 b-line">
+                        <view class="rcc">
+                            <image class="w-40 h-40" mode="aspectFit" src="/images/collection.png"></image>
+                            <view class="w-20"></view>
+                            <view class="rcc fs-30 fw-400 c-4">收藏</view>
+                        </view> 
+                        <view class="rcc">
+                            <view class="rcc fs-30 fw-400 c-4">0个</view>
+                            <view class="w-10"></view>
+                            <image class="w-30 h-30" mode="aspectFit" src="/images/more.png"></image>
+                        </view> 
+                    </view>
                     <view class="rbc pt-30 pb-30 b-line">
                         <view class="rcc">
                             <image class="w-40 h-40" mode="aspectFit" src="/images/topic.png"></image>
@@ -219,7 +231,7 @@
   <view class="rcs " style="height:32px">
 
       <view class="rcc h-32px ">
-          <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
+          <image class="h-40 w-40"  mode="aspectFit" src="/images/user2.png"></image>
           <view class="fs-30 fw-400">我的</view>
       </view>
 

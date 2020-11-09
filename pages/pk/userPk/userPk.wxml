@@ -214,7 +214,7 @@
   <view class="rcs " style="height:32px">
 
       <view class="rcc h-32px ">
-          <image class="h-32px w-32px" mode="aspectFit" src="/images/pk.png"></image>
+          <image class="h-40 w-40"  mode="aspectFit" src="/images/userpost2.png"></image>
           <view class="fs-30 fw-400">我的主题</view>
       </view>
 

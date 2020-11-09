@@ -30,7 +30,7 @@
                                     <view class="css  b-white br-20 ">
                                         <view class="css h-200">
                                             <view class="rbc p-30">
-                                                <navigator class="rcc " hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{pk.user.userId}}">
+                                                <navigator class="rcc " hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{comment.user.userId}}">
                                                     <image class="h-50 w-50 br-50" mode="aspectFill" src="{{comment.user.imgUrl}}" ></image>
                                                     <view class="w-20"></view>
                                                     <view class="rus  fs-25 fw-400 line-1-start c-12 w-250">{{comment.user.userName}}</view>

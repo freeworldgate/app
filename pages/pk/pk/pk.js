@@ -963,7 +963,7 @@ Page({
         httpClient.setMode("", true);
         httpClient.addHandler("success", function (location) {
 
-          tip.showContentTip("更新主题位置...") 
+          tip.showContentTip("更新主题位置") 
   
           that.setData({
             "pk.location":location

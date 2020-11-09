@@ -585,7 +585,7 @@ Page({
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("", true);
         httpClient.addHandler("success", function (location) {
-          tip.showContentTip("更新主题位置...") 
+          tip.showContentTip("更新主题位置") 
           var msg = "pks[" + index + "].location"
           that.setData({
             [msg]: location
