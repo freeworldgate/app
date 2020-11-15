@@ -1,4 +1,4 @@
-<view class="cbs h-100vh cardback7"  style="background-image: url({{imgBack}});">
+<view class="cbs h-100vh b-48"  style="background-position: top;background-image: url({{imgBack}});background-repeat: repeat-y;background-size: 100% 100%;" >
 
 
 
@@ -13,7 +13,7 @@
           <view class="rus fs-25 fw-400 ">
               <!-- <view class="rus c-white"></view>
               <view class="w-10"></view> -->
-              <view class="rus c-white line-1-start">修改建议:{{post.rejectText}}</view>
+              <view class="rus c-word-6 f-shadow3 line-1-start">修改建议:{{post.rejectText}}</view>
           </view>
 
           
@@ -413,28 +413,22 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc b-edit h-70 w-70 br-70"  bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
+                                    <view class="rcc b-edit h-60 w-60 br-60"  bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
                                     </view> 
                                     <view class="w-80"></view>
 
-                                    <view class="rcc b-export h-70 w-70 br-70"  bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                                    <view class="rcc b-export h-60 w-60 br-60"  bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
                                     </view>     
                                     <view class="w-80"></view>
-                                    <view class="rcc b-fresh h-70 w-70 br-70"  bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
+                                    <view class="rcc b-fresh h-60 w-60 br-60"  bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/fresh.png"></image>
                                     </view>     
                         
                                 </view>
-                                <view wx:if="{{post.statu.key === 3}}" class="rcc">
-                                    <view class="rcc h-60 w-150 b-goappro br-20" bindtap="goApproving" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}">
-                                        <view class="rcc fs-23 fw-300 c-white">去审核</view>
-                                        <image class="rcc w-20 h-20" mode="aspectFit" src="/images/right4.png"></image>
-                                    </view>
-                                
-                                </view>
-                                <view wx:else class="rcc fs-25 fw-300 c-3">{{post.time}}</view>                            </view>
+
+                                <view class="rcc fs-25 fw-300 c-3">{{post.time}}</view>                            </view>
 
 
 
@@ -497,40 +491,103 @@
     
     </view>
     <view></view>
-    <!-- <view class="rbc pl-2-5vw pr-2-5vw">
-        <view></view>
-        <view wx:if="{{post.statu.key ===3}}" class="rcc w-300 h-80 b-white br-80" bindtap="goApproving">
-            
+
+    <view hidden="{{!button}}" class="css pb-30">
+    
+
+        <view wx:if="{{button.button === 0}}" class="rbc pl-50 pr-50">
+            <view></view>
+
+
             <view class="rcc">
-                <image class="rcc w-30 h-30 " mode="aspectFit" src="/images/appro.png"></image>
-            </view>
-            <view class="w-20"></view>
-            <view class="rcc fs-28 fw-400 c-4">去发布</view>
-            
-        </view>
-        <view wx:else class="ccc">
         
-        </view>
-        <view></view>
-    </view> -->
+                            <view  class="rcc" >
+                            
+                                                    <button  class=" w-100 h-100 br-100 rcc box100 b-publish" bindtap="groupCode">
+                                                        <view class="rcc ">
+                                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/group2.png"></image>
+                                                        </view>
 
-    <view  class="rcc ">
-          <view hidden="{{post.statu.key !=3}}" class="rcc fs-25 fw-400 c-1 pb-20">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view>
-    </view>
+                                                    </button>
+                            </view>
+                            <view class="w-70"></view>
+                            <view  class=" rcc">
+                                                    <button  open-type="share" class=" w-100 h-100 br-100 rcc box100 b-share">
+                                                        <view class="rcc ">
+                                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/share2.png"></image>
+                                                        </view>
 
-</view>
-
-<view class="rcs customBar z100" style="top:{{top}}px">
-
-    <view class="rcc h-32px " bindtap="back">
-        <image class="w-30 h-30" mode="aspectFit" src="{{post?'/images/back1.png':'/images/back.png'}}"></image>
-        <view class="{{post?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400'}} ">我的图册</view>
-    </view>
+                                                    </button>
+                            </view>
 
 
-</view>
+
+            </view>
 
     
+            <!-- <view hidden="{{post.statu.key !=3}}" class="rcc fs-25 fw-400 c-1 pb-20">驳回{{post.rejectTimes}}次,最多允许修改{{post.maxRejectTimes}}次</view> -->
+        </view>
+        <view wx:else class="rcc">
+
+            <view wx:if="{{button.button === 1}}" class="rcc fs-30 fw-700 w-500 h-100 br-100 b-white" bindtap="approvePost" >
+                                                        
+                                                                    <!-- <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
+                                                                    <view class="w-10"></view> -->
+                                                                    <view class="fs-30 fw-700 c-1">{{button.name}}</view>
+                                                        
+            </view>
+            <button wx:else class="rcc fs-30 fw-700 w-500 h-100 br-100 b-49" bindtap="{{button.linkMethod}}">
+                                                                
+                                                                    <!-- <image class="w-30 h-30" mode="aspectFit" src="{{button.icon}}"></image>
+                                                                      <view class="w-10"></view> -->
+                                                                    <view class="fs-30 fw-700 c-3">{{button.name}}</view>
+                                                                
+            </button>
+        </view>
+    </view>
+    <view></view>
+</view>
+
+<view class="rcs customBar z4" style="top:{{top}}px">
+
+    <view class="rcc h-32px " bindtap="back">
+        <image class="w-30 h-30" mode="aspectFit" src="{{post&&imgBack?'/images/back1.png':'/images/back.png'}}"></image>
+        <image class="rcc w-30 h-30 pl-10 pr-10"  mode="aspectFit" src="/images/invite2.png"></image>
+        <view class="{{post&&imgBack?'rcc fs-30 fw-400 c-white':'rcc fs-30 fw-400'}} ">我的图册</view>
+    </view>
+
+
+</view>
+<!-- <view wx:if="{{post.statu.key === 3}}" class="rcc">
+    <view hidden="{{!post}}">
+    
+        <view class="rcc pkbutton z20">
+            <view  class="rcc" >
+            
+                                    <button  class=" w-100 h-100 br-100 rcc box100 b-publish" bindtap="groupCode">
+                                        <view class="rcc ">
+                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/group2.png"></image>
+                                        </view>
+
+                                    </button>
+            </view>
+            <view class="w-70"></view>
+            <view  class=" rcc">
+                                    <button  open-type="share" class=" w-100 h-100 br-100 rcc box100 b-share">
+                                        <view class="rcc ">
+                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/share2.png"></image>
+                                        </view>
+
+                                    </button>
+            </view>
+
+
+
+        </view>
+    </view>
+</view> -->
+
+
 <!-- <view  class="rcc leftBar b-post1"  bindtap="fresh">
       <view class="rcc pb-30 pl-30">刷新图片按钮</view>
                          

@@ -105,12 +105,14 @@ Page({
 
             template.createLabelLoading(that).hide();
             wx.setStorageSync("action", "userPost")
-            wx.setStorageSync("post", post)
+            wx.setStorageSync("userPost", post)
             wx.navigateBack({
               complete: (res) => {
-                  // wx.setStorageSync('publish', true);
+                  
+                  
+
                   wx.navigateTo({
-                    url: '/pages/pk/editApproveComment/editApproveComment?pkId=' + that.data.pkId + "&postId=" + post.postId,
+                    url: '/pages/pk/mypost/mypost?pkId=' + that.data.pkId + "&postId=" + post.postId,
                   })
 
               },

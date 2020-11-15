@@ -152,6 +152,7 @@ Page({
     var user = wx.getStorageSync('user');
     if(user && !that.data.pageTag){
       that.setData({user:user});
+      template.createPageLoadingError(that).hide();
       that.queryInvites("page");
     }
 
@@ -171,7 +172,7 @@ Page({
   onPullDownRefresh:function (params) {
       var that = this;
       
-      var that = this;
+      template.createPageLoadingError(that).hide();
       if(that.data.pageTag){that.queryInvites("label");}else{that.queryInvites("page");}
       
   },
@@ -290,18 +291,22 @@ Page({
 
   goApproving:function (res) {
     var that = this;
+
     var pkId =  res.currentTarget.dataset.pkid;
     var postId =  res.currentTarget.dataset.postid;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("noApprove", function (urlPath) {
-          wx.navigateTo({
-            url: urlPath,
-          })
-          that.setData({verfiy:true})
-
+    wx.navigateTo({
+      url: '/pages/pk/mypost/mypost?pkId='+pkId+"&postId="+postId,
     })
-    httpClient.send(request.url.goApproving, "GET", { pkId: pkId, postId: postId});
+    // var httpClient = template.createHttpClient(that);
+    // httpClient.setMode("label", true);
+    // httpClient.addHandler("noApprove", function (urlPath) {
+    //       wx.navigateTo({
+    //         url: urlPath,
+    //       })
+    //       that.setData({verfiy:true})
+
+    // })
+    // httpClient.send(request.url.goApproving, "GET", { pkId: pkId, postId: postId});
 
 
 

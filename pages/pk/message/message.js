@@ -37,15 +37,18 @@ Page({
         top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
     })
+    login.getUser(function(user){
+      that.setData({
+        pkId:options.pkId,
+        userId:user.userId,
+        type:1
+      })
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("page", true);
+      httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId});
 
-    that.setData({
-      pkId:options.pkId,
-      userId:options.userId,
-      type:options.type
     })
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("page", true);
-    httpClient.send(request.url.queryGroupCode, "GET",{pkId: that.data.pkId});
+
 
   },
 
@@ -71,7 +74,7 @@ Page({
 
             var httpClient = template.createHttpClient(that);
             httpClient.setMode("label", true);
-            httpClient.send(request.url.uploadGroupCode, "GET",{pkId: that.data.pkId,url:urls[0],type:that.data.type});
+            httpClient.send(request.url.uploadGroupCode, "GET",{pkId: that.data.pkId,url:urls[0],type:1});
 
         }, function(){});
 

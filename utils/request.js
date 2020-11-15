@@ -1,5 +1,5 @@
- var host = 'https://www.211shopper.com'; 
-// var host = 'http://192.168.137.1:8080'; 
+//  var host = 'https://www.211shopper.com'; 
+var host = 'http://192.168.137.1:8080'; 
 // var host = 'http://192.168.43.67:8080'; 
 
 // 上传图片接口 
@@ -91,7 +91,7 @@ var url = {
         confirmSelectCashier: `${host}/pk/confirmSelectCashier`,
         queryActiveGroupCode: `${host}/pk/queryActiveGroupCode`,
         
-        confirmComplain: `${host}/pk/confirmComplain`,
+     
 
 
         setApprover: `${host}/pk/setApprover`, 
@@ -234,7 +234,20 @@ var url = {
         addComment:`${host}/pk/addComment`, 
         queryComments:`${host}/pk/queryComments`, 
         nextCommentPage:`${host}/pk/nextCommentPage`, 
+        complainList:`${host}/pk/complainList`, 
+        morecomplainList:`${host}/pk/morecomplainList`, 
+
+        queryGreateUsers:`${host}/pk/queryGreateUsers`, 
+        queryMoreGreateUsers:`${host}/pk/queryMoreGreateUsers`, 
+        likePk:`${host}/pk/likePk`, 
+        collectPk:`${host}/pk/collectPk`, 
         
+        
+
+
+
+        setPkTips:`${host}/pk/setPkTips`,
+
         showInfo:`${host}/pk/showInfo`, 
 
         

@@ -2,16 +2,18 @@
   "pages": [
 
     "pages/pk/home/home",
+    "pages/pk/locate/locate",
     "pages/pk/preHome/preHome",
     "pages/pk/userPk/userPk",
     "pages/pk/userPost/userPost",
     "pages/pk/userPublishPost/userPublishPost",
     "pages/pk/userPublishPk/userPublishPk",
     "pages/pk/comments/comments",
+    "pages/pk/complains/complains",
     "pages/pk/showInfo/showInfo",
     "pages/pk/invite/invite",
-    "pages/pk/prepost/prepost",
 
+    "pages/pk/singlepost/singlepost",
     "pages/pk/pk/pk",
     "pages/pk/prepk/prepk",
     "pages/pk/drawImg/drawImg",
@@ -25,11 +27,13 @@
 
     "pages/pk/approvePostList/approvePostList",
     "pages/pk/approvingPostList/approvingPostList",
+    "pages/pk/approvingList/approvingList",
     "pages/pk/uploadImgs/uploadImgs",
  
     "pages/pk/message/message",
-
+    "pages/pk/prepost/prepost",
     "pages/pk/post/post",
+    "pages/pk/mypost/mypost",
     "pages/pk/selectPker/selectPker",
     "pages/pk/userHome/userHome",
 
@@ -61,6 +65,11 @@
       "iconPath": "images/hot1.png", 
       "selectedIconPath": "images/hot2.png", 
       "text": "首页"
+    },{
+      "pagePath":"pages/pk/locate/locate",
+      "iconPath": "images/locate1.png", 
+      "selectedIconPath": "images/locate.png", 
+      "text": "附近"
     },{
       "pagePath": "pages/pk/userPk/userPk",
       "iconPath": "images/userpost1.png",  

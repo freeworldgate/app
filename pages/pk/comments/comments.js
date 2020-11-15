@@ -17,7 +17,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    left:100,
+    left:60,
+    text:"",
     comments:[]
   },
 
@@ -47,13 +48,13 @@ Page({
 
   _input:function(res){
     var value = res.detail.value;
-    if (value.length > 100) {
+    if (value.length > 60) {
       showTip("内容超出长度");
       // return;
     }
     this.setData({
       'text': value,
-      'left':100 - value.length
+      'left':60 - value.length
     })
   },
   queryComments:function(tab,id,type)
@@ -99,7 +100,8 @@ Page({
       ncoms.unshift(comment);
       that.setData({
         comments: ncoms,
-        text:""
+        text:"",
+        left:60
       })
     })
     httpClient.send(request.url.addComment, "GET",{ id:that.data.id,type:that.data.type ,text: that.data.text,});

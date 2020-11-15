@@ -8,11 +8,11 @@
     <view class="h-50"></view>
     <view class="css pr-3vw pl-3vw">
         <view class="css p-20 b-40-1 " >
-            <textarea adjustPosition="true" bindinput="_input" class=" h-150 fs-35 fw-400" cursorSpacing="50" fixed="true" maxlength="100" placeholder="说点什么" value="{{text}}"></textarea>
+            <textarea adjustPosition="true" bindinput="_input" class=" h-150 fs-35 fw-400" cursorSpacing="50" fixed="true" maxlength="60" placeholder="说点什么" value="{{text}}"></textarea>
         </view>
         <view class="rbc p-20">
             <view class="fs-20 fw-400 c-3">还可输入{{left}}个字</view>
-            <view class="rcc w-120 h-60 br-20 b-red fs-25 fw-400 c-white" bindtap="publish">发布</view>
+            <view class="{{text.length<1?'rcc w-120 h-60 br-20 b-noactive fs-25 fw-400 c-white':'rcc w-120 h-60 br-20 b-red fs-25 fw-400 c-white'}} " bindtap="{{text.length<1?'':'publish'}}">发布</view>
         </view>
     </view>
     <view class="h-50"></view>
@@ -23,10 +23,37 @@
             <view class="css">
             
 
-                <view class="css pr-3vw pl-3vw"  >
+                <view class="rus-wrap pr-2vw pl-2vw"  >
                                 <block wx:for="{{comments}}" wx:for-index="bindex1" wx:for-item="comment" wx:key="pkkey">
-                                
-                                    <view class="h-30"></view>
+
+                                    <view class="css w-48vw" style="margin-top:4vw">
+                                        <view class="css pl-2vw pr-2vw">
+                                            <view class="css b-white br-20 pl-2vw pr-2vw">
+                                                <view class="rbc-nowrap pt-30 pb-30">
+                                                    <navigator class="rcc " hover-class="none" url="/pages/pk/userPublishPost/userPublishPost?userId={{comment.user.userId}}">
+                                                        <image class="h-40 w-40 br-40" mode="aspectFill" src="{{comment.user.imgUrl}}" ></image>
+                                                        <view class="w-20"></view>
+                                                        <view class="rus  fs-25 fw-400 line-1-start c-12 w-200">{{comment.user.userName}}</view>
+                                                    </navigator>
+                                                    <view class="rus  fs-20 fw-300 c-3"></view>
+                                                </view>
+                                                <view class="cas h-220 ">
+                                                    <view class="rcc line-5-center fs-25 fw-300 c-4 ">{{comment.text}}</view>
+                                                    <view></view>
+                                                </view>
+                                                <view class="rbc-nowrap pt-20 pb-20">
+                                                    <view></view>
+                                                    <view class="rus  fs-20 fw-300 c-3">{{comment.time}}</view>
+                                                </view>
+
+                                                
+                                            </view>
+                                        </view>
+
+                                    
+
+                                    </view>
+                                    <!-- <view class="h-30"></view>
                                     <view class="css  b-white br-20 ">
                                         <view class="css h-200">
                                             <view class="rbc p-30">
@@ -48,7 +75,7 @@
                                             </view>
                                         
                                         </view>
-                                    </view>
+                                    </view> -->
                                     
 
 
@@ -82,7 +109,7 @@
   <view class="rcs " style="height:32px">
 
       <view class="rcc h-32px ">
-          <image class="h-60 w-60" mode="aspectFit" src="/images/message.png"></image>
+          <image class="h-40 w-40" mode="aspectFit" src="/images/message.png"></image>
           <view class="fs-30 fw-400">留言({{nums}})</view>
       </view>
 

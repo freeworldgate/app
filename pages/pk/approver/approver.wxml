@@ -5,12 +5,12 @@
     <view class="css">
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-4vw pr-4vw" style="height:32px">
-                <view class="rcc h-32px w-32px br-32px b-white z102" bindtap="relaunch">
+                <view class="rcc h-32px  z102" bindtap="relaunch">
                     <image class="w-45 h-45" mode="aspectFit" src="/images/home.png"></image>
                 </view>
                 <view class="w-20"></view>
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-white">{{t4}}</view>
+                    <view class="rcc fs-30 fw-400 c-4">{{t4}}</view>
        
 
                 </view>
@@ -298,15 +298,15 @@
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
                                     <navigator class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}"> 
-                                        <image  class="box9 h-70 w-70 br-70" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
+                                        <image  class="box9 h-60 w-60 br-60" mode="aspectFill" src="{{post.creator.imgUrl}}"></image>
                                     </navigator>
                                     <view class="w-80"></view>
 
-                                    <view class="rcc b-export h-70 w-70 br-70" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
-                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/mypic.png"></image>
-                                    </view>     
+                                    <view class="rcc b-export h-60 w-60 br-60"  bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
+                                    </view>      
                                     <view class="w-80"></view>
-                                    <view class="rcc b-fresh h-70 w-70 br-70" bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
+                                    <view class="rcc b-fresh h-60 w-60 br-60" bindtap="freshPost" data-index="{{bindex}}" data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/fresh.png"></image>
                                     </view>     
                         
@@ -654,11 +654,11 @@
     
     <view class="rac">
 
-            <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'rcc h-80 w-250 br-80 b-white':'rcc h-80 w-250 br-80 b-48'}} " bindtap="{{((post.statu.key!=1) && (user.userId === creator.userId))?'agree':''}}">
+            <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'rcc h-80 w-250 br-80 b-white':'rcc h-80 w-250 br-80 b-49'}} " bindtap="{{((post.statu.key!=1) && (user.userId === creator.userId))?'agree':''}}">
                 <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'fs-25 fw-400 c-1':'fs-25 fw-400 c-3'}}">{{t1}}</view>
             </view>
 
-            <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'rcc h-80 w-250 br-80 b-white':'rcc h-80 w-250 br-80 b-48'}} " bindtap="{{((post.statu.key!=1) && (user.userId === creator.userId))?'reject':''}}" data-post="{{post}}">
+            <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'rcc h-80 w-250 br-80 b-white':'rcc h-80 w-250 br-80 b-49'}} " bindtap="{{((post.statu.key!=1) && (user.userId === creator.userId))?'reject':''}}" data-post="{{post}}">
                 <view class="{{((post.statu.key!=1) && (user.userId === creator.userId))?'fs-25 fw-400 c-1':'fs-25 fw-400 c-3'}}">{{tt1}}</view>
             </view>
 

@@ -44,7 +44,7 @@ Page({
 
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", true);
-    httpClient.send(request.url.queryApprovedPost, "GET",{pkId: that.data.pkId});
+    httpClient.send(request.url.queryApprovedPost, "GET",{pkId: that.data.pkId, type:0});
 
   },
 
@@ -67,7 +67,7 @@ Page({
             approvedPosts:that.data.approvedPosts.concat(posts)
         })
       })
-      httpClient.send(request.url.queryMoreApprovedPost, "GET",{pkId: that.data.pkId, approverUserId: that.data.approverUserId,currentApprovedPage: that.data.currentApprovedPage});
+      httpClient.send(request.url.queryMoreApprovedPost, "GET",{pkId: that.data.pkId,page:that.data.page, type:0});
     
   },
   approverComment:function (res) {
@@ -96,5 +96,16 @@ Page({
 
   },  
 
-  
+  importPost:function(res){
+    var that = this;
+    var postId =  res.currentTarget.dataset.postid;
+    var pkId =  res.currentTarget.dataset.pkid;
+    var style =  res.currentTarget.dataset.style;
+    var post =  res.currentTarget.dataset.post;
+    wx.setStorageSync('importPost', post);
+    wx.navigateTo({
+      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style ,
+    })
+
+  },
 })

@@ -528,6 +528,18 @@
     /* padding-right: 70rx;
     padding-left: 70rpx; */
 }
+.pkTipDialog{
+    width: 100%;
+    /* height: 30%; */
+    position: fixed;
+    z-index: 31;
+    bottom: 0;
+    background-color: white;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx; 
+    /* top:0px; */
+    left: 0;
+}
 .paymentTip{
     width: 80vw;
 

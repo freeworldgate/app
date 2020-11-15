@@ -95,6 +95,7 @@ Page({
     var user = wx.getStorageSync('user');
     if(user && !that.data.pageTag){
       that.setData({user:user});
+      template.createPageLoadingError(that).hide();
       that.queryPks("page");
     }
 
@@ -114,8 +115,13 @@ Page({
   onPullDownRefresh:function (params) {
       var that = this;
       
-      var that = this;
-      if(that.data.pageTag){that.queryPks("label");}else{that.queryPks("page");}
+      template.createPageLoadingError(that).hide();
+      if(that.data.pageTag){
+        
+        that.queryPks("label");
+      }else{
+        that.queryPks("page");
+      }
       
   },
 
@@ -329,7 +335,27 @@ Page({
 
   },
 
+  approvingList:function(res){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkid;
+    login.getUser(function(user){
+        if(user.userType === 0){
+          wx.navigateTo({
+            url: '/pages/pk/approvingPostList/approvingPostList?pkId=' + pkId,
+          
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/pk/approvingList/approvingList?pkId=' + pkId,
+ 
+          })
+        }
 
+
+
+    })
+
+  },
 
   deletePk:function(res)
   {
@@ -490,7 +516,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid; 
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("添加/更新主题位置", "添加当前位置到主题，以便附近用户可看到主题...", function () {
+    template.createOperateDialog(that).show("添加主题位置", "将主题锁定到当前位置，以便附近用户可见...", function () {
       tip.showContentTip("定位中...")
       that.setNetLocation(pkId,index);
     }, function () {});

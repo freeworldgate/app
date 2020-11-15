@@ -115,13 +115,26 @@ Page({
 
     
   },
-  approvingList:function (params) {
+  approvingList:function(res){
     var that = this;
-    login.getUser(function (user) {
-      wx.navigateTo({
-        url: '/pages/pk/approvingPostList/approvingPostList?pkId=' + that.data.pkId,
-      })
+    var pkId = res.currentTarget.dataset.pkid;
+    login.getUser(function(user){
+        if(user.userType === 0){
+          wx.navigateTo({
+            url: '/pages/pk/approvingPostList/approvingPostList?pkId=' + that.data.pkId,
+          
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/pk/approvingList/approvingList?pkId=' + that.data.pkId,
+ 
+          })
+        }
     })
+
+
+
+
   },
   approveList:function (params) {
     var that = this;
@@ -155,43 +168,37 @@ Page({
     });
 
   },
-  addGapFunc(gap){
+  like:function(){
     var that = this;
-    if(gap === 1){that.setData({greateStatu:!that.data.greateStatu})}
-    if(gap === 2){that.setData({dislikeStatu:!that.data.dislikeStatu})}
-    if(gap === 3){that.setData({inviteStatu:!that.data.inviteStatu})}
+    login.getUser(function(user){
+      that.setData({greateStatu:!that.data.greateStatu});
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);    
+      httpClient.send(request.url.likePk, "GET",{pkId: that.data.pkId});
+    })
+  },
+  collect:function(){
+    var that = this;
+    login.getUser(function(user){
 
-    if(that.data.user.userId === that.data.pk.user.userId)
-    {
-      top.showContentTip("创建用户不支持操作");
-      return;
-    }
-    else
-    {
-
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("", true);    
-        httpClient.send(request.url.addGap, "GET",{pkId: that.data.pkId,gap:gap});
-    }
+      that.setData({inviteStatu:!that.data.inviteStatu})
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);    
+      httpClient.send(request.url.collectPk, "GET",{pkId: that.data.pkId});
+    })
 
   },
-  addGap:function(res){
-    var that = this;
-    var gap = parseInt(res.currentTarget.dataset.gap);
+  goPost:function(){
 
-    login.getUser(function(user){
-      that.addGapFunc(gap);
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkId;
+    var postId = res.currentTarget.dataset.postId;
+
+    wx.navigateTo({
+      url: '/pages/pk/prepost/prepost?pkId='+pkId + "&postId=" + postId,
     })
 
 
-
-
-
-
-
-
-
-    
   },
 
   checkUserPost:function(){
@@ -208,12 +215,6 @@ Page({
         that.createPay(all);
       });
 
-
-
-
-      // template.createOperateDialog(that).show(tip1.castV2,tip1.castV3,function(){
-      //   // that.uploadImgs();
-      // },function(){});
 
 
 
@@ -519,8 +520,26 @@ Page({
   onReady:function (params) {
     
   },
+  goPost:function(res){
+    var that = this;
+    var postId = res.currentTarget.dataset.postid;
+    var pkId = res.currentTarget.dataset.pkid;
+    wx.navigateTo({
+      url: '/pages/pk/mypost/mypost?pkId='+pkId+"&postId="+postId,
+    })
+
+  },
   onShow:function(){
-    // var that = this;
+    var that = this;
+    var userPost = wx.getStorageSync('userPost');
+    if(userPost)
+    {
+        wx.removeStorageSync('userPost')
+        that.setData({
+          userPost:userPost
+        })
+    }
+
     // setTimeout(function(){
     //     var user = wx.getStorageSync("user");
     //     if(user && !that.data.inviteTag)
@@ -551,7 +570,12 @@ Page({
     var that = this;  
 
     template.createOperateDialog(that).show("提示", "只有一次投诉机会,确定要投诉吗?投诉后图册将无法修改...", function () {
-      template.createEditTextDialog(that).show("投诉", "编辑投诉信息","", 60, function (text) {
+
+      template.createEditImageDialog(that).setDialog("投诉", "编辑投诉信息", 1, function () {
+
+      }, function (text, urls) {
+        //上传成功
+  
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
         httpClient.addHandler("success", function () {
@@ -561,9 +585,26 @@ Page({
             })
 
         })
-        httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text});
+        httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text,url:urls[0]});
+  
+      }, function () {
+        //上传失败
+  
+      }).show();
+
+      // template.createEditTextDialog(that).show("投诉", "编辑投诉信息","", 60, function (text) {
+      //   var httpClient = template.createHttpClient(that);
+      //   httpClient.setMode("label", true);
+      //   httpClient.addHandler("success", function () {
+          
+      //       that.setData({
+      //         complainStatu:true
+      //       })
+
+      //   })
+      //   httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text});
     
-      });
+      // });
     }, function () {});
   },
   openCpostText:function()
@@ -683,22 +724,18 @@ Page({
 
   groupCode:function(params) {
 
+
+
+
     var that = this;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.send(request.url.viewGroupCode, "GET",{pkId:that.data.pkId});   
-
-    // var that = this;
-    // login.getUser(function (user) {
-
-    //     wx.navigateTo({
-    //       url: "/pages/pk/message/message?pkId=" +  ,
-    //     })
+    login.getUser(function(user){
+        wx.navigateTo({
+          url: '/pages/pk/message/message?pkId='+ that.data.pk.pkId +'&type=1',
+        })
 
 
-
-
-    // })
+    })
+    
 
 
 
@@ -867,7 +904,7 @@ Page({
   },
   setLocation:function(){
     var that = this;
-      template.createOperateDialog(that).show("添加/更新主题位置", "添加当前位置到主题，以便附近用户可看到主题...", function () {
+      template.createOperateDialog(that).show("添加主题位置", "将主题锁定到当前位置，以便附近用户可见...", function () {
       tip.showContentTip("定位中...") 
       that.setNetLocation();
     }, function () {});
@@ -980,21 +1017,7 @@ Page({
             latitude:latitude,
             longitude:longitude
           }
-        );    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        );   
 
         //成功回调
         that.setData({
@@ -1011,4 +1034,34 @@ Page({
 
 
   },
+
+  editTip:function()
+  {
+    var that = this;
+    template.createPkTipDialog(that).show(that.data.tips,that.data.pk.tips,that.data.maxTips,function(newTips){
+      var ids = [];
+      that.setData({
+        'pk.tips':newTips
+      });
+      for (var i = 0; i< newTips.length;i++) {
+        ids.unshift(newTips[i].id);  
+      }
+  
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.send(request.url.setPkTips, "GET", { pkId: that.data.pk.pkId, tips:ids});
+
+
+    });
+
+
+
+
+
+
+
+
+  }
+
+
 })

@@ -186,8 +186,8 @@ function createTipDialog(page) {
 }
 //操作框
 function createOperateDialog(page) {
-  if (page.operateDialog) {
-    return page.operateDialog;
+  if (page.data.operateDialog) {
+    return page.data.operateDialog;
   }
   var operateDialog = new Object();
   operateDialog.visible = false;
@@ -235,7 +235,7 @@ function createOperateDialog(page) {
       'operateDialog.text': "",
       'operateDialog.visible': false,
     })
-    page.operateDialog = undefined;
+    page.data.operateDialog = undefined;
   }
   page.operateDialog_confirm = function () {
     if (!operateDialog.statu === 0) {
@@ -251,14 +251,14 @@ function createOperateDialog(page) {
     operateDialog.hide();
     operateDialog.cancel();
   };
-  page.operateDialog = operateDialog;
+  page.data.operateDialog = operateDialog;
   return operateDialog;
 }
 
 
 function createPayDialog(page) {
-  if (page.payDialog) {
-    return page.payDialog;
+  if (page.data.payDialog) {
+    return page.data.payDialog;
   }
   var payDialog = new Object();
   payDialog.visible = false;
@@ -280,7 +280,7 @@ function createPayDialog(page) {
     page.setData({
       'payDialog.visible': false,
     })
-    page.payDialog = undefined;
+    page.data.payDialog = undefined;
   }
 
   page.payDialog_single = function () {
@@ -295,8 +295,84 @@ function createPayDialog(page) {
     payDialog.hide();
   };
 
-  page.payDialog = payDialog;
+  page.data.payDialog = payDialog;
   return payDialog;
+}
+
+
+function createPkTipDialog(page) {
+  if (page.data.pkTipDialog) {
+    return page.data.pkTipDialog;
+  }
+  var pkTipDialog = new Object();
+  pkTipDialog.visible = false;
+  pkTipDialog.tips = [];
+  pkTipDialog.maxTips = 3;
+  pkTipDialog.pkTips = [];
+  pkTipDialog.confirm = function () { };
+
+  pkTipDialog.show = function (tips, pkTips,maxTips, confirm) {
+
+    pkTipDialog.confirm = confirm;
+    page.setData({
+      'pkTipDialog.tips':tips,
+      'pkTipDialog.maxTips':maxTips,
+      'pkTipDialog.pkTips':pkTips,
+      'pkTipDialog.visible': true,
+    })
+
+  }
+  pkTipDialog.hide = function () {
+    page.setData({
+      'pkTipDialog.visible': false,
+    })
+    page.data.pkTipDialog = undefined;
+  }
+
+  page.pkTipDialog_confirm = function () {
+    pkTipDialog.hide();
+    pkTipDialog.confirm(pkTipDialog.pkTips);
+  };
+  page.pkTipDialog_cancel = function () {
+    pkTipDialog.hide();
+  };
+  page._pkTipDialog_addTip = function(res){
+    var tip =  res.currentTarget.dataset.tip;
+    if(pkTipDialog.pkTips.length >=pkTipDialog.maxTips)
+    {
+        return;
+    }
+
+
+
+
+    for (var i = pkTipDialog.pkTips.length-1;i >= 0 ;i--) {
+          if (pkTipDialog.pkTips[i].id === tip.id) 
+          {
+            return        //执行后aa.length会减一
+          }
+    }
+
+    pkTipDialog.pkTips.unshift(tip);
+    page.setData({
+      'pkTipDialog.pkTips': pkTipDialog.pkTips,
+    })
+
+  };
+  
+
+  page._pkTipDialog_delTip = function(res){
+    var tip =  res.currentTarget.dataset.tip;
+    var index =  res.currentTarget.dataset.index;
+    page.data.pkTipDialog.pkTips.splice(index, 1); 
+   
+    page.setData({
+      'pkTipDialog.pkTips': pkTipDialog.pkTips,
+    })
+
+  };
+  page.data.pkTipDialog = pkTipDialog;
+  return pkTipDialog;
 }
 
 
@@ -1510,7 +1586,7 @@ function pageInit(page) {
 
 
 
-module.exports = { createDialog,createEditPkDialog,uploadImages3,createPayDialog,createShowPkDialog, createUpdatePkDialog,pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
+module.exports = { createDialog,createEditPkDialog,createPkTipDialog,uploadImages3,createPayDialog,createShowPkDialog, createUpdatePkDialog,pageInit, pageInitLoading, createHttpClient, createTipDialog, createDownloadImageDialog, createUploadImageDialog, createShortTextDialog, createEditNumberDialog, createOperateDialog, createPageLoading, createPageLoadingError, createLabelLoading, createLabelLoadingSuccess, createLabelLoadingError, createSelectionDialog, createEditImageDialog, createEditTextDialog }
 
 
 

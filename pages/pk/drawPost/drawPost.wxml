@@ -5,11 +5,11 @@
             <view style="height:{{top}}px"></view>
             <view class="rcs pl-2vw pr-2vw" style="height:32px" bindtap="back">
                 <view class="rcc h-32px w-32px br-32px z102">
-                    <image class="w-30 h-30" mode="aspectFit" src="/images/back1.png"></image>
+                    <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
                 </view>
                 
                 <view class="rcs c-4">
-                    <view class="rcc fs-30 fw-400 c-white">导出画报</view>
+                    <view class="rcc fs-30 fw-400 c-4">导出画报</view>
        
 
                 </view>
