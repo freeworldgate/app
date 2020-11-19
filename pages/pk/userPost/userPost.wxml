@@ -303,18 +303,19 @@
                             </view>
                             <view class="rbc pt-10 pb-10">
                                 <view class="rus">
-                                    <view class="rcc b-edit  h-60 w-60 br-60" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
+                                    <view class="rcc box8  h-60 w-60 br-60" bindtap="editText" data-index="{{bindex}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/write3.png"></image>
                                     </view> 
                                     <view class="w-80"></view>
-                                    <view class="rcc b-export h-60 w-60 br-60" bindtap="{{post.statu.key===3?'':'importPost'}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}" data-style="{{post.style}}" data-post="{{post}}">
-                                        <image class="rcc w-30 h-30" mode="aspectFit" src="{{post.statu.key===3?'/images/mypic2.png':'/images/mypic.png'}}"></image>
-                                    </view>  
+                                  
+                                    <navigator class="rcc box8 h-60 w-60 br-60" url="/pages/pk/comments/comments?id={{post.postId}}&type=1">
+                                        <image class="rcc w-30 h-30" mode="aspectFit" src="/images/message3.png"></image>
+                                    </navigator>  
                                     <!-- <view class="rcc b-export box9" style="height:70rpx;width:70rpx;border-radius: 70rpx;" bindtap="importPost" data-style="{{post.style}}" data-pkid="{{post.pkId}}" data-postid="{{post.postId}}"  data-post="{{post}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/mypic.png"></image>
                                     </view>      -->
                                     <view class="w-80"></view>
-                                    <navigator class="rcc b-fresh h-60 w-60 br-60" hover-class="none" url="/pages/pk/mypost/mypost?pkId={{post.pkId}}&postId={{post.postId}}">
+                                    <navigator class="rcc box8 h-60 w-60 br-60" hover-class="none" url="/pages/pk/mypost/mypost?pkId={{post.pkId}}&postId={{post.postId}}">
                                         <image class="rcc w-30 h-30" mode="aspectFit" src="/images/pic1.png"></image>
                                     </navigator>     
                         

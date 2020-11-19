@@ -129,10 +129,7 @@ Page({
 
     var that = this;
     that.locate();
-    wx.hideShareMenu({
-      complete: (res) => {},
-    })
-    
+
         //Top高度
     inviteReq.getHeight(function (res) {
         that.setData({
@@ -140,14 +137,7 @@ Page({
         })
     })
 
-    var fromUser = options.fromUser;
-    if(fromUser){
-     
-      wx.setStorageSync("fromUser", fromUser);
-      that.setData({
-        fromUser:fromUser,
-      })
-    }
+
     var pkId = options.pkId;   
     if(options.lock === "1")
     {
@@ -156,17 +146,10 @@ Page({
     this.setData({
       pkId:pkId
     })
-    wx.setStorageSync("pkId", pkId);
+
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);
     var user = wx.getStorageSync("user");
-    httpClient.addHandler("error", function (tip) {
-      template.createOperateDialog(that).show("提示",tip,function(){
-        wx.reLaunch({
-          url: '/pages/pk/home/home',
-        })
-    },function(){});
-    })
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});
     that.setData({
       user:user,

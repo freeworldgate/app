@@ -1,31 +1,48 @@
 <view class="css z3 b-white"  style="min-height:100vh">
 
-        <view  style="cbs" style="width: 100vw; height: 50vw;background-position: top;background-image: url({{creator.imgUrl}});background-repeat: no-repeat;background-size: 100% auto;">
-            <view style="width: 100vw; height: 46vw;"></view>
-            <view class="b-white" style="width: 100vw; height: 4vw;"></view>
+        <view  style="cbs" style="width: 100vw; height: 50vw;background-position: top;background-image: url({{pk.backUrl}});background-repeat: no-repeat;background-size: 100% auto;">
+            <view style="width: 100vw; height: 40vw;"></view>
+            <view class="b-white" style="width: 100vw; height: 10vw;"></view>
 
         
         </view>
         <view class="absolute cbs" style="width:100vw; height:50vw">
             <view style="width: 100vw; height: 34vw;"></view>
-            <view class="rbc " style="width: 100vw; height: 16vw;padding-left:12vw">
-                <image class="" style="width: 16vw; height: 16vw; border-radius:10rpx" mode="aspectFill" src="{{creator.imgUrl}}"></image>
-                <view class="cas pl-20" style="flex:1">
-                    <view class="css">
-                       <view class="rus line-1-start fs-30 fw-650 c-white f-shadow3" >{{creator.userName}}</view>
+            <view class="rss " style="width: 100vw; height: 16vw">
+                <view class="" style="width:12vw"></view>
+                <navigator hover-class="none" class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{pk.user.userId}}">
+                    <image class="box8" style="width: 16vw; height: 16vw; border-radius:10rpx" mode="aspectFill" src="{{pk.user.imgUrl}}"></image>
+                </navigator>
+                <view class="css pl-3vw pr-3vw" style="flex:1">
+                    <view class="" style=" height: 6vw;"></view>
+             
+                    <view class="cas " style=" height: 10vw;">
+                            <view class="rus line-1-start fs-30 fw-650 c-word-6 f-shadow3" >欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君欢迎各位打卡君!</view>
                     </view>
-                    <view class="h-30"></view>
+               
+                   
                     
                 </view>
             </view>
         </view>
 
+    <!-- <view class="rbc pl-3vw pr-3vw">
+        <view class="fs-25 pl-20 pr-20 pt-10 pb-10 br-10 b-48 ml-2vw mr-2vw">今天</view>
+        <view class="fs-25 pl-20 pr-20 pt-10 pb-10 br-10 b-48 ml-2vw mr-2vw">昨天</view>
+        <view class="fs-25 pl-20 pr-20 pt-10 pb-10 br-10 b-48 ml-2vw mr-2vw">前天</view>
+        <view class="fs-25 pl-20 pr-20 pt-10 pb-10 br-10 b-48 ml-2vw mr-2vw">9/20</view>
+        <view class="fs-25 pl-20 pr-20 pt-10 pb-10 br-10 b-48 ml-2vw mr-2vw">9/19</view>
+    </view>
+
+
+    <view class="h-50"></view> -->
 
     <view class="css z3 ">
-        
         <view class="rss">
-            <view class="css" style="width: 25vw;height:14vw">
-                      
+            <view class="css" style="width: 25vw;height:10vw">
+                        <view class="rbc">
+                       
+                        </view>
                         <view class="rss" style="flex:1">
                             <view style="flex:1"></view>
                             <view class="w-5vw l-line"></view>
@@ -33,15 +50,83 @@
             </view>
             <view class="w-3vw"></view>
             <view class="rss" style="width: 72vw">
-                        <!-- <view class="css" style="width:62" >
+            
+                    
+            </view>
+        </view>
+
+        
+        <view class="rss">
+            <view class="css" style="width: 25vw">
+                        <view class="rbc">
+                            <view></view>
+                            <view class="rcc w-10vw h-10vw"><image class="rcc w-40 h-40  " src="/images/location.png" mode="aspectFill"></image></view>
+                        </view>
+                        <view class="rss" style="flex:1">
+                            <view style="flex:1"></view>
+                            <view class="w-5vw l-line"></view>
+                        </view>
+            </view>
+            <view class="w-3vw"></view>
+            <view class="rss" style="width: 72vw">
+                        <view class="css" style="width:62vw" >
                             <view class="css">
                                 <view class="h-15"></view>
-                                <view class="rus line-1-start fs-35 fw-650 c-word-6 f-shadow3" >{{creator.userName}}</view>
+                                <view class="rus line-2-start fs-35 fw-650" >{{pk.location.name}} </view>
+                                <view class="rss">
+                                    <view class="ccs"><view class="fs-25 fw-300 c-word-6">地址:</view></view>
+                                    <view class="css" style="flex:1">
+                                        <view class="rus line-2-start fs-25 fw-300 c-4">南京市龙县大道</view>
+                                    </view>
+                                </view>
+                                <view class="rcs">
+                                    <view class="rcc"><view class="fs-25 fw-300 c-word-6">范围:</view></view>
+                                    <view class="rcs">
+                                        <view class="rcc fs-25 fw-300 c-4">400米</view>
+                                    </view>
+                                </view>
+                                <view class="rcs">
+                                    <view class="rcc"><view class="fs-25 fw-300 c-word-6">距离:</view></view>
+                                    <view class="rcs">
+                                        <view class="rcc fs-25 fw-300 c-4">230米</view>
+                                        <view class="w-20"></view>
+                                        <view class="rcc fs-25 fw-300 c-red">[超出可打卡范围]</view>
+                                    </view>
+                                </view>
+
             
+                            </view>
+                            <view class="h-30"></view>
+                            <view class="rbc">
+                              
+                                    <view class="ccc">
+                                        <view class="rcc "><image class="rcc w-40 h-40  " src="/images/group1.png" mode="aspectFill"></image></view>
+                                        <view class="h-20"></view>
+                                        <view class="rcc fs-25 fw-300 c-4">捞人</view>
+                                    </view>       
+                                    <view class="w-50"></view>
+                                    <view class="ccc">
+                                        <view class="rcc"><image class="rcc w-40 h-40  " src="/images/location1.png" mode="aspectFill"></image></view>
+                                        <view class="h-20"></view>
+                                        <view class="rcc fs-25 fw-300 c-4 ">位置</view>
+                                    </view>
+                                    <view hidden="{{user.userId != pk.user.userId}}" class="w-50"></view>
+                                    <view hidden="{{user.userId != pk.user.userId}}" class="ccc">
+                                        <view class="rcc"><image class="rcc w-40 h-40  " src="/images/topic.png" mode="aspectFill"></image></view>
+                                        <view class="h-20"></view>
+                                        <view class="rcc fs-25 fw-300 c-4 ">隐藏</view>
+                                    </view>
+                                    <view class="w-50"></view>
+                                    <view class="ccc">
+                                        <view class="rcc"><image class="rcc w-40 h-40" src="/images/daka.png" mode="aspectFill"></image></view>
+                                        <view class="h-20"></view>
+                                        <view class="rcc fs-25 fw-300 c-4">打卡</view>
+                                    </view>
+                         
                             </view>
                             <view class="h-100"></view>
 
-                        </view> -->
+                        </view>
                     
             </view>
         </view>
@@ -51,74 +136,98 @@
 
 
         <view class="css" wx:for="{{posts}}" wx:for-index="bindex" wx:for-item="post" wx:key="postkey">
-            <view class="rss">
+            <view class="rss " >
                 <view class="css" style="width: 25vw">
-                    <view class="rbc-nowrap pl-10">
+                    <view class="rbc-nowrap pl-10 pt-20 pb-20">
                         <view></view>
                         <view class="rcc">
                             <view class="rus-wrap fs-25 fw-300 line-2-start">23分钟</view>
                         </view>
-                        <view class="rcc">
-                            <image wx:if="{{post.pkBackUrl}}" class="rcc w-10vw h-10vw br-10 box8 " src="{{post.pkBackUrl}}" mode="aspectFill"></image>
-                            <image wx:else class="rcc w-50 h-50 " src="/images/location.png" mode="aspectFit"></image>
+                        <navigator hover-class="none" class="rcc" url="/pages/pk/userPublishPost/userPublishPost?userId={{post.creator.userId}}">
+                            <image class="rcc w-10vw h-10vw br-10 box8 " src="{{post.creator.imgUrl}}" mode="aspectFill"></image>
                             <!-- <view class="rcc absolute pt-50"><image class="rcc w-30 h-30 " src="{{post.creator.imgUrl}}" mode="aspectFill"></image></view>     -->
-                        </view>
+                        </navigator>
                     </view>
                     <view class="rss" style="flex:1">
-                        <view style="flex:1"></view>
+                        <view class="ccs" style="flex:1">
+                            <view class="h-5vw"></view>
+                            <view class="rcs">
+                                <view class="rcc fs-30 fw-700">昨天</view>
+                                <view class="w-5vw"></view>
+                            </view>
+                            <view class="h-5vw"></view>
+                            <view class="rcs">
+                                <view class="rcc fs-20 fw-400 c-4">2020</view>
+                                <view class="w-5vw"></view>
+                            </view>
+                        </view>
                         <view class="w-5vw l-line"></view>
                     </view>
                 </view>
                 <view class="w-3vw"></view>
-                <view class="rss" style="width: 72vw">
-                    <view class="css"  style="width:66vw" >
-                        <view class="rus line-2-start fs-35 fw-650" >{{post.location.name}}</view>
-                        <view class="css p-2vw b-48">
+                <view class="rss pt-20 pb-20" style="width: 72vw">
+                    <view class="css" style="width:62vw" >
+
+                        <view class="css">
                             <view class="css">
-                                <view class="css">
-                                    <view class="rus line-5-start fs-30 fw-300 " >{{post.topic}}</view>
+                                <view class="rus line-5-start fs-30 fw-300 " >{{post.topic}}</view>
+                            </view>
+                            <view class="css">
+                                <view hidden="{{bindex != 0}}" class="absolute rbc"  style="width:62vw">
+                                    <view></view>
+                                    <view class="rcc fs-25 c-white b-share fw-400 pl-20 pr-20 pt-10 pb-10 " style="pointer-events: none">顶置</view>
                                 </view>
-                                
-                                <view class="rbc">
-                                    <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill"></image>
+                                    
+                                <!-- 9张图片 -->
+                                <view wx:if="{{post.postImages.length===9}}" class="css">
+                                    <view class="rbc">
+                                        <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[0].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[1].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[2].imgUrl}}" mode="aspectFill"></image>
+                                    </view>
+                                    <view style="height: 0.6vw"></view>
+                                    <view class="rbc">
+                                        <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[4].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[5].imgUrl}}" mode="aspectFill"></image>
+                                    </view> 
+                                    <view style="height: 0.6vw"></view>
+                                    <view class="rbc">
+                                        <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[6].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[7].imgUrl}}" mode="aspectFill"></image>
+                                        <view style="width: 0.6vw"></view>
+                                        <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[8].imgUrl}}" mode="aspectFill"></image>
+                                    </view>
                                 </view>
-                                <view class="h-1vw"></view>
-                                <view class="rbc">
-                                    <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[3].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[4].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[5].imgUrl}}" mode="aspectFill"></image>
-                                </view> 
-                                <view class="h-1vw"></view>
-                                <view class="rbc">
-                                    <image class="rcc"  style="width: 20vw;height:20vw" src="{{post.postImages[6].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[7].imgUrl}}" mode="aspectFill"></image>
-                                    <view class="w-1vw"></view>
-                                    <image class="rcc" style="width: 20vw;height:20vw" src="{{post.postImages[8].imgUrl}}" mode="aspectFill"></image>
-                                </view>
+                                <view wx:else class="css"></view>
+
                             </view>
                         </view>
-                        <view class="rbc p-2vw">
+                        <view class="rbc pt-20">
                             <view class="rcc">
                                 <image class="rcc w-25 h-25" src="/images/daka.png" mode="aspectFill"></image>
                                 <view class="w-10"></view>
-                                <view class="fs-25 fw-400 c-word-6">第23次在此地打卡</view>
+                                <view class="fs-25 fw-400 c-word-6">第23天打卡</view>
                             </view>
-                            <view></view>
+                            <view class="rcc">
+                                <view hidden="{{post.creator.userId != user.userId}}" class="fs-25 fw-300">删除</view>
+                                <view hidden="{{pk.user.userId != user.userId}}" class="w-50"></view>
+                                <view hidden="{{pk.user.userId != user.userId}}" class="fs-25 fw-300">隐藏</view>
+                                <view hidden="{{pk.user.userId != user.userId}}" class="w-50"></view>
+                                <view hidden="{{pk.user.userId != user.userId || post.postImages.length===0}}" class="fs-25 fw-300">顶置</view>
+                                <!-- 预留评论和点赞 -->
+                            </view>
                         </view>
                         <view class="h-100"></view>
 
                     </view>
                 
                 </view>
-
-            
             </view>
         </view>
         <view class="css h-300">
@@ -134,15 +243,28 @@
     
 </view>
 
+<!-- <view class="userBack2 z1" style="width: 100vw; height: 100vh;" >
+    <map 
+        id="myMap"
+        style="width: 100vw; height: 100vh;"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        markers="{{markers}}"
+        circles="{{circles}}"
+        scale="16"
+        include-points="{{include-points}}"
+        show-location
+    ></map>
 
-<view class="css customBar z4">
+
+</view> -->
+<view class="css customBar z4 ">
     <view style="height:{{top}}px"></view>
     <view class="rcs  h-32px" >
             <view class="rcc">
                 <view class="rcc h-32px w-32px br-32px" bindtap="back">
                     <image class="w-30 h-30" mode="aspectFit" src="/images/back.png"></image>
                 </view>
-                <!-- <view class="fs-30 fw-300">打卡记录</view> -->
             </view>
     </view>
     <view class="h-10"></view>

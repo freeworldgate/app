@@ -20,7 +20,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    indicatorDots:false,
+    vertical: true,
+    autoplay: false,
+    circular: false,
+    current:0,
   },
 
   /**
@@ -77,6 +81,39 @@ Page({
 
 
   },
+  click:function(res){
+    var that = this;
+    var index =  res.currentTarget.dataset.index;
+    that.setData({
+      current:index
+    })
+
+  },
+  change:function(res){
+    var that = this;
+    var current =  res.detail.current;
+    that.setData({
+      current:current
+    })
+  },
+  groupCode:function(params) {
+
+
+
+
+    var that = this;
+    login.getUser(function(user){
+        wx.navigateTo({
+          url: '/pages/pk/message/message?pkId='+ that.data.pkId +'&type=1',
+        })
+
+
+    })
+    
+
+
+
+  },
   freshPost:function(res){
     var that = this;
 
@@ -104,6 +141,26 @@ Page({
     wx.navigateTo({
       url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style,
     })
+
+  },
+
+
+  onShareAppMessage:function(){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("", true);
+    httpClient.send(request.url.setApprover, "GET",{pkId: that.data.pkId,postId: that.data.postId})
+
+    return {
+      title: that.data.t55 +  "@" + that.data.creator.userName ,
+      desc: "from" + that.data.post.creator.userName + '',
+      imageUrl:that.data.post.creator.imgUrl,
+      path: '/pages/pk/approver/approver?pkId=' + that.data.pkId + "&postId=" + that.data.post.postId + "&fromUser=" + that.data.user.userId ,
+      
+    }
+    
+
+
 
   },
   isPostApproved:function () {
@@ -139,7 +196,16 @@ Page({
 
 
   },
+  approvePost:function(){
+    var that = this;
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.setApprover, "GET",{pkId: that.data.pkId,postId: that.data.postId})
 
+
+  
+
+  },
   showImg:function(res){
     var post = res.currentTarget.dataset.post;
     var index = res.currentTarget.dataset.index;
@@ -184,23 +250,24 @@ Page({
   replace:function (res) {
     var that = this;
     var index = res.currentTarget.dataset.index;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("online", function () {
-      template.createOperateDialog(that).show("提示", that.data.t3, function () {
-        that.replaceImage(index);
-      }, function () {});
-    })
-    httpClient.addHandler("offline", function () {
-      that.replaceImage(index);
+    that.replaceImage(index);
+    // var httpClient = template.createHttpClient(that);
+    // httpClient.setMode("label", true);
+    // httpClient.addHandler("online", function () {
+    //   template.createOperateDialog(that).show("提示", that.data.t3, function () {
+    //     that.replaceImage(index);
+    //   }, function () {});
+    // })
+    // httpClient.addHandler("offline", function () {
+    //   that.replaceImage(index);
 
-    })
-    httpClient.send(request.url.postStatu, "GET",
-      {
-        pkId: that.data.pkId,
-        postId: that.data.postId,
-      }
-    );
+    // })
+    // httpClient.send(request.url.postStatu, "GET",
+    //   {
+    //     pkId: that.data.pkId,
+    //     postId: that.data.postId,
+    //   }
+    // );
 
   },
 

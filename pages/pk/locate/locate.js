@@ -18,7 +18,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scale:16,
+    latitude: 30.319739999999985,
+    //经度
+    longitude: 112.222,
+    circle:[],
+    markers:[],
+    //标记点
+    // markers: [{
+    //   //标记点 id
+    //   id: 1,
+    //   //标记点纬度
+    //   latitude: 32.319739999999985,
+    //   //标记点经度
+    //   longitude: 120.14209999999999,
+    //   name: '行之当前的位置'
+    // }],
 
+    
 
 
     pks: [],
@@ -30,6 +47,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.locate();
     wx.hideShareMenu({
       complete: (res) => {},
     })
@@ -45,6 +63,81 @@ Page({
 
 
 
+  },
+
+
+
+  locate:function(){
+    let that = this;
+    wx.getSetting({
+      success: (res) => {
+        console.log(JSON.stringify(res))
+        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
+        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
+        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+          wx.showModal({
+            title: '请求授权当前位置',
+            content: '需要获取您的地理位置，请确认授权',
+            success: function (res) {
+              if (res.cancel) {
+                wx.showToast({
+                  title: '拒绝授权',
+                  icon: 'none',
+                  duration: 1000
+                })
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      //再次授权，调用wx.getLocation的API
+                      that.getLocation();
+                    } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 1000
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+        else {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+      }
+    })
+
+
+  },
+  getLocation: function () {
+    let that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        that.setData({
+          latitude : res.latitude ,
+          longitude : res.longitude
+        })
+      },
+      fail: function (res) {
+        console.log('fail' + JSON.stringify(res))
+      }
+    })
   },
   queryInvites:function (tab) {
     var that = this;
@@ -102,10 +195,9 @@ Page({
 
   showPk:function(res){
     var that = this;
-    var topic = res.currentTarget.dataset.topic;
-    var watchword =  res.currentTarget.dataset.watchword;
+    var pkId = res.currentTarget.dataset.pkid;
 
-    template.createShowPkDialog(that).show(topic,watchword)
+    template.createShowPkDialog(that).show("","")
 
   },
 
@@ -271,11 +363,67 @@ Page({
 
     wx.previewImage({
       current:imgs[index],
-      urls: [imgs[0],imgs[1],imgs[2],imgs[3],imgs[4],imgs[5],imgs[6],imgs[7],imgs[8]],
+      urls: imgs,
     })
 
 
   },
+  
+  changePk:function(res){
+    var that = this;
+
+    var current =  res.detail.current;
+    var location = that.data.pks[current].location;
+    console.log("当前PK位置:",location);
+    that.setData({
+      latitude : location.latitude/1000000,
+      longitude : location.longitude/1000000,
+      scale:16
+    })
+
+
+
+  },
+  // changeCpost:function(res){
+  //   var that = this;
+  //   var index = res.currentTarget.dataset.index;
+  //   var current =  res.detail.current;
+  //   var key = "pks["+index+"].current";
+  //   that.setData({
+  //     [key]:current
+  //   })
+ 
+  // },
+  chooseLocation:function(){
+
+    wx.chooseLocation({
+      success:(res)=>{
+        console.log("选择位置：",res.name,res.address)
+      },
+      complete: (res) => {
+        console.log("选择经纬度：",res.latitude,res.longitude)
+        
+
+      },
+    })  
+  },
+  seeLocation:function(res){
+    var location = res.currentTarget.dataset.location;
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        wx.openLocation({
+          latitude,
+          longitude,
+          scale: 18
+        })
+      }
+     })
+
+  },
+
 
   groupCode:function(res) {
     var that = this;
