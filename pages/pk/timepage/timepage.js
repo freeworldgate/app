@@ -43,8 +43,8 @@ Page({
       name: '行之当前的位置'
     }],
 
-
-
+    dates: ['12/30', '昨天', '前天', '9/19'],
+    index: 0,
 
 
     circular:false,
@@ -396,10 +396,10 @@ Page({
     
 
     return {
-        title: '邀请@'+ that.data.pk.topic ,
+        title: '一起打卡@'+ that.data.pk.topic ,
         desc: "from",
         imageUrl:that.data.pk.backUrl,
-        path: '/pages/pk/pk/pk?pkId=' + that.data.pkId + "&fromUser=" + that.data.user.userId ,
+        path: '/pages/pk/timepage/timepage?pkId=' + that.data.pk.pkId,
     }
 
 

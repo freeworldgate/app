@@ -65,7 +65,13 @@ Page({
 
   },
 
-
+  chooseLocation:function(){
+      wx.chooseLocation({
+        complete: (res) => {
+          console.log("选点:",res);
+        },
+      })
+  },
 
   locate:function(){
     let that = this;

@@ -176,6 +176,23 @@
   </view>
 
 </view>
+
+<view class="rcc chooseLocation z3">
+    
+   
+
+            <view class=" rcc">
+                                    <button  class=" w-100 h-100 br-100 rcc box8 b-white" bindtap="chooseLocation">
+                                        <view class="rcc ">
+                                            <image class="rcc w-50 h-50 " mode="aspectFit" src="/images/locate.png"></image>
+                                        </view>
+
+                                    </button>
+            </view>
+   
+
+</view>
+
 <!-- 地图 -->
 <view class="userBack2 z1" style="width: 100vw; height: 100vh;" >
     <map 

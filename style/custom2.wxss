@@ -1826,6 +1826,12 @@ mw-200{
   left: 3vw;
 }
 
+.chooseLocation{
+  position: fixed;
+  top:50vh;
+  right: 3vw;
+}
+
 /* .customBack{
   background-image: linear-gradient(to right, #79c9ff 0%, #44a4fd 100%);
 } */
