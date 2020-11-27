@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/pk/locate/locate",
+    "pages/pk/build/build",
     "pages/pk/home/home",
-
+    "pages/pk/singleLocation/singleLocation",
     "pages/pk/preHome/preHome",
     "pages/pk/userPk/userPk",
     "pages/pk/userPost/userPost",
@@ -20,14 +21,12 @@
     "pages/pk/drawPost/drawPost",
 
 
-    "pages/pk/approver/approver",
+
     "pages/pk/editApproveComment/editApproveComment",
 
 
 
-    "pages/pk/approvePostList/approvePostList",
-    "pages/pk/approvingPostList/approvingPostList",
-    "pages/pk/approvingList/approvingList",
+
     "pages/pk/uploadImgs/uploadImgs",
  
     "pages/pk/message/message",

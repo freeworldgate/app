@@ -104,17 +104,11 @@ Page({
             tip.showTip("上传成功......");
 
             template.createLabelLoading(that).hide();
-            wx.setStorageSync("action", "userPost")
             wx.setStorageSync("userPost", post)
             wx.navigateBack({
               complete: (res) => {
                   
                   
-
-                  wx.navigateTo({
-                    url: '/pages/pk/mypost/mypost?pkId=' + that.data.pkId + "&postId=" + post.postId,
-                  })
-
               },
             })
 

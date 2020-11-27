@@ -290,11 +290,6 @@ Page({
       },function(all){
         that.createPay(all);
       });
-
-
-
-
-
     })
     httpClient.addHandler("userPost", function (post) {
       template.createSinglePostDialog(that).show(post, function (newPost) {
@@ -334,7 +329,7 @@ Page({
     httpClient.send(request.url.queryUserPost, "GET",{pkId: that.data.pkId,});
   },
 
-  uploadImgs:function(successCallBack){
+  uploadImgs:function(){
     var that = this;
     wx.chooseImage({
       count: 9,

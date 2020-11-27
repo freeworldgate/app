@@ -243,6 +243,14 @@ var url = {
         collectPk:`${host}/pk/collectPk`, 
         
         
+        // 打卡应用
+        
+        removePost:`${host}/pk/removePost`, 
+        
+        searchPk:`${host}/pk/searchPk`, 
+        buildPk:`${host}/pk/buildPk`, 
+        
+
 
 
 

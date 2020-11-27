@@ -22,6 +22,7 @@ Page({
     unlock:0,
     pkTimes:0,
     inviteTimes:0,
+    mapShow:false,
     pks: [],
 
   },
@@ -44,23 +45,14 @@ Page({
       complete: (res) => {},
     })
 
-    if(that.data.user){that.init("page");}
-    else{}
+    that.init("page");
+
     
   },
   queryPks:function (tab) {
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tab, true);
-    // httpClient.addHandler("success", function (pks) {
-    //   that.setData({
-    //       pks:pks,
-    //       page:1,
-    //   })
-    //   wx.stopPullDownRefresh({
-    //     complete: (res) => {},
-    //   })
-    // })
     httpClient.send(request.url.userPks, "GET", {});
   },
 
@@ -103,14 +95,9 @@ Page({
 
   init:function (tab) {
     var that = this;
-    var user = wx.getStorageSync('user');
-    if(user){
-      that.setData({user:user})
-    }
-    if(user &&  !that.data.pageTag)
-    {
+ 
       that.queryPks(tab);
-    }
+ 
   },
   onPullDownRefresh:function (params) {
       var that = this;
@@ -356,7 +343,16 @@ Page({
     })
 
   },
-
+  hiddenMap:function(){
+    this.setData({
+      mapShow:false
+    })
+  },
+  showMap:function(){
+    this.setData({
+      mapShow:true
+    })
+  },
   deletePk:function(res)
   {
     var that = this;

@@ -19,7 +19,15 @@ Page({
    */
   data: {
 
+    scale:16,
+    latitude: 30.319739999999985,
+    //经度
+    longitude: 112.222,
+    circle:[],
+    markers:[],
+
     pks: [],
+    mapShow:false,
     pkEnd:false
   },
 
@@ -75,8 +83,16 @@ Page({
     
   },
 
-
-
+  hiddenMap:function(){
+    this.setData({
+      mapShow:false
+    })
+  },
+  showMap:function(){
+    this.setData({
+      mapShow:true
+    })
+  },
 
   onShow:function () {
 
@@ -86,12 +102,12 @@ Page({
     else{}
     
 
-  },
+  }, 
 
   init:function (tab) {
     var that = this;
     var user = wx.getStorageSync('user');
-    if(user){
+    if(user){ 
       that.setData({user:user})
     }
     if(user && (that.data.pks.length === 0))
@@ -111,7 +127,34 @@ Page({
 
   },
   
+  changePk:function(res){
+    var that = this;
+    var current =  res.detail.current;
+    var location = that.data.pks[current].location;
+    console.log("当前PK位置:",location);
+    that.setData({
+      latitude : location.latitude/1000000,
+      longitude : location.longitude/1000000,
+      scale:16
+    })
+    if(current === that.data.pks.length-1)
+    {
+      if(that.data.pkEnd){return;}
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("", true);
+      httpClient.addHandler("success", function (pagePks) {
+        that.setData({
+            page:that.data.page + 1,
+            pks:that.data.pks.concat(pagePks)
+        })
+      })
+      httpClient.send(request.url.nextInvitePage, "GET",{page:that.data.page});
+    
+    }
 
+
+
+  },
 
 
   pkDetail:function (params) {

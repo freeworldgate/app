@@ -744,6 +744,7 @@
 .w-3vw{width: 3vw}
 .w-2vw{width: 2vw}
 .h-4vw{height: 4vw}
+.w-8vw{width: 8vw}
 .w-10vw{width: 10vw}
 .h-10vw{height: 10vw}
 .w-70vw{width: 70vw}
@@ -967,7 +968,7 @@ mw-200{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
   /* background: radial-gradient(rgba(245, 236, 236, 0.262),rgba(41, 41, 41, 0.234)); */
   /* background-image: linear-gradient(to bottom, #00000036,#ffffff00,#ffffff00,#0000001a,#00000036); */
-  background-color: rgba(255, 255, 255, 0.932);
+  background-color: rgba(255, 255, 255, 0.918);
   /* background-image: linear-gradient( to bottom,#ffffffe0,#ffffffe0,#ffffffe0,#ffffffe0); */
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
@@ -981,6 +982,13 @@ mw-200{
 }
 .b-pk-location-back{
   background-color: rgba(255, 255, 255, 0.911);
+}
+.b-pk-dynamic{
+  /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
+  /* background: radial-gradient(rgba(245, 236, 236, 0.262),rgba(41, 41, 41, 0.234)); */
+  /* background-image: linear-gradient(to bottom, #00000036,#ffffff00,#ffffff00,#0000001a,#00000036); */
+  background-image: linear-gradient(to right, #ffffffec,#ffffffd2);
+  /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
 .b-pk-back{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
@@ -1079,10 +1087,10 @@ mw-200{
   background-image: linear-gradient(to bottom, #c3e93bea , #b9e201e8 );
 }
 .b-publish1{
-  background-image: linear-gradient(to bottom, #00c0f0ea , #00c0f0e8  );
+  background-image: linear-gradient(to bottom, #00c0f0ea , #00b1dde8  );
 }
 .b-publish{
-  background-image: linear-gradient(to bottom, #3bd1ffea , #00d0ffe8 );
+  background-image: linear-gradient(to right, #2ccefff3 , #00bae4f3 );
 }
 .b-post2{
   background-image: linear-gradient(to right, #9670376d, #6853258c);
@@ -1736,6 +1744,12 @@ mw-200{
 
 
 }
+.buildHead{
+  background-image: linear-gradient(to bottom,#00000070,#00000050,#00000030,#00000000 );
+}
+.buildHead1{
+  background-image: linear-gradient(to bottom,#00000050,#00000030,#00000020,#00000000 );
+}
 .userFeet{
   position: fixed;
   background-image: linear-gradient(to bottom,#00000050,#00000010,#00000010,#00000010,#00000010 );
@@ -1785,6 +1799,7 @@ mw-200{
   bottom: -20vw;
   left: -20vw;
 }
+
 .customBar2{
   position: fixed;
   width:100vw;
@@ -1825,10 +1840,14 @@ mw-200{
   height:32px;
   left: 3vw;
 }
-
+.chooseLocation1{
+  position: fixed;
+  bottom:50vh;
+  left: 3vw;
+}
 .chooseLocation{
   position: fixed;
-  top:50vh;
+  bottom:50vh;
   right: 3vw;
 }
 
@@ -2643,3 +2662,13 @@ button::after {
 
 
 
+
+
+input {
+  -webkit-user-select:auto; /*webkit浏览器*/
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}

@@ -39,7 +39,7 @@ Page({
 
 
     pks: [],
-
+    user:{}
   },
 
   /**
@@ -67,12 +67,47 @@ Page({
 
   chooseLocation:function(){
       wx.chooseLocation({
-        complete: (res) => {
-          console.log("选点:",res);
-        },
+        success:(res)=>{
+
+              wx.navigateTo({
+                url: '/pages/pk/build/build?name='+res.name + "&address="+res.address+"&latitude="+res.latitude+"&longitude="+res.longitude,
+              })
+
+        }
       })
   },
+  searchLocation:function(){
+    var that = this;
+    wx.chooseLocation({
+      success:(res)=>{
+        wx.navigateTo({
+          url: '/pages/pk/singleLocation/singleLocation?latitude='+res.latitude+"&longitude="+res.longitude+"&name="+res.name+"&address="+res.address,
+        })
 
+
+
+
+      }
+    })
+},
+
+  
+
+
+
+
+
+
+  myInvite:function(){
+    login.getUser(function(user){
+      wx.navigateTo({
+        url: '/pages/pk/invite/invite',
+      })
+
+    })
+
+
+  },
   locate:function(){
     let that = this;
     wx.getSetting({
@@ -136,7 +171,7 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         that.setData({
-          latitude : res.latitude ,
+          latitude : res.latitude -0.003,
           longitude : res.longitude
         })
       },
@@ -243,7 +278,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    var user = wx.getStorageSync('user');
+    that.setData({user:user})
     // var that = this;
     // var i = setInterval(function() {
     //   for(var i=0;i<that.data.pks.length;i++)
@@ -374,20 +411,25 @@ Page({
 
 
   },
-  
+  userCenter:function(){
+    login.getUser(function(user){
+      wx.navigateTo({
+        url: '/pages/pk/userPublishPost/userPublishPost?userId='+user.userId,
+      })
+
+    })
+  },
   changePk:function(res){
     var that = this;
 
     var current =  res.detail.current;
-    var location = that.data.pks[current].location;
+    var pk = that.data.pks[current];
     console.log("当前PK位置:",location);
     that.setData({
-      latitude : location.latitude/1000000,
-      longitude : location.longitude/1000000,
+      latitude : pk.latitude - 0.003,
+      longitude : pk.longitude,
       scale:16
     })
-
-
 
   },
   // changeCpost:function(res){
@@ -400,19 +442,19 @@ Page({
   //   })
  
   // },
-  chooseLocation:function(){
+  // chooseLocation:function(){
 
-    wx.chooseLocation({
-      success:(res)=>{
-        console.log("选择位置：",res.name,res.address)
-      },
-      complete: (res) => {
-        console.log("选择经纬度：",res.latitude,res.longitude)
+  //   wx.chooseLocation({
+  //     success:(res)=>{
+  //       console.log("选择位置：",res.name,res.address)
+  //     },
+  //     complete: (res) => {
+  //       console.log("选择经纬度：",res.latitude,res.longitude)
         
 
-      },
-    })  
-  },
+  //     },
+  //   })  
+  // },
   seeLocation:function(res){
     var location = res.currentTarget.dataset.location;
     wx.getLocation({

@@ -60,9 +60,9 @@ Page({
     l_width:l_width,
     img_width:img_width,
     small_size:small_size,
-    large_size:large_size
+    large_size:large_size,
 
-
+    posts:[]
 
   },
   locate:function(){
@@ -385,7 +385,16 @@ Page({
   },
 
 
-  
+  hiddenMap:function(){
+    this.setData({
+      mapShow:false
+    })
+  },
+  showMap:function(){
+    this.setData({
+      mapShow:true
+    })
+  },
 
 
   /**
@@ -594,29 +603,22 @@ Page({
     if(userPost)
     {
         wx.removeStorageSync('userPost')
+
+        if(that.data.posts && that.data.posts.length>0 && that.data.pk.topPostId === that.data.posts[0].postId)
+        {//存在顶置 
+          that.data.posts.splice(1, 0,userPost); 
+
+        }
+        else
+        {//不存在顶置
+          that.data.posts.unshift(userPost);
+        }
         that.setData({
-          userPost:userPost
+          posts:that.data.posts
         })
+
     }
 
-    // setTimeout(function(){
-    //     var user = wx.getStorageSync("user");
-    //     if(user && !that.data.inviteTag)
-    //     {
-    //       var httpClient = template.createHttpClient(that);
-    //       httpClient.setMode("", false);
-    //       httpClient.addHandler("invite", function (pkId) {
-    //         that.setData({inviteTag:true});
-    //         template.createOperateDialog(that).show("邀请发布图册", "根据主题参与...", function () {
-        
-    //           that.publish();
-             
-    
-    //         }, function () {});
-    //       })
-    //       httpClient.send(request.url.queryInvite, "GET", { pkId: that.data.pkId, userId: user.userId});  
-    //     }
-    // },4000)
 
     
 
@@ -706,10 +708,21 @@ Page({
     var that = this;
     var post = res.currentTarget.dataset.post;
     var pkId = res.currentTarget.dataset.pkid;
+    var index = res.currentTarget.dataset.index;
 
     template.createOperateDialog(that).show("顶置图册", "确定将该图册设置为首页?...", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
+      httpClient.addHandler("success", function (post) {
+              that.data.posts.splice(index, 1); 
+              that.data.posts.unshift(post);
+              that.setData({
+                posts: that.data.posts,
+                ['pk.topPostId']:post.postId  
+              })
+
+
+      })
       httpClient.send(request.url.topPost, "GET", { postId: post.postId,pkId:pkId });
     }, function () {});
 
@@ -717,170 +730,48 @@ Page({
 
 
   },
-
-  approverMessage:function(){
+  removePost:function(res){
     var that = this;
-    
-    if(that.data.user.userId != that.data.creator.userId){
-      return ;
-    }
 
-    template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
-      //上传成功
-      wx.hideLoading({
-        complete: (res) => {},
-      })
+    var post = res.currentTarget.dataset.post;
+    var pkId = res.currentTarget.dataset.pkid;
+    var index = res.currentTarget.dataset.index;
+
+    template.createOperateDialog(that).show("删除打卡信息?", "删除?...", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
-      httpClient.addHandler("message", function (message) {
-        that.setData({
-          'pkMessage':message,
-        })
-    })
-      httpClient.send(request.url.publishApproveMessage, "GET",
-        {
-          pkId: that.data.pkId,
-          text: text,
-          imgUrl: urls[0],
-        }
-      );
-
-    }, function () {
-      //上传失败
-      wx.hideLoading({
-        complete: (res) => {},
-      })
-    }).show();
-
-
-
-  },
-
-  approverView:function (res) {
-    var that = this;
-    var approver = res.currentTarget.dataset.approver;
-
-
-
-
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("editMessage", function (order) {
-      template.createOperateDialog(that).show("提示", "编辑审核公告...", function () {
-        // wx.navigateTo({
-          // url:'/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId + "&approverUserId=" + approver,
-        // })
-        that.approverMessage();
-      }, function () {});
-
-    })
-    httpClient.send(request.url.approverDetail, "GET", { pkId: that.data.pkId,approverId:approver });
-
-
-
-
-  },
-
-  groupCode:function(params) {
-
-
-
-
-    var that = this;
-    login.getUser(function(user){
-        wx.navigateTo({
-          url: '/pages/pk/message/message?pkId='+ that.data.pk.pkId +'&type=1',
-        })
-
-
-    })
-    
-
-
-
-  },
-  approverMessageDetail:function(res){
-    var that = this;
-    login.getUser(function (user) {
-      that.setData({
-        autoplay:false
-      })
-      wx.navigateTo({
-        url: '/pages/pk/messageInfo/messageInfo?pkId=' + that.data.pkId ,
-      })   
-    })
-
-
-  },
-  
-
-  editCpostSelfComment:function(res){
-    var that = this;
-    var post = res.currentTarget.dataset.post;
-
-
-    template.createEditTextDialog(that).show("评论", "编辑评论","", 60, function (text) {
-      
-              // , urls
-              var httpClient = template.createHttpClient(that);
-              httpClient.setMode("label", true);
-              httpClient.addHandler("success", function (cpost) {
-      
-                that.setData({
-                  cpost:cpost
-                })
-    
+      httpClient.addHandler("success", function () {
+              that.data.posts.splice(index, 1); 
+              that.setData({
+                posts: that.data.posts,
               })
-              httpClient.send(request.url.editSelfComment, "GET",
-                {
-                  pkId: that.data.pkId,
-                  postId: post.postId,
-                  text:text
-                }
-              );    
 
 
+      })
+      httpClient.send(request.url.removePost, "GET", { postId: post.postId,pkId:pkId });
+    }, function () {});
 
-    });
 
 
 
   },
-
-  editSelfComment:function(res){
+  signLocation:function(){
     var that = this;
-    var index = res.currentTarget.dataset.index;
-    var post = res.currentTarget.dataset.post;
-
-
-    template.createEditTextDialog(that).show("评论", "编辑评论","", 60, function (text) {
-      
-              // , urls
-              var httpClient = template.createHttpClient(that);
-              httpClient.setMode("label", true);
-              httpClient.addHandler("success", function (post) {
-      
-                var key = "posts[" + index + "]"
-                that.setData({
-                  [key]:post
-                })
-    
-              })
-              httpClient.send(request.url.editSelfComment, "GET",
-                {
-                  pkId: that.data.pkId,
-                  postId: post.postId,
-                  text:text
-                }
-              );    
-
-
-
-    });
-
-
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['compressed', 'original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+          var files = res.tempFilePaths;
+          wx.navigateTo({
+            url: '/pages/pk/uploadImgs/uploadImgs?imgs='+files + "&pkId=" + that.data.pkId,
+          })
+      },
+    })
 
   },
+
+
   back:function (params) {
     wx.navigateBack({
       complete: (res) => {},
