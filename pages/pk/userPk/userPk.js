@@ -3,6 +3,7 @@ var request = require('./../../../utils/request.js')
 var http = require('./../../../utils/http.js')
 var tip = require('./../../../utils/tipUtil.js')
 var login = require('./../../../utils/loginUtil.js')
+var locationUtil = require('./../../../utils/locationUtil.js')
 var route = require('./../../../utils/route.js')
 var redirect = require('./../../../utils/redirect.js')
 var uuid = require('./../../../utils/uuid.js')
@@ -18,6 +19,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scale:16,
     leftPks:0,
     unlock:0,
     pkTimes:0,
@@ -45,15 +47,21 @@ Page({
       complete: (res) => {},
     })
 
-    that.init("page");
-
+    template.createPageLoading(that).show();
+    locationUtil.getLocation(function (latitude,longitude) {
+      that.setData({
+        latitude:latitude,
+        longitude:longitude
+      })
+      that.init("page",latitude,longitude);
+    });
     
   },
-  queryPks:function (tab) {
+  queryPks:function (tab,latitude,longitude) {
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tab, true);
-    httpClient.send(request.url.userPks, "GET", {});
+    httpClient.send(request.url.userPks, "GET", {latitude:latitude,longitude:longitude});
   },
 
   /**
@@ -73,7 +81,7 @@ Page({
             pks:that.data.pks.concat(pagePks)
         })
       })
-      httpClient.send(request.url.nextUserPks, "GET",{ userId:user.userId ,page:that.data.page});
+      httpClient.send(request.url.nextUserPks, "GET",{ userId:user.userId ,page:that.data.page,latitude:that.data.latitude,longitude:that.data.longitude});
     
   },
 
@@ -84,19 +92,19 @@ Page({
   onShow:function () {
     var that = this;
 
-    var user = wx.getStorageSync('user');
-    if(user && !that.data.pageTag){
-      that.setData({user:user});
-      template.createPageLoadingError(that).hide();
-      that.queryPks("page");
-    }
+    // var user = wx.getStorageSync('user');
+    // if(user && !that.data.pageTag){
+    //   that.setData({user:user});
+    //   template.createPageLoadingError(that).hide();
+    //   that.queryPks("page",that.data.latitude,that.data.longitude);
+    // }
 
   },
 
-  init:function (tab) {
+  init:function (tab,latitude,longitude) {
     var that = this;
  
-      that.queryPks(tab);
+      that.queryPks(tab,latitude,longitude);
  
   },
   onPullDownRefresh:function (params) {
@@ -105,9 +113,9 @@ Page({
       template.createPageLoadingError(that).hide();
       if(that.data.pageTag){
         
-        that.queryPks("label");
+        that.queryPks("label",that.data.latitude,that.data.longitude);
       }else{
-        that.queryPks("page");
+        that.queryPks("page",that.data.latitude,that.data.longitude)
       }
       
   },
@@ -174,7 +182,7 @@ Page({
   updatePkPage:function(res)
   {
     var that = this;
-    var pkid = res.currentTarget.dataset.pkid;
+    var pk = res.currentTarget.dataset.pk;
     var index =  res.currentTarget.dataset.index;
 
     wx.chooseImage({
@@ -189,9 +197,11 @@ Page({
 
           var httpClient = template.createHttpClient(that);
           httpClient.setMode("label", true);
-          httpClient.addHandler("success", function (pk) {
+          httpClient.addHandler("success", function (newPk) {
             // template.createUpdatePkDialog(that).hide();
-            that.data.pks.splice(index, 1,pk); 
+            newPk.userLength = pk.userLength;
+            newPk.userLengthStr = pk.userLengthStr;
+            that.data.pks.splice(index, 1,newPk); 
             that.setData({
               pks: that.data.pks
             })
@@ -199,7 +209,7 @@ Page({
           })
     
     
-          httpClient.send(request.url.updatePkPage, "GET",{imgUrl:urls[0],pkId:pkid});
+          httpClient.send(request.url.updatePkPage, "GET",{imgUrl:urls[0],pkId:pk.pkId});
         }, function(){});
 
 
@@ -348,9 +358,17 @@ Page({
       mapShow:false
     })
   },
-  showMap:function(){
-    this.setData({
-      mapShow:true
+  showMap:function(res){
+    var that = this;
+    var pk = res.currentTarget.dataset.pk; 
+    that.setData({
+      mapShow:true,
+      // includePoints:[{latitude:that.data.latitude,longitude:that.data.longitude},{latitude:pk.marker.latitude,longitude:pk.marker.longitude}],
+      markers:[pk.marker],
+      circles:[pk.circle],
+      latitude:pk.marker.latitude,
+      longitude:pk.marker.longitude,
+      
     })
   },
   deletePk:function(res)
@@ -398,55 +416,7 @@ Page({
   }
 
   ,
-  approverMessage:function(pkId,index){
-    var that = this;
 
-      
-      template.createEditImageDialog(that).setDialog("消息", "编辑消息", 1,function(){}, function (text, urls) {
-        //上传成功
-        wx.hideLoading({
-          complete: (res) => {},
-        })
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("message", function (message) {
-          var msg = "pks[" + index + "].approveMessage"
-          that.setData({
-            [msg]: message
-          })
-          that.init("");
-
-
-
-
-
-  
-        })
-        httpClient.send(request.url.publishApproveMessage, "GET",
-          {
-            pkId: pkId,
-            text: text,
-            imgUrl: urls[0],
-          }
-        );
-  
-      }, function () {
-        //上传失败
-        wx.hideLoading({
-          complete: (res) => {},
-        })
-      }).show();
-
-  
-
-
-
-
-
-
-
-
-  },
   buildSample:function(){
     var that = this;
     template.createOperateDialog(that).show("制作样例","请根据您的主题选择9张图片制作图册封面",function(){

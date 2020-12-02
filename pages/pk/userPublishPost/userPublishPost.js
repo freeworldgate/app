@@ -115,21 +115,9 @@ Page({
       complete: (res) => {},
     })
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  
 
 
 
-  pkDetail:function (params) {
-    wx.navigateTo({
-      url: '/pages/pk/pk/pk?pkId=PK01',
-    })
-  },
   viewImg:function(res){
     var that = this;
     var url = res.currentTarget.dataset.url;
@@ -139,117 +127,38 @@ Page({
   
   },
 
-  viewPk:function(res)
-  {
+
+
+
+
+
+
+
+
+
+  deletePost:function(res){
     var that = this;
-    var pkid = res.currentTarget.dataset.pkid;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
 
-    httpClient.addHandler("group", function (link) {
-
-      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
-        wx.navigateTo({
-          url: link.castV1,
-        })
-
-    },function(){});
-    })
-    
-    httpClient.addHandler("unlock", function (link) {
-
-      template.createOperateDialog(that).show(link.castV2,link.castV3,function(){
-        wx.navigateTo({
-          url: link.castV1,
-        })
-
-    },function(){});
-    })
-    httpClient.send(request.url.viewPk, "GET",{pkId:pkid});   
-
-  },
-  groupCode:function(res) {
-    var that = this;
+    var post = res.currentTarget.dataset.post;
     var pkId = res.currentTarget.dataset.pkid;
+    var index = res.currentTarget.dataset.index;
 
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.send(request.url.viewGroupCode, "GET",{pkId:pkId});   
-
-  },
-  approverMessageDetail:function(res){
-    var that = this;
-    var pkId = res.currentTarget.dataset.pkid;
-    login.getUser(function (user) {
-
-      wx.navigateTo({
-        url: '/pages/pk/messageInfo/messageInfo?pkId=' + pkId ,
-      })   
-    })
+    template.createOperateDialog(that).show("删除打卡信息?", "删除?...", function () {
+      var httpClient = template.createHttpClient(that);
+      httpClient.setMode("label", true);
+      httpClient.addHandler("success", function () {
+              that.data.posts.splice(index, 1); 
+              that.setData({
+                posts: that.data.posts,
+              })
 
 
-  },
-
-  showPk:function(res){
-    var that = this;
-    var topic = res.currentTarget.dataset.topic;
-    var watchword =  res.currentTarget.dataset.watchword;
-
-    template.createShowPkDialog(that).show(topic,watchword)
-
+      })
+      httpClient.send(request.url.removePost, "GET", { postId: post.postId,pkId:pkId });
+    }, function () {});
 
 
 
 
   },
-  importPost:function(res){
-    var that = this;
-    var postId =  res.currentTarget.dataset.postid;
-    var pkId =  res.currentTarget.dataset.pkid;
-    var style =  res.currentTarget.dataset.style;
-    var post =  res.currentTarget.dataset.post;
-    wx.setStorageSync('importPost', post);
-    wx.navigateTo({
-      url: '/pages/pk/drawPost/drawPost?pkId=' + pkId + "&postId=" + postId +"&imgBack=" + that.data.imgBack + "&style=" + style ,
-    })
-
-  },
-
-  freshPost:function(res){
-    var that = this;
-    var index =  res.currentTarget.dataset.index;
-    var post =  res.currentTarget.dataset.post;
-    post.postImages.sort(function(){
-                   return Math.random()-0.5;
-            });
-
-    post.style = Math.floor(Math.random() * (6) + 1);
-    var upost = "posts[" + index + "]";
-    that.setData({
-      [upost]:post
-    })
-
-  },
-
-
-  goApproving:function (res) {
-    var that = this;
-    var pkId =  res.currentTarget.dataset.pkid;
-    var postId =  res.currentTarget.dataset.postid;
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("noApprove", function (urlPath) {
-          wx.navigateTo({
-            url: urlPath,
-          })
-          that.setData({verfiy:true})
-
-    })
-    httpClient.send(request.url.goApproving, "GET", { pkId: pkId, postId: postId});
-
-
-
-  },
-
-
 })

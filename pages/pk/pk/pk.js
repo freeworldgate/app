@@ -1159,10 +1159,10 @@ Page({
   selectPost:function(res){
     var that = this;
     var index =  res.currentTarget.dataset.index;
-    var index1 =  res.currentTarget.dataset.index1;
+    var sindex =  res.currentTarget.dataset.sindex;
     var key = "posts["+index+"].current";
     that.setData({
-      [key]:index1
+      [key]:sindex
     })
   }
 

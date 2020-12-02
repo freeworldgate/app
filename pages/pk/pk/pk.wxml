@@ -429,7 +429,7 @@
                             <scroll-view class="rss br-20" scrollX="true" style="white-space:nowrap;width:31.5vw">
                                 <view class="css" style="display:inline-block" wx:for="{{post.postImages}}" wx:for-index="sindex" wx:for-item="img" wx:key="postkey">
                                     <view class="rss">
-                                        <view class="rcc" style="height:10vw;width:10vw"  bindtap="selectPost" data-index="{{bindex}}" data-index1="{{sindex}}"  data-post="{{post}}">
+                                        <view class="rcc" style="height:10vw;width:10vw"  bindtap="selectPost" data-index="{{bindex}}" data-sindex="{{sindex}}"  data-post="{{post}}">
                                             <image class="br-10 {{sindex === post.current?'border10':''}}" style="height:9.5vw;width:9.5vw" mode="aspectFill" src="{{img.imgUrl}}"></image>
                                         </view>
                                         <view  style="width:0.5vw"></view>

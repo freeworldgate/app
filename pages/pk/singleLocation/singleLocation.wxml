@@ -155,7 +155,7 @@
                                                                         <view class="w-3vw"></view>
                                                                         <view class="rbc-nowrap" style="flex:1">
                                                                             <view class="css"  style="flex:1">
-                                                                                <view class="rus line-1-start fs-30 fw-300 c-4">{{pk.address}}</view>
+                                                                                <view class="rus line-1-start fs-25 fw-300 c-4">{{pk.address}}</view>
                                                                             </view>
                                                                             <view class="w-30 "></view>
                                                                             <view class="rcc pt-40 pb-40">

@@ -3,6 +3,7 @@ var request = require('./../../../utils/request.js')
 var http = require('./../../../utils/http.js')
 var tip = require('./../../../utils/tipUtil.js')
 var login = require('./../../../utils/loginUtil.js')
+var locationUtil = require('./../../../utils/locationUtil.js')
 var route = require('./../../../utils/route.js')
 var redirect = require('./../../../utils/redirect.js')
 var uuid = require('./../../../utils/uuid.js')
@@ -44,23 +45,24 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
-    that.init("page");
+    
+
+    template.createPageLoading(that).show();
+    locationUtil.getLocation(function (latitude,longitude) {
+      that.setData({
+        latitude:latitude,
+        longitude:longitude
+      })
+      that.init("page",latitude,longitude);
+    });
   },
-  queryInvites:function (tab) {
+  queryPks:function (tab,latitude,longitude) {
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tab, true);
-    // httpClient.addHandler("success", function (pks) {
-    //   that.setData({
-    //       pks:pks,
-    //       page:1,
-    //   })
-    //   // wx.stopPullDownRefresh({
-    //   //   complete: (res) => {},
-    //   // })
-    // })
-    httpClient.send(request.url.queryInvites, "GET", {});
+    httpClient.send(request.url.queryInvites, "GET", {latitude:latitude,longitude:longitude});
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
@@ -79,7 +81,7 @@ Page({
             pks:that.data.pks.concat(pagePks)
         })
       })
-      httpClient.send(request.url.nextInvitePage, "GET",{ userId:user.userId ,page:that.data.page});
+      httpClient.send(request.url.nextInvitePage, "GET",{ userId:user.userId ,page:that.data.page,latitude:that.data.latitude,longitude:that.data.longitude});
     
   },
 
@@ -88,36 +90,36 @@ Page({
       mapShow:false
     })
   },
-  showMap:function(){
-    this.setData({
-      mapShow:true
+  showMap:function(res){
+    var that = this;
+    var pk = res.currentTarget.dataset.pk; 
+    that.setData({
+      mapShow:true,
+      // includePoints:[{latitude:that.data.latitude,longitude:that.data.longitude},{latitude:pk.marker.latitude,longitude:pk.marker.longitude}],
+      markers:[pk.marker],
+      circles:[pk.circle],
+      latitude:pk.marker.latitude,
+      longitude:pk.marker.longitude,
+      
     })
   },
 
   onShow:function () {
 
-    var that = this;
-    var user = wx.getStorageSync('user');
-    if(user && (that.data.pks.length === 0) && !that.data.pkEnd ){that.init("label");}
-    else{}
+ 
     
 
   }, 
 
-  init:function (tab) {
+  init:function (tab,latitude,longitude) {
     var that = this;
-    var user = wx.getStorageSync('user');
-    if(user){ 
-      that.setData({user:user})
-    }
-    if(user && (that.data.pks.length === 0))
-    {
-      that.queryInvites(tab);
-    }
+ 
+      that.queryPks(tab,latitude,longitude);
+ 
   },
   onPullDownRefresh:function (params) {
       var that = this;
-      that.queryInvites("label");
+      that.queryPks("label",that.data.latitude,that.data.longitude)
   },
 
   /**

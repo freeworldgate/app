@@ -987,7 +987,7 @@ mw-200{
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(255, 255, 255, 0.426)); */
   /* background: radial-gradient(rgba(245, 236, 236, 0.262),rgba(41, 41, 41, 0.234)); */
   /* background-image: linear-gradient(to bottom, #00000036,#ffffff00,#ffffff00,#0000001a,#00000036); */
-  background-image: linear-gradient(to right, #ffffffec,#ffffffd2);
+  background-image: linear-gradient(to top, #00000020,#00000020);
   /* background: radial-gradient(rgba(221, 215, 215, 0.426),rgba(41, 41, 41, 0.425)); */
 }
 .b-pk-back{
@@ -1091,6 +1091,10 @@ mw-200{
 }
 .b-publish{
   background-image: linear-gradient(to right, #2ccefff3 , #00bae4f3 );
+}
+.b-publish-disable
+{
+  background-image: linear-gradient(to right, #e0e0e0f3 , #b3b3b3f3 );
 }
 .b-post2{
   background-image: linear-gradient(to right, #9670376d, #6853258c);
@@ -1318,6 +1322,9 @@ mw-200{
 }
 .border10{
   border: 1px solid rgb(255, 136, 0); 
+}
+.border10-2{
+  border: 2px solid rgb(255, 136, 0); 
 }
 .border10-1{
       border: 1px solid rgb(168, 168, 168); 
@@ -1807,7 +1814,12 @@ mw-200{
   padding-left: 3vw;
   padding-right: 3vw;
 }
-
+.customBarTop{
+  position: fixed;
+  width:100vw;
+  top: 0;
+  left: 0;
+}
 .customBar{
   position: fixed;
   width:100vw;
@@ -2672,3 +2684,18 @@ input {
   -ms-user-select:none;
   user-select:none;
 }
+.leftButton{
+  position: fixed;
+
+  left: 3vw;
+  bottom: 90vw;
+}
+.rightButton{
+  position: fixed;
+
+  right: 3vw;
+  bottom: 90vw;
+}
+
+
+

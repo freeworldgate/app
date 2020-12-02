@@ -3,6 +3,7 @@ var request = require('./../../../utils/request.js')
 var http = require('./../../../utils/http.js')
 var tip = require('./../../../utils/tipUtil.js')
 var login = require('./../../../utils/loginUtil.js')
+var locationUtil = require('./../../../utils/locationUtil.js')
 var route = require('./../../../utils/route.js')
 var redirect = require('./../../../utils/redirect.js')
 var uuid = require('./../../../utils/uuid.js')
@@ -18,12 +19,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    current:0,
     scale:16,
-    latitude: 30.319739999999985,
+    latitude: 31.9902783203125,
     //经度
-    longitude: 112.222,
+    longitude: 118.73781711154514,
     circle:[],
     markers:[],
+    includePoints:[],
     //标记点
     // markers: [{
     //   //标记点 id
@@ -47,7 +50,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.locate();
+    // that.locate();
     wx.hideShareMenu({
       complete: (res) => {},
     })
@@ -56,8 +59,14 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
   })
-  that.queryInvites("page");
 
+  locationUtil.getLocation(function (latitude,longitude) {
+    that.setData({
+      latitude:latitude,
+      longitude:longitude
+    })
+    that.queryInvites("page",latitude,longitude);
+  });
 
 
 
@@ -180,14 +189,12 @@ Page({
       }
     })
   },
-  queryInvites:function (tab) {
+  queryInvites:function (tab,latitude,longitude) {
     var that = this;
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tab, false);
     var user = wx.getStorageSync('user');
-    var fromUser = wx.getStorageSync('fromUser')
-    var pkId = wx.getStorageSync('pkId')
-    httpClient.send(request.url.queryHomePage, "GET", { userId:user.userId,fromUser:fromUser,pkId:pkId });
+    httpClient.send(request.url.queryHomePage, "GET", { userId:user.userId,latitude:latitude,longitude:longitude });
 
 
   },
@@ -322,11 +329,24 @@ Page({
     template.createPageLoadingError(that).hide();
     if(that.data.pageTag)
     {
-      that.queryInvites("label");
+     
+      locationUtil.getLocation(function (latitude,longitude) {
+        that.setData({
+          latitude:latitude,
+          longitude:longitude
+        })
+        that.queryInvites("label",latitude,longitude);
+      });
     }
     else
     {
-      that.queryInvites("page");
+      locationUtil.getLocation(function (latitude,longitude) {
+        that.setData({
+          latitude:latitude,
+          longitude:longitude
+        })
+        that.queryInvites("page",latitude,longitude);
+      });
 
     }
 
@@ -428,7 +448,9 @@ Page({
     that.setData({
       latitude : pk.latitude - 0.003,
       longitude : pk.longitude,
-      scale:16
+      circles:[pk.circle],
+      scale:16,
+      current:current
     })
 
   },

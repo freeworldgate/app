@@ -59,27 +59,8 @@ Page({
     var httpClient = template.createHttpClient(that);
     httpClient.setMode(tag, true);
     httpClient.send(request.url.queryPostById, "GET", { pkId: pkId, postId:postId});
-
-
   },
   onReady:function (params) {
-    // var that = this;
-    // setTimeout(() => {
-    //   if(!that.data.verfiy)
-    //   {
-    //     this.isPostApproved();
-    //   }
-
-
-    // }, 1000);
-
-
-
-
-
-
-
-
   },
   click:function(res){
     var that = this;

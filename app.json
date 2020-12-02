@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/pk/locate/locate",
+    "pages/pk/userCard/userCard",
     "pages/pk/build/build",
     "pages/pk/home/home",
     "pages/pk/singleLocation/singleLocation",
