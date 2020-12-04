@@ -55,6 +55,7 @@ Page({
       })
       that.init("page",latitude,longitude);
     });
+
   },
   queryPks:function (tab,latitude,longitude) {
     var that = this;
@@ -90,6 +91,13 @@ Page({
       mapShow:false
     })
   },
+  showLocation:function(res){
+    var pk = res.currentTarget.dataset.pk;
+    wx.setStorageSync('locationShow', pk)
+    wx.navigateTo({
+      url: '/pages/pk/showLocation/showLocation',
+    })
+  },
   showMap:function(res){
     var that = this;
     var pk = res.currentTarget.dataset.pk; 
@@ -100,17 +108,36 @@ Page({
       circles:[pk.circle],
       latitude:pk.marker.latitude,
       longitude:pk.marker.longitude,
+      scale:pk.type.scale
       
     })
   },
 
   onShow:function () {
+    var that = this;
+    locationUtil.getLocation(function(latitude,longitude){
 
+      if(that.data.pks.length>0){
+        for(var i=0;i<that.data.pks.length;i++)
+        {
+          var distance = locationUtil.getDistance(latitude,longitude,that.data.pks[i].latitude,that.data.pks[i].longitude);
+          var length = "pks[" + i + "].userLength"
+          var lengthStr = "pks[" + i + "].userLengthStr"
+          that.setData({
+            [length]:distance*1000,
+            [lengthStr]:distance<1?distance*1000+"米":distance+"公里"
+          })
+        }
+      }
+    })
  
     
 
   }, 
 
+  onHide:function(){
+
+  },
   init:function (tab,latitude,longitude) {
     var that = this;
  

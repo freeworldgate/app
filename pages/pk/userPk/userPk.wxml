@@ -39,12 +39,12 @@
                                                                     <view class="rss " >
                                                                         <view class="rus">
                                                                             <image class="rcc w-12vw h-12vw br-10 box8 " src="{{pk.backUrl}}" mode="aspectFill"></image>
-                                                                            <view class="absolute cbs w-12vw h-12vw br-20" bindtap="updatePkPage" data-index="{{bindex}}" data-pk="{{pk}}">
+                                                                            <!-- <view class="absolute cbs w-12vw h-12vw br-20" bindtap="updatePkPage" data-index="{{bindex}}" data-pk="{{pk}}">
                                                                                     <view class=""></view>
                                                                                     <view class="rcc ">
                                                                                         <view class="rcc h-30 w-10vw br-40 b-publish1 fs-18 fw-300 c-white">封面</view>
                                                                                     </view>
-                                                                            </view>
+                                                                            </view> -->
                                                                         </view>
 
 
@@ -114,14 +114,14 @@
                                                                                 <view class="rus line-1-start fs-25 fw-300 c-4">{{pk.address}}</view>
                                                                             </view>
                                                                             <view class="w-30 "></view>
-                                                                            <view class="rcc pt-40 pb-40">
+                                                                            <view class="rcc pt-40 pb-40" bindtap="showLocation" data-pk="{{pk}}">
                                                                                     <view class="w-20 h-30 l-line"></view>    
                                                                                     <view class="rcc border-locate pl-10 pr-10 pt-5 pb-5 br-10 " >
                                                                                                             <image class="rcc w-25 h-25" mode="aspectFit" src="/images/way.png"></image>
                                                                                                             <view class="w-10 "></view>
-                                                                                                            <view class="rcc fs-23 fs-300 c-4">距离 {{pk.userLengthStr}}</view>
+                                                                                                            <view class="rcc fs-23 fs-300 c-4">距离{{pk.userLengthStr}}</view>
                                                                                     </view>
-                                                                                    <view class="absolute h-100" style="width:30vw" bindtouchstart="showMap" bindtouchend="hiddenMap" bindtouchcancel="hiddenMap" data-pk="{{pk}}"></view>
+                                                                                    <!-- <view class="absolute h-100" style="width:30vw" bindtouchstart="showMap" bindtouchend="hiddenMap" bindtouchcancel="hiddenMap" data-pk="{{pk}}"></view> -->
                                                                             </view>
                                                                         </view>
                                                                     
@@ -478,7 +478,7 @@
 
 </view>
 <!-- 地图 -->
-<view hidden="{{!mapShow}}" class="userBack2 z4" style="width: 100vw; height: 100vh;pointer-events: none" >
+<!-- <view hidden="{{!mapShow}}" class="userBack2 z4" style="width: 100vw; height: 100vh;pointer-events: none" >
     <map 
         id="myMap"
         style="width: 100vw; height: 100vh;"
@@ -492,7 +492,7 @@
     ></map>
 
 
-</view>
+</view> -->
 
 
 

@@ -3,6 +3,7 @@ var request = require('./../../../utils/request.js')
 var http = require('./../../../utils/http.js')
 var tip = require('./../../../utils/tipUtil.js')
 var login = require('./../../../utils/loginUtil.js')
+var locationUtil = require('./../../../utils/locationUtil.js')
 var route = require('./../../../utils/route.js')
 var redirect = require('./../../../utils/redirect.js')
 var uuid = require('./../../../utils/uuid.js')
@@ -25,16 +26,7 @@ Page({
     longitude: 112.222,
     circle:[],
     markers:[],
-    //标记点
-    // markers: [{
-    //   //标记点 id
-    //   id: 1,
-    //   //标记点纬度
-    //   latitude: 32.319739999999985,
-    //   //标记点经度
-    //   longitude: 120.14209999999999,
-    //   name: '行之当前的位置'
-    // }],
+
 
     
 
@@ -54,6 +46,14 @@ Page({
           top: res.statusBarHeight + (res.titleBarHeight - 32) / 2
       })
     })
+    locationUtil.getLocation(function (latitude,longitude){
+      var distance = locationUtil.getDistance(latitude,longitude,options.latitude, options.longitude)
+      that.setData({
+        length:distance*1000,
+        lengthStr:distance<1?distance*1000+"米":distance+"公里"
+      })
+    })
+ 
     that.setData({
       latitude:options.latitude,
       longitude: options.longitude,
@@ -61,7 +61,7 @@ Page({
       address: options.address
     })
     that.queryLocation("page");
-
+    
 
 
 

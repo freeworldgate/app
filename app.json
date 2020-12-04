@@ -14,7 +14,7 @@
     "pages/pk/complains/complains",
     "pages/pk/showInfo/showInfo",
     "pages/pk/invite/invite",
-
+    "pages/pk/showLocation/showLocation",
     "pages/pk/singlepost/singlepost",
     "pages/pk/pk/pk",
     "pages/pk/prepk/prepk",
@@ -64,9 +64,15 @@
     "uploadFile": 120000
   },
   "permission":{
+    "scope.userLocationBackground":{
+      "desc":"你的位置将用于小程序使用"
+    },
     "scope.userLocation":{
       "desc":"你的位置将用于小程序使用"
     }
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "location"
+  ]
 }

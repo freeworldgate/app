@@ -40,7 +40,7 @@ Page({
 
     
 
-
+    pageTag:false,
     pks: [],
     user:{}
   },
@@ -60,21 +60,19 @@ Page({
       })
   })
 
-  locationUtil.getLocation(function (latitude,longitude) {
-    that.setData({
-      latitude:latitude,
-      longitude:longitude
-    })
-    that.queryInvites("page",latitude,longitude);
-  });
-
-
-
+    locationUtil.getLocation(function (latitude,longitude) {
+      that.setData({
+        latitude:latitude,
+        longitude:longitude
+      })
+      that.queryInvites("page",latitude,longitude);
+    });
 
 
   },
 
   chooseLocation:function(){
+    login.getUser(function(){
       wx.chooseLocation({
         success:(res)=>{
 
@@ -84,6 +82,8 @@ Page({
 
         }
       })
+    })
+
   },
   searchLocation:function(){
     var that = this;
@@ -105,7 +105,16 @@ Page({
 
 
 
+myPk:function(){
+  login.getUser(function(user){
+    wx.navigateTo({
+      url: '/pages/pk/userPk/userPk',
+    })
 
+  })
+
+
+},
 
   myInvite:function(){
     login.getUser(function(user){
@@ -117,6 +126,17 @@ Page({
 
 
   },
+  addInvite:function(){
+    var that = this;
+    var pkId = res.currentTarget.dataset.pkId;
+    var index = res.currentTarget.dataset.index;
+
+    var httpClient = template.createHttpClient(that);
+    httpClient.setMode("label", true);
+    httpClient.send(request.url.addUserInvite, "GET", { pkId: pkId});
+},
+
+
   locate:function(){
     let that = this;
     wx.getSetting({
@@ -278,8 +298,7 @@ Page({
 
   },
   onHide:function(){
-    // var that = this;
-    // clearInterval(that.data.clock);
+
   },
   /**
    * 生命周期函数--监听页面显示
@@ -288,38 +307,32 @@ Page({
     var that = this;
     var user = wx.getStorageSync('user');
     that.setData({user:user})
-    // var that = this;
-    // var i = setInterval(function() {
-    //   for(var i=0;i<that.data.pks.length;i++)
-    //   {
-    //     that.data.pks[i].imgs.sort(function(){
-    //       return Math.random()-0.5;
-    //     });
+    that.updateDistance();
 
-        
-    //     var imgs = "pks[" + i + "].imgs";
-    //     that.setData({
-    //       [imgs]:that.data.pks[i].imgs
-    //     })
+  },
+  updateDistance:function(){
+    var that = this;
+    locationUtil.getLocation(function(latitude,longitude){
+      // console.log("位置:",res);
+      if(that.data.pks.length>0){
+        for(var i=0;i<that.data.pks.length;i++)
+        {
+          var distance = locationUtil.getDistance(latitude,longitude,that.data.pks[i].latitude,that.data.pks[i].longitude);
+          var length = "pks[" + i + "].userLength"
+          var lengthStr = "pks[" + i + "].userLengthStr"
+          that.setData({
+            [length]:distance*1000,
+            [lengthStr]:distance<1?distance*1000+"米":distance+"公里"
+          })
+        }
+      }
+    })
 
-
-
-
-
-
-
-
-    //   }  
-      
-
-
-
-
-    // }, 1000)
-    // that.data.clock = i;
 
 
   },
+
+
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -349,7 +362,7 @@ Page({
       });
 
     }
-
+    that.updateDistance();
 
 
 },
@@ -446,37 +459,15 @@ Page({
     var pk = that.data.pks[current];
     console.log("当前PK位置:",location);
     that.setData({
-      latitude : pk.latitude - 0.003,
+      latitude : pk.latitude - 0.000,
       longitude : pk.longitude,
       circles:[pk.circle],
-      scale:16,
+      scale:pk.type.scale,
       current:current
     })
-
+    that.updateDistance();
   },
-  // changeCpost:function(res){
-  //   var that = this;
-  //   var index = res.currentTarget.dataset.index;
-  //   var current =  res.detail.current;
-  //   var key = "pks["+index+"].current";
-  //   that.setData({
-  //     [key]:current
-  //   })
- 
-  // },
-  // chooseLocation:function(){
 
-  //   wx.chooseLocation({
-  //     success:(res)=>{
-  //       console.log("选择位置：",res.name,res.address)
-  //     },
-  //     complete: (res) => {
-  //       console.log("选择经纬度：",res.latitude,res.longitude)
-        
-
-  //     },
-  //   })  
-  // },
   seeLocation:function(res){
     var location = res.currentTarget.dataset.location;
     wx.getLocation({

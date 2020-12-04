@@ -55,7 +55,14 @@ Page({
       })
       that.init("page",latitude,longitude);
     });
-    
+
+  },
+  showLocation:function(res){
+    var pk = res.currentTarget.dataset.pk;
+    wx.setStorageSync('locationShow', pk)
+    wx.navigateTo({
+      url: '/pages/pk/showLocation/showLocation',
+    })
   },
   queryPks:function (tab,latitude,longitude) {
     var that = this;
@@ -92,12 +99,24 @@ Page({
   onShow:function () {
     var that = this;
 
-    // var user = wx.getStorageSync('user');
-    // if(user && !that.data.pageTag){
-    //   that.setData({user:user});
-    //   template.createPageLoadingError(that).hide();
-    //   that.queryPks("page",that.data.latitude,that.data.longitude);
-    // }
+    locationUtil.getLocation(function(latitude,longitude){
+
+      if(that.data.pks.length>0){
+        for(var i=0;i<that.data.pks.length;i++)
+        {
+          var distance = locationUtil.getDistance(latitude,longitude,that.data.pks[i].latitude,that.data.pks[i].longitude);
+          var length = "pks[" + i + "].userLength"
+          var lengthStr = "pks[" + i + "].userLengthStr"
+          that.setData({
+            [length]:distance*1000,
+            [lengthStr]:distance<1?distance*1000+"米":distance+"公里"
+          })
+        }
+      }
+    })
+
+  },
+  onHide:function(){
 
   },
 
@@ -368,6 +387,7 @@ Page({
       circles:[pk.circle],
       latitude:pk.marker.latitude,
       longitude:pk.marker.longitude,
+      scale:pk.type.scale
       
     })
   },

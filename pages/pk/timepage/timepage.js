@@ -61,6 +61,7 @@ Page({
     hourStr:"00",
     minStr:"00",
     secStr:"00",
+    locationUpdate:true,
   },
 
   /**
@@ -84,21 +85,17 @@ Page({
     })
     var user = wx.getStorageSync("user");
     that.setData({user:user})
-    
-
-
     var httpClient = template.createHttpClient(that);
     httpClient.setMode("page", false);
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});
+
   },
  
-  addInvite:function(pkId){
+  addInvite:function(){
         var that = this;
         var httpClient = template.createHttpClient(that);
         httpClient.setMode("label", true);
         httpClient.send(request.url.addUserInvite, "GET", { pkId: that.data.pk.pkId});
-
-    
   },
 
   createPay:function(payInfo)
@@ -231,27 +228,25 @@ Page({
       mapShow:true
     })
   },
-  queryLengthTime:function(pkId){
-    var that = this;
-    locationUtil.getLocation(function(latitude,longitude){
-        var user = wx.getStorageSync("user");
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("", false);
-        httpClient.send(request.url.queryLengthTime, "GET", { pkId: pkId, userId: user.userId,latitude:latitude,longitude:longitude});
-
-    })
-
+  // queryLengthTime:function(pkId){
+  //   var that = this;
+  //   locationUtil.getLocation(function(latitude,longitude){
+  //       var user = wx.getStorageSync("user");
+  //       var httpClient = template.createHttpClient(that);
+  //       httpClient.setMode("", false);
+  //       httpClient.send(request.url.queryLengthTime, "GET", { pkId: pkId, userId: user.userId,latitude:latitude,longitude:longitude});
+  //   })
 
 
-  },
+
+  // },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
     var that = this;
-    
-
+  
     return {
         title: '邀请你一起打卡@'+ that.data.pk.name ,
         desc: "from",
@@ -294,7 +289,7 @@ Page({
 
     httpClient.send(request.url.queryPk, "GET", { pkId: that.data.pkId, userId: user.userId});  
 
-    that.queryLengthTime(that.data.pkId);
+    // that.queryLengthTime(that.data.pkId);
   },
 
   refreshPage: function () {
@@ -371,7 +366,16 @@ Page({
 
     that.onTimeTask();
   },
+  groupCode:function(){
+    var that = this;
+    login.getUser(function(){
+      wx.navigateTo({
+        url: "/pages/pk/message/message?pkId=" + that.data.pk.pkId,
+      })
+    })
 
+
+  },
 
   onTimeTask:function () {
     var that = this;
@@ -458,7 +462,7 @@ Page({
         })
 
     }
-    that.queryLengthTime(that.data.pkId);
+    // that.queryLengthTime(that.data.pkId);
     var interval = setInterval(function(){
         var left = that.data.leftTime;
         var hourStr = "00";
@@ -485,69 +489,51 @@ Page({
           secStr:secStr,
           leftTime:left-1
         })
-        // if(left < 1){
-        //   clearInterval(that.data.interval);
-        // }
+        //更新位置:
+        if(that.data.locationUpdate && that.data.pk)
+        {
+          that.data.locationUpdate = false;
+          locationUtil.getLocation(function(latitude,longitude){
+        
+            if(that.data.pk){
+                if(that.data.lengthStr){
+                  wx.stopLocationUpdate({
+                    success: (res) => {},
+                  })
+                }
+      
+                var distance = locationUtil.getDistance(latitude,longitude,that.data.pk.latitude,that.data.pk.longitude);
+                that.setData({
+                  length:distance*1000,
+                  lengthStr:distance<1?distance*1000:distance
+                })
+            }
+
+      
+          })
+      
+        }
+        
 
 
 
     },1000)
-   that.data.interval = interval;
+    that.data.interval = interval;
+    //更新位置:
+
+
+
 
   },
+
   onHide:function(){
     clearInterval(this.data.interval);
+    that.data.locationUpdate = true;
+
   },
 
-  complain:function (res) {
-    var that = this;  
 
-    template.createOperateDialog(that).show("提示", "只有一次投诉机会,确定要投诉吗?投诉后图册将无法修改...", function () {
 
-      template.createEditImageDialog(that).setDialog("投诉", "编辑投诉信息", 1, function () {
-
-      }, function (text, urls) {
-        //上传成功
-  
-        var httpClient = template.createHttpClient(that);
-        httpClient.setMode("label", true);
-        httpClient.addHandler("success", function () {
-          
-            that.setData({
-              complainStatu:true
-            })
-
-        })
-        httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text,url:urls[0]});
-  
-      }, function () {
-        //上传失败
-  
-      }).show();
-
-      // template.createEditTextDialog(that).show("投诉", "编辑投诉信息","", 60, function (text) {
-      //   var httpClient = template.createHttpClient(that);
-      //   httpClient.setMode("label", true);
-      //   httpClient.addHandler("success", function () {
-          
-      //       that.setData({
-      //         complainStatu:true
-      //       })
-
-      //   })
-      //   httpClient.send(request.url.complain, "GET",{pkId: that.data.pkId,text:text});
-    
-      // });
-    }, function () {});
-  },
-  openCpostText:function()
-  {
-    var that = this;
-    var ctag = that.data.cpost.tag;
-    that.setData({
-      'cpost.tag':!ctag
-    })
-  },
   openText:function(res)
   {
     var that = this;
@@ -557,18 +543,6 @@ Page({
     that.setData({
       [tag]:!ctag
     })
-  },
-
-  selectTask:function(res){
-    var that = this;
-    var task = res.currentTarget.dataset.task;
-
-    var httpClient = template.createHttpClient(that);
-    httpClient.setMode("label", true);
-    httpClient.addHandler("success", function (order) {
-      template.createSingleOrderDialog(that).show(order);
-    })
-    httpClient.send(request.url.queryTaskOrder, "GET", { orderId: task.orderId });
   },
 
   topPost:function(res){
@@ -630,7 +604,7 @@ Page({
     var pkId = res.currentTarget.dataset.pkid;
     var index = res.currentTarget.dataset.index;
 
-    template.createOperateDialog(that).show("删除打卡信息?", "删除?...", function () {
+    template.createOperateDialog(that).show("隐藏打卡信息?", "隐藏?...", function () {
       var httpClient = template.createHttpClient(that);
       httpClient.setMode("label", true);
       httpClient.addHandler("success", function () {
@@ -648,11 +622,18 @@ Page({
 
 
   },
+  showLocation:function(res){
+    var pk = res.currentTarget.dataset.pk;
+    wx.setStorageSync('locationShow', pk)
+    wx.navigateTo({
+      url: '/pages/pk/showLocation/showLocation',
+    })
+  },
   signLocation:function(){
     var that = this;
     login.getUser(function(user){
             //超出打卡区域
-      if(that.data.length > that.data.pk.type.range)
+      if(that.data.length > that.data.pk.type.rangeLength)
       {
         template.createDialog(that).show("超出打卡区域","您所在区域不在卡点可打卡范围之内");
         return;
@@ -660,7 +641,7 @@ Page({
       //非打卡时间
       if(that.data.leftTime > 0)
       {
-        template.createDialog(that).show("两次打卡间隔","距离上次打卡时间过近，计时归零后请再打卡.");
+        template.createDialog(that).show("计时结束后可再次打卡","距离上次打卡时间过近，计时归零后请再打卡.");
         return;
       }
       wx.chooseImage({

@@ -31,7 +31,7 @@
 <view class="rcc z4" style="position: fixed;left:0;top:{{top}}px;width:100vw;height:32px">
     <view class="rcc pl-40 pr-40 br-20 b-publish " style="height:32px">
         <!-- <view></view> -->
-        <view class="c-white fs-25 fw-700">距离400米</view>
+        <view class="c-white fs-25 fw-700">距离{{lengthStr}}</view>
     </view>
 </view>
 <!-- 地图 -->
@@ -83,12 +83,12 @@
                                                                     <view class="rss " >
                                                                         <view class="rus">
                                                                             <image class="rcc w-12vw h-12vw br-10 box8 " src="{{pk.backUrl}}" mode="aspectFill"></image>
-                                                                            <view class="absolute cbs w-12vw h-12vw br-20" bindtap="updatePkPage" data-index="{{bindex}}" data-pkid="{{pk.pkId}}">
+                                                                            <!-- <view class="absolute cbs w-12vw h-12vw br-20" bindtap="updatePkPage" data-index="{{bindex}}" data-pkid="{{pk.pkId}}">
                                                                                     <view class=""></view>
                                                                                     <view class="rcc ">
                                                                                         <view class="rcc h-30 w-10vw br-40 b-publish1 fs-18 fw-300 c-white">封面</view>
                                                                                     </view>
-                                                                            </view>
+                                                                            </view> -->
                                                                         </view>
 
 
@@ -102,7 +102,7 @@
                                                                                                     <view class="w-20"></view>
                                                                                                     <view class="rcc pl-15 pr-15 fs-20 fw-300 b-tip br-10 " >
                                                                                                         <image class="w-25 h-25" mode="aspectFit" src="/images/address.png"></image>
-                                                                                                        <view class="fs-25 c-4">{{pk.type.range}}米范围可打卡</view>
+                                                                                                        <view class="fs-25 c-4">{{pk.type.range}}范围可打卡</view>
                                                                                                     </view>           
                                                                                               
                                                                                             
@@ -163,7 +163,7 @@
                                                                                     <view class="rcc border-locate pl-10 pr-10 pt-5 pb-5 br-10 " >
                                                                                                             <image class="rcc w-25 h-25" mode="aspectFit" src="/images/way.png"></image>
                                                                                                             <view class="w-10 "></view>
-                                                                                                            <view class="rcc fs-23 fs-300 c-4">距离 1.4km</view>
+                                                                                                            <view class="rcc fs-23 fs-300 c-4">距离 {{lengthStr}}</view>
                                                                                     </view>
                                                                             </view>
                                                                         </view>
